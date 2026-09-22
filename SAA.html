@@ -1,0 +1,3443 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ôn thi AWS Certified Solutions Architect – Associate (SAA-C03)</title>
+<meta name="description" content="Cẩm nang ôn tập AWS SAA-C03 bằng tiếng Việt: lý thuyết, bảng so sánh dịch vụ, câu hỏi luyện tập và chiến lược làm bài.">
+<style>
+:root{
+  --ink:#1a1a1a; --muted:#5a5a5a; --line:#c9c9c9;
+  --h1:#1F3864; --h2:#1F4E79; --h3:#2E5C8A; --accent:#C55A11;
+  --thead:#D9E2F3; --zebra:#F5F7FB; --quote:#F3F6FA;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Times New Roman",Times,"Liberation Serif","Nimbus Roman",serif;
+  font-size:12.5pt; line-height:1.62; color:var(--ink);
+  max-width:100%; margin:0; padding:0; background:#fff;
+}
+.wrap{max-width:900px;margin:0 auto;padding:48px 36px 80px}
+h1,h2,h3,h4{font-family:inherit;font-weight:700;line-height:1.3;margin:1.6em 0 .55em}
+h1{font-size:23pt;color:var(--h1);border-bottom:2.5px solid var(--h1);padding-bottom:.28em;margin-top:2.4em}
+h1:first-of-type{margin-top:0}
+h2{font-size:17pt;color:var(--h2);border-bottom:1px solid var(--line);padding-bottom:.2em}
+h3{font-size:14pt;color:var(--h3)}
+h4{font-size:12.5pt;color:#333}
+p{margin:.55em 0;text-align:justify}
+ul,ol{margin:.5em 0 .7em;padding-left:1.6em}
+li{margin:.24em 0}
+li>ul,li>ol{margin:.2em 0}
+strong{font-weight:700}
+code{font-family:"Consolas","Courier New",monospace;font-size:.88em;
+  background:#f0f2f5;padding:.1em .35em;border-radius:3px;color:#9b2c2c}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:11pt;
+  display:block;overflow-x:auto;white-space:normal}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--thead);font-weight:700;color:#12305c}
+tbody tr:nth-child(even){background:var(--zebra)}
+blockquote{margin:1em 0;padding:.7em 1.1em;background:var(--quote);
+  border-left:4px solid var(--h3);color:#2c3e50}
+blockquote p{margin:.25em 0}
+hr{border:0;border-top:1px solid var(--line);margin:2.2em 0}
+a{color:var(--h2);text-decoration:none}
+a:hover{text-decoration:underline}
+details{margin:1.2em 0;border:1px solid var(--line);border-radius:5px;
+  padding:.7em 1.1em;background:#fbfcfe}
+summary{cursor:pointer;font-weight:700;font-size:12.5pt;color:var(--h1);
+  padding:.15em 0;user-select:none}
+details[open] summary{border-bottom:1px solid var(--line);
+  margin-bottom:.6em;padding-bottom:.5em}
+details ul{font-size:11.5pt}
+sub{font-size:.8em;color:var(--muted)}
+
+/* Nút cuộn lên đầu trang */
+#top{position:fixed;right:22px;bottom:22px;width:44px;height:44px;
+  border-radius:50%;background:var(--h1);color:#fff;border:0;cursor:pointer;
+  font-size:19px;line-height:44px;text-align:center;opacity:0;
+  transition:opacity .25s;box-shadow:0 2px 10px rgba(0,0,0,.28);z-index:99}
+#top.show{opacity:.92}
+
+@media (max-width:700px){
+  .wrap{padding:26px 16px 70px}
+  body{font-size:12pt}
+  h1{font-size:19pt} h2{font-size:15pt} h3{font-size:13pt}
+  table{font-size:10pt}
+}
+@media print{
+  .wrap{max-width:100%;padding:0}
+  #top{display:none}
+  h1{page-break-before:always}
+  h1:first-of-type{page-break-before:avoid}
+  h2,h3{page-break-after:avoid}
+  table,blockquote{page-break-inside:avoid}
+  details{border:0;background:none;padding:0}
+  details>summary{display:none}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1 id="-tài-liệu-ôn-thi-aws-certified-solutions-architect--associate-saa-c03">📘 Tài liệu ôn thi AWS Certified Solutions Architect – Associate (SAA-C03)</h1>
+<p>Cẩm nang tổng hợp kiến thức chi tiết để ôn tập và sẵn sàng cho kỳ thi <strong>AWS Certified Solutions Architect – Associate (SAA-C03)</strong>: lý thuyết cốt lõi, bảng so sánh dịch vụ, các con số cần thuộc, mẫu kiến trúc điển hình, ngân hàng câu hỏi có giải thích và chiến lược làm bài.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mã kỳ thi</strong></td>
+<td>SAA-C03</td>
+</tr>
+<tr>
+<td><strong>Số câu hỏi</strong></td>
+<td>65 câu (50 tính điểm)</td>
+</tr>
+<tr>
+<td><strong>Thời gian</strong></td>
+<td>130 phút</td>
+</tr>
+<tr>
+<td><strong>Điểm đạt</strong></td>
+<td>720 / 1000</td>
+</tr>
+<tr>
+<td><strong>Lệ phí</strong></td>
+<td>150 USD</td>
+</tr>
+<tr>
+<td><strong>Hiệu lực</strong></td>
+<td>3 năm</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-lộ-trình-ôn-tập-gợi-ý">🗺️ Lộ trình ôn tập gợi ý</h3>
+<table>
+<thead>
+<tr>
+<th>Tuần</th>
+<th>Nội dung</th>
+<th>Phần</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Nền tảng: hạ tầng toàn cầu, IAM, bảo mật</td>
+<td>I – III</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Compute và Storage</td>
+<td>IV – V</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Database và Networking</td>
+<td>VI – VII</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Tích hợp ứng dụng, phân tích, vận hành</td>
+<td>VIII – X</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Kiến trúc, DR, chi phí</td>
+<td>XI – XIII</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Luyện đề + ôn bảng so sánh &amp; con số</td>
+<td>XIV – XVI</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<details>
+<summary><b>📚 MỤC LỤC — bấm để mở</b></summary>
+
+- [PHẦN I. TỔNG QUAN KỲ THI SAA-C03](#phần-i-tổng-quan-kỳ-thi-saa-c03)
+  - [1.1. Thông tin kỳ thi](#11-thông-tin-kỳ-thi)
+  - [1.2. Bốn miền kiến thức (Domains) và trọng số](#12-bốn-miền-kiến-thức-domains-và-trọng-số)
+  - [1.3. Chiến lược làm bài](#13-chiến-lược-làm-bài)
+  - [1.4. Các "từ khóa – đáp án" hay xuất hiện](#14-các-từ-khóa--đáp-án-hay-xuất-hiện)
+- [PHẦN II. HẠ TẦNG TOÀN CẦU VÀ NỀN TẢNG AWS](#phần-ii-hạ-tầng-toàn-cầu-và-nền-tảng-aws)
+  - [2.1. Kiến trúc hạ tầng toàn cầu](#21-kiến-trúc-hạ-tầng-toàn-cầu)
+  - [2.2. Mô hình trách nhiệm chung (Shared Responsibility Model)](#22-mô-hình-trách-nhiệm-chung-shared-responsibility-model)
+- [PHẦN III. BẢO MẬT, DANH TÍNH VÀ QUẢN TRỊ](#phần-iii-bảo-mật-danh-tính-và-quản-trị)
+  - [3.1. IAM – Identity and Access Management](#31-iam--identity-and-access-management)
+    - [3.1.1. Các thành phần cốt lõi](#311-các-thành-phần-cốt-lõi)
+    - [3.1.2. Cấu trúc một IAM Policy](#312-cấu-trúc-một-iam-policy)
+    - [3.1.3. Thuật toán đánh giá quyền (rất hay thi)](#313-thuật-toán-đánh-giá-quyền-rất-hay-thi)
+    - [3.1.4. Identity-based vs Resource-based policy](#314-identity-based-vs-resource-based-policy)
+    - [3.1.5. Permission Boundary vs SCP](#315-permission-boundary-vs-scp)
+    - [3.1.6. IAM Best Practices (rất hay ra thi)](#316-iam-best-practices-rất-hay-ra-thi)
+  - [3.2. AWS STS – Security Token Service](#32-aws-sts--security-token-service)
+  - [3.3. AWS Organizations](#33-aws-organizations)
+  - [3.4. AWS Control Tower](#34-aws-control-tower)
+  - [3.5. AWS IAM Identity Center (AWS SSO)](#35-aws-iam-identity-center-aws-sso)
+  - [3.6. Amazon Cognito](#36-amazon-cognito)
+  - [3.7. AWS Directory Service](#37-aws-directory-service)
+  - [3.8. AWS KMS – Key Management Service](#38-aws-kms--key-management-service)
+  - [3.9. Quản lý bí mật và tham số](#39-quản-lý-bí-mật-và-tham-số)
+  - [3.10. Bảo vệ tầng ứng dụng và mạng](#310-bảo-vệ-tầng-ứng-dụng-và-mạng)
+  - [3.11. Phát hiện mối đe dọa và tuân thủ](#311-phát-hiện-mối-đe-dọa-và-tuân-thủ)
+    - [Chi tiết cần nhớ về CloudTrail](#chi-tiết-cần-nhớ-về-cloudtrail)
+- [PHẦN IV. ĐIỆN TOÁN (COMPUTE)](#phần-iv-điện-toán-compute)
+  - [4.1. Amazon EC2 – Elastic Compute Cloud](#41-amazon-ec2--elastic-compute-cloud)
+    - [4.1.1. Họ instance và cách đọc tên](#411-họ-instance-và-cách-đọc-tên)
+    - [4.1.2. Các mô hình mua (Purchase Options) – trọng tâm Domain 4](#412-các-mô-hình-mua-purchase-options--trọng-tâm-domain-4)
+    - [4.1.3. Placement Groups](#413-placement-groups)
+    - [4.1.4. AMI, User Data, Instance Metadata](#414-ami-user-data-instance-metadata)
+    - [4.1.5. Vòng đời và trạng thái](#415-vòng-đời-và-trạng-thái)
+    - [4.1.6. Elastic IP và ENI](#416-elastic-ip-và-eni)
+  - [4.2. Auto Scaling Group (ASG)](#42-auto-scaling-group-asg)
+    - [4.2.1. Thành phần](#421-thành-phần)
+    - [4.2.2. Các chính sách scaling](#422-các-chính-sách-scaling)
+    - [4.2.3. Lifecycle Hooks và Termination Policy](#423-lifecycle-hooks-và-termination-policy)
+  - [4.3. Elastic Load Balancing (ELB)](#43-elastic-load-balancing-elb)
+    - [4.3.1. So sánh 4 loại Load Balancer](#431-so-sánh-4-loại-load-balancer)
+    - [4.3.2. Các khái niệm quan trọng](#432-các-khái-niệm-quan-trọng)
+  - [4.4. AWS Lambda](#44-aws-lambda)
+    - [4.4.1. Đặc điểm và giới hạn (nhớ con số!)](#441-đặc-điểm-và-giới-hạn-nhớ-con-số)
+    - [4.4.2. Các khái niệm cốt lõi](#442-các-khái-niệm-cốt-lõi)
+  - [4.5. Container trên AWS](#45-container-trên-aws)
+    - [4.5.1. Amazon ECS – Elastic Container Service](#451-amazon-ecs--elastic-container-service)
+    - [4.5.2. Amazon EKS – Elastic Kubernetes Service](#452-amazon-eks--elastic-kubernetes-service)
+    - [4.5.3. Amazon ECR – Elastic Container Registry](#453-amazon-ecr--elastic-container-registry)
+    - [4.5.4. Các lựa chọn compute khác](#454-các-lựa-chọn-compute-khác)
+    - [4.5.5. Chiến lược triển khai (Deployment Strategies)](#455-chiến-lược-triển-khai-deployment-strategies)
+- [PHẦN V. LƯU TRỮ (STORAGE)](#phần-v-lưu-trữ-storage)
+  - [5.1. Ba loại hình lưu trữ](#51-ba-loại-hình-lưu-trữ)
+  - [5.2. Amazon EBS – Elastic Block Store](#52-amazon-ebs--elastic-block-store)
+    - [5.2.1. Đặc tính chung](#521-đặc-tính-chung)
+    - [5.2.2. Các loại EBS Volume (bảng cần thuộc)](#522-các-loại-ebs-volume-bảng-cần-thuộc)
+    - [5.2.3. EBS Snapshot](#523-ebs-snapshot)
+    - [5.2.4. Mã hóa EBS](#524-mã-hóa-ebs)
+    - [5.2.5. Instance Store](#525-instance-store)
+  - [5.3. Amazon EFS – Elastic File System](#53-amazon-efs--elastic-file-system)
+  - [5.4. Amazon FSx](#54-amazon-fsx)
+  - [5.5. Amazon S3 – Simple Storage Service](#55-amazon-s3--simple-storage-service)
+    - [5.5.1. Nguyên tắc nền tảng](#551-nguyên-tắc-nền-tảng)
+    - [5.5.2. Các lớp lưu trữ (Storage Classes) – bảng phải thuộc](#552-các-lớp-lưu-trữ-storage-classes--bảng-phải-thuộc)
+    - [5.5.3. Lifecycle Policy](#553-lifecycle-policy)
+    - [5.5.4. Versioning, MFA Delete, Object Lock](#554-versioning-mfa-delete-object-lock)
+    - [5.5.5. Kiểm soát truy cập S3](#555-kiểm-soát-truy-cập-s3)
+    - [5.5.6. Mã hóa S3](#556-mã-hóa-s3)
+    - [5.5.7. Replication (nhân bản)](#557-replication-nhân-bản)
+    - [5.5.8. Các tính năng S3 khác hay ra thi](#558-các-tính-năng-s3-khác-hay-ra-thi)
+  - [5.6. Di chuyển và chuyển dữ liệu](#56-di-chuyển-và-chuyển-dữ-liệu)
+    - [Storage Gateway – bốn loại](#storage-gateway--bốn-loại)
+  - [5.7. AWS Backup](#57-aws-backup)
+- [PHẦN VI. CƠ SỞ DỮ LIỆU](#phần-vi-cơ-sở-dữ-liệu)
+  - [6.1. Bản đồ chọn cơ sở dữ liệu (rất quan trọng)](#61-bản-đồ-chọn-cơ-sở-dữ-liệu-rất-quan-trọng)
+  - [6.2. Amazon RDS](#62-amazon-rds)
+    - [6.2.1. Multi-AZ vs Read Replica – so sánh kinh điển](#621-multi-az-vs-read-replica--so-sánh-kinh-điển)
+    - [6.2.2. Backup và phục hồi](#622-backup-và-phục-hồi)
+    - [6.2.3. Bảo mật RDS](#623-bảo-mật-rds)
+    - [6.2.4. RDS Proxy](#624-rds-proxy)
+    - [6.2.5. Giám sát và bảo trì](#625-giám-sát-và-bảo-trì)
+  - [6.3. Amazon Aurora](#63-amazon-aurora)
+    - [6.3.1. Kiến trúc](#631-kiến-trúc)
+    - [6.3.2. Các Endpoint của Aurora](#632-các-endpoint-của-aurora)
+    - [6.3.3. Các biến thể Aurora](#633-các-biến-thể-aurora)
+  - [6.4. Amazon DynamoDB](#64-amazon-dynamodb)
+    - [6.4.1. Nền tảng](#641-nền-tảng)
+    - [6.4.2. Chế độ dung lượng (Capacity Mode)](#642-chế-độ-dung-lượng-capacity-mode)
+    - [6.4.3. Index](#643-index)
+    - [6.4.4. Các tính năng quan trọng khác](#644-các-tính-năng-quan-trọng-khác)
+  - [6.5. Amazon ElastiCache](#65-amazon-elasticache)
+  - [6.6. Amazon Redshift](#66-amazon-redshift)
+  - [6.7. Các cơ sở dữ liệu chuyên biệt](#67-các-cơ-sở-dữ-liệu-chuyên-biệt)
+  - [6.8. Di chuyển cơ sở dữ liệu](#68-di-chuyển-cơ-sở-dữ-liệu)
+- [PHẦN VII. MẠNG VÀ PHÂN PHỐI NỘI DUNG](#phần-vii-mạng-và-phân-phối-nội-dung)
+  - [7.1. Amazon VPC – Virtual Private Cloud](#71-amazon-vpc--virtual-private-cloud)
+    - [7.1.1. Các thành phần nền tảng](#711-các-thành-phần-nền-tảng)
+    - [7.1.2. Security Group vs Network ACL – so sánh phải thuộc](#712-security-group-vs-network-acl--so-sánh-phải-thuộc)
+    - [7.1.3. VPC Endpoints – truy cập riêng tư tới dịch vụ AWS](#713-vpc-endpoints--truy-cập-riêng-tư-tới-dịch-vụ-aws)
+    - [7.1.4. Kết nối giữa các VPC](#714-kết-nối-giữa-các-vpc)
+    - [7.1.5. Kết nối lai (Hybrid)](#715-kết-nối-lai-hybrid)
+    - [7.1.6. DNS trong VPC](#716-dns-trong-vpc)
+    - [7.1.7. Giám sát mạng](#717-giám-sát-mạng)
+    - [7.1.8. Chi phí mạng cần nhớ](#718-chi-phí-mạng-cần-nhớ)
+  - [7.2. Amazon Route 53](#72-amazon-route-53)
+    - [7.2.1. Tổng quan](#721-tổng-quan)
+    - [7.2.2. Record Types và Alias Record](#722-record-types-và-alias-record)
+    - [7.2.3. Bảy chính sách định tuyến (Routing Policies)](#723-bảy-chính-sách-định-tuyến-routing-policies)
+    - [7.2.4. Health Checks](#724-health-checks)
+  - [7.3. Amazon CloudFront](#73-amazon-cloudfront)
+    - [7.3.1. Cơ chế](#731-cơ-chế)
+    - [7.3.2. Bảo mật CloudFront](#732-bảo-mật-cloudfront)
+    - [7.3.3. Caching](#733-caching)
+    - [7.3.4. CloudFront Functions vs Lambda@Edge](#734-cloudfront-functions-vs-lambdaedge)
+  - [7.4. AWS Global Accelerator](#74-aws-global-accelerator)
+- [PHẦN VIII. TÍCH HỢP ỨNG DỤNG VÀ KIẾN TRÚC PHI TẬP TRUNG](#phần-viii-tích-hợp-ứng-dụng-và-kiến-trúc-phi-tập-trung)
+  - [8.1. Amazon SQS – Simple Queue Service](#81-amazon-sqs--simple-queue-service)
+    - [8.1.1. Hai loại hàng đợi](#811-hai-loại-hàng-đợi)
+    - [8.1.2. Các tham số phải nhớ](#812-các-tham-số-phải-nhớ)
+    - [8.1.3. Dead Letter Queue (DLQ)](#813-dead-letter-queue-dlq)
+    - [8.1.4. Mẫu kiến trúc với SQS](#814-mẫu-kiến-trúc-với-sqs)
+  - [8.2. Amazon SNS – Simple Notification Service](#82-amazon-sns--simple-notification-service)
+  - [8.3. Amazon EventBridge (trước là CloudWatch Events)](#83-amazon-eventbridge-trước-là-cloudwatch-events)
+  - [8.4. AWS Step Functions](#84-aws-step-functions)
+  - [8.5. Amazon API Gateway](#85-amazon-api-gateway)
+  - [8.6. Streaming dữ liệu – Amazon Kinesis](#86-streaming-dữ-liệu--amazon-kinesis)
+  - [8.7. Amazon MQ và AppSync](#87-amazon-mq-và-appsync)
+- [PHẦN IX. PHÂN TÍCH DỮ LIỆU](#phần-ix-phân-tích-dữ-liệu)
+- [PHẦN X. GIÁM SÁT, VẬN HÀNH VÀ TỰ ĐỘNG HÓA](#phần-x-giám-sát-vận-hành-và-tự-động-hóa)
+  - [10.1. Amazon CloudWatch](#101-amazon-cloudwatch)
+    - [10.1.1. Metrics](#1011-metrics)
+    - [10.1.2. Logs](#1012-logs)
+    - [10.1.3. Alarms](#1013-alarms)
+    - [10.1.4. Các thành phần khác](#1014-các-thành-phần-khác)
+  - [10.2. AWS X-Ray](#102-aws-x-ray)
+  - [10.3. AWS Systems Manager (SSM)](#103-aws-systems-manager-ssm)
+  - [10.4. Infrastructure as Code](#104-infrastructure-as-code)
+  - [10.5. CI/CD trên AWS](#105-cicd-trên-aws)
+  - [10.6. Hỗ trợ và tối ưu](#106-hỗ-trợ-và-tối-ưu)
+- [PHẦN XI. WELL-ARCHITECTED FRAMEWORK VÀ THIẾT KẾ KIẾN TRÚC](#phần-xi-well-architected-framework-và-thiết-kế-kiến-trúc)
+  - [11.1. Sáu trụ cột (Six Pillars)](#111-sáu-trụ-cột-six-pillars)
+  - [11.2. Nguyên tắc thiết kế cần khắc cốt ghi tâm](#112-nguyên-tắc-thiết-kế-cần-khắc-cốt-ghi-tâm)
+  - [11.3. Chiến lược Disaster Recovery – RTO và RPO](#113-chiến-lược-disaster-recovery--rto-và-rpo)
+- [PHẦN XII. TỐI ƯU CHI PHÍ](#phần-xii-tối-ưu-chi-phí)
+  - [12.1. Công cụ quản lý chi phí](#121-công-cụ-quản-lý-chi-phí)
+  - [12.2. Danh sách kiểm tra tối ưu chi phí (áp dụng trong đề thi)](#122-danh-sách-kiểm-tra-tối-ưu-chi-phí-áp-dụng-trong-đề-thi)
+- [PHẦN XIII. CÁC MẪU KIẾN TRÚC ĐIỂN HÌNH TRONG ĐỀ THI](#phần-xiii-các-mẫu-kiến-trúc-điển-hình-trong-đề-thi)
+  - [13.1. Web application 3 tầng có tính sẵn sàng cao](#131-web-application-3-tầng-có-tính-sẵn-sàng-cao)
+  - [13.2. Kiến trúc serverless](#132-kiến-trúc-serverless)
+  - [13.3. Xử lý ảnh/video khi upload](#133-xử-lý-ảnhvideo-khi-upload)
+  - [13.4. Phân tích log tập trung](#134-phân-tích-log-tập-trung)
+  - [13.5. Hybrid – mở rộng data center lên AWS](#135-hybrid--mở-rộng-data-center-lên-aws)
+  - [13.6. Ứng dụng toàn cầu độ trễ thấp](#136-ứng-dụng-toàn-cầu-độ-trễ-thấp)
+- [PHẦN XIV. NGÂN HÀNG CÂU HỎI ÔN TẬP CÓ GIẢI THÍCH](#phần-xiv-ngân-hàng-câu-hỏi-ôn-tập-có-giải-thích)
+- [PHẦN XV. BẢNG SO SÁNH NHANH – ÔN TRƯỚC GIỜ THI](#phần-xv-bảng-so-sánh-nhanh--ôn-trước-giờ-thi)
+  - [15.1. Các cặp dễ nhầm](#151-các-cặp-dễ-nhầm)
+  - [15.2. Những con số phải nhớ](#152-những-con-số-phải-nhớ)
+- [PHẦN XVI. CHECKLIST ÔN TẬP CUỐI CÙNG](#phần-xvi-checklist-ôn-tập-cuối-cùng)
+  - [16.1. Tuần cuối trước khi thi](#161-tuần-cuối-trước-khi-thi)
+  - [16.2. Kiểm tra mức độ sẵn sàng – bạn có tự tin trả lời được không?](#162-kiểm-tra-mức-độ-sẵn-sàng--bạn-có-tự-tin-trả-lời-được-không)
+  - [16.3. Trong phòng thi](#163-trong-phòng-thi)
+  - [16.4. Tài nguyên ôn tập gợi ý](#164-tài-nguyên-ôn-tập-gợi-ý)
+
+</details>
+
+<hr />
+<h1 id="phần-i-tổng-quan-kỳ-thi-saa-c03">PHẦN I. TỔNG QUAN KỲ THI SAA-C03</h1>
+<h2 id="11-thông-tin-kỳ-thi">1.1. Thông tin kỳ thi</h2>
+<table>
+<thead>
+<tr>
+<th>Hạng mục</th>
+<th>Chi tiết</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mã kỳ thi</td>
+<td>SAA-C03 (AWS Certified Solutions Architect – Associate)</td>
+</tr>
+<tr>
+<td>Số câu hỏi</td>
+<td>65 câu (50 câu tính điểm + 15 câu thử nghiệm không tính điểm)</td>
+</tr>
+<tr>
+<td>Thời gian</td>
+<td>130 phút (có thể xin thêm 30 phút nếu tiếng Anh không phải ngôn ngữ mẹ đẻ – đăng ký <strong>trước</strong> khi book lịch)</td>
+</tr>
+<tr>
+<td>Dạng câu hỏi</td>
+<td>Multiple choice (1 đáp án đúng / 4 lựa chọn) và Multiple response (2+ đáp án đúng / 5-6 lựa chọn)</td>
+</tr>
+<tr>
+<td>Điểm đạt</td>
+<td>720 / 1000 (thang điểm scaled)</td>
+</tr>
+<tr>
+<td>Lệ phí</td>
+<td>150 USD</td>
+</tr>
+<tr>
+<td>Hiệu lực</td>
+<td>3 năm</td>
+</tr>
+<tr>
+<td>Hình thức</td>
+<td>Pearson VUE test center hoặc OnVUE online proctored</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-bốn-miền-kiến-thức-domains-và-trọng-số">1.2. Bốn miền kiến thức (Domains) và trọng số</h2>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Tên miền</th>
+<th>Trọng số</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domain 1</td>
+<td>Design Secure Architectures – Thiết kế kiến trúc bảo mật</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>Domain 2</td>
+<td>Design Resilient Architectures – Thiết kế kiến trúc bền bỉ (HA/DR)</td>
+<td>26%</td>
+</tr>
+<tr>
+<td>Domain 3</td>
+<td>Design High-Performing Architectures – Thiết kế kiến trúc hiệu năng cao</td>
+<td>24%</td>
+</tr>
+<tr>
+<td>Domain 4</td>
+<td>Design Cost-Optimized Architectures – Thiết kế kiến trúc tối ưu chi phí</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nhận xét quan trọng:</strong> Đề thi SAA-C03 không kiểm tra bạn có thuộc lòng cú pháp CLI hay không. Nó kiểm tra khả năng <strong>chọn dịch vụ phù hợp nhất</strong> cho một tình huống kinh doanh có ràng buộc. Với mỗi câu hỏi, hãy xác định ràng buộc chủ đạo: <em>bảo mật – độ sẵn sàng – hiệu năng – chi phí – ít thao tác vận hành nhất (least operational overhead)</em>.</p>
+<h2 id="13-chiến-lược-làm-bài">1.3. Chiến lược làm bài</h2>
+<ol>
+<li><strong>Đọc câu hỏi từ dưới lên.</strong> Câu cuối cùng (câu hỏi thật sự) thường chứa từ khóa quyết định: "MOST cost-effective", "LEAST operational overhead", "MOST secure", "HIGHEST availability".</li>
+<li><strong>Loại trừ trước, chọn sau.</strong> Thường có 2 đáp án sai hiển nhiên (dịch vụ không tồn tại, dịch vụ dùng sai mục đích) và 2 đáp án "đúng về kỹ thuật" nhưng chỉ 1 đáp án tối ưu theo tiêu chí câu hỏi.</li>
+<li><strong>Ưu tiên managed service.</strong> Nếu câu hỏi nói "least operational overhead" / "minimal management", hãy ưu tiên serverless và managed: Lambda &gt; EC2, Aurora Serverless &gt; RDS tự quản, Fargate &gt; EC2 launch type, S3 &gt; EBS tự dựng file server.</li>
+<li><strong>Cẩn thận với "cost-effective".</strong> Đáp án rẻ nhất phải vẫn đáp ứng yêu cầu kỹ thuật. Nếu yêu cầu là truy xuất trong mili-giây thì Glacier bị loại dù rẻ hơn.</li>
+<li><strong>Quản lý thời gian:</strong> 130 phút / 65 câu = <strong>2 phút/câu</strong>. Nếu bí quá 90 giây, hãy đánh dấu (flag) và quay lại sau. Dành 15-20 phút cuối để rà soát các câu đã flag.</li>
+<li><strong>Không bỏ trống câu nào.</strong> Không bị trừ điểm khi trả lời sai.</li>
+</ol>
+<h2 id="14-các-từ-khóa--đáp-án-hay-xuất-hiện">1.4. Các "từ khóa – đáp án" hay xuất hiện</h2>
+<table>
+<thead>
+<tr>
+<th>Từ khóa trong đề</th>
+<th>Dịch vụ / giải pháp thường đúng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decouple, buffer, spike traffic</td>
+<td>SQS</td>
+</tr>
+<tr>
+<td>Fan-out, pub/sub, thông báo nhiều nơi</td>
+<td>SNS (+ SQS fanout)</td>
+</tr>
+<tr>
+<td>Event-driven, filter theo pattern, schedule</td>
+<td>EventBridge</td>
+</tr>
+<tr>
+<td>Orchestration, workflow nhiều bước, retry logic</td>
+<td>Step Functions</td>
+</tr>
+<tr>
+<td>Real-time streaming, ordering theo shard, replay</td>
+<td>Kinesis Data Streams</td>
+</tr>
+<tr>
+<td>Nạp streaming vào S3/Redshift/OpenSearch, near real-time</td>
+<td>Kinesis Data Firehose</td>
+</tr>
+<tr>
+<td>Truy vấn SQL ad-hoc trực tiếp trên S3</td>
+<td>Athena</td>
+</tr>
+<tr>
+<td>Data warehouse, OLAP, BI, petabyte</td>
+<td>Redshift</td>
+</tr>
+<tr>
+<td>Cache DB, giảm latency đọc, session store</td>
+<td>ElastiCache (Redis)</td>
+</tr>
+<tr>
+<td>Cache DynamoDB microsecond</td>
+<td>DAX</td>
+</tr>
+<tr>
+<td>Cache nội dung tĩnh cho người dùng toàn cầu</td>
+<td>CloudFront</td>
+</tr>
+<tr>
+<td>Tăng tốc TCP/UDP, IP tĩnh, non-HTTP</td>
+<td>Global Accelerator</td>
+</tr>
+<tr>
+<td>Chia sẻ file NFS giữa nhiều EC2 Linux</td>
+<td>EFS</td>
+</tr>
+<tr>
+<td>Chia sẻ file SMB cho Windows, AD</td>
+<td>FSx for Windows File Server</td>
+</tr>
+<tr>
+<td>HPC, machine learning, throughput cực cao</td>
+<td>FSx for Lustre</td>
+</tr>
+<tr>
+<td>Kết nối on-premises băng thông ổn định, riêng tư</td>
+<td>Direct Connect</td>
+</tr>
+<tr>
+<td>Kết nối on-premises nhanh, rẻ, qua Internet</td>
+<td>Site-to-Site VPN</td>
+</tr>
+<tr>
+<td>Hàng trăm VPC kết nối nhau</td>
+<td>Transit Gateway</td>
+</tr>
+<tr>
+<td>Truy cập S3/DynamoDB không qua Internet</td>
+<td>VPC Gateway Endpoint</td>
+</tr>
+<tr>
+<td>Truy cập dịch vụ AWS/bên thứ ba riêng tư</td>
+<td>Interface Endpoint (PrivateLink)</td>
+</tr>
+<tr>
+<td>Di chuyển petabyte dữ liệu offline</td>
+<td>Snowball / Snowmobile</td>
+</tr>
+<tr>
+<td>Đồng bộ on-prem ↔ AWS qua mạng</td>
+<td>DataSync</td>
+</tr>
+<tr>
+<td>Mở rộng dung lượng on-prem lên cloud</td>
+<td>Storage Gateway</td>
+</tr>
+<tr>
+<td>Xoay vòng (rotate) mật khẩu DB tự động</td>
+<td>Secrets Manager</td>
+</tr>
+<tr>
+<td>Lưu tham số cấu hình, miễn phí</td>
+<td>SSM Parameter Store</td>
+</tr>
+<tr>
+<td>Chống DDoS lớp 7, SQLi, XSS</td>
+<td>AWS WAF</td>
+</tr>
+<tr>
+<td>Chống DDoS lớp 3/4 nâng cao + hỗ trợ 24/7</td>
+<td>Shield Advanced</td>
+</tr>
+<tr>
+<td>Phát hiện hành vi bất thường từ log</td>
+<td>GuardDuty</td>
+</tr>
+<tr>
+<td>Quét lỗ hổng CVE trên EC2/ECR/Lambda</td>
+<td>Inspector</td>
+</tr>
+<tr>
+<td>Tìm dữ liệu nhạy cảm (PII) trong S3</td>
+<td>Macie</td>
+</tr>
+<tr>
+<td>Kiểm tra tuân thủ cấu hình tài nguyên</td>
+<td>AWS Config</td>
+</tr>
+<tr>
+<td>Ai đã làm gì trên tài khoản (audit API)</td>
+<td>CloudTrail</td>
+</tr>
+</tbody>
+</table>
+<h1 id="phần-ii-hạ-tầng-toàn-cầu-và-nền-tảng-aws">PHẦN II. HẠ TẦNG TOÀN CẦU VÀ NỀN TẢNG AWS</h1>
+<h2 id="21-kiến-trúc-hạ-tầng-toàn-cầu">2.1. Kiến trúc hạ tầng toàn cầu</h2>
+<ul>
+<li><strong>Region (Vùng):</strong> Một khu vực địa lý riêng biệt (ví dụ <code>ap-southeast-1</code> Singapore, <code>us-east-1</code> N. Virginia). Mỗi Region gồm <strong>tối thiểu 3 Availability Zone</strong>. Region hoàn toàn độc lập – dữ liệu <strong>không</strong> tự động rời khỏi Region trừ khi bạn cấu hình (replication). Tiêu chí chọn Region: <strong>tuân thủ pháp lý (data sovereignty) → độ trễ tới người dùng → dịch vụ khả dụng → giá</strong>.</li>
+<li><strong>Availability Zone (AZ):</strong> Một hoặc nhiều data center rời nhau, có nguồn điện, làm mát, mạng riêng. Các AZ trong cùng Region cách nhau hàng chục km nhưng nối bằng đường truyền riêng, độ trễ <strong>dưới 10ms (single-digit millisecond)</strong>. Đây là đơn vị cô lập lỗi cơ bản: <strong>Muốn HA thì phải triển khai qua nhiều AZ</strong>.</li>
+<li><strong>Local Zones:</strong> Mở rộng của Region đặt gần các thành phố lớn, cho độ trễ <strong>một chữ số mili-giây</strong> cho ứng dụng nhạy độ trễ (game, media rendering).</li>
+<li><strong>Wavelength Zones:</strong> Nhúng hạ tầng AWS vào mạng 5G của nhà mạng, phục vụ ứng dụng di động độ trễ cực thấp.</li>
+<li><strong>Outposts:</strong> Rack phần cứng AWS đặt tại data center của khách hàng – dùng khi có yêu cầu <strong>dữ liệu phải nằm tại chỗ (data residency)</strong> nhưng vẫn muốn API AWS.</li>
+<li><strong>Edge Locations / Points of Presence (PoP):</strong> Hơn 400 điểm trên toàn cầu, phục vụ CloudFront, Route 53, Global Accelerator, S3 Transfer Acceleration.</li>
+</ul>
+<p><strong>Điểm thi thường gặp:</strong> Sự cố "mất một AZ" → kiến trúc Multi-AZ vẫn sống. Sự cố "mất cả Region" → cần Multi-Region (DR). Yêu cầu "dữ liệu không được rời khỏi quốc gia" → chọn Region trong nước hoặc Outposts/Local Zone.</p>
+<h2 id="22-mô-hình-trách-nhiệm-chung-shared-responsibility-model">2.2. Mô hình trách nhiệm chung (Shared Responsibility Model)</h2>
+<table>
+<thead>
+<tr>
+<th>AWS chịu trách nhiệm ("Security <strong>OF</strong> the Cloud")</th>
+<th>Khách hàng chịu trách nhiệm ("Security <strong>IN</strong> the Cloud")</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phần cứng, data center, điện, làm cool</td>
+<td>Dữ liệu của khách hàng</td>
+</tr>
+<tr>
+<td>Hạ tầng mạng vật lý, ảo hóa (hypervisor)</td>
+<td>Phân quyền IAM, mật khẩu, MFA</td>
+</tr>
+<tr>
+<td>Vá lỗi hệ điều hành của <strong>managed service</strong> (RDS, Lambda, DynamoDB)</td>
+<td>Vá lỗi hệ điều hành <strong>EC2</strong>, cài đặt phần mềm</td>
+</tr>
+<tr>
+<td>Mã hóa hạ tầng, độ bền của S3 (11 số 9)</td>
+<td>Cấu hình mã hóa dữ liệu, phân loại dữ liệu</td>
+</tr>
+<tr>
+<td>Vận hành phần cứng lưu trữ</td>
+<td>Cấu hình Security Group, NACL, firewall</td>
+</tr>
+</tbody>
+</table>
+<p>Nguyên tắc rút gọn: <strong>Càng "managed" thì AWS gánh càng nhiều.</strong> EC2 (IaaS) → khách hàng lo hầu hết OS trở lên. Lambda/S3 (Serverless/SaaS) → khách hàng chỉ lo dữ liệu và quyền truy cập.</p>
+<h1 id="phần-iii-bảo-mật-danh-tính-và-quản-trị">PHẦN III. BẢO MẬT, DANH TÍNH VÀ QUẢN TRỊ</h1>
+<h2 id="31-iam--identity-and-access-management">3.1. IAM – Identity and Access Management</h2>
+<p>IAM là dịch vụ <strong>global</strong> (không gắn Region), <strong>miễn phí</strong>, dùng để kiểm soát <em>ai</em> được làm <em>gì</em> trên <em>tài nguyên nào</em>.</p>
+<h3 id="311-các-thành-phần-cốt-lõi">3.1.1. Các thành phần cốt lõi</h3>
+<ul>
+<li><strong>Root user:</strong> Tài khoản gốc tạo ra khi mở AWS account. Có toàn quyền tuyệt đối, <strong>không thể giới hạn bằng IAM policy</strong>. Thực hành tốt: bật MFA, xóa access key của root, khóa lại và <strong>không dùng cho công việc hằng ngày</strong>. Chỉ một số tác vụ bắt buộc root: đổi tên/đóng tài khoản, đổi gói hỗ trợ, khôi phục quyền IAM bị mất, đăng ký làm reseller, khôi phục S3 bucket policy bị khóa nhầm, bật MFA delete trên S3.</li>
+<li><strong>IAM User:</strong> Danh tính lâu dài cho con người hoặc ứng dụng cũ. Có thể có mật khẩu (console) và/hoặc <strong>access key ID + secret access key</strong> (API/CLI). Tối đa <strong>2 access key</strong> mỗi user (để rotate). Giới hạn 5.000 user/account.</li>
+<li><strong>IAM Group:</strong> Tập hợp user để gán policy chung. <strong>Group không thể lồng nhau</strong>, và <strong>group không phải là identity</strong> (không thể gán group vào Resource-based policy, group không có credentials).</li>
+<li><strong>IAM Role:</strong> Danh tính <strong>tạm thời</strong>, không có credentials cố định – được "assume" để nhận <strong>temporary security credentials</strong> từ STS. Đây là cách được khuyến nghị cho: EC2 truy cập S3, Lambda truy cập DynamoDB, cross-account access, liên kết danh tính (federation).</li>
+<li><strong>Policy:</strong> Tài liệu JSON định nghĩa quyền.</li>
+</ul>
+<h3 id="312-cấu-trúc-một-iam-policy">3.1.2. Cấu trúc một IAM Policy</h3>
+<p>Một policy JSON gồm các phần tử: <code>Version</code> (luôn dùng <code>2012-10-17</code>), <code>Statement</code> (mảng), và trong mỗi statement có <code>Sid</code>, <code>Effect</code> (Allow/Deny), <code>Principal</code> (chỉ có trong resource-based policy), <code>Action</code>, <code>Resource</code>, <code>Condition</code>.</p>
+<p>Các điều kiện (<code>Condition</code>) thường gặp trong đề thi: <code>aws:SourceIp</code> (giới hạn dải IP), <code>aws:RequestedRegion</code>, <code>aws:MultiFactorAuthPresent</code> (bắt buộc MFA), <code>aws:PrincipalOrgID</code> (chỉ cho phép account trong Organization), <code>s3:x-amz-server-side-encryption</code> (bắt buộc upload có mã hóa), <code>aws:SecureTransport</code> (bắt buộc HTTPS), <code>aws:PrincipalTag</code> / <code>aws:ResourceTag</code> (ABAC).</p>
+<h3 id="313-thuật-toán-đánh-giá-quyền-rất-hay-thi">3.1.3. Thuật toán đánh giá quyền (rất hay thi)</h3>
+<p>Thứ tự đánh giá khi một request tới AWS:</p>
+<ol>
+<li><strong>Explicit DENY</strong> ở bất kỳ đâu → <strong>Từ chối ngay lập tức</strong>, không cần xét tiếp. Deny luôn thắng.</li>
+<li><strong>Organizations SCP</strong> – nếu action không được SCP cho phép → từ chối.</li>
+<li><strong>Resource-based policy</strong> – Allow ở đây có thể đủ (cùng account).</li>
+<li><strong>IAM permission boundary</strong> – nếu vượt boundary → từ chối.</li>
+<li><strong>Session policy</strong> (nếu assume role có session policy).</li>
+<li><strong>Identity-based policy</strong> – Allow.</li>
+<li>Mặc định: <strong>Implicit DENY</strong> (không có Allow nào → từ chối).</li>
+</ol>
+<p>Ghi nhớ: <strong>Mặc định là từ chối; cần một Allow rõ ràng; một Deny rõ ràng ghi đè mọi Allow.</strong></p>
+<h3 id="314-identity-based-vs-resource-based-policy">3.1.4. Identity-based vs Resource-based policy</h3>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th>Identity-based policy</th>
+<th>Resource-based policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gắn vào</td>
+<td>User, Group, Role</td>
+<td>Tài nguyên (S3 bucket, SQS queue, SNS topic, KMS key, Lambda, ECR, API GW, Secrets Manager)</td>
+</tr>
+<tr>
+<td>Có <code>Principal</code></td>
+<td>Không</td>
+<td><strong>Có</strong> (bắt buộc)</td>
+</tr>
+<tr>
+<td>Cross-account</td>
+<td>Cần assume role (đổi danh tính)</td>
+<td>Cho phép trực tiếp, <strong>principal giữ nguyên danh tính</strong></td>
+</tr>
+<tr>
+<td>Ví dụ dùng</td>
+<td>Cho phép nhóm Dev đọc S3</td>
+<td>Cho bucket A chấp nhận account B ghi vào</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cross-account với S3:</strong> Cần Allow ở <strong>cả hai phía</strong> – bucket policy của account chủ bucket <strong>và</strong> IAM policy của user bên account kia.</p>
+<h3 id="315-permission-boundary-vs-scp">3.1.5. Permission Boundary vs SCP</h3>
+<ul>
+<li><strong>Permission Boundary:</strong> Gán cho <strong>một IAM user/role</strong>, đặt trần quyền tối đa. Quyền thực tế = giao của (Identity policy ∩ Boundary). Dùng để <strong>ủy quyền tạo user cho developer mà không sợ họ tự nâng quyền</strong> (privilege escalation).</li>
+<li><strong>SCP (Service Control Policy):</strong> Gán cho <strong>OU hoặc account</strong> trong AWS Organizations. SCP <strong>không cấp quyền</strong>, chỉ đặt trần. SCP <strong>áp dụng cả cho root user</strong> của member account (đây là cách duy nhất giới hạn root). SCP <strong>không áp dụng</strong> cho management account, service-linked roles.</li>
+</ul>
+<h3 id="316-iam-best-practices-rất-hay-ra-thi">3.1.6. IAM Best Practices (rất hay ra thi)</h3>
+<ul>
+<li>Bật MFA cho root và cho mọi user có quyền cao.</li>
+<li><strong>Least privilege</strong> – chỉ cấp quyền tối thiểu cần thiết. Dùng <strong>IAM Access Analyzer</strong> để tìm quyền thừa và tài nguyên bị chia sẻ ra ngoài; dùng <strong>Last Accessed information</strong> để cắt bớt quyền không dùng.</li>
+<li><strong>Dùng Role thay vì access key</strong> cho EC2/Lambda/ECS. Không bao giờ hardcode access key trong code hoặc AMI.</li>
+<li>Rotate credentials định kỳ; dùng <strong>IAM Credential Report</strong> (CSV toàn bộ user, trạng thái MFA, tuổi access key).</li>
+<li>Ưu tiên <strong>IAM Identity Center (AWS SSO)</strong> cho tổ chức nhiều tài khoản, thay vì tạo IAM user rải rác.</li>
+</ul>
+<h2 id="32-aws-sts--security-token-service">3.2. AWS STS – Security Token Service</h2>
+<p>Cung cấp credentials tạm thời (từ 15 phút tới 12 giờ; role chaining tối đa 1 giờ). Các API chính:</p>
+<ul>
+<li><code>AssumeRole</code> – assume role trong cùng account hoặc cross-account.</li>
+<li><code>AssumeRoleWithSAML</code> – liên kết với AD/ADFS qua SAML 2.0.</li>
+<li><code>AssumeRoleWithWebIdentity</code> – liên kết với Google/Facebook/Cognito/OIDC. <strong>AWS khuyến nghị dùng Cognito Identity Pools thay vì gọi trực tiếp.</strong></li>
+<li><code>GetSessionToken</code> – dùng cho MFA.</li>
+</ul>
+<p><strong>Confused deputy problem:</strong> Khi cấp quyền cho bên thứ ba assume role vào account của bạn, hãy dùng <strong>ExternalId</strong> trong trust policy để chống việc bên thứ ba bị lợi dụng truy cập nhầm tài khoản khác.</p>
+<h2 id="33-aws-organizations">3.3. AWS Organizations</h2>
+<ul>
+<li>Quản lý tập trung nhiều AWS account theo cây: <strong>Root → OU (Organizational Unit) → Account</strong>.</li>
+<li><strong>Consolidated Billing:</strong> Một hóa đơn duy nhất; <strong>gộp mức sử dụng để hưởng volume discount</strong>; <strong>chia sẻ Reserved Instances và Savings Plans</strong> giữa các account trong tổ chức (có thể tắt tính năng chia sẻ này).</li>
+<li><strong>Hai chế độ:</strong> <em>All features</em> (bắt buộc để dùng SCP) và <em>Consolidated billing only</em>.</li>
+<li><strong>Tag Policies</strong> – chuẩn hóa tag; <strong>Backup Policies</strong> – áp chính sách backup tập trung; <strong>AI services opt-out policies</strong>.</li>
+<li>Mô hình đa tài khoản khuyến nghị: tách account theo môi trường (Prod/Dev/Test), theo phòng ban, có account riêng cho <strong>Log Archive</strong> và <strong>Security/Audit</strong>.</li>
+</ul>
+<h2 id="34-aws-control-tower">3.4. AWS Control Tower</h2>
+<p>Thiết lập môi trường multi-account "landing zone" theo best practice chỉ với vài cú click: tự dựng Organizations, Identity Center, tài khoản Log Archive và Audit, áp <strong>Guardrails</strong> (preventive – dùng SCP; detective – dùng AWS Config). <strong>Account Factory</strong> để cấp phát tài khoản mới chuẩn hóa.</p>
+<h2 id="35-aws-iam-identity-center-aws-sso">3.5. AWS IAM Identity Center (AWS SSO)</h2>
+<p>Một điểm đăng nhập duy nhất cho tất cả AWS account trong Organization và cho các ứng dụng SaaS (Salesforce, Microsoft 365, Box). Nguồn danh tính (identity source) có thể là: thư mục nội bộ của Identity Center, Active Directory (qua AWS Managed Microsoft AD / AD Connector), hoặc IdP bên ngoài qua SAML 2.0 (Okta, Azure AD). Dùng <strong>Permission Sets</strong> để gán quyền cho nhóm người dùng vào từng account.</p>
+<h2 id="36-amazon-cognito">3.6. Amazon Cognito</h2>
+<p>Dành cho <strong>người dùng cuối của ứng dụng</strong> (hàng triệu user), khác với IAM dành cho người vận hành AWS.</p>
+<ul>
+<li><strong>User Pools:</strong> Thư mục người dùng – đăng ký, đăng nhập, xác minh email/SĐT, MFA, quên mật khẩu, social login (Google, Facebook, Apple), SAML/OIDC. Trả về <strong>JWT token</strong>. Tích hợp trực tiếp với <strong>API Gateway (Cognito Authorizer)</strong> và <strong>ALB</strong>.</li>
+<li><strong>Identity Pools (Federated Identities):</strong> Đổi token (từ User Pool hoặc IdP khác) lấy <strong>AWS credentials tạm thời</strong> để truy cập trực tiếp S3, DynamoDB… Hỗ trợ <strong>guest/unauthenticated access</strong>.</li>
+</ul>
+<p><strong>Mẫu đề:</strong> "Ứng dụng di động cần cho người dùng đăng nhập bằng Facebook và tải ảnh lên S3 vào thư mục riêng của từng người" → <strong>Cognito Identity Pool + IAM policy dùng biến <code>${cognito-identity.amazonaws.com:sub}</code></strong>.</p>
+<h2 id="37-aws-directory-service">3.7. AWS Directory Service</h2>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Mô tả</th>
+<th>Khi nào dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS Managed Microsoft AD</strong></td>
+<td>AD thật (Windows Server) chạy trên AWS, hỗ trợ trust hai chiều với AD on-prem</td>
+<td>Cần AD đầy đủ trên cloud, ứng dụng Windows, FSx, RDS SQL Server Windows Auth</td>
+</tr>
+<tr>
+<td><strong>AD Connector</strong></td>
+<td>Proxy chuyển tiếp xác thực về AD on-premises, <strong>không lưu dữ liệu</strong></td>
+<td>Muốn dùng AD on-prem, không muốn nhân bản dữ liệu lên cloud</td>
+</tr>
+<tr>
+<td><strong>Simple AD</strong></td>
+<td>Thư mục tương thích Samba, rẻ, tính năng hạn chế</td>
+<td>Nhu cầu cơ bản (&lt;5.000 user), không cần trust, không cần MFA</td>
+</tr>
+</tbody>
+</table>
+<h2 id="38-aws-kms--key-management-service">3.8. AWS KMS – Key Management Service</h2>
+<ul>
+<li>Quản lý khóa mã hóa, tích hợp với hầu hết dịch vụ AWS. Khóa <strong>gắn với Region</strong> (không tự động dùng chéo Region – muốn replicate phải dùng <strong>Multi-Region Keys</strong>).</li>
+<li><strong>Các loại KMS Key:</strong></li>
+<li><strong>AWS Owned Key:</strong> AWS sở hữu, bạn không thấy, miễn phí (mặc định SSE-S3).</li>
+<li><strong>AWS Managed Key</strong> (<code>aws/s3</code>, <code>aws/ebs</code>, <code>aws/rds</code>): Miễn phí, AWS tự xoay khóa <strong>mỗi năm</strong>, bạn không kiểm soát policy.</li>
+<li><strong>Customer Managed Key (CMK):</strong> ~1 USD/tháng + phí API. Bạn kiểm soát <strong>key policy</strong>, bật/tắt, <strong>xoay khóa tự động hằng năm</strong>, audit qua CloudTrail. Dùng khi cần kiểm soát chi tiết hoặc chia sẻ cross-account.</li>
+<li><strong>Imported key material (BYOK):</strong> Bạn tự đưa key material lên; AWS <strong>không tự rotate</strong> loại này.</li>
+<li><strong>Envelope Encryption:</strong> KMS chỉ mã hóa trực tiếp dữ liệu <strong>≤ 4 KB</strong>. Với dữ liệu lớn hơn, dùng <code>GenerateDataKey</code> để lấy <strong>data key</strong> (plaintext + encrypted), mã hóa dữ liệu tại client bằng data key, rồi hủy bản plaintext và lưu bản mã hóa của data key cùng dữ liệu. <strong>AWS Encryption SDK</strong> hỗ trợ việc này, kèm <strong>Data Key Caching</strong> để giảm số lần gọi KMS.</li>
+<li><strong>Key Policy là bắt buộc.</strong> Không có key policy cho phép thì kể cả admin cũng không dùng được khóa. Default key policy cho phép root account toàn quyền.</li>
+<li><strong>Xóa khóa:</strong> Chỉ có thể <strong>schedule deletion</strong> với thời gian chờ <strong>7–30 ngày</strong> (mặc định 30). Có thể hủy trong thời gian chờ.</li>
+<li><strong>CloudHSM:</strong> Phần cứng HSM dành riêng, <strong>FIPS 140-2 Level 3</strong>, khách hàng tự quản khóa hoàn toàn (AWS không truy cập được). Dùng khi có yêu cầu tuân thủ bắt buộc single-tenant HSM.</li>
+</ul>
+<h2 id="39-quản-lý-bí-mật-và-tham-số">3.9. Quản lý bí mật và tham số</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>AWS Secrets Manager</strong></th>
+<th><strong>SSM Parameter Store</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chi phí</td>
+<td>Có phí (~0,40 USD/secret/tháng)</td>
+<td>Standard <strong>miễn phí</strong>; Advanced có phí</td>
+</tr>
+<tr>
+<td>Rotation tự động</td>
+<td><strong>Có</strong> (Lambda dựng sẵn cho RDS/Redshift/DocumentDB)</td>
+<td>Không có sẵn</td>
+</tr>
+<tr>
+<td>Tích hợp RDS</td>
+<td>Sâu, tạo &amp; xoay mật khẩu tự động</td>
+<td>Không</td>
+</tr>
+<tr>
+<td>Mã hóa</td>
+<td>KMS (bắt buộc)</td>
+<td>Tùy chọn (SecureString + KMS)</td>
+</tr>
+<tr>
+<td>Cross-account</td>
+<td>Có (resource policy)</td>
+<td>Advanced tier</td>
+</tr>
+<tr>
+<td>Dùng cho</td>
+<td>Mật khẩu DB, API key nhạy cảm</td>
+<td>Config, endpoint, AMI ID, biến môi trường</td>
+</tr>
+</tbody>
+</table>
+<h2 id="310-bảo-vệ-tầng-ứng-dụng-và-mạng">3.10. Bảo vệ tầng ứng dụng và mạng</h2>
+<ul>
+<li><strong>AWS WAF (Web Application Firewall):</strong> Lọc HTTP/HTTPS ở <strong>Layer 7</strong>. Gắn được vào <strong>CloudFront, ALB, API Gateway, AppSync, Cognito User Pool, App Runner</strong>. <strong>Không gắn được vào NLB</strong> (vì NLB là Layer 4). Bảo vệ khỏi <strong>SQL Injection, XSS</strong>, chặn theo IP set, theo quốc gia (geo-match), theo <strong>rate-based rule</strong> (chống brute force / HTTP flood), dùng <strong>Managed Rule Groups</strong> của AWS và bên thứ ba.</li>
+<li><strong>AWS Shield Standard:</strong> Miễn phí, tự động, chống DDoS Layer 3/4 phổ biến (SYN flood, UDP reflection).</li>
+<li><strong>AWS Shield Advanced:</strong> 3.000 USD/tháng/tổ chức + phí data transfer. Bảo vệ nâng cao, <strong>DDoS Response Team (DRT/SRT) hỗ trợ 24/7</strong>, <strong>hoàn tiền chi phí tăng đột biến do DDoS (cost protection)</strong>, WAF miễn phí, tự động tạo rule giảm thiểu Layer 7.</li>
+<li><strong>AWS Firewall Manager:</strong> Quản lý tập trung WAF rules, Shield Advanced, Security Group, Network Firewall, Route 53 Resolver DNS Firewall trên <strong>toàn bộ account trong Organization</strong>, tự áp cho tài nguyên mới tạo.</li>
+<li><strong>AWS Network Firewall:</strong> Firewall có trạng thái (stateful) cho toàn bộ VPC, lọc Layer 3–7, hỗ trợ IPS/IDS, filter theo domain name.</li>
+</ul>
+<h2 id="311-phát-hiện-mối-đe-dọa-và-tuân-thủ">3.11. Phát hiện mối đe dọa và tuân thủ</h2>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Chức năng cốt lõi</th>
+<th>Nguồn dữ liệu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GuardDuty</strong></td>
+<td>Phát hiện mối đe dọa bằng ML, không cần cài agent</td>
+<td>VPC Flow Logs, CloudTrail (management + S3 data events), DNS Logs, EKS audit logs, EBS volume, RDS login, Lambda network</td>
+</tr>
+<tr>
+<td><strong>Inspector</strong></td>
+<td>Quét lỗ hổng (CVE) tự động, liên tục</td>
+<td>EC2 (qua SSM Agent), container image trong ECR, Lambda function</td>
+</tr>
+<tr>
+<td><strong>Macie</strong></td>
+<td>Phát hiện dữ liệu nhạy cảm (PII, thẻ tín dụng) bằng ML</td>
+<td>Chỉ <strong>Amazon S3</strong></td>
+</tr>
+<tr>
+<td><strong>Security Hub</strong></td>
+<td>Bảng điều khiển tổng hợp findings, chấm điểm theo chuẩn (CIS, PCI DSS, AWS FSBP)</td>
+<td>Tổng hợp từ GuardDuty, Inspector, Macie, Config, IAM Access Analyzer</td>
+</tr>
+<tr>
+<td><strong>Detective</strong></td>
+<td>Điều tra nguyên nhân gốc rễ của finding, dựng đồ thị hành vi</td>
+<td>GuardDuty, CloudTrail, VPC Flow Logs</td>
+</tr>
+<tr>
+<td><strong>AWS Config</strong></td>
+<td>Ghi lại cấu hình tài nguyên theo thời gian, đánh giá tuân thủ theo rule, <strong>auto-remediation</strong> qua SSM</td>
+<td>Cấu hình tài nguyên</td>
+</tr>
+<tr>
+<td><strong>CloudTrail</strong></td>
+<td>Nhật ký mọi lời gọi API (ai, khi nào, từ IP nào)</td>
+<td>API calls</td>
+</tr>
+<tr>
+<td><strong>Audit Manager</strong></td>
+<td>Tự động thu thập bằng chứng cho các cuộc audit</td>
+<td>Nhiều nguồn</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phân biệt kinh điển:</strong> <em>CloudTrail = "Ai đã làm gì?"</em> — <em>Config = "Cấu hình đã thay đổi như thế nào và có tuân thủ không?"</em> — <em>CloudWatch = "Hệ thống đang chạy ra sao?"</em> — <em>GuardDuty = "Có ai đó đang tấn công tôi không?"</em></p>
+<h3 id="chi-tiết-cần-nhớ-về-cloudtrail">Chi tiết cần nhớ về CloudTrail</h3>
+<ul>
+<li>Mặc định bật sẵn, lưu <strong>90 ngày</strong> trong Event History. Muốn lưu lâu hơn phải tạo <strong>Trail</strong> và trỏ về S3 (kèm tùy chọn gửi sang CloudWatch Logs để tạo alarm).</li>
+<li><strong>Management Events</strong> (mặc định ghi): thao tác lên tài nguyên (tạo user, tạo subnet).</li>
+<li><strong>Data Events</strong> (mặc định <strong>KHÔNG</strong> ghi, phải bật, có phí): S3 object-level (GetObject/PutObject), Lambda Invoke, DynamoDB item-level.</li>
+<li><strong>Insights Events:</strong> Phát hiện hoạt động API bất thường (spike đột biến).</li>
+<li><strong>Organization Trail:</strong> Một trail thu log của toàn bộ account con vào một bucket trung tâm.</li>
+<li>Đảm bảo toàn vẹn log: bật <strong>log file validation</strong> (dùng SHA-256 và ký số).</li>
+</ul>
+<h1 id="phần-iv-điện-toán-compute">PHẦN IV. ĐIỆN TOÁN (COMPUTE)</h1>
+<h2 id="41-amazon-ec2--elastic-compute-cloud">4.1. Amazon EC2 – Elastic Compute Cloud</h2>
+<h3 id="411-họ-instance-và-cách-đọc-tên">4.1.1. Họ instance và cách đọc tên</h3>
+<p>Cú pháp: <code>m5a.2xlarge</code> = <strong>m</strong> (họ) + <strong>5</strong> (thế hệ) + <strong>a</strong> (biến thể: a=AMD, g=Graviton/ARM, n=network tăng cường, d=NVMe local, i=Intel) + <code>2xlarge</code> (kích cỡ).</p>
+<table>
+<thead>
+<tr>
+<th>Họ</th>
+<th>Tối ưu cho</th>
+<th>Ví dụ ứng dụng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T</strong> (t3, t4g)</td>
+<td>Burstable – hiệu năng cơ sở thấp, tích lũy CPU credit</td>
+<td>Web server nhỏ, dev/test, tải không đều</td>
+</tr>
+<tr>
+<td><strong>M</strong> (m5, m6i, m7g)</td>
+<td>Cân bằng CPU/RAM/mạng</td>
+<td>App server, backend đa dụng</td>
+</tr>
+<tr>
+<td><strong>C</strong> (c5, c6g, c7g)</td>
+<td>Compute optimized – nhiều CPU</td>
+<td>Batch, HPC, mã hóa, game server, media transcoding</td>
+</tr>
+<tr>
+<td><strong>R</strong> (r5, r6g), <strong>X</strong>, <strong>z1d</strong></td>
+<td>Memory optimized – nhiều RAM</td>
+<td>In-memory DB, SAP HANA, ElastiCache, Redis lớn</td>
+</tr>
+<tr>
+<td><strong>I</strong> (i3, i4i), <strong>D</strong>, <strong>H</strong></td>
+<td>Storage optimized – NVMe local IOPS cao</td>
+<td>NoSQL, data warehouse, Elasticsearch</td>
+</tr>
+<tr>
+<td><strong>P</strong> (p3, p4), <strong>G</strong>, <strong>Inf</strong>, <strong>Trn</strong></td>
+<td>Accelerated computing – GPU/AI chip</td>
+<td>ML training/inference, đồ họa, video</td>
+</tr>
+</tbody>
+</table>
+<p><strong>T-instances (burstable) – hay ra thi:</strong> Tích lũy CPU credit khi chạy dưới baseline, tiêu credit khi vượt baseline. Hết credit → bị <strong>throttle</strong> xuống baseline. Bật <strong>T2/T3 Unlimited</strong> để vượt baseline không giới hạn (trả thêm phí). Nếu đề nói "ứng dụng thỉnh thoảng chậm bất thường, CPU bị giới hạn" → hết CPU credit.</p>
+<h3 id="412-các-mô-hình-mua-purchase-options--trọng-tâm-domain-4">4.1.2. Các mô hình mua (Purchase Options) – trọng tâm Domain 4</h3>
+<table>
+<thead>
+<tr>
+<th>Mô hình</th>
+<th>Giảm giá</th>
+<th>Cam kết</th>
+<th>Trường hợp dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On-Demand</strong></td>
+<td>0%</td>
+<td>Không</td>
+<td>Tải ngắn hạn, không dự đoán được, workload mới</td>
+</tr>
+<tr>
+<td><strong>Reserved Instance (RI)</strong> 1 hoặc 3 năm</td>
+<td>Tới <strong>72%</strong></td>
+<td>Loại instance, Region (và AZ nếu Zonal)</td>
+<td>Tải ổn định, dài hạn (DB, app server chạy 24/7)</td>
+</tr>
+<tr>
+<td><strong>Convertible RI</strong></td>
+<td>Tới ~54%</td>
+<td>Có thể đổi họ/OS/tenancy</td>
+<td>Tải ổn định nhưng có thể đổi loại máy</td>
+</tr>
+<tr>
+<td><strong>Savings Plans – Compute</strong></td>
+<td>Tới <strong>66%</strong></td>
+<td>Cam kết <strong>$/giờ</strong>, linh hoạt mọi họ/Region, áp cả <strong>Lambda &amp; Fargate</strong></td>
+<td>Muốn giảm giá nhưng giữ linh hoạt tối đa</td>
+</tr>
+<tr>
+<td><strong>Savings Plans – EC2 Instance</strong></td>
+<td>Tới <strong>72%</strong></td>
+<td>Cam kết $/giờ cho một họ instance trong một Region</td>
+<td>Tải ổn định, biết trước họ instance</td>
+</tr>
+<tr>
+<td><strong>Spot Instances</strong></td>
+<td>Tới <strong>90%</strong></td>
+<td>Không, <strong>bị thu hồi với thông báo trước 2 phút</strong></td>
+<td>Batch, CI/CD, xử lý ảnh/video, big data, workload chịu lỗi và <strong>stateless</strong></td>
+</tr>
+<tr>
+<td><strong>Dedicated Instance</strong></td>
+<td>–</td>
+<td>Phần cứng không chia sẻ với khách khác</td>
+<td>Yêu cầu tuân thủ về cô lập</td>
+</tr>
+<tr>
+<td><strong>Dedicated Host</strong></td>
+<td>–</td>
+<td>Thuê nguyên máy chủ vật lý, thấy socket/core</td>
+<td><strong>BYOL license theo core/socket</strong> (Oracle, Windows Server), tuân thủ nghiêm ngặt</td>
+</tr>
+<tr>
+<td><strong>Capacity Reservation</strong></td>
+<td>Không giảm giá (trả như On-Demand)</td>
+<td>Giữ chỗ dung lượng trong một AZ cụ thể</td>
+<td>Đảm bảo có máy cho sự kiện quan trọng, DR</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mẹo phân biệt:</strong> <em>Dedicated Instance</em> = phần cứng riêng nhưng AWS quản lý vị trí. <em>Dedicated Host</em> = bạn thấy và kiểm soát máy vật lý → <strong>chỉ Dedicated Host mới hỗ trợ BYOL theo socket/core</strong>.</p>
+<p><strong>Spot Fleet / EC2 Fleet:</strong> Kết hợp Spot + On-Demand + RI theo nhiều loại instance và AZ để đạt dung lượng mục tiêu với chi phí thấp nhất. Chiến lược phân bổ: <code>capacityOptimized</code> (ít bị gián đoạn nhất – <strong>khuyến nghị</strong>), <code>lowestPrice</code>, <code>diversified</code>, <code>priceCapacityOptimized</code>.</p>
+<h3 id="413-placement-groups">4.1.3. Placement Groups</h3>
+<table>
+<thead>
+<tr>
+<th>Loại</th>
+<th>Cách đặt máy</th>
+<th>Ưu điểm</th>
+<th>Rủi ro / Hạn chế</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cluster</strong></td>
+<td>Cùng một rack, cùng một AZ</td>
+<td>Độ trễ thấp nhất, throughput <strong>10 Gbps – 100 Gbps</strong> giữa các node</td>
+<td>Nếu rack hỏng → mất toàn bộ. Không HA</td>
+</tr>
+<tr>
+<td><strong>Spread</strong></td>
+<td>Mỗi instance trên một phần cứng riêng biệt, có thể trải nhiều AZ</td>
+<td>Cô lập lỗi tối đa</td>
+<td>Tối đa <strong>7 instance mỗi AZ mỗi group</strong></td>
+</tr>
+<tr>
+<td><strong>Partition</strong></td>
+<td>Chia thành các partition, mỗi partition trên một tập rack riêng</td>
+<td>Tới <strong>7 partition/AZ</strong>, hàng trăm instance</td>
+<td>Ứng dụng phải nhận biết partition</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ứng dụng:</strong> Cluster → HPC, tính toán chặt chẽ. Spread → một số ít instance quan trọng (domain controller). Partition → HDFS, HBase, Cassandra, Kafka.</p>
+<h3 id="414-ami-user-data-instance-metadata">4.1.4. AMI, User Data, Instance Metadata</h3>
+<ul>
+<li><strong>AMI (Amazon Machine Image):</strong> Khuôn mẫu để khởi tạo EC2 (OS + phần mềm + cấu hình). AMI <strong>gắn theo Region</strong> – muốn dùng ở Region khác phải <strong>copy AMI</strong>. Dùng <strong>golden AMI</strong> để rút ngắn thời gian khởi động trong Auto Scaling. <strong>EC2 Image Builder</strong> tự động hóa quá trình build – test – phân phối AMI theo lịch.</li>
+<li><strong>User Data:</strong> Script chạy <strong>một lần duy nhất khi instance khởi động lần đầu</strong> với quyền root. Dùng để cài phần mềm, tải cấu hình.</li>
+<li><strong>Instance Metadata Service (IMDS):</strong> Truy cập tại <code>http://169.254.169.254/latest/meta-data/</code>. <strong>IMDSv2</strong> dùng token (PUT rồi GET) để chống SSRF – <strong>AWS khuyến nghị bắt buộc IMDSv2</strong>. Lấy được instance-id, IP, và <strong>credentials tạm thời của IAM role</strong> đang gắn.</li>
+</ul>
+<h3 id="415-vòng-đời-và-trạng-thái">4.1.5. Vòng đời và trạng thái</h3>
+<p><code>pending → running → stopping → stopped → terminated</code>. Ngoài ra có <strong>hibernate</strong> (lưu RAM vào EBS root, khởi động lại nhanh – yêu cầu EBS root mã hóa, RAM ≤ 150 GB, không dùng được với instance store).</p>
+<p><strong>Ghi nhớ về chi phí:</strong> Khi <strong>stopped</strong>, bạn <strong>không trả tiền compute</strong> nhưng <strong>vẫn trả tiền EBS volume</strong> và <strong>Elastic IP nếu chưa gắn vào instance đang chạy</strong>. Instance store <strong>mất sạch dữ liệu</strong> khi stop/terminate.</p>
+<h3 id="416-elastic-ip-và-eni">4.1.6. Elastic IP và ENI</h3>
+<ul>
+<li><strong>Elastic IP (EIP):</strong> IPv4 tĩnh, public. Mặc định giới hạn <strong>5 EIP/Region</strong>. <strong>Tính phí khi không được sử dụng</strong> (và từ 2024 AWS tính phí cho <strong>mọi</strong> public IPv4). Best practice: <strong>tránh dùng EIP</strong>; thay bằng DNS + Load Balancer.</li>
+<li><strong>ENI (Elastic Network Interface):</strong> Card mạng ảo, gắn với một subnet (một AZ). Có private IP, có thể có EIP, gắn security group. Có thể <strong>tách và gắn sang instance khác trong cùng AZ</strong> → dùng cho failover thủ công.</li>
+<li><strong>Enhanced Networking (ENA / SR-IOV)</strong> cho throughput cao; <strong>EFA (Elastic Fabric Adapter)</strong> cho HPC/MPI với độ trễ cực thấp.</li>
+</ul>
+<h2 id="42-auto-scaling-group-asg">4.2. Auto Scaling Group (ASG)</h2>
+<h3 id="421-thành-phần">4.2.1. Thành phần</h3>
+<ul>
+<li><strong>Launch Template</strong> (khuyến nghị, thay cho Launch Configuration đã lỗi thời): định nghĩa AMI, instance type, key pair, security group, IAM instance profile, user data, EBS. Hỗ trợ <strong>versioning</strong> và <strong>mix instance types + Spot/On-Demand</strong>.</li>
+<li><strong>Min / Desired / Max capacity</strong>: ASG luôn cố giữ số instance = Desired, trong khoảng Min–Max.</li>
+<li><strong>Health Check:</strong> Kiểu <strong>EC2</strong> (kiểm tra trạng thái instance) hoặc <strong>ELB</strong> (kiểm tra ứng dụng qua health check của load balancer – <strong>nên bật để phát hiện app treo dù OS vẫn sống</strong>). Có <strong>health check grace period</strong> (mặc định 300s) để ứng dụng kịp khởi động.</li>
+</ul>
+<h3 id="422-các-chính-sách-scaling">4.2.2. Các chính sách scaling</h3>
+<table>
+<thead>
+<tr>
+<th>Loại</th>
+<th>Mô tả</th>
+<th>Ví dụ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Target Tracking</strong></td>
+<td>Đơn giản nhất, giữ một metric ở mức mục tiêu. <strong>Khuyến nghị mặc định</strong></td>
+<td>Giữ CPU trung bình ở 50%, giữ <code>ALBRequestCountPerTarget</code> = 1000</td>
+</tr>
+<tr>
+<td><strong>Step Scaling</strong></td>
+<td>Thêm/bớt N instance theo từng bậc vượt ngưỡng CloudWatch alarm</td>
+<td>CPU &gt; 70% thêm 2 máy; CPU &gt; 85% thêm 4 máy</td>
+</tr>
+<tr>
+<td><strong>Simple Scaling</strong></td>
+<td>Một hành động cho một alarm, có cooldown</td>
+<td>(Cách cũ, ít dùng)</td>
+</tr>
+<tr>
+<td><strong>Scheduled Scaling</strong></td>
+<td>Theo lịch cố định, biết trước</td>
+<td>Tăng lên 20 máy lúc 8h sáng thứ Hai, giảm còn 4 máy 22h</td>
+</tr>
+<tr>
+<td><strong>Predictive Scaling</strong></td>
+<td>ML phân tích lịch sử, dự báo và <strong>scale trước</strong> khi tải tăng</td>
+<td>Tải theo chu kỳ tuần/ngày rõ rệt</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scaling Cooldown:</strong> Mặc định 300 giây – trong thời gian này ASG không thực hiện thêm hành động scaling để chỉ số kịp ổn định. Dùng AMI đã cài sẵn phần mềm để rút ngắn thời gian khởi động và có thể giảm cooldown.</p>
+<h3 id="423-lifecycle-hooks-và-termination-policy">4.2.3. Lifecycle Hooks và Termination Policy</h3>
+<ul>
+<li><strong>Lifecycle Hooks:</strong> Tạm dừng instance ở trạng thái <code>Pending:Wait</code> (trước khi vào service – để cài đặt/nạp dữ liệu) hoặc <code>Terminating:Wait</code> (trước khi hủy – để <strong>rút log, drain connection</strong>). Kết hợp với EventBridge/SNS/Lambda.</li>
+<li><strong>Thứ tự hủy mặc định:</strong> Chọn AZ có nhiều instance nhất → chọn instance dùng <strong>Launch Template/Configuration cũ nhất</strong> → chọn instance <strong>gần với mốc tính giờ tiếp theo nhất</strong>. Có thể bật <strong>Instance Protection</strong> để bảo vệ một instance khỏi bị scale-in.</li>
+<li><strong>Warm Pools:</strong> Giữ sẵn một nhóm instance đã khởi tạo (stopped/hibernated) để scale-out cực nhanh với ứng dụng khởi động chậm.</li>
+</ul>
+<h2 id="43-elastic-load-balancing-elb">4.3. Elastic Load Balancing (ELB)</h2>
+<h3 id="431-so-sánh-4-loại-load-balancer">4.3.1. So sánh 4 loại Load Balancer</h3>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th><strong>ALB</strong> (Application)</th>
+<th><strong>NLB</strong> (Network)</th>
+<th><strong>GWLB</strong> (Gateway)</th>
+<th><strong>CLB</strong> (Classic – legacy)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tầng OSI</td>
+<td>Layer 7 (HTTP/HTTPS/gRPC/WebSocket)</td>
+<td>Layer 4 (TCP/UDP/TLS)</td>
+<td>Layer 3 (GENEVE, port 6081)</td>
+<td>Layer 4 &amp; 7</td>
+</tr>
+<tr>
+<td>Hiệu năng</td>
+<td>Cao</td>
+<td><strong>Cực cao, hàng triệu req/s, độ trễ ~100µs</strong></td>
+<td>Cao</td>
+<td>Trung bình</td>
+</tr>
+<tr>
+<td>Static IP</td>
+<td>Không (dùng DNS name)</td>
+<td><strong>Có – 1 Elastic IP mỗi AZ</strong></td>
+<td>–</td>
+<td>Không</td>
+</tr>
+<tr>
+<td>Định tuyến theo</td>
+<td>Path, hostname, HTTP header, query string, HTTP method, source IP</td>
+<td>Port/Protocol</td>
+<td>–</td>
+<td>Cơ bản</td>
+</tr>
+<tr>
+<td>Target</td>
+<td>Instance, IP, <strong>Lambda</strong>, ALB</td>
+<td>Instance, IP, <strong>ALB</strong></td>
+<td>Appliance ảo</td>
+<td>Instance</td>
+</tr>
+<tr>
+<td>Bảo toàn IP nguồn</td>
+<td>Không (dùng <code>X-Forwarded-For</code>)</td>
+<td><strong>Có</strong></td>
+<td>Có</td>
+<td>Không</td>
+</tr>
+<tr>
+<td>Hỗ trợ WAF</td>
+<td><strong>Có</strong></td>
+<td>Không</td>
+<td>Không</td>
+<td>Không</td>
+</tr>
+<tr>
+<td>Dùng khi</td>
+<td>Web app, microservices, container</td>
+<td>TCP/UDP, IP tĩnh, độ trễ cực thấp, gaming, IoT</td>
+<td>Chèn firewall/IDS của bên thứ ba</td>
+<td>Không dùng cho hệ thống mới</td>
+</tr>
+</tbody>
+</table>
+<h3 id="432-các-khái-niệm-quan-trọng">4.3.2. Các khái niệm quan trọng</h3>
+<ul>
+<li><strong>Target Group:</strong> Nhóm đích + health check riêng. Một ALB có nhiều rule trỏ tới nhiều target group.</li>
+<li><strong>Sticky Sessions (Session Affinity):</strong> Giữ một client đi về cùng một target. ALB dùng cookie <code>AWSALB</code> (duration-based) hoặc cookie ứng dụng. <strong>Nhược điểm:</strong> gây mất cân bằng tải. Giải pháp tốt hơn: lưu session ra <strong>ElastiCache/DynamoDB</strong> để ứng dụng thành <strong>stateless</strong>.</li>
+<li><strong>Cross-Zone Load Balancing:</strong> Phân phối đều tới mọi target ở mọi AZ. <strong>ALB: luôn bật, miễn phí. NLB &amp; GWLB: mặc định TẮT, bật thì bị tính phí data transfer liên AZ. CLB: mặc định tắt, bật thì miễn phí.</strong></li>
+<li><strong>Connection Draining / Deregistration Delay:</strong> Cho phép request đang xử lý hoàn tất trước khi gỡ target (mặc định 300s, đặt được 0–3600s).</li>
+<li><strong>SSL/TLS:</strong> Chứng chỉ quản lý bằng <strong>ACM (AWS Certificate Manager)</strong> – miễn phí cho chứng chỉ public dùng với ELB/CloudFront/API GW, tự động gia hạn. <strong>SNI (Server Name Indication)</strong> cho phép <strong>nhiều chứng chỉ trên một listener</strong> (chỉ ALB/NLB, CLB không hỗ trợ). Có thể <strong>TLS termination</strong> ở ELB hoặc <strong>TLS passthrough</strong> (chỉ NLB) để đầu cuối tự giải mã.</li>
+<li><strong>Deletion Protection:</strong> Bật để tránh xóa nhầm.</li>
+</ul>
+<h2 id="44-aws-lambda">4.4. AWS Lambda</h2>
+<h3 id="441-đặc-điểm-và-giới-hạn-nhớ-con-số">4.4.1. Đặc điểm và giới hạn (nhớ con số!)</h3>
+<table>
+<thead>
+<tr>
+<th>Thông số</th>
+<th>Giá trị</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thời gian chạy tối đa</td>
+<td><strong>15 phút (900 giây)</strong></td>
+</tr>
+<tr>
+<td>Bộ nhớ</td>
+<td>128 MB – <strong>10.240 MB</strong> (CPU tăng tỉ lệ thuận với RAM)</td>
+</tr>
+<tr>
+<td>Dung lượng <code>/tmp</code></td>
+<td>512 MB – <strong>10 GB</strong></td>
+</tr>
+<tr>
+<td>Kích thước deployment package</td>
+<td>50 MB (zip nén, upload trực tiếp), 250 MB (giải nén), <strong>10 GB nếu dùng container image</strong></td>
+</tr>
+<tr>
+<td>Payload đồng bộ (synchronous)</td>
+<td><strong>6 MB</strong> request/response</td>
+</tr>
+<tr>
+<td>Payload bất đồng bộ</td>
+<td>256 KB</td>
+</tr>
+<tr>
+<td>Biến môi trường</td>
+<td>4 KB</td>
+</tr>
+<tr>
+<td>Concurrency mặc định</td>
+<td><strong>1.000 đồng thời/Region</strong> (có thể xin tăng)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="442-các-khái-niệm-cốt-lõi">4.4.2. Các khái niệm cốt lõi</h3>
+<ul>
+<li><strong>Ba kiểu gọi:</strong> <em>Synchronous</em> (API Gateway, ALB, CLI – trả kết quả ngay), <em>Asynchronous</em> (S3, SNS, EventBridge – Lambda tự retry <strong>2 lần</strong>, nên cấu hình <strong>DLQ</strong> hoặc <strong>Lambda Destinations</strong>), <em>Event Source Mapping</em> (Lambda <strong>poll</strong> từ SQS, Kinesis, DynamoDB Streams, MSK).</li>
+<li><strong>Cold Start:</strong> Độ trễ khi khởi tạo môi trường lần đầu. Giảm bằng: <strong>Provisioned Concurrency</strong> (giữ sẵn môi trường – có phí), <strong>SnapStart</strong> (cho Java, giảm tới 10 lần), giảm kích thước package, tránh khởi tạo nặng trong handler.</li>
+<li><strong>Reserved Concurrency:</strong> Đặt trần đồng thời cho một function → bảo vệ các function khác (tránh một function ăn hết 1.000 slot), đồng thời bảo vệ backend DB khỏi quá tải.</li>
+<li><strong>Lambda Layers:</strong> Chia sẻ thư viện/dependency giữa nhiều function (tối đa 5 layer).</li>
+<li><strong>Lambda trong VPC:</strong> Mặc định Lambda chạy ngoài VPC của bạn (có Internet). Khi đặt Lambda <strong>vào VPC</strong> để truy cập RDS private, Lambda <strong>mất Internet</strong> trừ khi có <strong>NAT Gateway</strong> + route; muốn gọi S3/DynamoDB thì dùng <strong>VPC Endpoint</strong>.</li>
+<li><strong>RDS Proxy:</strong> Bắt buộc cân nhắc khi Lambda kết nối RDS ở quy mô lớn – gộp connection pool, tránh làm cạn kiệt kết nối DB.</li>
+<li><strong>Lambda@Edge vs CloudFront Functions:</strong> xem phần CloudFront.</li>
+</ul>
+<p><strong>Khi nào KHÔNG dùng Lambda:</strong> tác vụ chạy &gt; 15 phút, cần trạng thái lâu dài, cần kiểm soát OS, workload liên tục cường độ cao (EC2/Fargate rẻ hơn).</p>
+<h2 id="45-container-trên-aws">4.5. Container trên AWS</h2>
+<h3 id="451-amazon-ecs--elastic-container-service">4.5.1. Amazon ECS – Elastic Container Service</h3>
+<ul>
+<li>Orchestrator container riêng của AWS, đơn giản, tích hợp sâu (ALB, IAM, CloudWatch).</li>
+<li><strong>Hai launch type:</strong></li>
+<li><strong>EC2 launch type:</strong> Bạn quản lý cụm EC2 (ECS Agent chạy trên đó). Rẻ hơn khi tải ổn định, kiểm soát nhiều hơn, dùng được GPU/instance đặc thù.</li>
+<li><strong>Fargate launch type:</strong> <strong>Serverless</strong> – không quản lý máy chủ, trả theo vCPU/RAM và thời gian chạy. Chọn khi đề nói "<strong>least operational overhead</strong>".</li>
+<li><strong>Task Definition:</strong> Bản thiết kế container (image, CPU, RAM, port, biến môi trường, volume, log config).</li>
+<li><strong>Hai loại IAM Role rất hay thi:</strong></li>
+<li><strong>Task Execution Role:</strong> Quyền cho <strong>ECS Agent</strong> kéo image từ ECR và ghi log lên CloudWatch.</li>
+<li><strong>Task Role:</strong> Quyền cho <strong>chính ứng dụng trong container</strong> gọi S3, DynamoDB…</li>
+<li><strong>Service Auto Scaling:</strong> dùng Application Auto Scaling theo CPU/Memory/ALBRequestCountPerTarget. Với EC2 launch type, dùng <strong>ECS Capacity Provider</strong> để scale cả cụm EC2.</li>
+<li><strong>Dynamic Port Mapping</strong> với ALB cho phép chạy nhiều task cùng container port trên một host.</li>
+</ul>
+<h3 id="452-amazon-eks--elastic-kubernetes-service">4.5.2. Amazon EKS – Elastic Kubernetes Service</h3>
+<p>Kubernetes được quản lý. Chọn EKS khi: tổ chức <strong>đã dùng Kubernetes</strong>, cần tính di động đa đám mây (hybrid/multi-cloud), cần hệ sinh thái K8s (Helm, Istio). Node group có thể là <strong>Managed Node Group, Self-managed, hoặc Fargate</strong>.</p>
+<h3 id="453-amazon-ecr--elastic-container-registry">4.5.3. Amazon ECR – Elastic Container Registry</h3>
+<p>Registry lưu Docker image, tích hợp IAM, hỗ trợ <strong>image scanning</strong> (basic &amp; enhanced qua Inspector), <strong>lifecycle policy</strong> xóa image cũ, <strong>cross-region replication</strong>. Lưu trữ thực tế nằm trên S3.</p>
+<h3 id="454-các-lựa-chọn-compute-khác">4.5.4. Các lựa chọn compute khác</h3>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Mô tả</th>
+<th>Khi nào chọn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS Batch</strong></td>
+<td>Chạy job hàng loạt theo hàng đợi, tự cấp phát EC2/Spot/Fargate</td>
+<td>Xử lý batch quy mô lớn, job &gt; 15 phút (Lambda không đáp ứng)</td>
+</tr>
+<tr>
+<td><strong>Elastic Beanstalk</strong></td>
+<td>PaaS – upload code, AWS lo EC2/ASG/ELB/RDS. Có deployment: All-at-once, Rolling, Rolling with batch, Immutable, Blue/Green (swap URL)</td>
+<td>Dev muốn deploy nhanh nhưng vẫn thấy tài nguyên bên dưới</td>
+</tr>
+<tr>
+<td><strong>AWS App Runner</strong></td>
+<td>Từ source code/container image → dịch vụ web chạy ngay, tự scale, tự HTTPS</td>
+<td>Web app/API đơn giản, không muốn học ECS</td>
+</tr>
+<tr>
+<td><strong>Amazon Lightsail</strong></td>
+<td>VPS trọn gói giá cố định</td>
+<td>Dự án nhỏ, người mới, blog WordPress</td>
+</tr>
+<tr>
+<td><strong>AWS Fargate</strong></td>
+<td>Compute engine serverless cho ECS/EKS</td>
+<td>Không muốn quản lý máy chủ</td>
+</tr>
+<tr>
+<td><strong>AWS Outposts</strong></td>
+<td>Hạ tầng AWS đặt tại on-premises</td>
+<td>Data residency, độ trễ cực thấp với hệ thống nội bộ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="455-chiến-lược-triển-khai-deployment-strategies">4.5.5. Chiến lược triển khai (Deployment Strategies)</h3>
+<table>
+<thead>
+<tr>
+<th>Chiến lược</th>
+<th>Cách hoạt động</th>
+<th>Downtime</th>
+<th>Chi phí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>All-at-once</strong></td>
+<td>Cập nhật tất cả cùng lúc</td>
+<td><strong>Có</strong></td>
+<td>Thấp nhất</td>
+</tr>
+<tr>
+<td><strong>Rolling</strong></td>
+<td>Cập nhật từng nhóm nhỏ</td>
+<td>Không, nhưng giảm dung lượng</td>
+<td>Thấp</td>
+</tr>
+<tr>
+<td><strong>Rolling with additional batch</strong></td>
+<td>Thêm máy mới trước khi gỡ máy cũ</td>
+<td>Không, giữ nguyên dung lượng</td>
+<td>Trung bình</td>
+</tr>
+<tr>
+<td><strong>Immutable</strong></td>
+<td>Tạo hoàn toàn ASG mới, chuyển traffic khi OK</td>
+<td>Không</td>
+<td>Cao (nhân đôi tạm thời)</td>
+</tr>
+<tr>
+<td><strong>Blue/Green</strong></td>
+<td>Hai môi trường song song, đổi DNS/target group</td>
+<td>Không, <strong>rollback tức thì</strong></td>
+<td>Cao</td>
+</tr>
+<tr>
+<td><strong>Canary</strong></td>
+<td>Chuyển dần % traffic (ví dụ 10% → 50% → 100%)</td>
+<td>Không, <strong>giảm rủi ro tối đa</strong></td>
+<td>Trung bình</td>
+</tr>
+</tbody>
+</table>
+<h1 id="phần-v-lưu-trữ-storage">PHẦN V. LƯU TRỮ (STORAGE)</h1>
+<h2 id="51-ba-loại-hình-lưu-trữ">5.1. Ba loại hình lưu trữ</h2>
+<table>
+<thead>
+<tr>
+<th>Loại</th>
+<th>Dịch vụ AWS</th>
+<th>Đặc điểm</th>
+<th>Dùng cho</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Block Storage</strong></td>
+<td>EBS, Instance Store</td>
+<td>Ổ đĩa gắn vào một máy, thao tác theo block</td>
+<td>OS, database, ứng dụng cần IOPS thấp độ trễ</td>
+</tr>
+<tr>
+<td><strong>File Storage</strong></td>
+<td>EFS, FSx</td>
+<td>Hệ thống file phân cấp, nhiều máy cùng mount</td>
+<td>Chia sẻ file, CMS, home directory, HPC</td>
+</tr>
+<tr>
+<td><strong>Object Storage</strong></td>
+<td>S3, Glacier</td>
+<td>Đối tượng phẳng + metadata, truy cập qua API HTTP</td>
+<td>Ảnh, video, backup, data lake, static website</td>
+</tr>
+</tbody>
+</table>
+<h2 id="52-amazon-ebs--elastic-block-store">5.2. Amazon EBS – Elastic Block Store</h2>
+<h3 id="521-đặc-tính-chung">5.2.1. Đặc tính chung</h3>
+<ul>
+<li>Ổ đĩa mạng gắn vào EC2. <strong>Gắn theo AZ</strong> – không thể gắn volume ở AZ này vào instance ở AZ khác (muốn chuyển AZ: tạo snapshot → tạo volume từ snapshot ở AZ mới).</li>
+<li>Mặc định một volume gắn vào <strong>một</strong> instance tại một thời điểm; <strong>EBS Multi-Attach</strong> (chỉ io1/io2) cho phép gắn tối đa <strong>16 instance trong cùng AZ</strong> – ứng dụng phải tự quản lý ghi đồng thời (cluster-aware file system).</li>
+<li><strong>Dữ liệu tồn tại độc lập với vòng đời instance</strong> (khác Instance Store). Root volume mặc định có <code>DeleteOnTermination = true</code>, volume gắn thêm mặc định <code>false</code>.</li>
+<li>Có thể <strong>thay đổi kích thước, loại volume và IOPS khi đang chạy</strong> (Elastic Volumes) – nhưng chỉ <strong>tăng</strong>, không giảm.</li>
+</ul>
+<h3 id="522-các-loại-ebs-volume-bảng-cần-thuộc">5.2.2. Các loại EBS Volume (bảng cần thuộc)</h3>
+<table>
+<thead>
+<tr>
+<th>Loại</th>
+<th>Nhóm</th>
+<th>Dung lượng</th>
+<th>IOPS tối đa</th>
+<th>Throughput tối đa</th>
+<th>Boot volume</th>
+<th>Dùng cho</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>gp3</strong></td>
+<td>SSD</td>
+<td>1 GiB – 16 TiB</td>
+<td><strong>16.000</strong> (baseline 3.000, độc lập dung lượng)</td>
+<td>1.000 MB/s</td>
+<td>Có</td>
+<td><strong>Mặc định khuyến nghị</strong> – rẻ hơn gp2 ~20%, cấu hình IOPS/throughput độc lập</td>
+</tr>
+<tr>
+<td><strong>gp2</strong></td>
+<td>SSD</td>
+<td>1 GiB – 16 TiB</td>
+<td>16.000 (3 IOPS/GiB, burst 3.000)</td>
+<td>250 MB/s</td>
+<td>Có</td>
+<td>Thế hệ cũ, IOPS gắn với dung lượng</td>
+</tr>
+<tr>
+<td><strong>io1</strong></td>
+<td>SSD</td>
+<td>4 GiB – 16 TiB</td>
+<td>64.000 (50 IOPS/GiB)</td>
+<td>1.000 MB/s</td>
+<td>Có</td>
+<td>IOPS cao, DB quan trọng</td>
+</tr>
+<tr>
+<td><strong>io2 / io2 Block Express</strong></td>
+<td>SSD</td>
+<td>4 GiB – 64 TiB</td>
+<td><strong>256.000</strong> (io2 BE)</td>
+<td>4.000 MB/s</td>
+<td>Có</td>
+<td>Độ bền <strong>99,999%</strong>, IOPS cực cao, SAP HANA, Oracle, SQL Server</td>
+</tr>
+<tr>
+<td><strong>st1</strong></td>
+<td>HDD</td>
+<td>125 GiB – 16 TiB</td>
+<td>500</td>
+<td><strong>500 MB/s</strong></td>
+<td><strong>Không</strong></td>
+<td>Throughput cao, truy cập tuần tự: big data, log processing, data warehouse</td>
+</tr>
+<tr>
+<td><strong>sc1</strong></td>
+<td>HDD</td>
+<td>125 GiB – 16 TiB</td>
+<td>250</td>
+<td>250 MB/s</td>
+<td><strong>Không</strong></td>
+<td><strong>Rẻ nhất</strong>, dữ liệu truy cập ít, lưu trữ lạnh</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bẫy thường gặp:</strong> HDD (st1, sc1) <strong>không dùng làm boot volume</strong>. Cần IOPS &gt; 16.000 hoặc Multi-Attach → phải là io1/io2.</p>
+<h3 id="523-ebs-snapshot">5.2.3. EBS Snapshot</h3>
+<ul>
+<li>Sao lưu <strong>tăng dần (incremental)</strong> lưu trên <strong>S3</strong> (do AWS quản lý, bạn không thấy bucket). Snapshot mang tính <strong>Region</strong>, có thể <strong>copy sang Region khác</strong> (cho DR) và <strong>chia sẻ với account khác</strong> (nếu mã hóa bằng CMK thì phải chia sẻ cả key).</li>
+<li><strong>EBS Snapshot Archive:</strong> Rẻ hơn tới 75%, nhưng khôi phục mất <strong>24–72 giờ</strong>.</li>
+<li><strong>Recycle Bin:</strong> Đặt rule giữ snapshot đã xóa từ 1 ngày đến 1 năm để chống xóa nhầm.</li>
+<li><strong>Fast Snapshot Restore (FSR):</strong> Loại bỏ độ trễ "lazy loading" khi tạo volume từ snapshot (có phí).</li>
+<li><strong>Data Lifecycle Manager (DLM)</strong> hoặc <strong>AWS Backup</strong>: tự động hóa tạo/xóa snapshot theo lịch.</li>
+</ul>
+<h3 id="524-mã-hóa-ebs">5.2.4. Mã hóa EBS</h3>
+<ul>
+<li>Dùng <strong>KMS (AES-256)</strong>. Mã hóa cả dữ liệu at-rest, dữ liệu truyền giữa instance và volume, snapshot và mọi volume tạo từ snapshot đó.</li>
+<li>Ảnh hưởng hiệu năng <strong>không đáng kể</strong>, và mã hóa <strong>trong suốt</strong> với ứng dụng.</li>
+<li><strong>Không thể mã hóa một volume chưa mã hóa trực tiếp.</strong> Quy trình: tạo snapshot → <strong>copy snapshot với tùy chọn encrypt</strong> → tạo volume mới từ snapshot đã mã hóa → gắn vào instance.</li>
+<li>Có thể bật <strong>Encryption by default</strong> ở cấp Region.</li>
+</ul>
+<h3 id="525-instance-store">5.2.5. Instance Store</h3>
+<p>Ổ đĩa <strong>vật lý gắn trực tiếp</strong> vào máy chủ host → <strong>IOPS cực cao</strong> (hàng triệu). Nhưng là <strong>ephemeral</strong>: mất dữ liệu khi instance <strong>stop, hibernate hoặc terminate</strong> (không mất khi reboot). Dùng cho: buffer, cache, scratch data, dữ liệu tạm có thể tái tạo. <strong>Đề thi:</strong> "cần IOPS cao nhất có thể, dữ liệu tạm" → Instance Store.</p>
+<h2 id="53-amazon-efs--elastic-file-system">5.3. Amazon EFS – Elastic File System</h2>
+<ul>
+<li>Hệ thống file <strong>NFS v4.1</strong> cho <strong>Linux</strong>, có thể mount đồng thời từ <strong>hàng nghìn EC2 trên nhiều AZ</strong> (và cả on-premises qua Direct Connect/VPN).</li>
+<li><strong>Tự động co giãn</strong> tới petabyte, không cần cấp phát trước. Trả tiền theo dung lượng thực dùng (đắt hơn EBS ~3 lần).</li>
+<li><strong>Chế độ khả dụng:</strong> <em>Regional (Multi-AZ)</em> – khuyến nghị cho production; <em>One Zone</em> – rẻ hơn ~47%, chỉ một AZ.</li>
+<li><strong>Performance Mode:</strong> <em>General Purpose</em> (mặc định, độ trễ thấp – web, CMS) và <em>Max I/O</em> (throughput cao hơn, độ trễ cao hơn – big data, xử lý song song lớn).</li>
+<li><strong>Throughput Mode:</strong> <em>Bursting</em> (theo dung lượng), <em>Provisioned</em> (đặt throughput độc lập với dung lượng), <em>Elastic</em> (tự động, khuyến nghị cho tải khó đoán).</li>
+<li><strong>Storage Classes + Lifecycle Management:</strong> Standard → <strong>Infrequent Access (IA)</strong> → <strong>Archive</strong>, tự chuyển sau N ngày không truy cập (7–365 ngày), tiết kiệm tới 92%.</li>
+<li><strong>Bảo mật:</strong> Mount target trong mỗi AZ, dùng Security Group; mã hóa at-rest bằng KMS và in-transit bằng TLS; <strong>EFS Access Points</strong> để phân tách quyền và ép POSIX user cho từng ứng dụng.</li>
+</ul>
+<p><strong>Đề thi kinh điển:</strong> "Nhiều EC2 Linux cần đọc/ghi cùng một bộ file" → <strong>EFS</strong> (không phải EBS, vì EBS chỉ gắn 1 máy).</p>
+<h2 id="54-amazon-fsx">5.4. Amazon FSx</h2>
+<table>
+<thead>
+<tr>
+<th>Loại FSx</th>
+<th>Giao thức</th>
+<th>Đặc điểm nổi bật</th>
+<th>Trường hợp dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FSx for Windows File Server</strong></td>
+<td><strong>SMB</strong>, NTFS</td>
+<td>Tích hợp <strong>Active Directory</strong>, ACL Windows, DFS Namespaces, Multi-AZ</td>
+<td>Ứng dụng Windows, home directory, thay thế file server on-prem</td>
+</tr>
+<tr>
+<td><strong>FSx for Lustre</strong></td>
+<td>Lustre (POSIX)</td>
+<td>Throughput <strong>hàng trăm GB/s</strong>, độ trễ <strong>sub-millisecond</strong>, <strong>liên kết trực tiếp với S3</strong> (lazy load &amp; export)</td>
+<td>HPC, machine learning, phân tích tài chính, xử lý gen</td>
+</tr>
+<tr>
+<td><strong>FSx for NetApp ONTAP</strong></td>
+<td><strong>NFS, SMB, iSCSI</strong> cùng lúc</td>
+<td>Tính năng doanh nghiệp: snapshot, clone, dedup, compression, <strong>data tiering</strong> tự động</td>
+<td>Di chuyển workload NetApp on-prem lên AWS, cần đa giao thức</td>
+</tr>
+<tr>
+<td><strong>FSx for OpenZFS</strong></td>
+<td>NFS</td>
+<td>Snapshot tức thì, độ trễ thấp, tới 1 triệu IOPS</td>
+<td>Di chuyển ZFS/Linux file server</td>
+</tr>
+</tbody>
+</table>
+<p><strong>FSx for Lustre hai kiểu triển khai:</strong> <em>Scratch</em> (tạm, hiệu năng cao, không nhân bản – dùng cho xử lý ngắn hạn) và <em>Persistent</em> (nhân bản trong AZ, tự thay phần cứng hỏng – dùng cho dữ liệu lâu dài).</p>
+<h2 id="55-amazon-s3--simple-storage-service">5.5. Amazon S3 – Simple Storage Service</h2>
+<h3 id="551-nguyên-tắc-nền-tảng">5.5.1. Nguyên tắc nền tảng</h3>
+<ul>
+<li>Lưu trữ đối tượng, dung lượng <strong>không giới hạn</strong>; mỗi object tối đa <strong>5 TB</strong>. Upload &gt; 5 GB <strong>bắt buộc dùng Multipart Upload</strong> (khuyến nghị dùng từ 100 MB).</li>
+<li><strong>Tên bucket là duy nhất toàn cầu</strong>, gồm chữ thường/số/dấu gạch ngang, 3–63 ký tự, không viết hoa, không gạch dưới.</li>
+<li>Bucket <strong>nằm trong một Region</strong> (dù namespace là global).</li>
+<li><strong>Độ bền 99,999999999% (11 số 9)</strong>, khả dụng 99,99% với S3 Standard.</li>
+<li><strong>Strong read-after-write consistency</strong> cho mọi thao tác (từ tháng 12/2020) – kể cả LIST.</li>
+<li><strong>Hiệu năng:</strong> Mỗi prefix hỗ trợ <strong>3.500 PUT/COPY/POST/DELETE và 5.500 GET/HEAD mỗi giây</strong>. Dùng nhiều prefix để nhân số này lên.</li>
+</ul>
+<h3 id="552-các-lớp-lưu-trữ-storage-classes--bảng-phải-thuộc">5.5.2. Các lớp lưu trữ (Storage Classes) – bảng phải thuộc</h3>
+<table>
+<thead>
+<tr>
+<th>Storage Class</th>
+<th>Độ khả dụng</th>
+<th>Số AZ</th>
+<th>Phí truy xuất</th>
+<th>Thời gian lưu tối thiểu</th>
+<th>Kích thước tính phí tối thiểu</th>
+<th>Trường hợp dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S3 Standard</strong></td>
+<td>99,99%</td>
+<td>≥3</td>
+<td>Không</td>
+<td>Không</td>
+<td>Không</td>
+<td>Dữ liệu truy cập thường xuyên</td>
+</tr>
+<tr>
+<td><strong>S3 Intelligent-Tiering</strong></td>
+<td>99,9%</td>
+<td>≥3</td>
+<td>Không (chỉ phí monitoring nhỏ/object)</td>
+<td>Không</td>
+<td>128 KB (để tự chuyển tầng)</td>
+<td><strong>Mẫu truy cập không đoán trước</strong></td>
+</tr>
+<tr>
+<td><strong>S3 Standard-IA</strong></td>
+<td>99,9%</td>
+<td>≥3</td>
+<td><strong>Có</strong></td>
+<td><strong>30 ngày</strong></td>
+<td>128 KB</td>
+<td>Backup, DR, truy cập ít nhưng cần nhanh</td>
+</tr>
+<tr>
+<td><strong>S3 One Zone-IA</strong></td>
+<td>99,5%</td>
+<td><strong>1</strong></td>
+<td>Có</td>
+<td>30 ngày</td>
+<td>128 KB</td>
+<td>Dữ liệu tái tạo được, bản sao thứ cấp</td>
+</tr>
+<tr>
+<td><strong>S3 Glacier Instant Retrieval</strong></td>
+<td>99,9%</td>
+<td>≥3</td>
+<td>Có</td>
+<td><strong>90 ngày</strong></td>
+<td>128 KB</td>
+<td>Archive nhưng cần truy xuất <strong>mili-giây</strong> (ảnh y tế, media)</td>
+</tr>
+<tr>
+<td><strong>S3 Glacier Flexible Retrieval</strong></td>
+<td>99,99%</td>
+<td>≥3</td>
+<td>Có</td>
+<td><strong>90 ngày</strong></td>
+<td>40 KB</td>
+<td>Archive; truy xuất <strong>Expedited 1–5 phút / Standard 3–5 giờ / Bulk 5–12 giờ (miễn phí)</strong></td>
+</tr>
+<tr>
+<td><strong>S3 Glacier Deep Archive</strong></td>
+<td>99,99%</td>
+<td>≥3</td>
+<td>Có</td>
+<td><strong>180 ngày</strong></td>
+<td>40 KB</td>
+<td>Lưu trữ dài hạn <strong>rẻ nhất</strong>; <strong>Standard 12 giờ / Bulk 48 giờ</strong></td>
+</tr>
+<tr>
+<td><strong>S3 Express One Zone</strong></td>
+<td>99,95%</td>
+<td>1 (một AZ, chọn được)</td>
+<td>Có</td>
+<td>Không</td>
+<td>512 KB</td>
+<td>Độ trễ <strong>single-digit millisecond</strong>, nhanh hơn Standard 10x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mẹo nhớ ngưỡng phạt:</strong> Standard-IA &amp; One Zone-IA = <strong>30 ngày</strong>; Glacier IR &amp; Flexible = <strong>90 ngày</strong>; Deep Archive = <strong>180 ngày</strong>. Xóa sớm hơn vẫn bị tính đủ.</p>
+<h3 id="553-lifecycle-policy">5.5.3. Lifecycle Policy</h3>
+<p>Hai loại hành động: <strong>Transition</strong> (chuyển sang lớp rẻ hơn) và <strong>Expiration</strong> (xóa object, xóa version cũ, xóa <strong>incomplete multipart upload</strong> – nên luôn bật rule này để khỏi trả tiền rác). Có thể lọc theo prefix, tag, kích thước object.</p>
+<p>Chiều chuyển tầng phải đi <strong>từ nóng xuống lạnh</strong>: Standard → Standard-IA → Intelligent-Tiering → Glacier IR → Glacier Flexible → Deep Archive. <strong>Không chuyển ngược lại được bằng lifecycle</strong> (phải copy/restore).</p>
+<p>Dùng <strong>S3 Storage Class Analysis</strong> để phân tích mẫu truy cập và đề xuất lúc nào nên chuyển tầng.</p>
+<h3 id="554-versioning-mfa-delete-object-lock">5.5.4. Versioning, MFA Delete, Object Lock</h3>
+<ul>
+<li><strong>Versioning:</strong> Bật ở cấp bucket, chống ghi đè và xóa nhầm. Khi bật rồi chỉ có thể <strong>suspend</strong>, <strong>không thể tắt hẳn</strong>. Object có trước khi bật sẽ có version ID là <code>null</code>. Xóa object chỉ tạo <strong>delete marker</strong> – khôi phục bằng cách xóa delete marker.</li>
+<li><strong>MFA Delete:</strong> Yêu cầu MFA khi xóa vĩnh viễn một version hoặc thay đổi trạng thái versioning. <strong>Chỉ root user bật được</strong>, và bắt buộc dùng CLI.</li>
+<li><strong>S3 Object Lock (WORM – Write Once Read Many):</strong> Yêu cầu bật versioning.</li>
+<li><strong>Governance Mode:</strong> Người dùng có quyền đặc biệt (<code>s3:BypassGovernanceRetention</code>) vẫn ghi đè/xóa được.</li>
+<li><strong>Compliance Mode:</strong> <strong>Không ai</strong> – kể cả root – có thể xóa hay rút ngắn thời hạn. Dùng cho yêu cầu pháp lý (SEC 17a-4, FINRA).</li>
+<li><strong>Legal Hold:</strong> Khóa vô thời hạn, độc lập với retention period, gỡ bằng quyền <code>s3:PutObjectLegalHold</code>.</li>
+<li><strong>S3 Glacier Vault Lock:</strong> Chính sách WORM cho Glacier vault, một khi khóa là vĩnh viễn.</li>
+</ul>
+<h3 id="555-kiểm-soát-truy-cập-s3">5.5.5. Kiểm soát truy cập S3</h3>
+<p>Thứ tự áp dụng: <strong>IAM policy (user) + Bucket Policy (resource) + ACL (cũ, nên tắt) + Block Public Access</strong>.</p>
+<ul>
+<li><strong>Block Public Access:</strong> 4 tùy chọn, <strong>bật mặc định</strong> cho bucket mới. Đây là "cầu dao tổng" – nếu bật, mọi bucket policy công khai đều vô hiệu. Đề thi hỏi "ngăn dữ liệu bị lộ công khai" → <strong>bật Block Public Access ở cấp account</strong>.</li>
+<li><strong>Bucket Policy:</strong> JSON có <code>Principal</code>. Ví dụ hay ra thi: buộc HTTPS bằng <code>Condition: {"Bool": {"aws:SecureTransport": "false"}}</code> với <code>Effect: Deny</code>; buộc mã hóa khi upload bằng điều kiện <code>s3:x-amz-server-side-encryption</code>.</li>
+<li><strong>ACL:</strong> Cơ chế cũ. AWS khuyến nghị <strong>Object Ownership = Bucket owner enforced</strong> để <strong>vô hiệu hóa ACL</strong>.</li>
+<li><strong>S3 Access Points:</strong> Tạo nhiều endpoint riêng cho từng ứng dụng/nhóm với policy riêng → thay vì một bucket policy khổng lồ. Có thể tạo <strong>VPC-only access point</strong> (chỉ truy cập từ VPC).</li>
+<li><strong>Object Lambda Access Point:</strong> Biến đổi dữ liệu on-the-fly khi đọc (che PII, resize ảnh, đổi định dạng) mà không cần lưu nhiều bản.</li>
+<li><strong>Presigned URL:</strong> Cấp quyền truy cập tạm thời cho object private (thời hạn tuỳ chọn). Người nhận có quyền y hệt người tạo URL. Dùng cho "cho phép khách tải file private trong 1 giờ".</li>
+</ul>
+<h3 id="556-mã-hóa-s3">5.5.6. Mã hóa S3</h3>
+<table>
+<thead>
+<tr>
+<th>Phương pháp</th>
+<th>Ai giữ khóa</th>
+<th>Ai mã hóa</th>
+<th>Ghi chú</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SSE-S3</strong></td>
+<td>AWS (AES-256)</td>
+<td>AWS</td>
+<td><strong>Bật mặc định cho mọi bucket từ 2023</strong>, miễn phí. Header <code>x-amz-server-side-encryption: AES256</code></td>
+</tr>
+<tr>
+<td><strong>SSE-KMS</strong></td>
+<td>KMS (CMK của bạn)</td>
+<td>AWS</td>
+<td>Kiểm soát &amp; audit qua CloudTrail; <strong>bị giới hạn KMS quota</strong> (nghẽn nếu lưu lượng lớn) → dùng <strong>S3 Bucket Keys</strong> để giảm 99% lời gọi KMS</td>
+</tr>
+<tr>
+<td><strong>DSSE-KMS</strong></td>
+<td>KMS</td>
+<td>AWS (mã hóa <strong>hai lớp</strong>)</td>
+<td>Yêu cầu tuân thủ đặc biệt</td>
+</tr>
+<tr>
+<td><strong>SSE-C</strong></td>
+<td><strong>Khách hàng</strong> cung cấp khóa mỗi request</td>
+<td>AWS</td>
+<td>AWS không lưu khóa; <strong>bắt buộc HTTPS</strong></td>
+</tr>
+<tr>
+<td><strong>Client-Side Encryption</strong></td>
+<td>Khách hàng</td>
+<td><strong>Khách hàng</strong> (trước khi upload)</td>
+<td>Kiểm soát tuyệt đối</td>
+</tr>
+</tbody>
+</table>
+<p><strong>In-transit:</strong> dùng HTTPS/TLS. Bắt buộc bằng bucket policy <code>aws:SecureTransport</code>.</p>
+<h3 id="557-replication-nhân-bản">5.5.7. Replication (nhân bản)</h3>
+<ul>
+<li><strong>CRR (Cross-Region Replication):</strong> Tuân thủ, giảm độ trễ cho người dùng ở xa, DR đa Region.</li>
+<li><strong>SRR (Same-Region Replication):</strong> Gộp log, sao chép giữa môi trường Prod và Test.</li>
+<li><strong>Bắt buộc bật Versioning ở cả bucket nguồn và đích</strong> + IAM role cho S3.</li>
+<li><strong>Chỉ nhân bản object tạo MỚI sau khi bật rule.</strong> Muốn nhân bản object cũ dùng <strong>S3 Batch Replication</strong>.</li>
+<li><strong>Không có replication dây chuyền (chaining):</strong> nếu A→B và B→C thì object từ A <strong>không</strong> tự tới C.</li>
+<li>Delete marker replication là <strong>tùy chọn</strong>; xóa theo version ID thì <strong>không</strong> được nhân bản (chống xóa độc hại).</li>
+<li><strong>S3 RTC (Replication Time Control):</strong> Cam kết SLA nhân bản <strong>99,99% object trong 15 phút</strong>, có metric giám sát. Dùng khi đề nói "yêu cầu nhân bản trong thời gian xác định".</li>
+</ul>
+<h3 id="558-các-tính-năng-s3-khác-hay-ra-thi">5.5.8. Các tính năng S3 khác hay ra thi</h3>
+<ul>
+<li><strong>S3 Transfer Acceleration:</strong> Upload qua <strong>Edge Location</strong> rồi đi đường trục AWS tới bucket → nhanh hơn đáng kể khi người dùng ở xa Region. Kết hợp tốt với Multipart Upload.</li>
+<li><strong>S3 Static Website Hosting:</strong> Host web tĩnh, endpoint dạng <code>bucket-name.s3-website-region.amazonaws.com</code>. Muốn HTTPS và domain riêng → đặt <strong>CloudFront</strong> phía trước.</li>
+<li><strong>S3 Select / Glacier Select:</strong> Dùng SQL đơn giản lấy <strong>một phần</strong> object (CSV/JSON/Parquet) → giảm tới 80% dữ liệu truyền và chi phí. (Với truy vấn phức tạp nhiều file → dùng <strong>Athena</strong>.)</li>
+<li><strong>S3 Event Notifications:</strong> Kích hoạt <strong>SNS, SQS, Lambda, EventBridge</strong> khi có <code>s3:ObjectCreated:*</code>, <code>s3:ObjectRemoved:*</code>… Gửi sang <strong>EventBridge</strong> để lọc nâng cao và fan-out tới 20+ đích.</li>
+<li><strong>S3 Batch Operations:</strong> Thực hiện thao tác hàng loạt trên hàng tỷ object (copy, thay ACL, gọi Lambda, restore từ Glacier, áp Object Lock).</li>
+<li><strong>S3 Inventory:</strong> Báo cáo CSV/ORC/Parquet định kỳ liệt kê object và metadata (kích thước, storage class, trạng thái mã hóa/replication).</li>
+<li><strong>S3 Storage Lens:</strong> Bảng điều khiển phân tích sử dụng và chi phí trên toàn tổ chức, đề xuất tối ưu.</li>
+<li><strong>Requester Pays:</strong> Người tải trả phí data transfer thay vì chủ bucket – dùng khi chia sẻ dataset lớn.</li>
+<li><strong>Multi-Region Access Points:</strong> Một endpoint toàn cầu tự định tuyến tới bucket gần nhất, hỗ trợ failover.</li>
+<li><strong>CORS:</strong> Cần cấu hình trên bucket đích khi web ở origin khác gọi tới.</li>
+</ul>
+<h2 id="56-di-chuyển-và-chuyển-dữ-liệu">5.6. Di chuyển và chuyển dữ liệu</h2>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Mô tả</th>
+<th>Khi nào dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS DataSync</strong></td>
+<td>Đồng bộ dữ liệu online, tốc độ cao, có agent; hỗ trợ NFS, SMB, HDFS, S3, EFS, FSx; giữ metadata &amp; permission; chạy theo lịch</td>
+<td>Di chuyển/đồng bộ định kỳ qua mạng (Internet/DX)</td>
+</tr>
+<tr>
+<td><strong>AWS Storage Gateway</strong></td>
+<td>Hybrid – mở rộng lưu trữ on-prem lên AWS</td>
+<td>Xem chi tiết bên dưới</td>
+</tr>
+<tr>
+<td><strong>AWS Transfer Family</strong></td>
+<td>Endpoint được quản lý cho <strong>SFTP, FTPS, FTP, AS2</strong> ghi thẳng vào S3/EFS</td>
+<td>Đối tác vẫn dùng giao thức FTP truyền thống</td>
+</tr>
+<tr>
+<td><strong>AWS Snowcone</strong></td>
+<td>~8 TB (HDD) / 14 TB (SSD), nhỏ gọn, chịu môi trường khắc nghiệt</td>
+<td>Edge, thu thập dữ liệu tại hiện trường</td>
+</tr>
+<tr>
+<td><strong>AWS Snowball Edge</strong></td>
+<td>Storage Optimized ~80 TB / Compute Optimized; có thể chạy EC2 &amp; Lambda tại chỗ</td>
+<td>Petabyte, nơi băng thông kém</td>
+</tr>
+<tr>
+<td><strong>AWS Snowmobile</strong></td>
+<td>Xe container 100 PB</td>
+<td>Exabyte-scale, di dời cả data center</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quy tắc chọn:</strong> Ước lượng thời gian truyền qua mạng. Nếu truyền qua Internet mất <strong>hơn một tuần</strong> → dùng Snow Family. Nếu có đường truyền tốt và cần đồng bộ liên tục → DataSync.</p>
+<h3 id="storage-gateway--bốn-loại">Storage Gateway – bốn loại</h3>
+<table>
+<thead>
+<tr>
+<th>Loại</th>
+<th>Giao thức</th>
+<th>Cơ chế</th>
+<th>Dùng khi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S3 File Gateway</strong></td>
+<td>NFS, SMB</td>
+<td>File hiện lên như thư mục, thực chất lưu thành object trên S3; cache dữ liệu nóng tại chỗ</td>
+<td>Mở rộng file share lên S3, tận dụng lifecycle</td>
+</tr>
+<tr>
+<td><strong>FSx File Gateway</strong></td>
+<td>SMB</td>
+<td>Cache cục bộ cho FSx for Windows</td>
+<td>Truy cập FSx với độ trễ thấp từ on-prem</td>
+</tr>
+<tr>
+<td><strong>Volume Gateway</strong></td>
+<td>iSCSI</td>
+<td><em>Cached</em> (dữ liệu chính trên S3, cache nóng tại chỗ) hoặc <em>Stored</em> (dữ liệu chính tại chỗ, backup async lên S3 dạng EBS snapshot)</td>
+<td>Backup volume, DR ứng dụng block</td>
+</tr>
+<tr>
+<td><strong>Tape Gateway</strong></td>
+<td>iSCSI VTL</td>
+<td>Giả lập thư viện băng từ, ghi vào S3/Glacier</td>
+<td>Thay thế hệ thống backup băng từ mà không đổi phần mềm</td>
+</tr>
+</tbody>
+</table>
+<h2 id="57-aws-backup">5.7. AWS Backup</h2>
+<p>Dịch vụ <strong>quản lý sao lưu tập trung</strong> cho EC2, EBS, RDS, Aurora, DynamoDB, EFS, FSx, Storage Gateway, S3, DocumentDB, Neptune. Tính năng: <strong>Backup Plan</strong> theo lịch, <strong>lifecycle</strong> chuyển sang cold storage, <strong>cross-region &amp; cross-account copy</strong>, <strong>Backup Vault Lock</strong> (WORM – không ai xóa được backup, kể cả root) và báo cáo tuân thủ. Đề nói "quản lý backup tập trung, tuân thủ, ít thao tác vận hành" → <strong>AWS Backup</strong>.</p>
+<h1 id="phần-vi-cơ-sở-dữ-liệu">PHẦN VI. CƠ SỞ DỮ LIỆU</h1>
+<h2 id="61-bản-đồ-chọn-cơ-sở-dữ-liệu-rất-quan-trọng">6.1. Bản đồ chọn cơ sở dữ liệu (rất quan trọng)</h2>
+<table>
+<thead>
+<tr>
+<th>Nhu cầu trong đề bài</th>
+<th>Dịch vụ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQL quan hệ, OLTP, ít thao tác vận hành</td>
+<td><strong>Amazon RDS</strong></td>
+</tr>
+<tr>
+<td>SQL quan hệ, hiệu năng cao, HA mạnh, tự scale storage</td>
+<td><strong>Amazon Aurora</strong></td>
+</tr>
+<tr>
+<td>Serverless SQL, tải bất định hoặc gián đoạn</td>
+<td><strong>Aurora Serverless v2</strong></td>
+</tr>
+<tr>
+<td>NoSQL key-value, độ trễ <strong>mili-giây một chữ số</strong>, scale vô hạn, serverless</td>
+<td><strong>DynamoDB</strong></td>
+</tr>
+<tr>
+<td>Cache in-memory, giảm tải đọc cho DB, session store, leaderboard</td>
+<td><strong>ElastiCache (Redis)</strong></td>
+</tr>
+<tr>
+<td>Cache DynamoDB độ trễ <strong>micro-giây</strong></td>
+<td><strong>DAX</strong></td>
+</tr>
+<tr>
+<td>Data warehouse, OLAP, BI, truy vấn phân tích petabyte</td>
+<td><strong>Redshift</strong></td>
+</tr>
+<tr>
+<td>Đồ thị, mạng xã hội, phát hiện gian lận, recommendation engine</td>
+<td><strong>Neptune</strong></td>
+</tr>
+<tr>
+<td>MongoDB-compatible, tài liệu JSON</td>
+<td><strong>DocumentDB</strong></td>
+</tr>
+<tr>
+<td>Cassandra-compatible</td>
+<td><strong>Keyspaces</strong></td>
+</tr>
+<tr>
+<td>Dữ liệu chuỗi thời gian, IoT, telemetry</td>
+<td><strong>Timestream</strong></td>
+</tr>
+<tr>
+<td>Sổ cái bất biến, có thể kiểm chứng bằng mật mã</td>
+<td><strong>QLDB</strong></td>
+</tr>
+<tr>
+<td>Redis bền vững (durable), dùng làm DB chính</td>
+<td><strong>MemoryDB for Redis</strong></td>
+</tr>
+<tr>
+<td>Tìm kiếm toàn văn, phân tích log, dashboard log</td>
+<td><strong>OpenSearch Service</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="62-amazon-rds">6.2. Amazon RDS</h2>
+<p>Hỗ trợ 6 engine: <strong>MySQL, PostgreSQL, MariaDB, Oracle, SQL Server, Amazon Aurora</strong>. AWS quản lý: cấp phát, vá lỗi OS &amp; engine, backup, phục hồi, giám sát, failover. <strong>Bạn KHÔNG có quyền SSH vào máy chủ RDS</strong> (trừ RDS Custom cho Oracle/SQL Server).</p>
+<h3 id="621-multi-az-vs-read-replica--so-sánh-kinh-điển">6.2.1. Multi-AZ vs Read Replica – so sánh kinh điển</h3>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th><strong>Multi-AZ Deployment</strong></th>
+<th><strong>Read Replica</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mục đích chính</td>
+<td><strong>Tính sẵn sàng cao (HA) &amp; DR</strong></td>
+<td><strong>Mở rộng hiệu năng đọc (scale read)</strong></td>
+</tr>
+<tr>
+<td>Cơ chế nhân bản</td>
+<td><strong>Đồng bộ (synchronous)</strong></td>
+<td><strong>Bất đồng bộ (asynchronous)</strong> – có độ trễ (replica lag)</td>
+</tr>
+<tr>
+<td>Standby có phục vụ traffic không</td>
+<td><strong>Không</strong> (chế độ Multi-AZ 1 standby); chế độ <strong>Multi-AZ DB Cluster</strong> (2 standby) thì <strong>có đọc được</strong></td>
+<td><strong>Có</strong>, dùng endpoint riêng để đọc</td>
+</tr>
+<tr>
+<td>Failover</td>
+<td><strong>Tự động</strong> (thường 60–120 giây), DNS endpoint tự trỏ sang standby</td>
+<td><strong>Thủ công</strong> – phải promote replica thành DB độc lập</td>
+</tr>
+<tr>
+<td>Phạm vi</td>
+<td>Trong cùng Region, khác AZ</td>
+<td><strong>Cùng AZ, khác AZ, hoặc khác Region</strong></td>
+</tr>
+<tr>
+<td>Số lượng</td>
+<td>1 standby (hoặc 2 với DB Cluster)</td>
+<td>Tối đa <strong>5</strong> (15 với Aurora)</td>
+</tr>
+<tr>
+<td>Chi phí</td>
+<td>Nhân đôi chi phí instance</td>
+<td>Trả tiền theo từng replica</td>
+</tr>
+<tr>
+<td>Backup ảnh hưởng</td>
+<td>Backup lấy từ standby → <strong>không ảnh hưởng hiệu năng primary</strong></td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ghi nhớ:</strong> <em>Multi-AZ = độ sẵn sàng. Read Replica = hiệu năng.</em> Nếu đề vừa muốn HA vừa muốn scale read → <strong>dùng cả hai</strong>. Nếu đề nói "cần DR sang Region khác cho RDS (không phải Aurora)" → <strong>Cross-Region Read Replica</strong>.</p>
+<p><strong>Lưu ý chi phí:</strong> Nhân bản trong cùng Region <strong>miễn phí data transfer</strong>; nhân bản cross-Region <strong>tính phí data transfer</strong>.</p>
+<h3 id="622-backup-và-phục-hồi">6.2.2. Backup và phục hồi</h3>
+<ul>
+<li><strong>Automated Backups:</strong> Bật mặc định, giữ <strong>1–35 ngày</strong> (0 = tắt). Bao gồm snapshot hằng ngày trong <strong>backup window</strong> + <strong>transaction logs mỗi 5 phút</strong> → cho phép <strong>Point-in-Time Recovery (PITR)</strong> tới bất kỳ thời điểm nào trong khoảng giữ.</li>
+<li><strong>Manual DB Snapshots:</strong> Giữ <strong>vô thời hạn</strong> cho tới khi bạn xóa. Có thể copy cross-region, chia sẻ cho account khác.</li>
+<li><strong>Khôi phục luôn tạo ra một DB instance MỚI với endpoint mới</strong> – ứng dụng phải cập nhật connection string (hoặc dùng Route 53 CNAME).</li>
+<li>Xóa DB instance: nên bật <strong>Deletion Protection</strong> và tạo <strong>final snapshot</strong>.</li>
+</ul>
+<h3 id="623-bảo-mật-rds">6.2.3. Bảo mật RDS</h3>
+<ul>
+<li><strong>Mã hóa at-rest</strong> bằng KMS – <strong>phải bật khi tạo instance</strong>. Muốn mã hóa DB chưa mã hóa: snapshot → copy snapshot có encrypt → restore. Read Replica của DB đã mã hóa cũng được mã hóa.</li>
+<li><strong>Mã hóa in-transit</strong> bằng SSL/TLS (tải AWS RDS CA cert); có thể <strong>bắt buộc SSL</strong> qua parameter group (<code>rds.force_ssl=1</code> với PostgreSQL, <code>require_secure_transport=ON</code> với MySQL).</li>
+<li><strong>IAM Database Authentication</strong> (MySQL, PostgreSQL, MariaDB): Đăng nhập bằng <strong>token IAM có hiệu lực 15 phút</strong> thay vì mật khẩu → không lưu mật khẩu, quản lý tập trung, bắt buộc SSL.</li>
+<li>Mạng: đặt RDS trong <strong>private subnet</strong>, kiểm soát bằng <strong>Security Group</strong>; <strong>DB Subnet Group</strong> phải phủ ≥ 2 AZ.</li>
+</ul>
+<h3 id="624-rds-proxy">6.2.4. RDS Proxy</h3>
+<p>Proxy <strong>fully managed, serverless, tự HA</strong> đặt giữa ứng dụng và RDS/Aurora:
+- <strong>Gộp và tái sử dụng connection</strong> → giải quyết vấn đề <strong>Lambda tạo quá nhiều kết nối</strong>.
+- <strong>Giảm thời gian failover tới 66%</strong>.
+- Cho phép ép <strong>IAM authentication</strong> và lấy credentials từ <strong>Secrets Manager</strong>.
+- <strong>Chỉ truy cập được từ trong VPC</strong> (không public).</p>
+<h3 id="625-giám-sát-và-bảo-trì">6.2.5. Giám sát và bảo trì</h3>
+<ul>
+<li><strong>RDS Enhanced Monitoring:</strong> Metric OS ở mức chi tiết tới 1 giây (khác CloudWatch metric lấy từ hypervisor).</li>
+<li><strong>Performance Insights:</strong> Phân tích tải DB, tìm câu truy vấn/wait event gây nghẽn.</li>
+<li><strong>Maintenance Window:</strong> AWS vá lỗi; với Multi-AZ, AWS vá standby trước rồi failover → giảm downtime.</li>
+<li><strong>Storage Auto Scaling:</strong> Tự tăng dung lượng khi sắp đầy.</li>
+</ul>
+<h2 id="63-amazon-aurora">6.3. Amazon Aurora</h2>
+<h3 id="631-kiến-trúc">6.3.1. Kiến trúc</h3>
+<ul>
+<li>Tương thích <strong>MySQL</strong> và <strong>PostgreSQL</strong>; nhanh hơn MySQL tiêu chuẩn tới <strong>5 lần</strong>, PostgreSQL tới <strong>3 lần</strong>; giá khoảng <strong>20% cao hơn RDS</strong> nhưng hiệu quả hơn nhiều ở quy mô lớn.</li>
+<li><strong>Lưu trữ tách rời khỏi compute:</strong> Một <strong>shared storage volume</strong> tự động tăng từ 10 GB tới <strong>128 TB</strong>, tự <strong>nhân bản 6 bản sao trên 3 AZ</strong>. Ghi cần 4/6 bản, đọc cần 3/6 → chịu được mất <strong>2 bản sao mà không mất khả năng ghi</strong>, mất <strong>3 bản</strong> vẫn đọc được. Tự sửa lỗi (self-healing).</li>
+<li>Tối đa <strong>15 Aurora Replica</strong>, failover <strong>dưới 30 giây</strong>.</li>
+</ul>
+<h3 id="632-các-endpoint-của-aurora">6.3.2. Các Endpoint của Aurora</h3>
+<ul>
+<li><strong>Cluster (Writer) Endpoint:</strong> Luôn trỏ tới instance chính (primary). Sau failover tự trỏ sang instance mới.</li>
+<li><strong>Reader Endpoint:</strong> Tự <strong>cân bằng tải</strong> giữa các replica đọc.</li>
+<li><strong>Custom Endpoint:</strong> Nhóm một tập replica cụ thể (ví dụ replica cấu hình mạnh dành cho báo cáo).</li>
+</ul>
+<h3 id="633-các-biến-thể-aurora">6.3.3. Các biến thể Aurora</h3>
+<table>
+<thead>
+<tr>
+<th>Biến thể</th>
+<th>Mô tả</th>
+<th>Trường hợp dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Aurora Serverless v2</strong></td>
+<td>Tự động scale <strong>theo từng bước nhỏ (ACU)</strong> trong vài giây, không gián đoạn; hỗ trợ Multi-AZ, replica, Global Database</td>
+<td>Tải khó đoán, tải gián đoạn, dev/test, ứng dụng SaaS đa khách hàng</td>
+</tr>
+<tr>
+<td><strong>Aurora Global Database</strong></td>
+<td>1 Region chính + tối đa <strong>5 Region phụ</strong>; nhân bản <strong>dưới 1 giây</strong>; <strong>RPO ~1 giây, RTO &lt; 1 phút</strong> khi promote</td>
+<td>DR đa Region, đọc toàn cầu độ trễ thấp</td>
+</tr>
+<tr>
+<td><strong>Aurora Multi-Master</strong></td>
+<td>Nhiều node ghi cùng lúc</td>
+<td>HA cho tác vụ ghi liên tục</td>
+</tr>
+<tr>
+<td><strong>Aurora Machine Learning</strong></td>
+<td>Gọi SageMaker/Comprehend từ câu SQL</td>
+<td>Dự đoán, phân tích cảm xúc trong DB</td>
+</tr>
+<tr>
+<td><strong>Babelfish for Aurora PostgreSQL</strong></td>
+<td>Hiểu giao thức T-SQL của SQL Server</td>
+<td>Di chuyển ứng dụng SQL Server, ít sửa code</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tính năng khác:</strong> <strong>Backtrack</strong> (tua ngược DB tới thời điểm trong quá khứ tới 72 giờ <strong>không cần restore từ backup</strong>), <strong>Fast Database Cloning</strong> (nhân bản cluster gần như tức thì bằng copy-on-write – lý tưởng cho môi trường test), <strong>Aurora Auto Scaling</strong> cho replica đọc.</p>
+<h2 id="64-amazon-dynamodb">6.4. Amazon DynamoDB</h2>
+<h3 id="641-nền-tảng">6.4.1. Nền tảng</h3>
+<ul>
+<li>NoSQL <strong>key-value &amp; document</strong>, <strong>serverless</strong>, độ trễ <strong>mili-giây một chữ số</strong> ở mọi quy mô, tự nhân bản trên <strong>3 AZ</strong>, HA sẵn có.</li>
+<li><strong>Primary Key</strong> gồm: chỉ <strong>Partition Key</strong> (đơn giản) hoặc <strong>Partition Key + Sort Key</strong> (composite). Partition key quyết định phân tán dữ liệu → chọn key có <strong>độ phân tán cao (high cardinality)</strong> để tránh <strong>hot partition</strong>.</li>
+<li>Kích thước item tối đa <strong>400 KB</strong> → lưu file lớn trên S3, chỉ lưu URL trong DynamoDB.</li>
+</ul>
+<h3 id="642-chế-độ-dung-lượng-capacity-mode">6.4.2. Chế độ dung lượng (Capacity Mode)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Provisioned</strong></th>
+<th><strong>On-Demand</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cách tính</td>
+<td>Đặt trước RCU/WCU, có thể bật <strong>Auto Scaling</strong></td>
+<td>Trả theo request thực tế</td>
+</tr>
+<tr>
+<td>Chi phí</td>
+<td>Rẻ hơn khi tải ổn định, dự đoán được</td>
+<td>Đắt hơn ~5–7 lần mỗi request nhưng <strong>không lãng phí</strong></td>
+</tr>
+<tr>
+<td>Dùng khi</td>
+<td>Tải đều, biết trước</td>
+<td>Tải bất định, spike đột ngột, ứng dụng mới, tải rất thấp</td>
+</tr>
+<tr>
+<td>Burst</td>
+<td>Có <strong>Burst Capacity</strong>; vượt quá → <code>ProvisionedThroughputExceededException</code> (khắc phục bằng <strong>exponential backoff</strong>)</td>
+<td>Tự thích ứng</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Công thức cần nhớ:</strong>
+- <strong>1 WCU</strong> = 1 ghi/giây cho item <strong>1 KB</strong> (ghi transactional tốn <strong>2x</strong>).
+- <strong>1 RCU</strong> = 1 đọc <strong>strongly consistent</strong>/giây cho item <strong>4 KB</strong>, hoặc <strong>2 đọc eventually consistent</strong>/giây (transactional đọc tốn 2x). Đọc eventually consistent là <strong>mặc định</strong> và <strong>rẻ bằng một nửa</strong>.</p>
+<h3 id="643-index">6.4.3. Index</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>LSI (Local Secondary Index)</strong></th>
+<th><strong>GSI (Global Secondary Index)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Partition key</td>
+<td><strong>Giống bảng gốc</strong></td>
+<td><strong>Khác được</strong></td>
+</tr>
+<tr>
+<td>Sort key</td>
+<td>Khác</td>
+<td>Khác</td>
+</tr>
+<tr>
+<td>Thời điểm tạo</td>
+<td><strong>Chỉ khi tạo bảng</strong>, không thêm/xóa sau</td>
+<td>Tạo/xóa <strong>bất cứ lúc nào</strong></td>
+</tr>
+<tr>
+<td>Số lượng</td>
+<td>5</td>
+<td>20 (mặc định, có thể tăng)</td>
+</tr>
+<tr>
+<td>Dung lượng</td>
+<td>Dùng chung RCU/WCU của bảng</td>
+<td><strong>Có RCU/WCU riêng</strong> (nếu GSI bị throttle sẽ <strong>throttle cả bảng chính</strong> – bẫy hay thi)</td>
+</tr>
+<tr>
+<td>Tính nhất quán</td>
+<td>Hỗ trợ strongly consistent</td>
+<td><strong>Chỉ eventually consistent</strong></td>
+</tr>
+<tr>
+<td>Giới hạn</td>
+<td>Tổng dữ liệu mỗi partition key ≤ 10 GB</td>
+<td>Không</td>
+</tr>
+</tbody>
+</table>
+<h3 id="644-các-tính-năng-quan-trọng-khác">6.4.4. Các tính năng quan trọng khác</h3>
+<ul>
+<li><strong>DynamoDB Accelerator (DAX):</strong> Cache in-memory chuyên biệt, giảm độ trễ đọc xuống <strong>micro-giây</strong>, <strong>không cần sửa code</strong> (API tương thích). Khác ElastiCache: DAX chỉ dùng cho DynamoDB, tự động quản lý cache invalidation.</li>
+<li><strong>DynamoDB Streams:</strong> Ghi lại thay đổi item (INSERT/MODIFY/REMOVE), giữ <strong>24 giờ</strong>, kích hoạt Lambda → dùng cho cập nhật index tìm kiếm, gửi thông báo, cập nhật bảng tổng hợp. (<strong>Kinesis Data Streams for DynamoDB</strong> giữ tới 1 năm.)</li>
+<li><strong>Global Tables:</strong> Bảng đa Region <strong>active-active</strong> (đọc và ghi ở mọi Region), nhân bản dưới 1 giây, yêu cầu bật <strong>DynamoDB Streams</strong>. Giải quyết xung đột theo "<strong>last writer wins</strong>".</li>
+<li><strong>TTL (Time To Live):</strong> Tự xóa item hết hạn dựa trên thuộc tính timestamp (epoch) – <strong>miễn phí</strong>, dùng để dọn session, log tạm, tuân thủ chính sách lưu trữ.</li>
+<li><strong>Backup:</strong> <em>PITR</em> (khôi phục tới bất kỳ giây nào trong <strong>35 ngày</strong>) và <em>On-demand backup</em> (giữ vô hạn, không ảnh hưởng hiệu năng).</li>
+<li><strong>DynamoDB Transactions:</strong> ACID trên tối đa 100 item / 4 MB.</li>
+<li><strong>Đọc dữ liệu:</strong> <code>GetItem</code> (theo key), <code>Query</code> (theo partition key + điều kiện sort key – <strong>hiệu quả</strong>), <code>Scan</code> (đọc <strong>toàn bộ bảng</strong> – <strong>tốn kém, nên tránh</strong>; nếu buộc dùng thì dùng <strong>Parallel Scan</strong> và giới hạn bằng <code>ProjectionExpression</code>).</li>
+<li><strong>Export to S3</strong> không tiêu tốn RCU → dùng để phân tích bằng Athena.</li>
+</ul>
+<h2 id="65-amazon-elasticache">6.5. Amazon ElastiCache</h2>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th><strong>Redis (và Valkey)</strong></th>
+<th><strong>Memcached</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cấu trúc dữ liệu</td>
+<td>Phong phú: string, list, set, sorted set, hash, hyperloglog, geospatial</td>
+<td>Chỉ <strong>key-value đơn giản</strong></td>
+</tr>
+<tr>
+<td>Nhân bản &amp; HA</td>
+<td><strong>Có</strong> – Read Replica, <strong>Multi-AZ với auto-failover</strong></td>
+<td><strong>Không</strong></td>
+</tr>
+<tr>
+<td>Bền vững (persistence)</td>
+<td><strong>Có</strong> – snapshot, AOF</td>
+<td><strong>Không</strong> (thuần cache)</td>
+</tr>
+<tr>
+<td>Multi-threaded</td>
+<td>Không (Redis chuẩn)</td>
+<td><strong>Có</strong></td>
+</tr>
+<tr>
+<td>Sharding</td>
+<td>Cluster Mode Enabled</td>
+<td>Sharding phía client</td>
+</tr>
+<tr>
+<td>Pub/Sub, transaction, Lua script</td>
+<td><strong>Có</strong></td>
+<td>Không</td>
+</tr>
+<tr>
+<td>Dùng khi</td>
+<td>Leaderboard, session store, hàng đợi, cần HA &amp; bền vững</td>
+<td>Cache thuần, đơn giản, cần scale ngang bằng cách thêm/bớt node</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Chiến lược caching:</strong> <em>Lazy Loading / Cache-Aside</em> (chỉ nạp khi cache miss – tiết kiệm bộ nhớ nhưng dữ liệu có thể cũ) và <em>Write-Through</em> (ghi vào cache mỗi lần ghi DB – dữ liệu luôn mới nhưng ghi chậm hơn và tốn bộ nhớ). Kết hợp cả hai + đặt <strong>TTL</strong> là thực hành tốt.</p>
+<p><strong>Đề thi phổ biến:</strong> "Ứng dụng chạy trên nhiều EC2 sau ALB, người dùng bị đăng xuất khi chuyển máy" → lưu <strong>session vào ElastiCache Redis</strong> (hoặc DynamoDB), thay vì bật sticky session.</p>
+<h2 id="66-amazon-redshift">6.6. Amazon Redshift</h2>
+<ul>
+<li><strong>Data warehouse</strong> cột (columnar), <strong>MPP (Massively Parallel Processing)</strong>, dùng SQL chuẩn, tích hợp BI (QuickSight, Tableau).</li>
+<li>Kiến trúc: <strong>Leader node</strong> (nhận truy vấn, lập kế hoạch) + <strong>Compute nodes</strong> (thực thi song song, chia thành slice).</li>
+<li><strong>Redshift Spectrum:</strong> Truy vấn trực tiếp dữ liệu trên <strong>S3</strong> mà không cần nạp vào cluster.</li>
+<li><strong>Redshift Serverless:</strong> Không quản lý cluster, tự scale theo tải.</li>
+<li><strong>Concurrency Scaling:</strong> Tự thêm cluster tạm khi có nhiều truy vấn đồng thời.</li>
+<li><strong>Distribution Style</strong> (KEY, EVEN, ALL, AUTO) và <strong>Sort Key</strong> quyết định hiệu năng.</li>
+<li><strong>Snapshot</strong> tự động lưu trên S3, hỗ trợ <strong>cross-region copy</strong>; <strong>Redshift Multi-AZ</strong> cho HA.</li>
+<li><strong>AQUA</strong>, <strong>materialized views</strong>, <strong>Data Sharing</strong> giữa các cluster.</li>
+<li><strong>Không phải OLTP.</strong> Nếu đề nói giao dịch nhiều, ghi nhỏ liên tục → RDS/Aurora/DynamoDB, không phải Redshift.</li>
+</ul>
+<h2 id="67-các-cơ-sở-dữ-liệu-chuyên-biệt">6.7. Các cơ sở dữ liệu chuyên biệt</h2>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Mô hình</th>
+<th>Đặc trưng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Amazon Neptune</strong></td>
+<td>Graph (Gremlin, openCypher, SPARQL)</td>
+<td>Mạng xã hội, knowledge graph, phát hiện gian lận, gợi ý; 15 read replica, 3 AZ</td>
+</tr>
+<tr>
+<td><strong>Amazon DocumentDB</strong></td>
+<td>Document (tương thích MongoDB)</td>
+<td>Lưu JSON, scale storage tự động tới 64 TB, nhân bản 6 bản/3 AZ</td>
+</tr>
+<tr>
+<td><strong>Amazon Keyspaces</strong></td>
+<td>Wide-column (tương thích Cassandra)</td>
+<td>Serverless, scale tự động, dùng CQL</td>
+</tr>
+<tr>
+<td><strong>Amazon Timestream</strong></td>
+<td>Time-series</td>
+<td>IoT, metric ứng dụng; tự tiering nóng/lạnh; nhanh hơn DB quan hệ 1.000 lần với chi phí 1/10</td>
+</tr>
+<tr>
+<td><strong>Amazon QLDB</strong></td>
+<td>Ledger</td>
+<td>Nhật ký bất biến, có <strong>journal chỉ ghi thêm (append-only)</strong>, xác thực bằng mật mã (SHA-256). Khác blockchain: <strong>tập trung, không phi tập trung</strong></td>
+</tr>
+<tr>
+<td><strong>Amazon Managed Blockchain</strong></td>
+<td>Blockchain</td>
+<td>Hyperledger Fabric, Ethereum – <strong>phi tập trung</strong>, nhiều bên</td>
+</tr>
+<tr>
+<td><strong>Amazon MemoryDB for Redis</strong></td>
+<td>In-memory <strong>bền vững</strong></td>
+<td>Redis nhưng <strong>durable</strong> (multi-AZ transaction log) → dùng làm <strong>DB chính</strong>, không chỉ cache</td>
+</tr>
+</tbody>
+</table>
+<h2 id="68-di-chuyển-cơ-sở-dữ-liệu">6.8. Di chuyển cơ sở dữ liệu</h2>
+<ul>
+<li><strong>AWS DMS (Database Migration Service):</strong> Di chuyển DB với <strong>downtime tối thiểu</strong> – DB nguồn vẫn hoạt động trong lúc chuyển. Hỗ trợ <strong>homogeneous</strong> (Oracle → Oracle) và <strong>heterogeneous</strong> (Oracle → Aurora PostgreSQL, cần <strong>AWS SCT – Schema Conversion Tool</strong> để chuyển đổi schema/stored procedure trước). Có chế độ <strong>CDC (Change Data Capture)</strong> để đồng bộ liên tục.</li>
+<li><strong>AWS Application Migration Service (MGN):</strong> "Lift-and-shift" máy chủ vật lý/ảo lên EC2 (thay thế SMS).</li>
+<li><strong>AWS Migration Hub:</strong> Theo dõi tiến độ di chuyển tập trung.</li>
+<li><strong>AWS Application Discovery Service:</strong> Thu thập thông tin hạ tầng on-prem để lập kế hoạch.</li>
+<li><strong>7R chiến lược di chuyển:</strong> Rehost (lift &amp; shift), Replatform (lift, tinker &amp; shift), Repurchase (đổi sang SaaS), Refactor/Re-architect, Retire, Retain, Relocate (VMware Cloud on AWS).</li>
+</ul>
+<h1 id="phần-vii-mạng-và-phân-phối-nội-dung">PHẦN VII. MẠNG VÀ PHÂN PHỐI NỘI DUNG</h1>
+<h2 id="71-amazon-vpc--virtual-private-cloud">7.1. Amazon VPC – Virtual Private Cloud</h2>
+<h3 id="711-các-thành-phần-nền-tảng">7.1.1. Các thành phần nền tảng</h3>
+<ul>
+<li><strong>VPC:</strong> Mạng ảo riêng trong một Region, xác định bởi dải <strong>CIDR</strong> (từ <code>/16</code> = 65.536 IP tới <code>/28</code> = 16 IP). Dùng dải private RFC 1918: <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>. <strong>CIDR không thể thay đổi sau khi tạo</strong>, nhưng có thể <strong>thêm CIDR phụ (secondary CIDR)</strong>. Mặc định 5 VPC/Region.</li>
+<li><strong>Subnet:</strong> Nằm trong <strong>một AZ duy nhất</strong>. AWS <strong>giữ lại 5 địa chỉ IP</strong> trong mỗi subnet: <code>.0</code> (network), <code>.1</code> (VPC router), <code>.2</code> (DNS), <code>.3</code> (dự phòng tương lai), và địa chỉ cuối cùng (broadcast). Vậy subnet <code>/24</code> chỉ có <strong>251 IP khả dụng</strong>.</li>
+<li><strong>Public subnet</strong> = subnet có route table trỏ <code>0.0.0.0/0</code> tới <strong>Internet Gateway</strong>.</li>
+<li><strong>Private subnet</strong> = không có route trực tiếp ra IGW.</li>
+<li><strong>Route Table:</strong> Quy tắc định tuyến. Mỗi subnet liên kết đúng một route table (nếu không gán thì dùng <strong>main route table</strong>). Route được chọn theo nguyên tắc <strong>longest prefix match</strong> (route cụ thể hơn thắng).</li>
+<li><strong>Internet Gateway (IGW):</strong> Cổng ra Internet, <strong>HA và scale tự động</strong>, gắn 1-1 với VPC. Instance cần <strong>public IP hoặc EIP</strong> mới ra Internet được qua IGW.</li>
+<li><strong>NAT Gateway:</strong> Cho phép instance ở <strong>private subnet</strong> khởi tạo kết nối ra Internet (tải bản vá, gọi API) nhưng <strong>chặn kết nối từ Internet vào</strong>. Đặt ở <strong>public subnet</strong>, cần <strong>Elastic IP</strong>. <strong>NAT Gateway nằm trong một AZ</strong> → muốn HA phải <strong>đặt một NAT Gateway ở mỗi AZ</strong> và cấu hình route table riêng cho từng AZ. Băng thông tự scale tới 45 Gbps. <strong>Tính phí theo giờ + theo GB xử lý</strong> (một trong những nguồn chi phí ẩn lớn nhất).</li>
+<li><strong>NAT Instance:</strong> Cách cũ, tự quản lý EC2 – rẻ hơn nhưng phải tự lo HA, phải <strong>tắt Source/Destination Check</strong>. Đề thi hỏi "quản trị tối thiểu" → NAT Gateway; "chi phí thấp nhất, chấp nhận tự quản" → NAT Instance.</li>
+<li><strong>Egress-Only Internet Gateway:</strong> Bản NAT dành cho <strong>IPv6</strong> (IPv6 luôn là public nên cần cơ chế riêng để chỉ cho phép ra).</li>
+</ul>
+<h3 id="712-security-group-vs-network-acl--so-sánh-phải-thuộc">7.1.2. Security Group vs Network ACL – so sánh phải thuộc</h3>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th><strong>Security Group (SG)</strong></th>
+<th><strong>Network ACL (NACL)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cấp áp dụng</td>
+<td><strong>Instance / ENI</strong></td>
+<td><strong>Subnet</strong></td>
+</tr>
+<tr>
+<td>Có trạng thái</td>
+<td><strong>Stateful</strong> – traffic vào được phép thì trả về tự động được phép</td>
+<td><strong>Stateless</strong> – phải mở <strong>cả inbound và outbound</strong></td>
+</tr>
+<tr>
+<td>Loại rule</td>
+<td><strong>Chỉ ALLOW</strong></td>
+<td><strong>ALLOW và DENY</strong></td>
+</tr>
+<tr>
+<td>Thứ tự đánh giá</td>
+<td>Đánh giá <strong>tất cả rule</strong> rồi quyết định</td>
+<td>Theo <strong>số thứ tự rule từ nhỏ đến lớn</strong>, dừng ở rule khớp đầu tiên</td>
+</tr>
+<tr>
+<td>Mặc định</td>
+<td>Từ chối mọi inbound, cho phép mọi outbound</td>
+<td>Default NACL cho phép tất cả; NACL tự tạo <strong>từ chối tất cả</strong></td>
+</tr>
+<tr>
+<td>Tham chiếu SG khác</td>
+<td><strong>Có</strong> (rất hữu ích: cho phép SG-web gọi SG-db)</td>
+<td>Không, chỉ dùng CIDR</td>
+</tr>
+<tr>
+<td>Số lượng gắn</td>
+<td>Một ENI có thể gắn nhiều SG</td>
+<td>Một subnet chỉ có <strong>một</strong> NACL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ứng dụng thực tế:</strong> Dùng SG cho phần lớn nhu cầu; dùng NACL khi cần <strong>chặn (DENY) một dải IP cụ thể</strong> – vì SG không có rule DENY.</p>
+<p><strong>Ephemeral ports:</strong> Với NACL, phải mở outbound cổng <strong>1024–65535</strong> để phản hồi đi ra được.</p>
+<h3 id="713-vpc-endpoints--truy-cập-riêng-tư-tới-dịch-vụ-aws">7.1.3. VPC Endpoints – truy cập riêng tư tới dịch vụ AWS</h3>
+<table>
+<thead>
+<tr>
+<th>Loại</th>
+<th>Dịch vụ hỗ trợ</th>
+<th>Cơ chế</th>
+<th>Chi phí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Gateway Endpoint</strong></td>
+<td><strong>Chỉ S3 và DynamoDB</strong></td>
+<td>Thêm một <strong>route</strong> vào route table (prefix list)</td>
+<td><strong>Miễn phí</strong></td>
+</tr>
+<tr>
+<td><strong>Interface Endpoint (PrivateLink)</strong></td>
+<td>Hầu hết dịch vụ AWS + dịch vụ SaaS của bên thứ ba</td>
+<td>Tạo <strong>ENI có private IP</strong> trong subnet, gắn Security Group</td>
+<td>Tính phí theo giờ + theo GB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ghi nhớ:</strong> Đề hỏi "truy cập S3 từ private subnet <strong>mà không đi qua Internet, chi phí thấp nhất</strong>" → <strong>Gateway Endpoint</strong>. Nếu yêu cầu truy cập <strong>từ on-premises qua Direct Connect/VPN</strong> → phải dùng <strong>Interface Endpoint</strong> (Gateway Endpoint không dùng được từ ngoài VPC).</p>
+<p><strong>AWS PrivateLink:</strong> Cho phép expose dịch vụ của bạn (đứng sau <strong>NLB</strong> hoặc <strong>GWLB</strong>) cho hàng nghìn VPC khác mà không cần peering, không cần IGW, không lo trùng CIDR. Đây là cách mở rộng tốt nhất khi có rất nhiều consumer.</p>
+<h3 id="714-kết-nối-giữa-các-vpc">7.1.4. Kết nối giữa các VPC</h3>
+<table>
+<thead>
+<tr>
+<th>Giải pháp</th>
+<th>Đặc điểm</th>
+<th>Hạn chế</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VPC Peering</strong></td>
+<td>Kết nối 1-1, mạng riêng, băng thông cao, không tính phí giờ (chỉ phí data transfer)</td>
+<td><strong>Không transitive</strong> (A–B, B–C thì A không nói chuyện được với C); <strong>CIDR không được chồng lấn</strong>; phải cập nhật route table ở cả hai phía; số lượng peering tăng theo cấp số nhân (n(n-1)/2)</td>
+</tr>
+<tr>
+<td><strong>Transit Gateway (TGW)</strong></td>
+<td>Hub trung tâm, kết nối <strong>hàng nghìn VPC + VPN + Direct Connect</strong>, hỗ trợ <strong>transitive routing</strong>, có <strong>route table riêng</strong> để phân đoạn mạng, hỗ trợ <strong>multicast</strong>, <strong>cross-region peering</strong></td>
+<td>Có phí theo giờ mỗi attachment + phí data processing</td>
+</tr>
+<tr>
+<td><strong>VPC Sharing (AWS RAM)</strong></td>
+<td>Chia sẻ subnet của một VPC cho các account khác trong Organization</td>
+<td>Cần cùng Organization</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Đề thi:</strong> "Công ty có 50 VPC và 3 kết nối on-prem, cần đơn giản hóa quản lý mạng" → <strong>Transit Gateway</strong>.</p>
+<h3 id="715-kết-nối-lai-hybrid">7.1.5. Kết nối lai (Hybrid)</h3>
+<table>
+<thead>
+<tr>
+<th>Giải pháp</th>
+<th>Băng thông</th>
+<th>Độ trễ</th>
+<th>Bảo mật</th>
+<th>Thời gian triển khai</th>
+<th>Chi phí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Site-to-Site VPN</strong></td>
+<td>Tới <strong>1,25 Gbps mỗi tunnel</strong> (dùng ECMP với TGW để gộp nhiều tunnel)</td>
+<td>Biến thiên (qua Internet)</td>
+<td>IPsec mã hóa</td>
+<td><strong>Vài phút</strong></td>
+<td>Thấp</td>
+</tr>
+<tr>
+<td><strong>Direct Connect (DX)</strong></td>
+<td>50 Mbps – <strong>100 Gbps</strong> chuyên dụng</td>
+<td><strong>Ổn định, thấp</strong></td>
+<td>Riêng tư nhưng <strong>không mã hóa mặc định</strong></td>
+<td><strong>Vài tuần đến vài tháng</strong></td>
+<td>Cao (nhưng giảm mạnh phí data transfer out)</td>
+</tr>
+<tr>
+<td><strong>DX + VPN</strong></td>
+<td>–</td>
+<td>–</td>
+<td>Riêng tư <strong>và</strong> mã hóa IPsec</td>
+<td>–</td>
+<td>Cao nhất</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Site-to-Site VPN</strong> gồm <strong>Virtual Private Gateway (VGW)</strong> phía AWS và <strong>Customer Gateway (CGW)</strong> phía bạn. Mỗi kết nối có <strong>2 tunnel ở 2 AZ khác nhau</strong> để dự phòng.</li>
+<li><strong>Direct Connect:</strong> Có <strong>Dedicated Connection</strong> (cổng vật lý riêng) và <strong>Hosted Connection</strong> (qua đối tác, băng thông linh hoạt).</li>
+<li><strong>Private VIF</strong> → truy cập VPC (private IP).</li>
+<li><strong>Public VIF</strong> → truy cập dịch vụ public của AWS (S3, DynamoDB) qua đường DX.</li>
+<li><strong>Transit VIF</strong> → kết nối tới Transit Gateway.</li>
+<li><strong>Direct Connect Gateway:</strong> Cho phép một DX kết nối tới <strong>nhiều VPC ở nhiều Region</strong> (trừ Trung Quốc).</li>
+<li><strong>DR cho DX:</strong> Chạy <strong>hai kết nối DX ở hai vị trí khác nhau</strong> (đắt nhất, tốt nhất) hoặc <strong>DX chính + VPN dự phòng</strong> (tiết kiệm hơn).</li>
+<li><strong>MACsec</strong> cung cấp mã hóa lớp 2 trên DX 10/100 Gbps.</li>
+</ul>
+<h3 id="716-dns-trong-vpc">7.1.6. DNS trong VPC</h3>
+<ul>
+<li>Hai thuộc tính VPC: <code>enableDnsSupport</code> (dùng Amazon DNS resolver tại <code>VPC-CIDR + 2</code>) và <code>enableDnsHostnames</code> (cấp DNS hostname public cho instance).</li>
+<li><strong>Route 53 Resolver Endpoints:</strong> <em>Inbound endpoint</em> cho on-prem truy vấn DNS của AWS; <em>Outbound endpoint</em> + <strong>Resolver Rules</strong> để AWS chuyển tiếp truy vấn về DNS on-prem. Đây là câu trả lời cho "phân giải tên miền hai chiều giữa on-prem và VPC".</li>
+<li><strong>Route 53 Resolver DNS Firewall:</strong> Chặn truy vấn DNS tới domain độc hại (chống data exfiltration qua DNS).</li>
+</ul>
+<h3 id="717-giám-sát-mạng">7.1.7. Giám sát mạng</h3>
+<ul>
+<li><strong>VPC Flow Logs:</strong> Ghi metadata luồng IP (không ghi nội dung payload) ở cấp <strong>VPC / Subnet / ENI</strong>. Xuất ra <strong>CloudWatch Logs, S3, hoặc Kinesis Data Firehose</strong>. Trường quan trọng: srcaddr, dstaddr, srcport, dstport, protocol, packets, bytes, <strong>action (ACCEPT/REJECT)</strong>, log-status. Dùng để gỡ rối kết nối (SG/NACL chặn?), phát hiện bất thường; phân tích bằng <strong>Athena</strong>.</li>
+<li><strong>Bẫy:</strong> Flow Logs <strong>không ghi</strong> traffic tới Amazon DNS server, DHCP, metadata service <code>169.254.169.254</code>, license activation, và traffic giữa ENI với endpoint của NLB.</li>
+<li><strong>VPC Traffic Mirroring:</strong> Sao chép <strong>toàn bộ gói tin</strong> (payload) tới thiết bị phân tích – dùng cho IDS/IPS chuyên sâu.</li>
+<li><strong>VPC Reachability Analyzer:</strong> Kiểm tra tĩnh xem gói tin có đi được từ nguồn tới đích không, chỉ ra thành phần chặn.</li>
+<li><strong>Network Access Analyzer:</strong> Xác minh không có đường truy cập ngoài ý muốn.</li>
+</ul>
+<h3 id="718-chi-phí-mạng-cần-nhớ">7.1.8. Chi phí mạng cần nhớ</h3>
+<ul>
+<li>Dữ liệu <strong>vào (inbound) AWS: miễn phí</strong>.</li>
+<li>Dữ liệu <strong>ra Internet (egress): tính phí</strong> (đây là khoản lớn nhất).</li>
+<li>Trong <strong>cùng AZ, dùng private IP: miễn phí</strong>. Dùng public IP/Elastic IP: <strong>tính phí</strong>.</li>
+<li>Giữa các <strong>AZ trong cùng Region</strong>: tính phí <strong>cả hai chiều</strong> (~0,01 USD/GB mỗi chiều).</li>
+<li>Giữa các <strong>Region</strong>: tính phí cao hơn.</li>
+<li><strong>CloudFront → Internet rẻ hơn EC2 → Internet</strong>, và <strong>AWS → CloudFront miễn phí</strong> → dùng CloudFront là cách giảm chi phí egress hiệu quả.</li>
+</ul>
+<h2 id="72-amazon-route-53">7.2. Amazon Route 53</h2>
+<h3 id="721-tổng-quan">7.2.1. Tổng quan</h3>
+<p>DNS được quản lý, SLA khả dụng <strong>100%</strong> – dịch vụ duy nhất của AWS có SLA này. Đóng vai trò: đăng ký domain, phân giải DNS (authoritative), health check, và định tuyến traffic.</p>
+<p><strong>Hosted Zone:</strong> <em>Public</em> (phân giải trên Internet, 0,50 USD/tháng) và <em>Private</em> (chỉ phân giải trong VPC được liên kết).</p>
+<h3 id="722-record-types-và-alias-record">7.2.2. Record Types và Alias Record</h3>
+<p>Các loại record: <strong>A</strong> (IPv4), <strong>AAAA</strong> (IPv6), <strong>CNAME</strong>, <strong>NS</strong>, <strong>MX</strong>, <strong>TXT</strong>, <strong>PTR</strong>, <strong>SOA</strong>, <strong>SRV</strong>, <strong>CAA</strong>.</p>
+<p><strong>Alias vs CNAME – hay ra thi:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Alias Record</strong></th>
+<th><strong>CNAME Record</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dùng cho zone apex (<code>example.com</code>)</td>
+<td><strong>Được</strong></td>
+<td><strong>KHÔNG được</strong></td>
+</tr>
+<tr>
+<td>Chi phí truy vấn</td>
+<td><strong>Miễn phí</strong></td>
+<td>Tính phí</td>
+</tr>
+<tr>
+<td>Trỏ tới</td>
+<td>Tài nguyên AWS: ELB, CloudFront, S3 static website, API Gateway, Global Accelerator, VPC endpoint, hosted zone khác cùng account</td>
+<td>Bất kỳ tên miền nào</td>
+</tr>
+<tr>
+<td>Trỏ tới EC2 DNS name</td>
+<td><strong>Không</strong></td>
+<td>Có</td>
+</tr>
+<tr>
+<td>TTL</td>
+<td>Do AWS quản lý</td>
+<td>Tự đặt</td>
+</tr>
+<tr>
+<td>Health check</td>
+<td>Có thể đánh giá tình trạng target</td>
+<td>Không</td>
+</tr>
+</tbody>
+</table>
+<h3 id="723-bảy-chính-sách-định-tuyến-routing-policies">7.2.3. Bảy chính sách định tuyến (Routing Policies)</h3>
+<table>
+<thead>
+<tr>
+<th>Chính sách</th>
+<th>Cách hoạt động</th>
+<th>Trường hợp dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Simple</strong></td>
+<td>Trả về một hoặc nhiều giá trị (client chọn ngẫu nhiên). <strong>Không hỗ trợ health check</strong></td>
+<td>Một endpoint duy nhất</td>
+</tr>
+<tr>
+<td><strong>Weighted</strong></td>
+<td>Chia traffic theo tỉ lệ trọng số (weight 0 = ngừng gửi)</td>
+<td><strong>A/B testing, canary deployment</strong>, chuyển dần traffic sang Region mới</td>
+</tr>
+<tr>
+<td><strong>Latency-based</strong></td>
+<td>Trả về Region có <strong>độ trễ mạng thấp nhất</strong> với người dùng</td>
+<td>Ứng dụng đa Region cần hiệu năng tốt nhất</td>
+</tr>
+<tr>
+<td><strong>Failover (Active-Passive)</strong></td>
+<td>Trỏ về primary; khi health check fail thì chuyển sang secondary</td>
+<td><strong>DR</strong></td>
+</tr>
+<tr>
+<td><strong>Geolocation</strong></td>
+<td>Định tuyến theo <strong>vị trí địa lý của người dùng</strong> (châu lục/quốc gia/bang)</td>
+<td>Nội dung theo ngôn ngữ, hạn chế phân phối theo bản quyền, tuân thủ pháp lý</td>
+</tr>
+<tr>
+<td><strong>Geoproximity</strong></td>
+<td>Theo khoảng cách địa lý, có <strong>bias</strong> để mở rộng/thu hẹp vùng phục vụ</td>
+<td>Điều chỉnh tỉ lệ traffic giữa các Region theo địa lý (cần Traffic Flow)</td>
+</tr>
+<tr>
+<td><strong>Multivalue Answer</strong></td>
+<td>Trả về tối đa 8 record khỏe mạnh, ngẫu nhiên</td>
+<td>"Load balancing kiểu client-side" giá rẻ, <strong>không thay thế được ELB</strong></td>
+</tr>
+<tr>
+<td><strong>IP-based</strong></td>
+<td>Định tuyến theo dải CIDR của client</td>
+<td>Tối ưu theo nhà mạng (ISP)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phân biệt kinh điển:</strong> <em>Latency</em> = tối ưu <strong>tốc độ</strong>; <em>Geolocation</em> = tối ưu <strong>tuân thủ/nội dung theo vùng</strong>.</p>
+<h3 id="724-health-checks">7.2.4. Health Checks</h3>
+<p>Ba loại: (1) giám sát <strong>endpoint</strong> (IP/domain), (2) giám sát <strong>health check khác</strong> (calculated health check), (3) giám sát <strong>CloudWatch Alarm</strong> (dùng cho tài nguyên private vì health checker của Route 53 nằm ngoài Internet, không truy cập được private endpoint).</p>
+<p>Health checker đặt ở nhiều vị trí toàn cầu; endpoint bị coi là unhealthy nếu <strong>dưới 18% checker báo khỏe</strong>. Cần mở firewall cho dải IP của health checker.</p>
+<p><strong>TTL và DNS:</strong> TTL thấp giúp failover nhanh nhưng tăng số truy vấn (tăng chi phí). Trước khi migrate, nên hạ TTL xuống trước vài ngày.</p>
+<h2 id="73-amazon-cloudfront">7.3. Amazon CloudFront</h2>
+<h3 id="731-cơ-chế">7.3.1. Cơ chế</h3>
+<p>CDN với hơn <strong>400+ Edge Location</strong> và <strong>Regional Edge Cache</strong>. Cache nội dung gần người dùng → giảm độ trễ, giảm tải origin, giảm chi phí egress.</p>
+<p><strong>Origin hỗ trợ:</strong> S3 bucket (dùng <strong>OAC</strong>), S3 static website endpoint, ALB, EC2, MediaStore/MediaPackage, hoặc <strong>bất kỳ HTTP server nào kể cả on-premises</strong>.</p>
+<h3 id="732-bảo-mật-cloudfront">7.3.2. Bảo mật CloudFront</h3>
+<ul>
+<li><strong>Origin Access Control (OAC)</strong> – thay thế <strong>OAI (Origin Access Identity)</strong> đã cũ: Cho phép <strong>chỉ CloudFront</strong> đọc được S3 bucket private; kết hợp bucket policy chặn truy cập trực tiếp. OAC hỗ trợ SSE-KMS và mọi Region, nên <strong>luôn chọn OAC</strong> trong đề thi mới.</li>
+<li><strong>Signed URL</strong> (một file) và <strong>Signed Cookies</strong> (nhiều file) để phân phối nội dung trả phí có thời hạn. So với <strong>S3 Presigned URL</strong>: CloudFront Signed URL đi qua cache và hỗ trợ hạn chế theo IP/thời gian, dùng cho phân phối toàn cầu.</li>
+<li><strong>Geo Restriction:</strong> Whitelist/blacklist theo quốc gia.</li>
+<li><strong>Tích hợp AWS WAF và Shield</strong> ngay tại edge → chặn tấn công trước khi tới origin.</li>
+<li><strong>Field-Level Encryption:</strong> Mã hóa trường nhạy cảm (số thẻ) ngay tại edge bằng public key, chỉ ứng dụng có private key giải mã được.</li>
+<li><strong>HTTPS:</strong> Viewer protocol policy (redirect-to-https, https-only) và origin protocol policy. Chứng chỉ tùy chỉnh phải ở <strong>ACM Region us-east-1</strong>.</li>
+</ul>
+<h3 id="733-caching">7.3.3. Caching</h3>
+<ul>
+<li><strong>Cache key</strong> mặc định gồm host + path. Có thể thêm <strong>headers, cookies, query strings</strong> vào cache key qua <strong>Cache Policy</strong> – nhưng thêm càng nhiều thì <strong>cache hit ratio càng thấp</strong>.</li>
+<li><strong>Origin Request Policy:</strong> Quyết định thông tin nào <strong>chuyển tiếp tới origin</strong> mà <strong>không</strong> đưa vào cache key.</li>
+<li><strong>TTL:</strong> Điều khiển bằng header <code>Cache-Control: max-age</code>, <code>Expires</code> từ origin, hoặc Minimum/Maximum/Default TTL trong CloudFront.</li>
+<li><strong>Invalidation:</strong> Xóa cache thủ công theo path (<code>/images/*</code>) – 1.000 path miễn phí mỗi tháng. Thực hành tốt hơn: <strong>versioned filenames</strong> (<code>style.v2.css</code>).</li>
+<li><strong>Origin Groups:</strong> Origin chính + origin dự phòng → <strong>failover tự động</strong> khi origin chính lỗi.</li>
+<li><strong>Price Class:</strong> <code>All</code> (mọi edge), <code>200</code> (bỏ Nam Mỹ, Úc, NZ), <code>100</code> (chỉ Bắc Mỹ &amp; châu Âu – <strong>rẻ nhất</strong>).</li>
+</ul>
+<h3 id="734-cloudfront-functions-vs-lambdaedge">7.3.4. CloudFront Functions vs Lambda@Edge</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>CloudFront Functions</strong></th>
+<th><strong>Lambda@Edge</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chạy tại</td>
+<td>Edge Location (218+)</td>
+<td>Regional Edge Cache</td>
+</tr>
+<tr>
+<td>Ngôn ngữ</td>
+<td>JavaScript (ECMAScript 5.1)</td>
+<td>Node.js, Python</td>
+</tr>
+<tr>
+<td>Thời gian chạy tối đa</td>
+<td><strong>&lt; 1 mili-giây</strong></td>
+<td>5 giây (viewer) / 30 giây (origin)</td>
+</tr>
+<tr>
+<td>Bộ nhớ</td>
+<td>2 MB</td>
+<td>Tới 10 GB</td>
+</tr>
+<tr>
+<td>Truy cập mạng / hệ thống file</td>
+<td><strong>Không</strong></td>
+<td><strong>Có</strong></td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>Viewer request/response</td>
+<td>Viewer request/response, <strong>Origin request/response</strong></td>
+</tr>
+<tr>
+<td>Chi phí</td>
+<td>Rẻ hơn ~1/6</td>
+<td>Cao hơn</td>
+</tr>
+<tr>
+<td>Dùng cho</td>
+<td>Ghi/đổi header, redirect URL, kiểm tra token đơn giản, chuẩn hóa cache key</td>
+<td>Gọi API bên ngoài, xử lý ảnh, truy vấn DB, logic phức tạp, A/B testing sâu</td>
+</tr>
+</tbody>
+</table>
+<h2 id="74-aws-global-accelerator">7.4. AWS Global Accelerator</h2>
+<ul>
+<li>Cấp <strong>2 địa chỉ IP Anycast tĩnh</strong> (hoặc mang IP của bạn – BYOIP), đưa traffic vào <strong>mạng đường trục toàn cầu của AWS ngay tại edge gần nhất</strong> → cải thiện hiệu năng <strong>60%</strong>, failover <strong>dưới 1 phút</strong> (không phụ thuộc TTL DNS).</li>
+<li><strong>Hoạt động ở Layer 4 (TCP/UDP)</strong> – khác CloudFront (Layer 7, HTTP).</li>
+<li>Endpoint hỗ trợ: <strong>ALB, NLB, EC2, Elastic IP</strong>.</li>
+<li>Hỗ trợ <strong>traffic dial</strong> (chia % traffic theo endpoint group) và <strong>weight</strong> cho từng endpoint.</li>
+</ul>
+<p><strong>So sánh với CloudFront:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>CloudFront</strong></th>
+<th><strong>Global Accelerator</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bản chất</td>
+<td>CDN – <strong>cache nội dung</strong> tại edge</td>
+<td><strong>Tăng tốc mạng</strong> – không cache</td>
+</tr>
+<tr>
+<td>Giao thức</td>
+<td>HTTP/HTTPS</td>
+<td><strong>TCP và UDP</strong> (mọi giao thức)</td>
+</tr>
+<tr>
+<td>IP tĩnh</td>
+<td>Không</td>
+<td><strong>Có, 2 IP Anycast</strong></td>
+</tr>
+<tr>
+<td>Tối ưu cho</td>
+<td>Nội dung tĩnh &amp; động qua HTTP</td>
+<td>Game, VoIP, IoT, MQTT, ứng dụng non-HTTP, cần IP tĩnh, failover nhanh đa Region</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dùng cả hai:</strong> CloudFront cho nội dung web, Global Accelerator cho API/game backend.</p>
+<h1 id="phần-viii-tích-hợp-ứng-dụng-và-kiến-trúc-phi-tập-trung">PHẦN VIII. TÍCH HỢP ỨNG DỤNG VÀ KIẾN TRÚC PHI TẬP TRUNG</h1>
+<p>Nguyên tắc cốt lõi của kiến trúc bền bỉ: <strong>decoupling (tách rời)</strong>. Thay vì để thành phần A gọi trực tiếp thành phần B (tight coupling – B chết thì A chết theo), ta chèn một lớp trung gian (queue, topic, event bus, load balancer).</p>
+<h2 id="81-amazon-sqs--simple-queue-service">8.1. Amazon SQS – Simple Queue Service</h2>
+<h3 id="811-hai-loại-hàng-đợi">8.1.1. Hai loại hàng đợi</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Standard Queue</strong></th>
+<th><strong>FIFO Queue</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Throughput</td>
+<td><strong>Gần như không giới hạn</strong></td>
+<td>300 msg/s (3.000 nếu batch 10); <strong>high throughput mode</strong>: tới 70.000 msg/s</td>
+</tr>
+<tr>
+<td>Thứ tự</td>
+<td>Cố gắng giữ thứ tự, <strong>không đảm bảo</strong></td>
+<td><strong>Đảm bảo thứ tự tuyệt đối</strong> trong mỗi Message Group</td>
+</tr>
+<tr>
+<td>Trùng lặp</td>
+<td><strong>At-least-once</strong> (có thể nhận trùng) → ứng dụng phải <strong>idempotent</strong></td>
+<td><strong>Exactly-once</strong>, khử trùng lặp trong <strong>5 phút</strong> (dựa vào <code>MessageDeduplicationId</code> hoặc content-based hash)</td>
+</tr>
+<tr>
+<td>Tên hàng đợi</td>
+<td>Bất kỳ</td>
+<td>Phải kết thúc bằng <strong><code>.fifo</code></strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="812-các-tham-số-phải-nhớ">8.1.2. Các tham số phải nhớ</h3>
+<table>
+<thead>
+<tr>
+<th>Tham số</th>
+<th>Mặc định</th>
+<th>Khoảng giá trị</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visibility Timeout</strong></td>
+<td>30 giây</td>
+<td>0 giây – <strong>12 giờ</strong></td>
+<td>Thời gian message bị "ẩn" sau khi được nhận. Nếu consumer không xóa kịp → message xuất hiện lại → <strong>xử lý trùng</strong>. Gọi <code>ChangeMessageVisibility</code> để gia hạn</td>
+</tr>
+<tr>
+<td><strong>Message Retention</strong></td>
+<td>4 ngày</td>
+<td>60 giây – <strong>14 ngày</strong></td>
+<td>Thời gian giữ message chưa xử lý</td>
+</tr>
+<tr>
+<td><strong>Kích thước message</strong></td>
+<td>–</td>
+<td>Tối đa <strong>256 KB</strong></td>
+<td>Lớn hơn → dùng <strong>SQS Extended Client Library</strong> lưu payload trên <strong>S3</strong></td>
+</tr>
+<tr>
+<td><strong>Long Polling (<code>ReceiveMessageWaitTimeSeconds</code>)</strong></td>
+<td>0 (short polling)</td>
+<td>1 – <strong>20 giây</strong></td>
+<td><strong>Giảm số lời gọi API rỗng → giảm chi phí và độ trễ</strong>. Luôn nên bật</td>
+</tr>
+<tr>
+<td><strong>Delay Queue</strong></td>
+<td>0</td>
+<td>0 – <strong>15 phút</strong></td>
+<td>Hoãn hiển thị message</td>
+</tr>
+<tr>
+<td><strong>Message in flight</strong></td>
+<td>–</td>
+<td>120.000 (standard) / 20.000 (FIFO)</td>
+<td>Số message đang được xử lý</td>
+</tr>
+</tbody>
+</table>
+<h3 id="813-dead-letter-queue-dlq">8.1.3. Dead Letter Queue (DLQ)</h3>
+<p>Sau khi message bị nhận và trả lại quá <strong><code>maxReceiveCount</code></strong> lần (Redrive Policy), nó được chuyển sang DLQ để điều tra thay vì chặn hàng đợi. DLQ của Standard queue phải là Standard, của FIFO phải là FIFO. Có <strong>Redrive to Source</strong> để đưa message trở lại sau khi sửa lỗi. <strong>Nên đặt retention của DLQ là 14 ngày.</strong></p>
+<h3 id="814-mẫu-kiến-trúc-với-sqs">8.1.4. Mẫu kiến trúc với SQS</h3>
+<ul>
+<li><strong>Buffer chống spike:</strong> Web tier ghi vào SQS, worker tier (ASG) đọc ra xử lý → traffic đột biến không làm sập backend.</li>
+<li><strong>Scale worker theo độ sâu hàng đợi:</strong> Dùng metric CloudWatch <strong><code>ApproximateNumberOfMessagesVisible</code></strong> hoặc tốt hơn là <strong>backlog per instance</strong> để kích hoạt Auto Scaling. Đây là đáp án chuẩn cho câu hỏi "scale worker tier như thế nào".</li>
+<li><strong>Bảo mật:</strong> Mã hóa SSE bằng KMS, kiểm soát bằng SQS Access Policy (resource-based).</li>
+</ul>
+<h2 id="82-amazon-sns--simple-notification-service">8.2. Amazon SNS – Simple Notification Service</h2>
+<ul>
+<li>Mô hình <strong>pub/sub</strong>: một message publish tới <strong>Topic</strong> được gửi tới <strong>tất cả subscriber</strong> (tối đa 12,5 triệu subscription/topic).</li>
+<li>Subscriber: <strong>SQS, Lambda, HTTP/HTTPS endpoint, Email, SMS, Mobile Push (APNs, FCM), Kinesis Data Firehose</strong>.</li>
+<li><strong>Standard Topic</strong> và <strong>FIFO Topic</strong> (chỉ subscriber là SQS FIFO).</li>
+<li><strong>Message Filtering:</strong> Filter policy dựa trên message attribute → mỗi subscriber chỉ nhận loại message nó quan tâm.</li>
+<li><strong>Fan-out Pattern (rất hay ra thi):</strong> SNS Topic → nhiều SQS Queue. Ưu điểm: mỗi hệ thống hạ nguồn xử lý theo tốc độ riêng, có persistence, có retry và DLQ. Ví dụ: một sự kiện "đơn hàng mới" đẩy đồng thời sang queue thanh toán, queue kho, queue phân tích.</li>
+<li><strong>Message Data Protection:</strong> Phát hiện và che dữ liệu nhạy cảm trong message.</li>
+</ul>
+<h2 id="83-amazon-eventbridge-trước-là-cloudwatch-events">8.3. Amazon EventBridge (trước là CloudWatch Events)</h2>
+<ul>
+<li><strong>Serverless event bus</strong> – định tuyến sự kiện dựa trên <strong>rule khớp nội dung sự kiện (event pattern JSON)</strong>.</li>
+<li>Ba loại bus: <strong>Default</strong> (sự kiện AWS service), <strong>Custom</strong> (ứng dụng của bạn), <strong>Partner</strong> (SaaS: Datadog, Zendesk, Shopify, Auth0).</li>
+<li><strong>Schema Registry:</strong> Tự khám phá cấu trúc sự kiện và sinh code binding.</li>
+<li><strong>Scheduled Rules:</strong> cron/rate expression – thay thế cron server.</li>
+<li><strong>Archive &amp; Replay:</strong> Lưu sự kiện và phát lại để debug hoặc khôi phục.</li>
+<li><strong>Pipes:</strong> Kết nối point-to-point nguồn → đích với filter và enrichment.</li>
+<li>Hơn 20 loại target: Lambda, SQS, SNS, Step Functions, ECS task, Kinesis, SSM, API destination (HTTP endpoint bên ngoài).</li>
+</ul>
+<p><strong>SNS vs EventBridge:</strong> SNS đơn giản, throughput cực cao, độ trễ thấp, filter theo attribute. EventBridge mạnh về <strong>định tuyến theo nội dung, tích hợp SaaS, schema, archive/replay</strong> nhưng throughput thấp hơn và độ trễ cao hơn một chút. Đề nói "event-driven, filter phức tạp, tích hợp bên thứ ba, ít vận hành" → <strong>EventBridge</strong>.</p>
+<h2 id="84-aws-step-functions">8.4. AWS Step Functions</h2>
+<p>Điều phối workflow bằng <strong>state machine</strong> định nghĩa bằng <strong>ASL (Amazon States Language – JSON)</strong>. Có giao diện đồ họa theo dõi từng bước.</p>
+<ul>
+<li><strong>State types:</strong> Task, Choice (rẽ nhánh), Parallel, Map (lặp qua mảng), Wait, Pass, Succeed, Fail.</li>
+<li><strong>Tích hợp sẵn</strong> với Lambda, ECS, Batch, DynamoDB, SNS, SQS, Glue, SageMaker, EMR, API Gateway.</li>
+<li><strong>Xử lý lỗi tập trung:</strong> <code>Retry</code> (với backoff) và <code>Catch</code> – không cần viết logic retry trong code.</li>
+<li><strong>Hai loại workflow:</strong></li>
+<li><strong>Standard:</strong> Chạy tới <strong>1 năm</strong>, <strong>exactly-once</strong>, có lịch sử thực thi đầy đủ, trả tiền theo state transition. Dùng cho quy trình nghiệp vụ dài, cần audit.</li>
+<li><strong>Express:</strong> Chạy tối đa <strong>5 phút</strong>, <strong>at-least-once</strong>, throughput cực cao (100.000 lần khởi chạy/giây), trả tiền theo số lần chạy và thời lượng. Dùng cho xử lý stream, IoT, backend di động.</li>
+<li><strong>Callback pattern (<code>waitForTaskToken</code>)</strong>: Chờ hệ thống ngoài hoặc <strong>con người phê duyệt</strong> rồi mới tiếp tục.</li>
+</ul>
+<p><strong>Đề thi:</strong> "Quy trình nhiều bước có điều kiện, cần retry, cần thấy trạng thái từng bước, phối hợp nhiều Lambda" → <strong>Step Functions</strong> (không phải chuỗi Lambda gọi nhau).</p>
+<h2 id="85-amazon-api-gateway">8.5. Amazon API Gateway</h2>
+<ul>
+<li>Tạo, quản lý, bảo vệ API ở quy mô lớn. Ba loại: <strong>REST API</strong> (đầy đủ tính năng), <strong>HTTP API</strong> (rẻ hơn ~70%, độ trễ thấp hơn, ít tính năng hơn – dùng cho proxy Lambda đơn giản), <strong>WebSocket API</strong> (hai chiều, real-time chat/game).</li>
+<li><strong>Endpoint types:</strong> <em>Edge-optimized</em> (qua CloudFront, cho người dùng toàn cầu), <em>Regional</em>, <em>Private</em> (chỉ truy cập trong VPC qua Interface Endpoint).</li>
+<li><strong>Xác thực/ủy quyền:</strong> IAM (SigV4), <strong>Cognito User Pools</strong>, <strong>Lambda Authorizer</strong> (custom, hỗ trợ OAuth/JWT/bên thứ ba), API Keys (dùng kèm <strong>Usage Plans</strong> để giới hạn quota).</li>
+<li><strong>Throttling:</strong> Mặc định <strong>10.000 request/giây, burst 5.000</strong> mỗi Region – bảo vệ backend. Vượt quá trả về <strong>HTTP 429 Too Many Requests</strong>.</li>
+<li><strong>Caching:</strong> Cache response ở API Gateway (TTL mặc định 300s, 0–3600s) → giảm tải backend. Có thể invalidate bằng header <code>Cache-Control: max-age=0</code> (nên yêu cầu quyền IAM).</li>
+<li><strong>Stages</strong> (dev/test/prod) + <strong>Stage Variables</strong>, <strong>Canary Deployment</strong> để chuyển dần % traffic.</li>
+<li><strong>Mapping Templates (VTL)</strong> để chuyển đổi request/response (ví dụ XML ↔ JSON).</li>
+<li><strong>Integration types:</strong> Lambda proxy, HTTP, AWS service (ví dụ đẩy thẳng vào SQS/Kinesis không cần Lambda), Mock, VPC Link (tới NLB trong private VPC).</li>
+</ul>
+<h2 id="86-streaming-dữ-liệu--amazon-kinesis">8.6. Streaming dữ liệu – Amazon Kinesis</h2>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Chức năng</th>
+<th>Đặc điểm cần nhớ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Kinesis Data Streams</strong></td>
+<td>Thu nhận stream <strong>real-time</strong>, tự quản consumer</td>
+<td>Chia <strong>shard</strong>: mỗi shard 1 MB/s ghi, 2 MB/s đọc, 1.000 record/s ghi. Giữ dữ liệu <strong>24 giờ (mặc định) tới 365 ngày</strong> → <strong>có thể replay</strong>. Đảm bảo thứ tự trong shard theo <strong>partition key</strong>. Hai chế độ: <strong>Provisioned</strong> và <strong>On-Demand</strong></td>
+</tr>
+<tr>
+<td><strong>Kinesis Data Firehose</strong></td>
+<td><strong>Nạp (deliver)</strong> stream vào đích, fully managed</td>
+<td><strong>Near real-time</strong> (buffer theo kích thước 1–128 MB hoặc thời gian 0–900 giây). Đích: <strong>S3, Redshift, OpenSearch, Splunk, HTTP endpoint</strong>. <strong>Không lưu trữ, không replay</strong>. Tự động scale, có thể chuyển đổi dữ liệu bằng Lambda và chuyển sang Parquet/ORC</td>
+</tr>
+<tr>
+<td><strong>Managed Service for Apache Flink</strong> (trước là Kinesis Data Analytics)</td>
+<td>Phân tích stream bằng <strong>SQL hoặc Apache Flink</strong> theo thời gian thực</td>
+<td>Tính toán cửa sổ trượt, phát hiện bất thường</td>
+</tr>
+<tr>
+<td><strong>Kinesis Video Streams</strong></td>
+<td>Stream video từ thiết bị lên AWS</td>
+<td>Phân tích video bằng Rekognition</td>
+</tr>
+<tr>
+<td><strong>Amazon MSK</strong></td>
+<td>Apache Kafka được quản lý</td>
+<td>Khi tổ chức <strong>đã dùng Kafka</strong>; message tới <strong>1 MB mặc định, cấu hình được tới 10 MB</strong> (Kinesis giới hạn 1 MB); lưu trữ <strong>không giới hạn thời gian</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>SQS vs Kinesis – phân biệt kinh điển:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>SQS</strong></th>
+<th><strong>Kinesis Data Streams</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mô hình</td>
+<td>Hàng đợi, <strong>message bị xóa sau khi xử lý</strong></td>
+<td>Stream, dữ liệu <strong>giữ lại và có thể đọc lại nhiều lần</strong></td>
+</tr>
+<tr>
+<td>Số consumer</td>
+<td>Mỗi message cho <strong>một</strong> consumer</td>
+<td><strong>Nhiều ứng dụng đọc song song cùng dữ liệu</strong></td>
+</tr>
+<tr>
+<td>Replay</td>
+<td>Không</td>
+<td><strong>Có</strong></td>
+</tr>
+<tr>
+<td>Thứ tự</td>
+<td>Chỉ FIFO queue</td>
+<td>Đảm bảo trong shard</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td>Tự động, không cần nghĩ</td>
+<td>Phải quản lý shard (trừ On-Demand)</td>
+</tr>
+<tr>
+<td>Dùng khi</td>
+<td>Decouple, buffer công việc</td>
+<td>Analytics real-time, log/clickstream/IoT, nhiều consumer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="87-amazon-mq-và-appsync">8.7. Amazon MQ và AppSync</h2>
+<ul>
+<li><strong>Amazon MQ:</strong> Message broker được quản lý cho <strong>ActiveMQ / RabbitMQ</strong>, hỗ trợ giao thức chuẩn <strong>MQTT, AMQP, STOMP, JMS, OpenWire</strong>. Dùng khi <strong>di chuyển ứng dụng cũ on-premises</strong> đã dùng các giao thức này mà không muốn viết lại code sang SQS/SNS. Không scale bằng SQS/SNS; chạy trên broker cụ thể, có Multi-AZ active/standby.</li>
+<li><strong>AWS AppSync:</strong> GraphQL được quản lý, hợp nhất dữ liệu từ DynamoDB, Aurora, Lambda, OpenSearch, HTTP; hỗ trợ <strong>real-time subscription</strong> và <strong>offline sync</strong> cho ứng dụng di động.</li>
+</ul>
+<h1 id="phần-ix-phân-tích-dữ-liệu">PHẦN IX. PHÂN TÍCH DỮ LIỆU</h1>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Vai trò</th>
+<th>Điểm cần nhớ cho kỳ thi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Amazon Athena</strong></td>
+<td>Truy vấn <strong>SQL serverless</strong> trực tiếp trên S3</td>
+<td>Trả tiền <strong>theo lượng dữ liệu quét</strong> (~5 USD/TB). Tối ưu chi phí: dùng định dạng <strong>cột (Parquet/ORC)</strong>, <strong>nén</strong>, <strong>partition</strong> dữ liệu → giảm tới 90% chi phí. Dùng cho phân tích ad-hoc, truy vấn log (VPC Flow Logs, CloudTrail, ALB logs)</td>
+</tr>
+<tr>
+<td><strong>AWS Glue</strong></td>
+<td><strong>ETL serverless</strong> + <strong>Data Catalog</strong></td>
+<td><strong>Glue Crawler</strong> tự quét S3 để suy ra schema và điền vào <strong>Data Catalog</strong> (metastore dùng chung cho Athena, Redshift Spectrum, EMR). <strong>Glue DataBrew</strong> cho làm sạch dữ liệu không cần code</td>
+</tr>
+<tr>
+<td><strong>Amazon EMR</strong></td>
+<td>Cụm Hadoop/Spark/Hive/Presto/HBase được quản lý</td>
+<td>Dùng khi cần xử lý <strong>big data phức tạp, tùy chỉnh sâu</strong>; kết hợp <strong>Spot Instance cho task node</strong> để tiết kiệm. Có EMR Serverless</td>
+</tr>
+<tr>
+<td><strong>Amazon OpenSearch Service</strong></td>
+<td>Tìm kiếm toàn văn + phân tích &amp; trực quan hóa log</td>
+<td>Kết hợp Firehose để nạp log; có <strong>OpenSearch Dashboards</strong>; hỗ trợ <strong>UltraWarm/Cold storage</strong> cho log cũ để giảm chi phí</td>
+</tr>
+<tr>
+<td><strong>Amazon QuickSight</strong></td>
+<td>BI/dashboard serverless</td>
+<td><strong>SPICE</strong> – engine in-memory tăng tốc; hỗ trợ ML Insights, <strong>row-level security</strong>, nhúng dashboard</td>
+</tr>
+<tr>
+<td><strong>AWS Lake Formation</strong></td>
+<td>Xây dựng <strong>data lake</strong> trên S3, quản lý quyền tập trung</td>
+<td>Phân quyền tới <strong>cấp cột, hàng, ô</strong> cho Athena/Redshift/EMR</td>
+</tr>
+<tr>
+<td><strong>AWS Data Exchange</strong></td>
+<td>Mua/đăng ký dữ liệu bên thứ ba</td>
+<td>–</td>
+</tr>
+<tr>
+<td><strong>Amazon Kinesis</strong></td>
+<td>Xem Phần VIII</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Kiến trúc data lake điển hình:</strong> Nguồn dữ liệu → <strong>Kinesis Firehose</strong> → <strong>S3 (raw zone)</strong> → <strong>Glue ETL</strong> chuyển sang Parquet → <strong>S3 (curated zone)</strong> → <strong>Glue Data Catalog</strong> → <strong>Athena / Redshift Spectrum</strong> → <strong>QuickSight</strong>.</p>
+<h1 id="phần-x-giám-sát-vận-hành-và-tự-động-hóa">PHẦN X. GIÁM SÁT, VẬN HÀNH VÀ TỰ ĐỘNG HÓA</h1>
+<h2 id="101-amazon-cloudwatch">10.1. Amazon CloudWatch</h2>
+<h3 id="1011-metrics">10.1.1. Metrics</h3>
+<ul>
+<li>Metric mặc định lấy <strong>mỗi 5 phút</strong> (basic monitoring, miễn phí). Bật <strong>Detailed Monitoring</strong> để lấy <strong>mỗi 1 phút</strong> (có phí). <strong>High-resolution custom metric</strong> có thể tới <strong>1 giây</strong>.</li>
+<li><strong>Metric mà EC2 KHÔNG tự gửi (bẫy kinh điển):</strong> <strong>Memory (RAM) usage</strong> và <strong>Disk space utilization</strong>. Phải cài <strong>CloudWatch Agent</strong> (hoặc unified agent) để thu thập. EC2 chỉ tự gửi: CPUUtilization, NetworkIn/Out, DiskReadOps/WriteOps (của instance store), StatusCheck.</li>
+<li><strong>Custom Metrics:</strong> Gửi bằng <code>PutMetricData</code>.</li>
+<li><strong>Metric Math</strong> để tính toán tổng hợp; <strong>Anomaly Detection</strong> dùng ML tạo dải kỳ vọng.</li>
+</ul>
+<h3 id="1012-logs">10.1.2. Logs</h3>
+<ul>
+<li><strong>Log Group</strong> → <strong>Log Stream</strong> → <strong>Log Event</strong>. Retention mặc định là <strong>Never Expire</strong> (nên đặt hạn để tiết kiệm chi phí).</li>
+<li>Nguồn: CloudWatch Agent, Lambda, ECS, API Gateway, VPC Flow Logs, Route 53, CloudTrail.</li>
+<li><strong>Metric Filters:</strong> Biến pattern trong log thành metric → gắn alarm (ví dụ đếm số lần "ERROR" hoặc số lần đăng nhập root thất bại).</li>
+<li><strong>CloudWatch Logs Insights:</strong> Ngôn ngữ truy vấn để phân tích log tương tác.</li>
+<li><strong>Subscription Filters:</strong> Đẩy log real-time sang Kinesis Data Streams, Firehose, Lambda, OpenSearch.</li>
+<li><strong>Export to S3</strong> cho lưu trữ dài hạn giá rẻ (chậm, tới 12 giờ).</li>
+</ul>
+<h3 id="1013-alarms">10.1.3. Alarms</h3>
+<p>Ba trạng thái: <code>OK</code>, <code>ALARM</code>, <code>INSUFFICIENT_DATA</code>. Hành động: gửi <strong>SNS</strong>, kích hoạt <strong>Auto Scaling</strong>, <strong>EC2 Action</strong> (stop/terminate/reboot/recover).</p>
+<p><strong>EC2 Auto Recovery:</strong> Alarm trên <code>StatusCheckFailed_System</code> → tự khôi phục instance sang phần cứng mới, <strong>giữ nguyên instance ID, private IP, Elastic IP, metadata</strong>. Lưu ý phân biệt: <code>StatusCheckFailed_Instance</code> (lỗi phần mềm/OS – cần reboot), <code>StatusCheckFailed_System</code> (lỗi hạ tầng AWS – cần recover).</p>
+<p><strong>Composite Alarms:</strong> Kết hợp nhiều alarm bằng AND/OR → giảm nhiễu cảnh báo.</p>
+<h3 id="1014-các-thành-phần-khác">10.1.4. Các thành phần khác</h3>
+<ul>
+<li><strong>CloudWatch Dashboards:</strong> Bảng điều khiển tùy chỉnh, <strong>cross-region và cross-account</strong>.</li>
+<li><strong>CloudWatch Synthetics Canary:</strong> Script mô phỏng người dùng gọi endpoint theo lịch → phát hiện lỗi trước khi người dùng thật gặp.</li>
+<li><strong>CloudWatch RUM:</strong> Thu thập hiệu năng thực tế từ trình duyệt người dùng.</li>
+<li><strong>CloudWatch Contributor Insights:</strong> Tìm "top talker" gây tải cao.</li>
+<li><strong>Amazon Managed Service for Prometheus / Grafana:</strong> Cho môi trường container/K8s.</li>
+</ul>
+<h2 id="102-aws-x-ray">10.2. AWS X-Ray</h2>
+<p><strong>Distributed tracing</strong> – theo dõi request đi qua nhiều dịch vụ (microservices), dựng <strong>Service Map</strong>, đo độ trễ từng đoạn, tìm nút thắt cổ chai và lỗi. Cần cài <strong>X-Ray SDK</strong> trong code và <strong>X-Ray daemon</strong> (hoặc bật tracing với Lambda/API Gateway). Đề nói "tìm xem microservice nào gây chậm" → <strong>X-Ray</strong>.</p>
+<h2 id="103-aws-systems-manager-ssm">10.3. AWS Systems Manager (SSM)</h2>
+<p>Bộ công cụ vận hành tập trung cho cả EC2 và máy on-premises (cần cài <strong>SSM Agent</strong> + IAM role phù hợp).</p>
+<table>
+<thead>
+<tr>
+<th>Tính năng</th>
+<th>Công dụng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Session Manager</strong></td>
+<td>SSH/RDP vào instance <strong>không cần mở port 22, không cần bastion host, không cần key pair</strong>; có log phiên làm việc. <strong>Đáp án chuẩn cho câu hỏi "truy cập an toàn nhất vào EC2 trong private subnet"</strong></td>
+</tr>
+<tr>
+<td><strong>Patch Manager</strong></td>
+<td>Tự động vá lỗi hàng loạt theo baseline và maintenance window</td>
+</tr>
+<tr>
+<td><strong>Run Command</strong></td>
+<td>Chạy lệnh/script trên hàng loạt instance, không cần SSH</td>
+</tr>
+<tr>
+<td><strong>Parameter Store</strong></td>
+<td>Lưu cấu hình và secret (SecureString)</td>
+</tr>
+<tr>
+<td><strong>State Manager</strong></td>
+<td>Duy trì trạng thái cấu hình mong muốn</td>
+</tr>
+<tr>
+<td><strong>Automation</strong></td>
+<td>Runbook tự động hóa tác vụ vận hành (tạo AMI, khởi động lại dịch vụ)</td>
+</tr>
+<tr>
+<td><strong>Inventory</strong></td>
+<td>Kiểm kê phần mềm cài trên instance</td>
+</tr>
+<tr>
+<td><strong>Fleet Manager</strong></td>
+<td>Quản lý toàn bộ đội máy chủ qua giao diện</td>
+</tr>
+<tr>
+<td><strong>OpsCenter</strong></td>
+<td>Tập trung xử lý sự cố vận hành</td>
+</tr>
+</tbody>
+</table>
+<h2 id="104-infrastructure-as-code">10.4. Infrastructure as Code</h2>
+<ul>
+<li><strong>AWS CloudFormation:</strong> Định nghĩa hạ tầng bằng <strong>YAML/JSON template</strong>. Khái niệm: <strong>Stack</strong>, <strong>Change Sets</strong> (xem trước thay đổi), <strong>StackSets</strong> (triển khai một stack ra <strong>nhiều account và nhiều Region</strong> cùng lúc), <strong>Drift Detection</strong> (phát hiện thay đổi thủ công), <strong>Nested Stacks</strong>, <strong>Rollback tự động</strong> khi lỗi. Các section trong template: <code>Parameters</code>, <code>Mappings</code>, <code>Conditions</code>, <code>Resources</code> (bắt buộc), <code>Outputs</code>, <code>Transform</code>. <strong>DeletionPolicy: Retain/Snapshot</strong> để giữ dữ liệu khi xóa stack.</li>
+<li><strong>AWS CDK (Cloud Development Kit):</strong> Viết hạ tầng bằng ngôn ngữ lập trình (TypeScript, Python, Java, C#) rồi biên dịch ra CloudFormation.</li>
+<li><strong>AWS SAM:</strong> Framework tối giản cho ứng dụng serverless.</li>
+<li><strong>AWS Service Catalog:</strong> Danh mục sản phẩm hạ tầng đã được phê duyệt để người dùng tự phục vụ trong khuôn khổ cho phép.</li>
+<li><strong>AWS Proton:</strong> Quản lý template hạ tầng cho đội platform và developer.</li>
+<li><strong>AWS Amplify:</strong> Nền tảng phát triển frontend/full-stack (hosting, auth, API, storage).</li>
+</ul>
+<h2 id="105-cicd-trên-aws">10.5. CI/CD trên AWS</h2>
+<p><strong>CodeCommit</strong> (Git repo) → <strong>CodeBuild</strong> (build &amp; test) → <strong>CodeDeploy</strong> (triển khai lên EC2/ECS/Lambda/on-prem, hỗ trợ <strong>In-place</strong> và <strong>Blue/Green</strong>) → <strong>CodePipeline</strong> (điều phối toàn bộ). <strong>CodeArtifact</strong> lưu package dependency. <strong>CodeGuru</strong> review code và hồ sơ hiệu năng bằng ML.</p>
+<h2 id="106-hỗ-trợ-và-tối-ưu">10.6. Hỗ trợ và tối ưu</h2>
+<ul>
+<li><strong>AWS Trusted Advisor:</strong> Kiểm tra theo 5 nhóm: <strong>Cost Optimization, Performance, Security, Fault Tolerance, Service Limits</strong>. Gói Basic/Developer chỉ có 7 kiểm tra cốt lõi; <strong>Business/Enterprise mở khóa toàn bộ</strong> + API + tích hợp EventBridge.</li>
+<li><strong>AWS Health Dashboard (Personal Health Dashboard):</strong> Cảnh báo sự cố AWS <strong>ảnh hưởng trực tiếp tới tài nguyên của bạn</strong>, kèm lịch bảo trì.</li>
+<li><strong>AWS Compute Optimizer:</strong> Dùng ML phân tích metric để đề xuất right-sizing cho EC2, ASG, EBS, Lambda.</li>
+<li><strong>AWS Well-Architected Tool:</strong> Đánh giá kiến trúc theo 6 trụ cột và đưa ra khuyến nghị cải thiện.</li>
+<li><strong>AWS Resource Access Manager (RAM):</strong> Chia sẻ tài nguyên (subnet, Transit Gateway, License, Route 53 Resolver Rules) giữa các account trong Organization.</li>
+</ul>
+<h1 id="phần-xi-well-architected-framework-và-thiết-kế-kiến-trúc">PHẦN XI. WELL-ARCHITECTED FRAMEWORK VÀ THIẾT KẾ KIẾN TRÚC</h1>
+<h2 id="111-sáu-trụ-cột-six-pillars">11.1. Sáu trụ cột (Six Pillars)</h2>
+<table>
+<thead>
+<tr>
+<th>Trụ cột</th>
+<th>Câu hỏi trung tâm</th>
+<th>Nguyên tắc thiết kế chính</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Operational Excellence</strong> (Xuất sắc vận hành)</td>
+<td>Chúng ta vận hành và cải tiến hệ thống như thế nào?</td>
+<td>Hạ tầng dưới dạng code (IaC), thay đổi nhỏ và có thể đảo ngược, tự động hóa, rút kinh nghiệm từ sự cố, dự đoán lỗi</td>
+</tr>
+<tr>
+<td><strong>2. Security</strong> (Bảo mật)</td>
+<td>Dữ liệu và hệ thống được bảo vệ ra sao?</td>
+<td>Nền tảng danh tính vững chắc, khả năng truy vết (traceability), <strong>bảo mật ở mọi tầng (defense in depth)</strong>, tự động hóa bảo mật, mã hóa khi lưu và khi truyền, giảm thiểu truy cập trực tiếp của con người, chuẩn bị cho sự cố</td>
+</tr>
+<tr>
+<td><strong>3. Reliability</strong> (Độ tin cậy)</td>
+<td>Hệ thống có phục hồi được sau lỗi không?</td>
+<td><strong>Tự động khôi phục sau lỗi</strong>, kiểm thử quy trình phục hồi, <strong>scale ngang</strong> để tăng khả dụng, ngừng đoán dung lượng, quản lý thay đổi bằng tự động hóa</td>
+</tr>
+<tr>
+<td><strong>4. Performance Efficiency</strong> (Hiệu quả hiệu năng)</td>
+<td>Có dùng đúng tài nguyên cho đúng việc không?</td>
+<td>Dân chủ hóa công nghệ tiên tiến, triển khai toàn cầu trong vài phút, dùng <strong>serverless</strong>, thử nghiệm thường xuyên, <strong>mechanical sympathy</strong> (chọn công nghệ hợp bản chất bài toán)</td>
+</tr>
+<tr>
+<td><strong>5. Cost Optimization</strong> (Tối ưu chi phí)</td>
+<td>Có đang trả tiền thừa không?</td>
+<td>Áp dụng mô hình tiêu dùng theo nhu cầu, đo lường hiệu quả tổng thể, ngừng chi cho việc nâng đỡ data center, phân tích và quy trách nhiệm chi tiêu, dùng dịch vụ managed</td>
+</tr>
+<tr>
+<td><strong>6. Sustainability</strong> (Bền vững)</td>
+<td>Tác động môi trường ra sao?</td>
+<td>Hiểu tác động, đặt mục tiêu, tối đa hóa hiệu suất sử dụng, dùng phần cứng hiệu quả hơn (Graviton), giảm dữ liệu và tài nguyên dư thừa</td>
+</tr>
+</tbody>
+</table>
+<h2 id="112-nguyên-tắc-thiết-kế-cần-khắc-cốt-ghi-tâm">11.2. Nguyên tắc thiết kế cần khắc cốt ghi tâm</h2>
+<ol>
+<li><strong>Design for failure – "Everything fails, all the time" (Werner Vogels).</strong> Giả định mọi thành phần sẽ hỏng, và thiết kế để hệ thống vẫn hoạt động.</li>
+<li><strong>Loose coupling.</strong> Dùng SQS/SNS/EventBridge/ELB làm lớp trung gian.</li>
+<li><strong>Stateless application tier.</strong> Đẩy state ra ElastiCache/DynamoDB/S3 để có thể scale ngang và thay thế instance tự do.</li>
+<li><strong>Multi-AZ là mặc định cho production.</strong> Multi-Region khi có yêu cầu DR nghiêm ngặt hoặc phục vụ toàn cầu.</li>
+<li><strong>Automate everything.</strong> IaC, Auto Scaling, Auto Recovery, tự động vá lỗi.</li>
+<li><strong>Elasticity thay vì over-provisioning.</strong> Scale theo nhu cầu thật.</li>
+<li><strong>Security in depth.</strong> IAM least privilege + SG + NACL + WAF + mã hóa + audit.</li>
+<li><strong>Loại bỏ single point of failure (SPOF).</strong> Hỏi: "Nếu thành phần này chết, hệ thống có sống không?"</li>
+</ol>
+<h2 id="113-chiến-lược-disaster-recovery--rto-và-rpo">11.3. Chiến lược Disaster Recovery – RTO và RPO</h2>
+<ul>
+<li><strong>RPO (Recovery Point Objective):</strong> Chấp nhận <strong>mất bao nhiêu dữ liệu</strong> (đo ngược từ thời điểm sự cố về bản backup gần nhất). RPO nhỏ → phải backup/replicate thường xuyên hơn.</li>
+<li><strong>RTO (Recovery Time Objective):</strong> Chấp nhận <strong>hệ thống ngừng bao lâu</strong> trước khi hoạt động trở lại.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Chiến lược</th>
+<th>RPO</th>
+<th>RTO</th>
+<th>Chi phí</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Backup &amp; Restore</strong></td>
+<td>Giờ</td>
+<td><strong>24 giờ hoặc hơn</strong></td>
+<td><strong>Thấp nhất</strong></td>
+<td>Chỉ sao lưu dữ liệu sang Region khác (snapshot, S3 CRR, AWS Backup). Khi có sự cố mới dựng hạ tầng từ CloudFormation</td>
+</tr>
+<tr>
+<td><strong>Pilot Light</strong></td>
+<td>Phút</td>
+<td><strong>Hàng chục phút – vài giờ</strong></td>
+<td>Thấp</td>
+<td>Chỉ chạy <strong>các thành phần lõi</strong> (thường là <strong>database luôn được replicate</strong>), tầng compute tắt hoặc chưa tạo. Khi có sự cố thì "bật đèn lên" và scale</td>
+</tr>
+<tr>
+<td><strong>Warm Standby</strong></td>
+<td>Giây</td>
+<td><strong>Vài phút</strong></td>
+<td>Trung bình–cao</td>
+<td>Chạy <strong>bản sao thu nhỏ nhưng đầy đủ chức năng</strong> ở Region phụ. Khi sự cố thì <strong>scale up</strong> và chuyển DNS</td>
+</tr>
+<tr>
+<td><strong>Multi-Site / Hot Standby (Active-Active)</strong></td>
+<td><strong>Gần 0</strong></td>
+<td><strong>Gần 0</strong></td>
+<td><strong>Cao nhất</strong></td>
+<td>Hai Region cùng phục vụ traffic thật. Dùng Route 53 latency/weighted, Aurora Global Database, DynamoDB Global Tables</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ghi nhớ quy tắc chọn:</strong> RTO/RPO càng nhỏ → chi phí càng cao. Đề bài luôn cho biết ràng buộc; hãy chọn chiến lược <strong>rẻ nhất vẫn đáp ứng</strong> RTO/RPO đó.</p>
+<p>Các công cụ hỗ trợ: <strong>AWS Elastic Disaster Recovery (DRS)</strong> – nhân bản liên tục máy chủ với RPO tính bằng giây, RTO tính bằng phút; <strong>AWS Backup</strong> cho cross-region/cross-account; <strong>Route 53 Failover Routing</strong> + health check để chuyển traffic.</p>
+<h1 id="phần-xii-tối-ưu-chi-phí">PHẦN XII. TỐI ƯU CHI PHÍ</h1>
+<h2 id="121-công-cụ-quản-lý-chi-phí">12.1. Công cụ quản lý chi phí</h2>
+<table>
+<thead>
+<tr>
+<th>Công cụ</th>
+<th>Công dụng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS Cost Explorer</strong></td>
+<td>Trực quan hóa chi phí quá khứ (13 tháng), <strong>dự báo 12 tháng tới</strong>, đưa ra khuyến nghị mua RI/Savings Plans, phân tích theo dịch vụ/tag/account</td>
+</tr>
+<tr>
+<td><strong>AWS Budgets</strong></td>
+<td>Đặt ngân sách (chi phí, mức sử dụng, RI/SP utilization &amp; coverage) và <strong>cảnh báo qua SNS/email</strong> khi vượt hoặc <strong>dự báo sẽ vượt</strong>. Có <strong>Budget Actions</strong> để tự áp policy chặn chi tiêu</td>
+</tr>
+<tr>
+<td><strong>AWS Cost and Usage Report (CUR)</strong></td>
+<td>Báo cáo chi tiết nhất, xuất ra S3, phân tích bằng Athena/QuickSight/Redshift</td>
+</tr>
+<tr>
+<td><strong>Cost Allocation Tags</strong></td>
+<td>Gắn tag (AWS-generated hoặc user-defined) và <strong>kích hoạt trong Billing console</strong> để phân tách chi phí theo phòng ban/dự án</td>
+</tr>
+<tr>
+<td><strong>AWS Pricing Calculator</strong></td>
+<td>Ước tính chi phí trước khi triển khai</td>
+</tr>
+<tr>
+<td><strong>AWS Compute Optimizer</strong></td>
+<td>Đề xuất right-sizing dựa trên ML</td>
+</tr>
+<tr>
+<td><strong>AWS Cost Anomaly Detection</strong></td>
+<td>ML phát hiện chi tiêu bất thường và cảnh báo</td>
+</tr>
+<tr>
+<td><strong>Savings Plans / Reserved Instances Reports</strong></td>
+<td>Theo dõi mức tận dụng cam kết</td>
+</tr>
+<tr>
+<td><strong>Billing Alarms (CloudWatch)</strong></td>
+<td>Metric <code>EstimatedCharges</code> – <strong>chỉ có ở Region us-east-1</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="122-danh-sách-kiểm-tra-tối-ưu-chi-phí-áp-dụng-trong-đề-thi">12.2. Danh sách kiểm tra tối ưu chi phí (áp dụng trong đề thi)</h2>
+<p><strong>Compute:</strong>
+- Dùng <strong>Savings Plans / RI</strong> cho tải nền chạy 24/7; <strong>Spot</strong> cho batch/stateless; <strong>On-Demand</strong> cho phần biến động.
+- <strong>Right-sizing:</strong> giảm kích cỡ instance thừa (Compute Optimizer).
+- Chuyển sang <strong>Graviton (ARM)</strong> – hiệu năng/giá tốt hơn tới 40%.
+- <strong>Tắt tài nguyên dev/test ngoài giờ làm việc</strong> (Instance Scheduler / EventBridge + Lambda).
+- Chuyển sang <strong>serverless (Lambda/Fargate)</strong> nếu tải không liên tục.
+- Xóa <strong>EBS volume không gắn</strong>, <strong>snapshot cũ</strong>, <strong>Elastic IP không dùng</strong>, <strong>load balancer nhàn rỗi</strong>.</p>
+<p><strong>Storage:</strong>
+- Áp <strong>S3 Lifecycle Policy</strong> chuyển sang IA/Glacier; bật <strong>Intelligent-Tiering</strong> nếu mẫu truy cập khó đoán.
+- Xóa <strong>incomplete multipart uploads</strong>.
+- Chuyển <strong>gp2 → gp3</strong> (rẻ hơn ~20% với hiệu năng tốt hơn).
+- Dùng <strong>EFS Lifecycle Management</strong> chuyển sang IA/Archive.
+- Bật <strong>S3 Storage Lens</strong> để tìm điểm lãng phí.</p>
+<p><strong>Mạng:</strong>
+- Dùng <strong>CloudFront</strong> giảm phí egress; dùng <strong>VPC Gateway Endpoint (miễn phí)</strong> thay vì NAT Gateway khi chỉ truy cập S3/DynamoDB.
+- Gộp <strong>NAT Gateway</strong> hợp lý (nhưng cân nhắc phí liên AZ).
+- Giữ traffic <strong>trong cùng AZ</strong> khi có thể.</p>
+<p><strong>Database:</strong>
+- <strong>Aurora Serverless v2</strong> cho tải bất định; <strong>DynamoDB On-Demand</strong> cho tải không đoán trước.
+- Dùng <strong>Read Replica</strong> thay vì scale up instance chính.
+- Dùng <strong>ElastiCache</strong> để giảm số truy vấn tới DB.
+- Xóa snapshot thủ công cũ.</p>
+<p><strong>Tổ chức:</strong>
+- <strong>Consolidated Billing</strong> để hưởng volume discount và chia sẻ RI/SP.
+- Chuẩn hóa <strong>tagging</strong> và bật cost allocation tags.
+- Đặt <strong>AWS Budgets</strong> cho từng đội.</p>
+<h1 id="phần-xiii-các-mẫu-kiến-trúc-điển-hình-trong-đề-thi">PHẦN XIII. CÁC MẪU KIẾN TRÚC ĐIỂN HÌNH TRONG ĐỀ THI</h1>
+<h2 id="131-web-application-3-tầng-có-tính-sẵn-sàng-cao">13.1. Web application 3 tầng có tính sẵn sàng cao</h2>
+<p>Route 53 (alias) → CloudFront (cache tĩnh + WAF) → <strong>ALB trải trên ≥ 2 AZ (public subnet)</strong> → <strong>Auto Scaling Group EC2/ECS trong private subnet ở ≥ 2 AZ</strong> → <strong>RDS Multi-AZ (private subnet, DB subnet group ≥ 2 AZ)</strong> + <strong>ElastiCache</strong> cho session/cache + <strong>S3</strong> cho nội dung tĩnh và upload. NAT Gateway ở mỗi AZ cho private subnet ra Internet. Secrets Manager giữ mật khẩu DB. CloudWatch + X-Ray giám sát.</p>
+<h2 id="132-kiến-trúc-serverless">13.2. Kiến trúc serverless</h2>
+<p>CloudFront → <strong>S3 (frontend tĩnh)</strong>; API: <strong>API Gateway → Lambda → DynamoDB</strong>; xác thực bằng <strong>Cognito</strong>; xử lý bất đồng bộ qua <strong>SQS/EventBridge → Lambda</strong>; workflow bằng <strong>Step Functions</strong>; file upload dùng <strong>S3 presigned URL</strong> rồi kích hoạt Lambda qua <strong>S3 Event Notification</strong>.</p>
+<h2 id="133-xử-lý-ảnhvideo-khi-upload">13.3. Xử lý ảnh/video khi upload</h2>
+<p>Người dùng upload lên <strong>S3</strong> → <strong>S3 Event Notification</strong> → <strong>SQS</strong> (buffer, chống mất event) → <strong>Lambda</strong> hoặc <strong>ECS/Fargate worker</strong> (nếu &gt; 15 phút thì dùng <strong>AWS Batch</strong> hoặc <strong>MediaConvert</strong>) → lưu kết quả về S3 → cập nhật metadata vào <strong>DynamoDB</strong> → phân phối qua <strong>CloudFront</strong>.</p>
+<h2 id="134-phân-tích-log-tập-trung">13.4. Phân tích log tập trung</h2>
+<p>Nguồn (EC2 agent, VPC Flow Logs, ALB logs, CloudTrail) → <strong>CloudWatch Logs / Kinesis Data Firehose</strong> → <strong>S3</strong> (partition + Parquet) → truy vấn bằng <strong>Athena</strong>, trực quan hóa bằng <strong>QuickSight</strong>; log cần tìm kiếm real-time thì đẩy sang <strong>OpenSearch</strong>.</p>
+<h2 id="135-hybrid--mở-rộng-data-center-lên-aws">13.5. Hybrid – mở rộng data center lên AWS</h2>
+<p><strong>Direct Connect</strong> (chính) + <strong>Site-to-Site VPN</strong> (dự phòng) → <strong>Transit Gateway</strong> → nhiều VPC. <strong>Route 53 Resolver Endpoints</strong> cho DNS hai chiều. <strong>Storage Gateway</strong> mở rộng file share; <strong>DataSync</strong> đồng bộ dữ liệu; <strong>AWS Managed Microsoft AD</strong> hoặc <strong>AD Connector</strong> cho danh tính.</p>
+<h2 id="136-ứng-dụng-toàn-cầu-độ-trễ-thấp">13.6. Ứng dụng toàn cầu độ trễ thấp</h2>
+<p><strong>Route 53 latency-based routing</strong> → nhiều Region, mỗi Region có ALB + ASG; dữ liệu dùng <strong>Aurora Global Database</strong> (đọc cục bộ, ghi về Region chính) hoặc <strong>DynamoDB Global Tables</strong> (active-active); nội dung tĩnh qua <strong>CloudFront</strong>; API non-HTTP qua <strong>Global Accelerator</strong>; <strong>S3 CRR</strong> đồng bộ tài sản.</p>
+<h1 id="phần-xiv-ngân-hàng-câu-hỏi-ôn-tập-có-giải-thích">PHẦN XIV. NGÂN HÀNG CÂU HỎI ÔN TẬP CÓ GIẢI THÍCH</h1>
+<p><strong>Câu 1.</strong> Một công ty chạy ứng dụng web trên EC2 sau ALB. Người dùng phàn nàn bị đăng xuất ngẫu nhiên. Giải pháp nào ít thay đổi kiến trúc nhất mà vẫn khắc phục triệt để và cho phép scale?
+<em>Đáp án:</em> Lưu session ra <strong>ElastiCache for Redis</strong> (hoặc DynamoDB) để tầng ứng dụng trở thành stateless. Sticky session chỉ là giải pháp tạm và gây mất cân bằng tải.</p>
+<p><strong>Câu 2.</strong> Ứng dụng cần chia sẻ một thư mục dữ liệu giữa 20 EC2 chạy Linux ở 3 AZ, dung lượng tăng không đoán trước.
+<em>Đáp án:</em> <strong>Amazon EFS</strong> (Regional). EBS không gắn được nhiều instance khác AZ; FSx for Windows là SMB cho Windows.</p>
+<p><strong>Câu 3.</strong> Cần lưu trữ 500 TB log để tuân thủ trong 7 năm, hầu như không truy cập, nếu cần thì chấp nhận chờ 12 giờ. Rẻ nhất?
+<em>Đáp án:</em> <strong>S3 Glacier Deep Archive</strong> (kèm Lifecycle Policy chuyển từ Standard, và <strong>S3 Object Lock Compliance Mode</strong> nếu đề yêu cầu chống xóa).</p>
+<p><strong>Câu 4.</strong> Lambda trong VPC cần gọi Amazon S3 nhưng không được đi qua Internet, và cần chi phí thấp nhất.
+<em>Đáp án:</em> <strong>VPC Gateway Endpoint cho S3</strong> (miễn phí). NAT Gateway tốn phí; Interface Endpoint tốn phí hơn.</p>
+<p><strong>Câu 5.</strong> Đội bảo mật yêu cầu phát hiện hành vi bất thường như EC2 giao tiếp với IP mining tiền ảo, không muốn cài agent.
+<em>Đáp án:</em> <strong>Amazon GuardDuty</strong>.</p>
+<p><strong>Câu 6.</strong> Ứng dụng gửi hàng nghìn tin nhắn cần được xử lý <strong>đúng thứ tự</strong> và <strong>không trùng lặp</strong>.
+<em>Đáp án:</em> <strong>SQS FIFO Queue</strong> với Message Group ID phù hợp.</p>
+<p><strong>Câu 7.</strong> Cần chạy job phân tích 6 giờ mỗi đêm, chịu được gián đoạn, chi phí thấp nhất.
+<em>Đáp án:</em> <strong>AWS Batch trên Spot Instances</strong> (Lambda không đủ 15 phút).</p>
+<p><strong>Câu 8.</strong> DB Aurora ở us-east-1, cần khôi phục sang eu-west-1 với <strong>RPO dưới 1 phút, RTO vài phút</strong>.
+<em>Đáp án:</em> <strong>Aurora Global Database</strong>. Snapshot cross-region không đạt RPO này.</p>
+<p><strong>Câu 9.</strong> Ứng dụng game dùng UDP, cần IP tĩnh và failover nhanh giữa các Region.
+<em>Đáp án:</em> <strong>AWS Global Accelerator</strong> (CloudFront chỉ hỗ trợ HTTP; Route 53 phụ thuộc TTL DNS).</p>
+<p><strong>Câu 10.</strong> Cần cho phép developer truy cập shell vào EC2 ở private subnet mà không mở port 22 và không dựng bastion.
+<em>Đáp án:</em> <strong>AWS Systems Manager Session Manager</strong>.</p>
+<p><strong>Câu 11.</strong> Muốn ngăn mọi bucket S3 trong tổ chức bị đặt public, kể cả do người dùng vô ý.
+<em>Đáp án:</em> Bật <strong>S3 Block Public Access ở cấp account</strong> + <strong>SCP</strong> chặn hành động gỡ nó.</p>
+<p><strong>Câu 12.</strong> Ứng dụng đọc DynamoDB rất nhiều, muốn giảm độ trễ xuống mức micro-giây mà không sửa code.
+<em>Đáp án:</em> <strong>DynamoDB Accelerator (DAX)</strong>.</p>
+<p><strong>Câu 13.</strong> Traffic tăng đột biến mỗi khi có chiến dịch marketing, backend RDS bị quá tải và request bị mất.
+<em>Đáp án:</em> Chèn <strong>SQS</strong> giữa tầng web và tầng xử lý, worker đọc theo tốc độ chịu được; scale worker theo <code>ApproximateNumberOfMessagesVisible</code>.</p>
+<p><strong>Câu 14.</strong> Cần đảm bảo mọi object upload lên S3 đều được mã hóa bằng KMS, nếu không thì từ chối.
+<em>Đáp án:</em> <strong>Bucket policy</strong> với <code>Deny</code> khi <code>s3:x-amz-server-side-encryption</code> khác <code>aws:kms</code> (kết hợp bật default encryption).</p>
+<p><strong>Câu 15.</strong> Công ty muốn di chuyển 200 TB dữ liệu lên S3, đường truyền chỉ 100 Mbps.
+<em>Đáp án:</em> <strong>AWS Snowball Edge</strong> (200 TB qua 100 Mbps mất khoảng 6 tháng – không khả thi).</p>
+<p><strong>Câu 16.</strong> Cần một giải pháp cho phép nhiều VPC ở nhiều account truy cập một dịch vụ nội bộ mà không phơi ra Internet, không lo trùng CIDR.
+<em>Đáp án:</em> <strong>AWS PrivateLink</strong> (Interface Endpoint trỏ tới NLB của dịch vụ).</p>
+<p><strong>Câu 17.</strong> Ứng dụng cần đọc/ghi rất nhiều IOPS tạm thời (cache tính toán), dữ liệu mất cũng không sao, muốn IOPS cao nhất.
+<em>Đáp án:</em> <strong>Instance Store NVMe</strong>.</p>
+<p><strong>Câu 18.</strong> Cần audit "ai đã xóa security group này lúc nào".
+<em>Đáp án:</em> <strong>AWS CloudTrail</strong> (nếu cần biết cấu hình thay đổi thế nào theo thời gian và có tuân thủ không → <strong>AWS Config</strong>).</p>
+<p><strong>Câu 19.</strong> Ứng dụng web cần chống SQL Injection và giới hạn 2.000 request/5 phút mỗi IP.
+<em>Đáp án:</em> <strong>AWS WAF</strong> (managed rule SQLi + rate-based rule) gắn vào ALB hoặc CloudFront.</p>
+<p><strong>Câu 20.</strong> Cần đảm bảo mật khẩu RDS được xoay tự động mỗi 30 ngày.
+<em>Đáp án:</em> <strong>AWS Secrets Manager</strong> với rotation Lambda.</p>
+<p><strong>Câu 21.</strong> Cần triển khai một stack hạ tầng giống hệt nhau lên 30 account và 4 Region.
+<em>Đáp án:</em> <strong>CloudFormation StackSets</strong>.</p>
+<p><strong>Câu 22.</strong> Website tĩnh trên S3 cần dùng domain riêng và HTTPS.
+<em>Đáp án:</em> <strong>CloudFront + ACM certificate (us-east-1) + Route 53 alias record</strong>, S3 làm origin với <strong>OAC</strong>.</p>
+<p><strong>Câu 23.</strong> Cần phân tích 5 TB log ALB trên S3 chỉ vài lần mỗi tháng, không muốn duy trì hạ tầng.
+<em>Đáp án:</em> <strong>Amazon Athena</strong> (chuyển sang Parquet và partition để giảm chi phí quét).</p>
+<p><strong>Câu 24.</strong> ASG liên tục khởi tạo rồi hủy instance (thrashing).
+<em>Đáp án:</em> Tăng <strong>health check grace period</strong>, kiểm tra health check ELB, tăng <strong>cooldown</strong>, kiểm tra ngưỡng scaling quá sát nhau.</p>
+<p><strong>Câu 25.</strong> Cần giới hạn để dù developer có quyền IAM tạo role, họ cũng không tự nâng quyền lên admin.
+<em>Đáp án:</em> <strong>IAM Permissions Boundary</strong>.</p>
+<h1 id="phần-xv-bảng-so-sánh-nhanh--ôn-trước-giờ-thi">PHẦN XV. BẢNG SO SÁNH NHANH – ÔN TRƯỚC GIỜ THI</h1>
+<h2 id="151-các-cặp-dễ-nhầm">15.1. Các cặp dễ nhầm</h2>
+<table>
+<thead>
+<tr>
+<th>Cặp</th>
+<th>Khác biệt cốt lõi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Multi-AZ vs Read Replica</strong></td>
+<td>HA/failover <strong>vs</strong> scale đọc</td>
+</tr>
+<tr>
+<td><strong>SG vs NACL</strong></td>
+<td>Stateful, chỉ allow, cấp instance <strong>vs</strong> stateless, có deny, cấp subnet</td>
+</tr>
+<tr>
+<td><strong>CloudFront vs Global Accelerator</strong></td>
+<td>Cache HTTP tại edge <strong>vs</strong> tăng tốc TCP/UDP với IP tĩnh</td>
+</tr>
+<tr>
+<td><strong>SQS vs SNS</strong></td>
+<td>Pull, một consumer, lưu trữ <strong>vs</strong> push, nhiều subscriber, không lưu</td>
+</tr>
+<tr>
+<td><strong>SQS vs Kinesis</strong></td>
+<td>Xóa sau xử lý <strong>vs</strong> giữ lại, replay, nhiều consumer</td>
+</tr>
+<tr>
+<td><strong>Kinesis Data Streams vs Firehose</strong></td>
+<td>Real-time, tự quản shard, replay <strong>vs</strong> near real-time, tự động, nạp thẳng vào đích</td>
+</tr>
+<tr>
+<td><strong>EBS vs EFS vs S3</strong></td>
+<td>Block 1 máy 1 AZ <strong>vs</strong> file nhiều máy nhiều AZ <strong>vs</strong> object qua HTTP</td>
+</tr>
+<tr>
+<td><strong>Gateway vs Interface Endpoint</strong></td>
+<td>Chỉ S3/DynamoDB, route, miễn phí <strong>vs</strong> hầu hết dịch vụ, ENI, có phí, dùng được từ on-prem</td>
+</tr>
+<tr>
+<td><strong>VPC Peering vs Transit Gateway</strong></td>
+<td>1-1, không transitive <strong>vs</strong> hub, transitive, hàng nghìn kết nối</td>
+</tr>
+<tr>
+<td><strong>CloudTrail vs CloudWatch vs Config</strong></td>
+<td>API audit <strong>vs</strong> metric/log hiệu năng <strong>vs</strong> cấu hình &amp; tuân thủ</td>
+</tr>
+<tr>
+<td><strong>GuardDuty vs Inspector vs Macie</strong></td>
+<td>Mối đe dọa từ log <strong>vs</strong> lỗ hổng CVE trên workload <strong>vs</strong> dữ liệu nhạy cảm trong S3</td>
+</tr>
+<tr>
+<td><strong>Secrets Manager vs Parameter Store</strong></td>
+<td>Có phí, tự rotate <strong>vs</strong> miễn phí (standard), không tự rotate</td>
+</tr>
+<tr>
+<td><strong>Latency vs Geolocation routing</strong></td>
+<td>Nhanh nhất <strong>vs</strong> đúng vùng địa lý</td>
+</tr>
+<tr>
+<td><strong>Alias vs CNAME</strong></td>
+<td>Zone apex được, miễn phí, chỉ AWS resource <strong>vs</strong> không dùng cho apex, có phí, trỏ mọi nơi</td>
+</tr>
+<tr>
+<td><strong>CloudFront Functions vs Lambda@Edge</strong></td>
+<td>Sub-millisecond, JS, không mạng <strong>vs</strong> vài giây, Node/Python, gọi API được</td>
+</tr>
+<tr>
+<td><strong>ECS EC2 vs Fargate</strong></td>
+<td>Tự quản máy, rẻ hơn khi ổn định <strong>vs</strong> serverless, ít vận hành</td>
+</tr>
+<tr>
+<td><strong>Dedicated Instance vs Dedicated Host</strong></td>
+<td>Phần cứng riêng <strong>vs</strong> thấy máy vật lý, BYOL theo socket/core</td>
+</tr>
+<tr>
+<td><strong>Spot vs On-Demand vs RI vs Savings Plan</strong></td>
+<td>Rẻ nhất nhưng bị thu hồi <strong>vs</strong> linh hoạt <strong>vs</strong> cam kết loại máy <strong>vs</strong> cam kết $/giờ linh hoạt</td>
+</tr>
+<tr>
+<td><strong>Cluster vs Spread vs Partition PG</strong></td>
+<td>Độ trễ thấp nhất <strong>vs</strong> cô lập lỗi tối đa (7/AZ) <strong>vs</strong> phân nhóm rack lớn</td>
+</tr>
+<tr>
+<td><strong>Athena vs Redshift</strong></td>
+<td>Ad-hoc trên S3, serverless <strong>vs</strong> data warehouse chuyên dụng, hiệu năng cao</td>
+</tr>
+<tr>
+<td><strong>Step Functions vs SQS</strong></td>
+<td>Điều phối workflow có trạng thái <strong>vs</strong> hàng đợi phi trạng thái</td>
+</tr>
+<tr>
+<td><strong>EventBridge vs SNS</strong></td>
+<td>Định tuyến theo nội dung, SaaS, replay <strong>vs</strong> fan-out đơn giản, throughput cao</td>
+</tr>
+<tr>
+<td><strong>QLDB vs Managed Blockchain</strong></td>
+<td>Sổ cái tập trung, một chủ sở hữu <strong>vs</strong> phi tập trung, nhiều bên</td>
+</tr>
+</tbody>
+</table>
+<h2 id="152-những-con-số-phải-nhớ">15.2. Những con số phải nhớ</h2>
+<table>
+<thead>
+<tr>
+<th>Chủ đề</th>
+<th>Con số</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lambda</td>
+<td>15 phút, 10.240 MB RAM, 10 GB <code>/tmp</code>, 6 MB payload sync, 1.000 concurrency</td>
+</tr>
+<tr>
+<td>SQS</td>
+<td>256 KB message, 14 ngày retention, 12 giờ visibility timeout, 20 giây long polling</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>Object tối đa 5 TB, multipart bắt buộc từ 5 GB, 3.500 PUT &amp; 5.500 GET mỗi prefix/giây</td>
+</tr>
+<tr>
+<td>S3 storage class minimum</td>
+<td>IA 30 ngày, Glacier IR/Flexible 90 ngày, Deep Archive 180 ngày</td>
+</tr>
+<tr>
+<td>EBS</td>
+<td>gp3 16.000 IOPS/1.000 MB/s, io2 Block Express 256.000 IOPS/64 TiB, Multi-Attach 16 instance</td>
+</tr>
+<tr>
+<td>DynamoDB</td>
+<td>Item 400 KB, 1 WCU = 1 KB/s ghi, 1 RCU = 4 KB/s đọc strong, LSI 5 / GSI 20, Streams 24 giờ, PITR 35 ngày</td>
+</tr>
+<tr>
+<td>RDS</td>
+<td>Backup 0–35 ngày, tối đa 5 read replica, transaction log mỗi 5 phút</td>
+</tr>
+<tr>
+<td>Aurora</td>
+<td>6 bản sao / 3 AZ, 15 replica, tới 128 TB, Global DB 5 Region phụ, Backtrack 72 giờ</td>
+</tr>
+<tr>
+<td>VPC</td>
+<td>CIDR /16 tới /28, 5 IP bị AWS giữ mỗi subnet, 5 VPC/Region mặc định</td>
+</tr>
+<tr>
+<td>Kinesis</td>
+<td>Shard 1 MB/s in – 2 MB/s out, retention 24 giờ tới 365 ngày</td>
+</tr>
+<tr>
+<td>Spot</td>
+<td>Cảnh báo thu hồi trước <strong>2 phút</strong></td>
+</tr>
+<tr>
+<td>Placement group</td>
+<td>Spread tối đa 7 instance/AZ; Partition tối đa 7 partition/AZ</td>
+</tr>
+<tr>
+<td>KMS</td>
+<td>Mã hóa trực tiếp ≤ 4 KB, xóa khóa chờ 7–30 ngày</td>
+</tr>
+<tr>
+<td>API Gateway</td>
+<td>10.000 req/s, burst 5.000, cache TTL 300s</td>
+</tr>
+<tr>
+<td>Route 53</td>
+<td>SLA 100%, health check unhealthy khi &lt; 18% checker báo khỏe</td>
+</tr>
+<tr>
+<td>ELB</td>
+<td>Deregistration delay mặc định 300 giây</td>
+</tr>
+<tr>
+<td>ASG</td>
+<td>Cooldown mặc định 300 giây, health check grace period 300 giây</td>
+</tr>
+<tr>
+<td>CloudTrail</td>
+<td>Event History 90 ngày</td>
+</tr>
+<tr>
+<td>Glacier retrieval</td>
+<td>Expedited 1–5 phút, Standard 3–5 giờ, Bulk 5–12 giờ; Deep Archive: Standard 12 giờ, Bulk 48 giờ</td>
+</tr>
+</tbody>
+</table>
+<h1 id="phần-xvi-checklist-ôn-tập-cuối-cùng">PHẦN XVI. CHECKLIST ÔN TẬP CUỐI CÙNG</h1>
+<h2 id="161-tuần-cuối-trước-khi-thi">16.1. Tuần cuối trước khi thi</h2>
+<ol>
+<li>Làm <strong>ít nhất 3–4 bộ đề mô phỏng đầy đủ 65 câu trong 130 phút</strong> (Tutorials Dojo/Jon Bonso, Stephane Maarek, hoặc đề chính thức của AWS Skill Builder). Mục tiêu đạt <strong>ổn định trên 80%</strong> trước khi thi thật.</li>
+<li><strong>Đọc kỹ phần giải thích của MỌI câu</strong>, kể cả câu làm đúng – vì có thể bạn đúng do đoán.</li>
+<li>Ghi lại <strong>nhật ký lỗi sai</strong> theo chủ đề để biết mảng nào còn yếu.</li>
+<li>Ôn lại các <strong>FAQ chính thức</strong> của: EC2, S3, VPC, RDS, Aurora, DynamoDB, Route 53, CloudFront, SQS, Lambda, ELB.</li>
+<li>Đọc lại whitepaper <strong>AWS Well-Architected Framework</strong> và <strong>Disaster Recovery of Workloads on AWS</strong>.</li>
+<li>Ôn thuộc các <strong>bảng so sánh và con số</strong> ở Phần XV.</li>
+</ol>
+<h2 id="162-kiểm-tra-mức-độ-sẵn-sàng--bạn-có-tự-tin-trả-lời-được-không">16.2. Kiểm tra mức độ sẵn sàng – bạn có tự tin trả lời được không?</h2>
+<ul>
+<li>Khác biệt giữa Multi-AZ và Read Replica; khi nào dùng cả hai?</li>
+<li>Khi nào dùng EBS, khi nào EFS, khi nào FSx (loại nào), khi nào S3?</li>
+<li>Bảy chính sách routing của Route 53 và trường hợp dùng từng loại?</li>
+<li>Cách cho EC2 ở private subnet ra Internet và cách truy cập S3 riêng tư?</li>
+<li>Sáu lớp lưu trữ S3 chính, ngưỡng phạt tối thiểu và thời gian truy xuất?</li>
+<li>Sự khác biệt Security Group và NACL, và khi nào bắt buộc dùng NACL?</li>
+<li>Thứ tự đánh giá quyền IAM và tác động của SCP, permission boundary?</li>
+<li>Bốn chiến lược DR, RTO/RPO tương ứng?</li>
+<li>Khi nào SQS, khi nào SNS, khi nào EventBridge, khi nào Kinesis, khi nào Step Functions?</li>
+<li>Các mô hình mua EC2 và cách chọn theo tình huống?</li>
+<li>Cách bảo vệ một web app: WAF, Shield, CloudFront, ALB đặt ở đâu?</li>
+<li>Cách mã hóa dữ liệu at-rest và in-transit cho S3, EBS, RDS?</li>
+</ul>
+<h2 id="163-trong-phòng-thi">16.3. Trong phòng thi</h2>
+<ul>
+<li>Đọc <strong>câu hỏi cuối cùng trước</strong>, sau đó mới đọc kịch bản để lọc thông tin nhiễu.</li>
+<li>Tìm các từ khóa ràng buộc: <em>MOST cost-effective, LEAST operational overhead, HIGHEST availability, MINIMAL downtime, MOST secure, real-time vs near real-time</em>.</li>
+<li>Loại ngay các đáp án chứa: dịch vụ <strong>không tồn tại</strong>, dịch vụ dùng <strong>sai mục đích</strong> (ví dụ Redshift cho OLTP), giải pháp <strong>thủ công</strong> khi đề đòi tự động, hoặc <strong>quản lý server</strong> khi đề đòi serverless.</li>
+<li>Nếu hai đáp án đều đúng kỹ thuật, chọn cái <strong>managed hơn / ít thao tác hơn / rẻ hơn</strong>, tùy tiêu chí câu hỏi.</li>
+<li><strong>Đừng đọc thêm giả định</strong> không có trong đề.</li>
+<li>Với câu "Chọn 2" hay "Chọn 3": phải chọn đủ số lượng, không có điểm từng phần.</li>
+<li>Flag và quay lại, đừng để một câu khó làm hỏng nhịp độ.</li>
+</ul>
+<h2 id="164-tài-nguyên-ôn-tập-gợi-ý">16.4. Tài nguyên ôn tập gợi ý</h2>
+<ul>
+<li><strong>AWS Skill Builder</strong> – Exam Prep Official Practice Question Set (miễn phí 20 câu) và Official Practice Exam.</li>
+<li><strong>Exam Guide chính thức SAA-C03</strong> – đọc để nắm danh sách dịch vụ trong phạm vi thi.</li>
+<li><strong>AWS Whitepapers:</strong> Well-Architected Framework, Architecting for the Cloud – AWS Best Practices, Disaster Recovery of Workloads on AWS, Security Pillar, Cost Optimization Pillar.</li>
+<li><strong>AWS FAQs</strong> của các dịch vụ trọng tâm.</li>
+<li><strong>AWS Documentation</strong> – phần "Best Practices" của mỗi dịch vụ.</li>
+<li><strong>Đề luyện:</strong> Tutorials Dojo (Jon Bonso), Stephane Maarek Practice Exams, Adrian Cantrill.</li>
+</ul>
+<p>Chúc bạn ôn tập hiệu quả và thi đạt kết quả cao. Hãy nhớ nguyên tắc vàng của kỳ thi này: <strong>AWS luôn ưu tiên giải pháp được quản lý, có tính sẵn sàng cao, bảo mật theo nguyên tắc đặc quyền tối thiểu, và tối ưu chi phí mà vẫn đáp ứng yêu cầu kỹ thuật.</strong></p>
+<hr />
+<h2 id="-giấy-phép">📄 Giấy phép</h2>
+<p>Nội dung phát hành theo giấy phép <strong>CC BY 4.0</strong> — tự do sử dụng, chia sẻ và chỉnh sửa, chỉ cần ghi nguồn.</p>
+<p><sub>Tài liệu mang tính chất tham khảo cá nhân, không liên kết chính thức với Amazon Web Services.</sub></p>
+</div>
+<button id="top" title="Lên đầu trang" onclick="scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<script>
+var b=document.getElementById('top');
+addEventListener('scroll',function(){b.classList.toggle('show',scrollY>600)});
+</script>
+</body>
+</html>
