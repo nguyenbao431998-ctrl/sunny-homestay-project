@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>100 từ vựng tiếng Anh chuyên ngành DevOps</title>
+<style>
+  :root {
+    --paper: #FBFCFD;
+    --ink: #17212E;
+    --muted: #5A6675;
+    --rule: #D6DCE4;
+    --accent: #24467A;
+    --accent-soft: #E8EEF7;
+    --learned: #2F6B4F;
+    --learned-soft: #EAF4EE;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 20px; margin-bottom: 24px; }
+  h1 { font-size: 40px; line-height: 1.15; margin: 0 0 8px; font-weight: bold; }
+  .sub { color: var(--muted); margin: 0; font-size: 18px; }
+  .progress { margin-top: 14px; font-size: 17px; }
+  .bar { height: 6px; background: var(--rule); margin-top: 6px; max-width: 360px; }
+  .bar span { display: block; height: 100%; width: 0; background: var(--learned); transition: width .3s; }
+
+  .guide { background: var(--accent-soft); padding: 14px 18px; margin-bottom: 24px; font-size: 17px; }
+  .guide b { color: var(--accent); }
+
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+  input[type=search] {
+    font: inherit; font-size: 17px; padding: 8px 12px; border: 1px solid var(--rule);
+    background: #fff; color: var(--ink); min-width: 260px; flex: 1 1 260px;
+  }
+  button, .chip {
+    font: inherit; font-size: 16px; cursor: pointer; border: 1px solid var(--rule);
+    background: #fff; color: var(--ink); padding: 7px 12px;
+  }
+  button:hover, .chip:hover { border-color: var(--accent); }
+  button[aria-pressed=true], .chip[aria-pressed=true] { background: var(--accent); color: #fff; border-color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+
+  h2 { font-size: 26px; margin: 36px 0 4px; color: var(--accent); }
+  .cat-desc { color: var(--muted); margin: 0 0 10px; font-style: italic; }
+
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 15px; color: var(--muted); font-weight: normal; border-bottom: 1px solid var(--ink); padding: 6px 8px; }
+  td { padding: 10px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  td.num { color: var(--muted); width: 40px; font-size: 16px; }
+  td.word { width: 22%; }
+  .w { font-weight: bold; font-size: 20px; }
+  .pos { color: var(--muted); font-style: italic; font-size: 15px; margin-left: 4px; }
+  .stress { display: block; font-size: 16px; color: var(--muted); letter-spacing: .02em; }
+  .stress .hi { color: var(--accent); font-weight: bold; text-decoration: underline; text-underline-offset: 3px; }
+  td.mean { width: 24%; }
+  td.ex { font-style: italic; }
+  td.act { width: 92px; white-space: nowrap; text-align: right; }
+  .icon { padding: 4px 8px; font-size: 15px; }
+  tr.done td { background: var(--learned-soft); }
+  tr.done .w { color: var(--learned); }
+
+  body.hide-mean td.mean .txt { visibility: hidden; }
+  body.hide-mean td.mean { cursor: pointer; background-image: repeating-linear-gradient(90deg, var(--rule) 0 6px, transparent 6px 10px); background-size: 100% 1px; background-repeat: no-repeat; background-position: 8px 60%; }
+  body.hide-mean td.mean.peek .txt { visibility: visible; }
+  body.hide-mean td.mean.peek { background-image: none; }
+
+  .empty { padding: 30px 0; color: var(--muted); }
+  footer { margin-top: 48px; color: var(--muted); font-size: 16px; border-top: 1px solid var(--rule); padding-top: 14px; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 30px; }
+    thead { display: none; }
+    table, tbody, tr, td { display: block; width: 100% !important; }
+    tr { border-bottom: 1px solid var(--rule); padding: 10px 0; }
+    td { border: none; padding: 2px 4px; text-align: left !important; }
+    td.num { display: none; }
+    td.act { padding-top: 6px; }
+  }
+  @media print {
+    .controls, .chips, td.act, th.act, .guide, .progress { display: none; }
+    body { font-size: 13px; }
+    h2 { break-after: avoid; }
+    tr { break-inside: avoid; }
+  }
+  @media (prefers-reduced-motion: reduce) { .bar span { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>100 từ vựng tiếng Anh chuyên ngành DevOps</h1>
+    <p class="sub">Kèm trọng âm, nghĩa tiếng Việt và câu ví dụ để nói trong phỏng vấn</p>
+    <div class="progress"><span id="count">Đã thuộc 0 / 100 từ</span><div class="bar"><span id="bar"></span></div></div>
+  </header>
+
+  <div class="guide">
+    <b>Cách học:</b> Âm tiết <span class="stress" style="display:inline"><span class="hi">gạch chân</span></span> là âm được nhấn mạnh.
+    Bấm <b>🔊</b> để nghe phát âm, đọc to cả câu ví dụ.
+    Bật <b>Ẩn nghĩa</b> để tự kiểm tra (bấm vào ô trống để xem đáp án), rồi bấm <b>✓</b> khi đã thuộc.
+  </div>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Tìm từ, nghĩa hoặc câu ví dụ…" aria-label="Tìm kiếm">
+    <button id="toggleMean" aria-pressed="false">Ẩn nghĩa</button>
+    <button id="toggleTodo" aria-pressed="false">Chỉ hiện từ chưa thuộc</button>
+    <button id="reset">Xóa đánh dấu</button>
+  </div>
+  <div class="chips" id="chips"></div>
+
+  <main id="list"></main>
+
+  <footer>Mẹo: luôn bật rõ âm cuối như deploy<b>ed</b>, cluster<b>s</b>, metric<b>s</b>. In trang này (Ctrl + P) để có bản giấy gọn gàng.</footer>
+</div>
+
+<script>
+const CATS = [
+  { id: "cicd", name: "CI/CD & Phát hành", desc: "Quy trình build, test và đưa code lên môi trường", words: [
+    ["Pipeline","PIPE-line","n","Luồng xử lý tự động (build, test, deploy)","I built a CI/CD pipeline with GitHub Actions."],
+    ["Build","BUILD","v/n","Biên dịch, đóng gói ứng dụng","The pipeline builds a Docker image on every commit."],
+    ["Deploy","de-PLOY","v","Triển khai lên môi trường","We deploy to production twice a week."],
+    ["Release","re-LEASE","n/v","Bản phát hành; phát hành","The new release fixed the login bug."],
+    ["Rollback","ROLL-back","n/v","Quay lại phiên bản trước","I rolled back the release in two minutes."],
+    ["Artifact","AR-ti-fact","n","Sản phẩm đầu ra của quá trình build","We store build artifacts in S3."],
+    ["Trigger","TRIG-ger","v/n","Kích hoạt","A push to the main branch triggers the pipeline."],
+    ["Commit","com-MIT","v/n","Lưu thay đổi vào Git","Each commit runs unit tests."],
+    ["Merge","MERGE","v","Gộp nhánh code","We merge code after two approvals."],
+    ["Branch","BRANCH","n","Nhánh code","Developers work on feature branches."],
+    ["Pull request","PULL re-QUEST","n","Yêu cầu review và gộp code","I review every Terraform pull request."],
+    ["Rolling update","ROL-ling UP-date","n","Cập nhật lần lượt từng Pod","Kubernetes uses a rolling update by default."],
+    ["Blue-green deployment","BLUE GREEN de-PLOY-ment","n","Triển khai song song 2 môi trường rồi chuyển traffic","Blue-green deployment gives us zero downtime."],
+    ["Canary release","CA-na-ry re-LEASE","n","Phát hành thử cho một phần nhỏ người dùng","We send 10 percent of traffic to the canary release."]
+  ]},
+  { id: "k8s", name: "Container & Kubernetes", desc: "Đóng gói và điều phối ứng dụng", words: [
+    ["Container","con-TAIN-er","n","Môi trường chạy ứng dụng được đóng gói","Each service runs in its own container."],
+    ["Image","IM-age","n","Bản đóng gói để tạo container","I reduced the image size to 80 MB."],
+    ["Registry","RE-gis-try","n","Kho lưu image","We push images to Amazon ECR."],
+    ["Orchestration","or-ches-TRA-tion","n","Điều phối nhiều container","Kubernetes is a container orchestration tool."],
+    ["Cluster","CLUS-ter","n","Cụm máy chủ","We run two EKS clusters: staging and production."],
+    ["Node","NODE","n","Một máy trong cluster","The node ran out of memory."],
+    ["Pod","POD","n","Đơn vị nhỏ nhất trong Kubernetes","The pod is in CrashLoopBackOff."],
+    ["Namespace","NAME-space","n","Không gian tách biệt tài nguyên","Each team has its own namespace."],
+    ["Replica","REP-li-ca","n","Bản sao của Pod","The API runs with three replicas."],
+    ["Service","SER-vice","n","Địa chỉ ổn định để truy cập Pod","A Service gives the pods a stable IP."],
+    ["Ingress","IN-gress","n","Cổng định tuyến traffic từ ngoài vào","Ingress routes traffic by domain name."],
+    ["ConfigMap","CON-fig-map","n","Đối tượng lưu cấu hình","I store app settings in a ConfigMap."],
+    ["Volume","VOL-ume","n","Ổ lưu trữ gắn vào container","The database uses a persistent volume."],
+    ["Probe","PROBE","n","Cơ chế kiểm tra sức khỏe container","The readiness probe failed, so no traffic was sent."],
+    ["Autoscaling","AU-to-scal-ing","n","Tự động tăng giảm tài nguyên","Autoscaling added pods during the sale."],
+    ["Helm chart","HELM CHART","n","Gói cài đặt ứng dụng cho Kubernetes","I deploy every service with a Helm chart."]
+  ]},
+  { id: "iac", name: "Infrastructure as Code", desc: "Quản lý hạ tầng bằng code (Terraform, Ansible…)", words: [
+    ["Infrastructure as Code","IN-fra-struc-ture as CODE","n","Quản lý hạ tầng bằng code","We manage everything with Infrastructure as Code."],
+    ["Provision","pro-VI-sion","v","Cấp phát, khởi tạo tài nguyên","I provision the VPC with Terraform."],
+    ["Module","MOD-ule","n","Khối code tái sử dụng","I wrote one module for all environments."],
+    ["State file","STATE FILE","n","File Terraform ghi nhớ tài nguyên đã tạo","We keep the state file in S3 with locking."],
+    ["Drift","DRIFT","n","Sai lệch giữa code và hạ tầng thật","Terraform plan showed a drift in the security group."],
+    ["Idempotent","i-dem-PO-tent","adj","Chạy nhiều lần vẫn cho cùng kết quả","Ansible tasks should be idempotent."],
+    ["Declarative","de-CLAR-a-tive","adj","Khai báo trạng thái mong muốn","Terraform is a declarative tool."],
+    ["Configuration management","con-fig-u-RA-tion MAN-age-ment","n","Quản lý cấu hình máy chủ","We use Ansible for configuration management."],
+    ["Template","TEM-plate","n","Mẫu dùng lại","I created a pipeline template for new services."],
+    ["Variable","VAR-i-a-ble","n","Biến","The instance size is a variable."]
+  ]},
+  { id: "cloud", name: "Cloud & Mạng", desc: "Tài nguyên đám mây và hạ tầng mạng", words: [
+    ["Region","RE-gion","n","Vùng địa lý của nhà cung cấp cloud","Our main region is Singapore."],
+    ["Availability Zone","a-vail-a-BIL-i-ty ZONE","n","Trung tâm dữ liệu độc lập trong một region","We spread the nodes across three Availability Zones."],
+    ["VPC","vee-pee-SEE","n","Mạng riêng ảo trên cloud","Each environment has its own VPC."],
+    ["Subnet","SUB-net","n","Mạng con","The database is in a private subnet."],
+    ["Load balancer","LOAD BAL-an-cer","n","Bộ cân bằng tải","The load balancer sends traffic to healthy pods."],
+    ["NAT Gateway","NAT GATE-way","n","Cổng cho subnet riêng ra internet","Private servers use a NAT Gateway for updates."],
+    ["DNS","dee-en-ESS","n","Hệ thống phân giải tên miền","The outage was caused by a DNS problem."],
+    ["Latency","LA-ten-cy","n","Độ trễ","Latency went up to two seconds."],
+    ["Bandwidth","BAND-width","n","Băng thông","We need more bandwidth for video files."],
+    ["Firewall","FIRE-wall","n","Tường lửa","The firewall blocks all ports except 443."],
+    ["Proxy","PROX-y","n","Máy chủ trung gian","We use a proxy for outbound traffic."],
+    ["Endpoint","END-point","n","Điểm truy cập của một dịch vụ","The health check endpoint is /healthz."],
+    ["Instance","IN-stance","n","Máy chủ ảo","I changed the instance type to save cost."],
+    ["Serverless","SERV-er-less","adj","Không cần quản lý máy chủ","We use serverless functions for small jobs."],
+    ["Bucket","BUCK-et","n","Kho lưu trữ đối tượng (S3)","Logs are stored in an S3 bucket."],
+    ["CDN","see-dee-EN","n","Mạng phân phối nội dung","The CDN caches images close to users."]
+  ]},
+  { id: "sec", name: "Bảo mật", desc: "Xác thực, phân quyền và bảo vệ dữ liệu", words: [
+    ["Authentication","au-then-ti-CA-tion","n","Xác thực (bạn là ai)","We use SSO for authentication."],
+    ["Authorization","au-thor-i-ZA-tion","n","Phân quyền (bạn được làm gì)","RBAC controls authorization in Kubernetes."],
+    ["Permission","per-MIS-sion","n","Quyền","The pod had no permission to read the bucket."],
+    ["Least privilege","LEAST PRIV-i-lege","n","Chỉ cấp quyền tối thiểu cần thiết","I follow the least privilege principle."],
+    ["Credentials","cre-DEN-tials","n","Thông tin đăng nhập","Never put credentials in the code."],
+    ["Secret","SE-cret","n","Dữ liệu bí mật (mật khẩu, token)","We sync secrets from AWS Secrets Manager."],
+    ["Encryption","en-CRYP-tion","n","Mã hóa","All data has encryption at rest with KMS."],
+    ["Certificate","cer-TIF-i-cate","n","Chứng chỉ (SSL/TLS)","cert-manager renews the certificate automatically."],
+    ["Vulnerability","vul-ner-a-BIL-i-ty","n","Lỗ hổng bảo mật","Trivy found a critical vulnerability in the image."],
+    ["Compliance","com-PLI-ance","n","Tuân thủ quy định","The bank requires PCI compliance."],
+    ["Audit","AU-dit","n/v","Kiểm tra, ghi vết","CloudTrail keeps an audit log of all actions."],
+    ["Role","ROLE","n","Vai trò gắn quyền","The EC2 instance uses an IAM role, not access keys."]
+  ]},
+  { id: "obs", name: "Giám sát & Observability", desc: "Theo dõi sức khỏe hệ thống", words: [
+    ["Monitoring","MON-i-tor-ing","n","Giám sát","We use Prometheus for monitoring."],
+    ["Observability","ob-ser-va-BIL-i-ty","n","Khả năng quan sát hệ thống từ bên ngoài","Metrics, logs and traces give us observability."],
+    ["Metrics","MET-rics","n","Chỉ số đo lường","I check CPU and memory metrics first."],
+    ["Logs","LOGS","n","Nhật ký","Fluent Bit ships logs to OpenSearch."],
+    ["Tracing","TRAC-ing","n","Theo dõi đường đi của request","Tracing showed the payment service was slow."],
+    ["Dashboard","DASH-board","n","Bảng theo dõi trực quan","I built a Grafana dashboard for each service."],
+    ["Alert","a-LERT","n/v","Cảnh báo","I got an alert at two in the morning."],
+    ["Threshold","THRESH-old","n","Ngưỡng","The alert fires when the error rate is above five percent."],
+    ["SLI","ess-el-EYE","n","Chỉ số đo chất lượng dịch vụ","Our main SLI is the success rate of requests."],
+    ["SLO","ess-el-OH","n","Mục tiêu chất lượng nội bộ","Our SLO is 99.9 percent availability."],
+    ["SLA","ess-el-AY","n","Cam kết chất lượng với khách hàng","We missed the SLA last month."],
+    ["Uptime","UP-time","n","Thời gian hệ thống hoạt động","We had 99.95 percent uptime this year."]
+  ]},
+  { id: "ops", name: "Vận hành & Sự cố", desc: "Xử lý và rút kinh nghiệm sau sự cố", words: [
+    ["Incident","IN-ci-dent","n","Sự cố","I was the lead for a P1 incident."],
+    ["Outage","OUT-age","n","Sập dịch vụ","The outage lasted fifteen minutes."],
+    ["Downtime","DOWN-time","n","Thời gian ngừng hoạt động","The migration had zero downtime."],
+    ["Troubleshoot","TROU-ble-shoot","v","Xử lý, dò lỗi","I troubleshoot network issues with tcpdump."],
+    ["Root cause","ROOT CAUSE","n","Nguyên nhân gốc","The root cause was a wrong config value."],
+    ["Post-mortem","post-MOR-tem","n","Báo cáo rút kinh nghiệm sau sự cố","We write a blameless post-mortem for every incident."],
+    ["On-call","ON-call","adj/n","Trực sự cố","I am on call one week every month."],
+    ["Runbook","RUN-book","n","Tài liệu hướng dẫn xử lý","Every alert links to a runbook."],
+    ["Escalate","ES-ca-late","v","Chuyển lên cấp cao hơn","I escalated the issue to the database team."],
+    ["Mitigate","MIT-i-gate","v","Giảm thiểu tác động","First, I mitigate the impact, then I find the cause."],
+    ["Hotfix","HOT-fix","n","Bản sửa lỗi khẩn cấp","We deployed a hotfix in thirty minutes."],
+    ["Failover","FAIL-o-ver","n","Chuyển sang hệ thống dự phòng","The database did an automatic failover."]
+  ]},
+  { id: "arch", name: "Kiến trúc & Đặc tính hệ thống", desc: "Từ dùng khi mô tả thiết kế hệ thống", words: [
+    ["Scalable","SCA-la-ble","adj","Có thể mở rộng","The system is scalable to one million users."],
+    ["Highly available","HIGH-ly a-VAIL-a-ble","adj","Sẵn sàng cao, ít gián đoạn","We run in three zones to be highly available."],
+    ["Reliability","re-li-a-BIL-i-ty","n","Độ ổn định, tin cậy","Reliability is our top priority."],
+    ["Redundancy","re-DUN-dan-cy","n","Dự phòng","We added redundancy for the message queue."],
+    ["Bottleneck","BOT-tle-neck","n","Điểm nghẽn","The database was the bottleneck."],
+    ["Throughput","THROUGH-put","n","Lưu lượng xử lý","Caching increased throughput by 40 percent."],
+    ["Microservices","MI-cro-ser-vi-ces","n","Kiến trúc vi dịch vụ","We split the monolith into microservices."],
+    ["Fault tolerance","FAULT TOL-er-ance","n","Khả năng chịu lỗi","Fault tolerance means one failure does not stop the system."]
+  ]}
+];
+
+const ALL = []; let n = 0;
+CATS.forEach(c => c.words.forEach(w => ALL.push({ n: ++n, cat: c.id, word: w[0], stress: w[1], pos: w[2], mean: w[3], ex: w[4] })));
+
+const state = { q: "", cat: "all", todo: false, learned: new Set() };
+const STORE_KEY = "devops-vocab-learned";
+
+function esc(s){ return s.replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c])); }
+function stressHTML(s){
+  return s.split(" ").map(word => word.split("-").map(syl =>
+    syl === syl.toUpperCase() && /[A-Z]/.test(syl) ? `<span class="hi">${syl.toLowerCase()}</span>` : syl
+  ).join("·")).join(" ");
+}
+
+function render(){
+  const list = document.getElementById("list");
+  const q = state.q.trim().toLowerCase();
+  let html = "", shown = 0;
+  CATS.forEach(c => {
+    if (state.cat !== "all" && state.cat !== c.id) return;
+    const rows = ALL.filter(w => w.cat === c.id)
+      .filter(w => !q || (w.word + " " + w.mean + " " + w.ex).toLowerCase().includes(q))
+      .filter(w => !state.todo || !state.learned.has(w.n));
+    if (!rows.length) return;
+    shown += rows.length;
+    html += `<section><h2>${c.name}</h2><p class="cat-desc">${c.desc}</p>
+      <table><thead><tr><th>#</th><th>Từ & trọng âm</th><th>Nghĩa</th><th>Câu ví dụ</th><th class="act"></th></tr></thead><tbody>`;
+    rows.forEach(w => {
+      const done = state.learned.has(w.n);
+      html += `<tr class="${done ? "done" : ""}" data-n="${w.n}">
+        <td class="num">${w.n}</td>
+        <td class="word"><span class="w">${esc(w.word)}</span><span class="pos">(${w.pos})</span><span class="stress">${stressHTML(w.stress)}</span></td>
+        <td class="mean" title="Bấm để xem nghĩa"><span class="txt">${esc(w.mean)}</span></td>
+        <td class="ex">${esc(w.ex)}</td>
+        <td class="act">
+          <button class="icon" data-say="${esc(w.word)}" data-ex="${esc(w.ex)}" aria-label="Nghe phát âm ${esc(w.word)}">🔊</button>
+          <button class="icon" data-learn="${w.n}" aria-pressed="${done}" aria-label="Đánh dấu đã thuộc">✓</button>
+        </td></tr>`;
+    });
+    html += `</tbody></table></section>`;
+  });
+  list.innerHTML = shown ? html : `<p class="empty">Không có từ nào khớp. Thử từ khóa khác hoặc chọn "Tất cả".</p>`;
+  const k = state.learned.size;
+  document.getElementById("count").textContent = `Đã thuộc ${k} / ${ALL.length} từ`;
+  document.getElementById("bar").style.width = (k / ALL.length * 100) + "%";
+}
+
+function renderChips(){
+  const chips = [{ id: "all", name: "Tất cả (100)" }].concat(CATS.map(c => ({ id: c.id, name: `${c.name} (${c.words.length})` })));
+  document.getElementById("chips").innerHTML = chips.map(c =>
+    `<button class="chip" data-cat="${c.id}" aria-pressed="${state.cat === c.id}">${c.name}</button>`).join("");
+}
+
+function say(text){
+  if (!("speechSynthesis" in window)) { alert("Trình duyệt này chưa hỗ trợ đọc phát âm."); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US"; u.rate = 0.85;
+  const v = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith("en-US"));
+  if (v) u.voice = v;
+  speechSynthesis.speak(u);
+}
+
+async function save(){
+  try { if (window.storage) await window.storage.set(STORE_KEY, JSON.stringify([...state.learned]), false); } catch (e) {}
+}
+async function load(){
+  try {
+    if (window.storage) {
+      const r = await window.storage.get(STORE_KEY, false);
+      if (r && r.value) state.learned = new Set(JSON.parse(r.value));
+    }
+  } catch (e) {}
+  render();
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("button, td.mean");
+  if (!t) return;
+  if (t.dataset.say) { say(e.shiftKey ? t.dataset.ex : t.dataset.say); return; }
+  if (t.dataset.learn) {
+    const id = +t.dataset.learn;
+    state.learned.has(id) ? state.learned.delete(id) : state.learned.add(id);
+    save(); render(); return;
+  }
+  if (t.dataset.cat) { state.cat = t.dataset.cat; renderChips(); render(); return; }
+  if (t.matches("td.mean") && document.body.classList.contains("hide-mean")) t.classList.toggle("peek");
+});
+document.addEventListener("dblclick", e => {
+  const t = e.target.closest("td.ex");
+  if (t) say(t.textContent);
+});
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; render(); });
+document.getElementById("toggleMean").addEventListener("click", e => {
+  const on = document.body.classList.toggle("hide-mean");
+  e.currentTarget.setAttribute("aria-pressed", on);
+  document.querySelectorAll("td.mean.peek").forEach(td => td.classList.remove("peek"));
+});
+document.getElementById("toggleTodo").addEventListener("click", e => {
+  state.todo = !state.todo; e.currentTarget.setAttribute("aria-pressed", state.todo); render();
+});
+document.getElementById("reset").addEventListener("click", () => {
+  if (confirm("Xóa toàn bộ đánh dấu đã thuộc?")) { state.learned.clear(); save(); render(); }
+});
+
+renderChips(); render(); load();
+</script>
+</body>
+</html>
