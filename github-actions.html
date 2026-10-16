@@ -1,0 +1,1903 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tài liệu tiếng Việt chuyên sâu về GitHub Actions cho CI và Terraform trong công việc DevOps, kèm workflow và bài lab AWS OIDC.">
+<title>GitHub Actions cho CI và Terraform trong công việc DevOps</title><style>
+:root{color-scheme:light;--ink:#172534;--muted:#5d6e7e;--accent:#155cb6;--line:#dce4ed;--paper:#fff;--bg:#f3f6fa}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.78 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--accent);text-underline-offset:3px}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible{outline:3px solid #ebae46;outline-offset:3px}
+.skip{position:fixed;top:-60px;left:12px;z-index:10;background:white;padding:8px 16px}.skip:focus{top:8px}
+aside{position:fixed;inset:0 auto 0 0;width:304px;padding:30px 22px;background:#102337;color:#eaf1f8;overflow:auto;border-right:1px solid #263d54}
+.brand{font-size:13px;font-weight:750;letter-spacing:.09em;color:#9cbddd;text-transform:uppercase}.navtitle{font-size:23px;line-height:1.4;margin:10px 0 20px;color:white}
+aside a{display:block;color:#d3dfeb;text-decoration:none;font-size:13px;line-height:1.55;padding:8px 10px;border-radius:6px;margin-bottom:3px}aside a:hover{background:#213c56;color:white;text-decoration:none}
+.navnote{font-size:12px;color:#9fb5ca;margin:22px 10px 4px}.navtoggle{display:none}
+main{max-width:1190px;margin-left:304px;padding:36px 52px 80px}.paper{max-width:920px;background:white;margin:auto;padding:42px 50px 60px;border:1px solid var(--line);border-radius:10px}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700}.tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.print{font:inherit;font-size:13px;background:white;border:1px solid #bacbde;padding:7px 12px;border-radius:6px;cursor:pointer;color:var(--ink)}
+h1{font-size:36px;line-height:1.25;letter-spacing:-.025em;margin:12px 0 24px;color:#102337}h2{font-size:26px;line-height:1.35;margin:48px 0 18px;padding-top:16px;border-top:1px solid var(--line);letter-spacing:-.015em}h3{font-size:20px;line-height:1.5;margin:28px 0 12px}p{margin:0 0 17px}li{margin:6px 0}strong{font-weight:700}code{font:0.88em/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;background:#edf2f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}
+.code-wrap{position:relative;margin:22px 0;background:#102337;border-radius:8px;border:1px solid #294159;overflow:hidden}.code-wrap pre{margin:0;padding:43px 20px 22px;overflow:auto;color:#e5edf6;font:13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:2}.code-wrap code{font:inherit;color:inherit;background:none;padding:0;overflow-wrap:normal;border-radius:0}.copy{position:absolute;right:10px;top:8px;border:1px solid #526d88;border-radius:5px;background:#1e3b56;color:#eaf2fa;font:12px system-ui;cursor:pointer;padding:5px 10px}
+.table-wrap{overflow:auto;margin:22px 0}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.65;min-width:560px}th,td{border:1px solid var(--line);text-align:left;padding:12px 14px;vertical-align:top}th{background:#e6edf6;font-weight:700}tbody tr:nth-child(even){background:#f7f9fc}td code{font-size:12px}main a{overflow-wrap:anywhere}.end{margin-top:40px;font-size:13px;color:var(--muted)}
+@media(min-width:1550px){main{max-width:none}.paper{max-width:1050px}}
+@media(max-width:1000px){aside{width:250px;padding:24px 15px}main{margin-left:250px;padding:24px}.paper{padding:30px}h1{font-size:30px}}
+@media(max-width:760px){body{font-size:16px}aside{position:relative;width:100%;padding:16px 20px}aside nav{display:none;margin-top:14px}aside.open nav{display:block}aside .navtitle,aside .navnote{display:none}.navtoggle{display:inline-block;float:right;color:white;background:#213c56;border:1px solid #637d96;padding:5px 10px;border-radius:5px}.brand{display:inline-block;margin-top:4px}main{margin-left:0;padding:14px}.paper{padding:24px 20px;border-radius:7px}h1{font-size:29px}h2{font-size:23px}h3{font-size:19px}.tools{align-items:flex-start}.eyebrow{font-size:10px}table{min-width:560px}}
+@media print{body{background:white;color:black;font-size:10pt;line-height:1.5}aside,.tools,.copy,.skip{display:none!important}main{margin:0;padding:0;max-width:none}.paper{padding:0;border:0;max-width:none}h1{font-size:24pt}h2{font-size:17pt;break-after:avoid}h3{font-size:13pt;break-after:avoid}a{color:black;text-decoration:none}.code-wrap{background:#f4f5f7;border-color:#ccc;overflow:visible;break-inside:auto}.code-wrap pre{color:black;white-space:pre-wrap;overflow-wrap:anywhere;font-size:8pt;padding:12px;overflow:visible}table{min-width:0;font-size:9pt}thead{display:table-header-group}tr{break-inside:avoid}.table-wrap{overflow:visible}th,td{padding:7px}p{orphans:3;widows:3}@page{size:A4;margin:18mm}}
+@media screen{aside{display:none!important}main{margin-left:auto;margin-right:auto;width:100%;max-width:1250px}.paper{max-width:1100px}}
+</style></head><body>
+<a class="skip" href="#content">Đi tới nội dung</a>
+<aside aria-label="Mục lục"><span class="brand">DevOps Handbook</span><button class="navtoggle" aria-expanded="false" aria-controls="navigation" type="button">Mục lục</button><div class="navtitle">GitHub Actions<br>CI và Terraform</div><nav id="navigation"><a href="#cách-sử-dụng-tài-liệu">Cách sử dụng tài liệu</a><a href="#vai-trò-của-github-actions-trong-devops">1 Vai trò của GitHub
+Actions trong DevOps</a><a href="#mô-hình-thực-thi-và-ranh-giới-dữ-liệu">2 Mô hình thực thi và
+ranh giới dữ liệu</a><a href="#yaml-và-workflow-đầu-tiên">3 YAML và workflow đầu tiên</a><a href="#trigger-và-chiến-lược-nhánh">4 Trigger và chiến lược nhánh</a><a href="#context-expression-biến-và-output">5 Context expression biến và
+output</a><a href="#thiết-kế-đồ-thị-job-và-xử-lý-lỗi">6 Thiết kế đồ thị job và xử lý
+lỗi</a><a href="#ci-ứng-dụng-thực-tế">7 CI ứng dụng thực tế</a><a href="#cache-artifact-runner-và-chi-phí">8 Cache artifact runner và chi
+phí</a><a href="#terraform-dưới-góc-nhìn-automation">9 Terraform dưới góc nhìn
+automation</a><a href="#tổ-chức-repository-và-remote-state">10 Tổ chức repository và
+remote state</a><a href="#oidc-và-phân-quyền-aws">11 OIDC và phân quyền AWS</a><a href="#luồng-terraform-được-đề-xuất">12 Luồng Terraform được đề
+xuất</a><a href="#thiết-lập-bài-lab-từ-đầu">13 Thiết lập bài lab từ đầu</a><a href="#đọc-workflow-kiểm-tra-và-triển-khai">14 Đọc workflow kiểm tra và
+triển khai</a><a href="#bảo-đảm-apply-đúng-plan-đã-duyệt">15 Bảo đảm apply đúng plan đã
+duyệt</a><a href="#bảo-mật-workflow-trong-môi-trường-thật">16 Bảo mật workflow
+trong môi trường thật</a><a href="#tái-sử-dụng-và-mở-rộng-nhiều-môi-trường">17 Tái sử dụng và mở
+rộng nhiều môi trường</a><a href="#drift-rollback-và-vận-hành-sự-cố">18 Drift rollback và vận hành
+sự cố</a><a href="#chẩn-đoán-lỗi-thường-gặp">19 Chẩn đoán lỗi thường gặp</a><a href="#lộ-trình-thực-hành-và-tiêu-chí-đánh-giá">20 Lộ trình thực hành
+và tiêu chí đánh giá</a><a href="#checklist-đưa-vào-sử-dụng">21 Checklist đưa vào sử dụng</a><a href="#nguồn-chính-thức">22 Nguồn chính thức</a><a href="#phụ-lục-mã-nguồn-đầy-đủ">23 Phụ lục mã nguồn đầy đủ</a></nav><p class="navnote">Tài liệu tiếng Việt · 23 phần<br>Có mã mẫu và bài lab</p></aside>
+<main id="content"><article class="paper"><div class="tools"><span class="eyebrow">Học nền tảng · Thực hành · Vận hành</span><button class="print" type="button">In tài liệu</button></div><h1 id="github-actions-cho-ci-và-terraform-trong-công-việc-devops">GitHub
+Actions cho CI và Terraform trong công việc DevOps</h1>
+<p>Tài liệu học và thực hành chuyên sâu bằng tiếng Việt</p>
+<p>Ngày đối chiếu nguồn chính thức 16 tháng 10 năm 2026</p>
+<h2 id="cách-sử-dụng-tài-liệu">Cách sử dụng tài liệu</h2>
+<p>Mục tiêu của tài liệu là giúp bạn tự thiết kế, đọc hiểu và vận hành
+một pipeline GitHub Actions phục vụ CI ứng dụng và triển khai hạ tầng
+bằng Terraform. Sau khi học, bạn cần trả lời được ba câu hỏi cho mỗi
+workflow: nó chạy khi nào, nó được phép làm gì, và bằng chứng nào cho
+thấy thay đổi đã được kiểm tra và triển khai đúng.</p>
+<p>Ví dụ xuyên suốt dùng GitHub.com, runner Ubuntu do GitHub cung cấp và
+AWS. Các nguyên tắc về tách quyền, quản lý state, duyệt thay đổi và truy
+vết cũng áp dụng khi chuyển sang Azure hoặc Google Cloud; phần xác thực
+và quyền cloud phải thay tương ứng. Không có một bộ YAML duy nhất phù
+hợp mọi doanh nghiệp. Workflow tốt phải khớp với ranh giới tin cậy, mức
+rủi ro và cách vận hành của đội ngũ.</p>
+<p>Bạn nên biết Git cơ bản, pull request, dòng lệnh Linux và khái niệm
+resource của Terraform. Nếu chưa quen Terraform, hãy đọc chương 9 trước
+khi làm lab. Học theo thứ tự chương 1 đến 8 để hiểu Actions; chương 9
+đến 16 để xây luồng hạ tầng; chương 17 trở đi để vận hành và luyện
+tập.</p>
+<p><strong>Quy ước ví dụ.</strong> Các tag action như <code>@v7</code>
+giúp đọc dễ hơn và phản ánh README chính thức lúc đối chiếu. Trước khi
+dùng production, thay bằng commit SHA đầy đủ đã xác minh, kiểm tra bản
+phát hành và cập nhật có review. Terraform CLI được cố định ở
+<code>1.14.6</code> làm mốc cho bài lab, không có nghĩa đây luôn là bản
+mới nhất. Các phiên bản action, runner và Terraform CLI là ba thứ độc
+lập. [G16–G20]</p>
+<p><strong>Phạm vi kiểm chứng.</strong> Workflow mẫu là cấu hình tham
+chiếu có điều kiện thiết lập, không phải cam kết triển khai được trên
+mọi tài khoản. Cần kiểm thử trong AWS sandbox của bạn, xác minh IAM,
+tính năng environment của gói GitHub và phiên bản action trước khi áp
+dụng thực tế. Bộ mã không chứa credentials, state thật hay provider
+lockfile giả.</p>
+<h2 id="vai-trò-của-github-actions-trong-devops">1 Vai trò của GitHub
+Actions trong DevOps</h2>
+<p>GitHub Actions là nền tảng tự động hóa dựa trên sự kiện trong
+repository. Khi có sự kiện, GitHub chọn workflow phù hợp, tạo job và
+phân công runner thực thi. Một pipeline có thể kiểm tra code, chạy test,
+đóng gói, đăng nhập cloud, tạo Terraform plan hoặc triển khai ứng dụng.
+Bạn lưu logic trong Git để thay đổi pipeline cũng đi qua review.
+[G1]</p>
+<p>Trong công việc hàng ngày, CI trả lời câu hỏi “thay đổi này có đạt
+các điều kiện tích hợp không”. Ví dụ, một pull request phải build được,
+test thành công và không vi phạm quy tắc chất lượng. Continuous delivery
+giữ hệ thống ở trạng thái có thể triển khai, thường có bước phê duyệt.
+Continuous deployment tự động đưa thay đổi đủ điều kiện lên môi trường
+đích. Đội của bạn cần thống nhất cách dùng hai nghĩa CD thay vì suy ra
+từ tên workflow.</p>
+<p>Đối với Terraform, CI thường gồm format, khởi tạo provider, validate
+và kiểm tra policy. Chạy <code>terraform apply</code> đã là thao tác
+triển khai có thể sửa hoặc xóa hạ tầng. Vì vậy, một workflow CI xanh
+chưa đủ để cho phép apply. Bạn còn cần xác định account, state, người
+duyệt, quyền cloud và cách xử lý khi chạy dang dở.</p>
+<p>Ví dụ thực tế: bạn mở pull request để bật versioning cho bucket. CI
+kiểm tra cấu hình, reviewer xem tác động và merge. Workflow trên
+<code>main</code> tạo plan mới dựa trên state hiện tại; người phụ trách
+xem plan của lần chạy đó rồi duyệt apply. Bằng chứng triển khai gồm
+commit SHA, workflow run, artifact plan, danh tính duyệt và log cloud.
+Đây là chuỗi kiểm soát thay đổi mà DevOps engineer phải thiết kế.</p>
+<h2 id="mô-hình-thực-thi-và-ranh-giới-dữ-liệu">2 Mô hình thực thi và
+ranh giới dữ liệu</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Bảng thông tin có thể cuộn ngang"><table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Thành phần</th>
+<th>Ý nghĩa</th>
+<th>Ví dụ trong công việc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Event</td>
+<td>Sự kiện khởi động tự động hóa</td>
+<td>Pull request được cập nhật</td>
+</tr>
+<tr class="even">
+<td>Workflow</td>
+<td>Quy trình được khai báo trong YAML</td>
+<td>Kiểm tra ứng dụng</td>
+</tr>
+<tr class="odd">
+<td>Job</td>
+<td>Nhóm công việc được phân cho runner</td>
+<td>Chạy test với Node 24</td>
+</tr>
+<tr class="even">
+<td>Step</td>
+<td>Một bước thực thi trong job</td>
+<td>Chạy <code>npm test</code></td>
+</tr>
+<tr class="odd">
+<td>Action</td>
+<td>Thành phần tái sử dụng ở step</td>
+<td>Cài Node hoặc checkout code</td>
+</tr>
+<tr class="even">
+<td>Runner</td>
+<td>Máy thực thi job</td>
+<td>Máy Ubuntu do GitHub cấp</td>
+</tr>
+<tr class="odd">
+<td>Artifact</td>
+<td>Tệp kết quả cần chuyển hoặc giữ lại</td>
+<td>Gói build hoặc saved plan</td>
+</tr>
+<tr class="even">
+<td>Environment</td>
+<td>Điểm áp dụng quy tắc triển khai</td>
+<td><code>production</code> có bước duyệt</td>
+</tr>
+</tbody>
+</table>
+</div><p>Các step thông thường chạy tuần tự trong cùng job và nhìn thấy các
+tệp đã được tạo ở step trước. Tuy nhiên, mỗi step <code>run</code> mở
+một tiến trình shell mới. Lệnh <code>export NAME=value</code> hoặc
+<code>cd</code> trong một step không tự duy trì cho step sau. Dùng cấu
+hình <code>working-directory</code>, <code>$GITHUB_ENV</code> hoặc
+output khi cần truyền thông tin. [G1, G6]</p>
+<p>Các job không mặc nhiên dùng chung ổ đĩa. Job A tạo
+<code>dist/</code> không làm job B có <code>dist/</code>; bạn phải
+upload rồi download artifact, hoặc chủ động dùng một hệ thống lưu trữ
+khác. <code>needs</code> tạo quan hệ phụ thuộc, không chuyển tệp. Với
+runner tự quản lý, tệp cũ có thể còn lại trên máy, nhưng không được lấy
+điều đó làm giao kèo truyền dữ liệu.</p>
+<p>Một cách tự kiểm tra thiết kế là tưởng tượng job apply chạy trên máy
+mới hoàn toàn. Nếu nó chỉ thành công nhờ provider đã cài ở job plan hoặc
+nhờ thư mục cũ của lần chạy trước, pipeline còn phụ thuộc ngầm. Hãy khai
+báo lại toolchain, checkout đúng commit, init provider và lấy đúng
+artifact cần thiết.</p>
+<h2 id="yaml-và-workflow-đầu-tiên">3 YAML và workflow đầu tiên</h2>
+<p>Workflow đặt trong <code>.github/workflows/</code> với đuôi
+<code>.yml</code> hoặc <code>.yaml</code>. YAML dùng thụt lề để mô tả
+cấu trúc, vì vậy sai khoảng trắng có thể thay đổi ý nghĩa. Dùng space,
+không dùng tab. Khi viết nhiều dòng shell, dùng <code>|</code>. [G2]</p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="yaml"><code>name: Learn Actions
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Show execution identity
+        shell: bash
+        run: |
+          printf 'Repository: %s\n' "$GITHUB_REPOSITORY"
+          printf 'Commit: %s\n' "$GITHUB_SHA"
+          pwd</code></pre>
+</div><p>Tạo tệp, commit vào nhánh mặc định rồi mở tab Actions để chạy thủ
+công. <code>name</code> là tên hiển thị. <code>on</code> chọn sự kiện.
+<code>jobs.inspect</code> là mã định danh job, còn tên hiển thị có thể
+đặt riêng. <code>runs-on</code> chọn runner; <code>uses</code> gọi
+action; <code>with</code> truyền input cho action; <code>run</code> chạy
+lệnh shell. Runner không tự có code của repository, vì vậy cần
+checkout.</p>
+<p><code>permissions: contents: read</code> đặt quyền đọc nội dung
+repository cho token của workflow. Nó không cấp quyền AWS.
+<code>persist-credentials: false</code> giảm việc giữ token checkout cho
+các lệnh Git tiếp theo; các step vẫn có thể được cấp token riêng nếu bạn
+chủ động truyền. Khi sau này cần push commit hoặc tạo release, chỉ cấp
+quyền bổ sung ở job thực sự làm việc đó.</p>
+<h2 id="trigger-và-chiến-lược-nhánh">4 Trigger và chiến lược nhánh</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Bảng thông tin có thể cuộn ngang"><table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Trigger</th>
+<th>Dùng khi nào</th>
+<th>Điểm cần nhớ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pull_request</code></td>
+<td>Kiểm tra trước khi merge</td>
+<td>Xem code PR là dữ liệu chưa tin cậy</td>
+</tr>
+<tr class="even">
+<td><code>push</code> vào <code>main</code></td>
+<td>Build hoặc triển khai code đã merge</td>
+<td>Bảo vệ nhánh và review workflow</td>
+</tr>
+<tr class="odd">
+<td><code>workflow_dispatch</code></td>
+<td>Chạy lại hoặc thao tác vận hành</td>
+<td>Người dùng có thể chọn nhánh khi chạy</td>
+</tr>
+<tr class="even">
+<td><code>schedule</code></td>
+<td>Kiểm tra định kỳ</td>
+<td>Không phải bộ hẹn giờ bảo đảm đúng phút</td>
+</tr>
+<tr class="odd">
+<td><code>workflow_call</code></td>
+<td>Gọi workflow dùng chung</td>
+<td>Khai báo input và secret rõ ràng</td>
+</tr>
+<tr class="even">
+<td><code>merge_group</code></td>
+<td>Kiểm tra với merge queue</td>
+<td>Cần bổ sung khi ruleset dùng merge queue</td>
+</tr>
+</tbody>
+</table>
+</div><p>Đây là các vai trò thiết kế thông dụng; chi tiết điều kiện chạy, ref
+và quyền token phụ thuộc từng event. Trước khi thêm trigger mới, đọc tài
+liệu event thay vì chỉ sao chép YAML từ một pipeline khác. [G3]</p>
+<p>Trong <code>pull_request.branches</code>, <code>main</code> là nhánh
+đích của pull request. Với PR từ <code>feature/network</code> vào
+<code>main</code>, bộ lọc này phù hợp dù tên nhánh nguồn không chứa
+<code>main</code>. Mặc định checkout trên sự kiện PR thường kiểm tra
+merge ref để phát hiện lỗi tích hợp với nhánh đích. Khi cần chính xác
+head commit của PR, dùng <code>github.event.pull_request.head.sha</code>
+và ghi rõ bạn đang bỏ việc thử merge trong lần kiểm tra đó.</p>
+<p><code>paths</code> giảm số lần chạy nhưng có thể tạo lỗ hổng phạm vi:
+thay đổi module dùng chung hoặc script CI không nằm trong bộ lọc khiến
+pipeline không chạy. Một rủi ro khác là required check bị treo Pending
+nếu workflow bị bỏ qua bởi bộ lọc. Với check bắt buộc trước merge, cách
+khởi đầu dễ quản lý là luôn khởi động workflow; sau này mới thêm job
+phát hiện thay đổi và một job tổng hợp có tên ổn định. [G2]</p>
+<p>Manual dispatch không đồng nghĩa với “luôn chạy code từ main”.
+Workflow triển khai mẫu kiểm tra
+<code>github.ref == 'refs/heads/main'</code> và checkout
+<code>github.sha</code>. Ở phía AWS và environment cũng phải có giới hạn
+tương ứng. Không dùng một chuỗi branch do người dùng nhập để quyết định
+trực tiếp code nào được chạy bằng quyền production.</p>
+<p>Nếu kiểm tra drift lúc 9 giờ 17 phút ở Việt Nam, cron UTC tương ứng
+là <code>17 2 * * 1-5</code>. Hãy kiểm tra quy ước timezone đang dùng
+khi thiết lập schedule. Lịch của Actions phù hợp kiểm tra định kỳ, không
+phù hợp nhiệm vụ có cam kết thời gian thực nghiêm ngặt.</p>
+<h2 id="context-expression-biến-và-output">5 Context expression biến và
+output</h2>
+<p>GitHub đánh giá biểu thức <code>${{ ... }}</code> trong cấu hình;
+Bash đánh giá <code>$NAME</code> khi lệnh chạy trên runner. Hai thời
+điểm này khác nhau. Chẳng hạn
+<code>if: github.ref == 'refs/heads/main'</code> quyết định có chạy job
+hay không trước khi shell của job tồn tại. [G4, G5]</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Bảng thông tin có thể cuộn ngang"><table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cách truy cập</th>
+<th>Dữ liệu</th>
+<th>Cách dùng phù hợp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>github.sha</code></td>
+<td>Commit gắn với event</td>
+<td>Truy vết code</td>
+</tr>
+<tr class="even">
+<td><code>github.ref</code></td>
+<td>Ref đầy đủ</td>
+<td>Giới hạn nhánh</td>
+</tr>
+<tr class="odd">
+<td><code>vars.AWS_REGION</code></td>
+<td>Cấu hình không bí mật</td>
+<td>Region hoặc tên bucket state</td>
+</tr>
+<tr class="even">
+<td><code>secrets.API_TOKEN</code></td>
+<td>Giá trị bí mật đã cấu hình</td>
+<td>Xác thực dịch vụ khi chưa dùng OIDC</td>
+</tr>
+<tr class="odd">
+<td><code>env.TF_VERSION</code></td>
+<td>Biến của workflow hoặc job</td>
+<td>Chọn phiên bản tool</td>
+</tr>
+<tr class="even">
+<td><code>steps.plan.outputs.exitcode</code></td>
+<td>Output từ một step có <code>id</code></td>
+<td>Quyết định có thay đổi hay không</td>
+</tr>
+<tr class="odd">
+<td><code>needs.plan.outputs.artifact_id</code></td>
+<td>Output job phụ thuộc</td>
+<td>Lấy đúng artifact plan</td>
+</tr>
+</tbody>
+</table>
+</div><p>Tên role ARN hay account ID thường là cấu hình, không phải
+credentials. Có thể đặt chúng trong repository variables. Dữ liệu như
+mật khẩu database hoặc API token là secret. Tuy nhiên, mức bảo mật cuối
+cùng phụ thuộc cả nơi sử dụng: một secret bị truyền vào lệnh in log vẫn
+có nguy cơ lộ, dù GitHub có cơ chế che một số giá trị.</p>
+<p>Ví dụ truyền output giữa các step:</p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="yaml"><code>- name: Compute a label
+  id: label
+  run: echo 'value=release-candidate' &gt;&gt; "$GITHUB_OUTPUT"
+- name: Use the label
+  env:
+    BUILD_LABEL: ${{ steps.label.outputs.value }}
+  run: printf '%s\n' "$BUILD_LABEL"</code></pre>
+</div><p><code>id</code> là khóa để tham chiếu output, không phải
+<code>name</code>. Muốn truyền sang job khác, khai báo
+<code>jobs.&lt;job&gt;.outputs</code> rồi đọc bằng <code>needs</code>.
+Output phù hợp với dữ liệu nhỏ như ID và cờ trạng thái. Dùng artifact
+cho file và hệ thống quản lý secret cho bí mật. Không dựa vào output để
+vận chuyển secret giữa job. [G6]</p>
+<p>Đầu vào từ PR có thể chứa ký tự shell. Không viết
+<code>run: echo "${{ github.event.pull_request.title }}"</code>. Hãy đưa
+tiêu đề vào biến <code>env</code>, rồi dùng
+<code>printf '%s\n' "$PR_TITLE"</code>. Cách này tránh biến nội dung PR
+thành một phần cú pháp shell; nó không khiến nội dung đó trở nên đáng
+tin để dùng làm lệnh, đường dẫn hoặc đối số nhạy cảm. [G7]</p>
+<h2 id="thiết-kế-đồ-thị-job-và-xử-lý-lỗi">6 Thiết kế đồ thị job và xử lý
+lỗi</h2>
+<p>Trong pipeline lớn, chia job theo trách nhiệm và quyền. Test không
+cần khóa cloud; plan không cần quyền sửa toàn bộ hạ tầng; apply không
+cần quyền tạo comment lên PR. Tách job giúp nhìn rõ ranh giới này và cho
+phép chạy song song những kiểm tra độc lập.</p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="yaml"><code>jobs:
+  lint:
+    # Khai báo runs-on và steps của job lint
+  test:
+    # Khai báo runs-on và steps của job test
+  package:
+    needs: [lint, test]
+    # Chỉ đóng gói sau khi các kiểm tra thành công</code></pre>
+</div><p>Đoạn trên chỉ minh họa đồ thị, chưa phải workflow chạy được. Khi dựng
+thật, mỗi job cần cấu hình đầy đủ. Mặc định nếu job phụ thuộc thất bại
+hoặc bị skip, job phía sau có thể bị skip theo. Một job tổng hợp dùng
+<code>always()</code> cần kiểm tra kết quả của tất cả job bắt buộc,
+không chỉ chạy một lệnh <code>echo</code> rồi báo xanh. [G2, G5]</p>
+<p><code>continue-on-error: true</code> hữu ích cho một kiểm tra thử
+nghiệm chưa bắt buộc, nhưng dễ che lỗi. Với Terraform plan, cách đúng là
+xử lý rõ mã thoát <code>0</code>, <code>1</code>, <code>2</code>; không
+biến mọi lỗi thành thành công. Dùng <code>if: failure()</code> cho thu
+thập chẩn đoán, <code>if: always()</code> cho việc thực sự cần chạy sau
+mọi kết quả. Dọn tài nguyên vẫn có thể không hoàn tất nếu runner bị mất
+hoặc bị hủy cưỡng bức; cần cơ chế dọn độc lập cho tài nguyên tạm.</p>
+<p><code>timeout-minutes</code> giúp pipeline không treo vô hạn. Đặt
+timeout theo trách nhiệm: kiểm tra cú pháp vài phút; apply có thể cần
+lâu hơn vì API cloud bất đồng bộ. Timeout không hoàn tác thay đổi đã
+thực hiện, và hủy job apply cũng không bảo đảm hạ tầng trở về trạng thái
+ban đầu.</p>
+<p>Matrix dùng cùng một logic với nhiều giá trị, ví dụ Node 22 và 24.
+<code>fail-fast: false</code> giúp bạn nhận đủ kết quả khi một phiên bản
+lỗi. <code>max-parallel</code> giới hạn số job cùng lúc. Với Terraform,
+chỉ chạy matrix song song cho các root module có state độc lập và đã xác
+định thứ tự phụ thuộc.</p>
+<h2 id="ci-ứng-dụng-thực-tế">7 CI ứng dụng thực tế</h2>
+<p>Bộ lab có ứng dụng Node rất nhỏ tính tổng giá tiền theo đơn vị cent.
+Nó dùng số nguyên để tránh vấn đề số thập phân và có test cho dữ liệu
+sai, số lượng bằng không và tràn phạm vi số nguyên an toàn. Ví dụ này
+nhỏ để bạn tập trung vào pipeline; <code>lint</code> chỉ là kiểm tra cú
+pháp bằng Node, chưa thay thế một bộ ESLint hay kiểm tra chất lượng đầy
+đủ.</p>
+<p>Workflow <code>app-ci.yml</code> thực hiện checkout, cài đúng Node
+theo matrix, cài dependency bằng <code>npm ci</code>, kiểm tra cú pháp,
+chạy test, build và upload kết quả. <code>package-lock.json</code> nằm
+trong Git. <code>npm ci</code> giúp môi trường CI dùng dependency theo
+lockfile và báo lỗi nếu lockfile không khớp manifest. Việc cache thư mục
+tải package không thay thế bước cài dependency.</p>
+<p>Hai bản matrix tạo artifact khác tên, có phiên bản Node và commit
+SHA. Điều này tránh ghi đè hoặc nhầm kết quả. Với ứng dụng triển khai
+thật, hãy chọn một cấu hình build được hỗ trợ làm artifact phát hành,
+kiểm thử chính artifact đó và promote nó qua staging rồi production.
+Không build lại cùng một phiên bản ở mỗi môi trường rồi giả định kết quả
+giống nhau.</p>
+<p>Thực hiện bài kiểm tra âm tính: sửa test để kỳ vọng <code>596</code>
+thay vì <code>597</code>, mở PR và quan sát check đỏ. Nếu required
+checks được cấu hình đúng, PR không được merge. Sau khi sửa lại, checks
+xanh và merge được. Một workflow luôn xanh nhưng chưa từng chặn lỗi có
+thể đang không kiểm tra điều bạn nghĩ.</p>
+<p>Khi mở rộng CI, thêm integration test với database tạm, scan
+dependency hoặc container, rồi chỉ publish image sau khi các kiểm tra
+bắt buộc thành công. Quyền <code>packages: write</code> chỉ đặt ở job
+publish. Image nên được truy vết bằng digest và commit; tag như
+<code>latest</code> chỉ là tên di động, không đủ làm bằng chứng phiên
+bản.</p>
+<h2 id="cache-artifact-runner-và-chi-phí">8 Cache artifact runner và chi
+phí</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Bảng thông tin có thể cuộn ngang"><table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tiêu chí</th>
+<th>Cache</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mục đích</td>
+<td>Tăng tốc lấy dependency</td>
+<td>Chuyển hoặc lưu kết quả một lần chạy</td>
+</tr>
+<tr class="even">
+<td>Ví dụ</td>
+<td>Cache npm package</td>
+<td>Build bundle và Terraform plan</td>
+</tr>
+<tr class="odd">
+<td>Khi không tồn tại</td>
+<td>Job vẫn phải chạy đúng</td>
+<td>Có thể phải dừng nếu thiếu đầu vào</td>
+</tr>
+<tr class="even">
+<td>Danh tính</td>
+<td>Key và phạm vi khôi phục</td>
+<td>ID artifact cùng workflow run</td>
+</tr>
+<tr class="odd">
+<td>Không nên chứa</td>
+<td>Credentials và state</td>
+<td>Secret không được quản lý quyền truy cập</td>
+</tr>
+</tbody>
+</table>
+</div><p><code>setup-node</code> có thể quản lý cache npm dựa trên lockfile.
+Key nên phản ánh hệ điều hành, toolchain và dependency phù hợp. Cache có
+thể đến từ một phạm vi được phép chia sẻ; đừng xem nó là nguồn dữ liệu
+đáng tin cho triển khai. Đặc biệt không cache <code>.terraform/</code>
+một cách mù quáng vì thư mục này có cấu hình backend và dữ liệu phụ
+thuộc vào lần init. [G8]</p>
+<p>Artifact phục vụ kết quả cụ thể của lần chạy. Upload và download phải
+thống nhất ID hoặc tên có đủ ngữ cảnh. Gói plan có thể chứa dữ liệu nhạy
+cảm, nên repository riêng tư và quyền đọc artifact phải phù hợp. Thời
+gian lưu một ngày là lựa chọn của lab, không phải cơ chế làm sạch secret
+ngay lập tức hay thay thế kiểm soát truy cập. Nếu thông tin nhạy cảm bị
+lộ, xóa artifact chưa đủ; phải xử lý credentials liên quan. [G9]</p>
+<p>Runner do GitHub cung cấp phù hợp để bắt đầu vì vòng đời và cài đặt
+đơn giản. Runner tự quản lý hữu ích khi cần mạng nội bộ, phần cứng đặc
+biệt hoặc kiểm soát môi trường. Đổi lại, bạn phải quản lý bản vá, cô
+lập, egress và dữ liệu tồn dư. Một runner dùng chung giữa PR chưa tin
+cậy và triển khai production tạo rủi ro lớn, kể cả nếu hai job không
+chạy cùng lúc.</p>
+<p>Trong production, ưu tiên runner tạm thời cho mỗi job, phân nhóm
+runner theo mức tin cậy và chỉ cho repository cần thiết sử dụng. Nếu
+runner nằm trong AWS với instance profile mạnh, bất kỳ code nào chạy
+trên máy đều có thể tìm cách dùng quyền đó; việc không truyền secret từ
+GitHub không đồng nghĩa với không có quyền cloud.</p>
+<p>Theo dõi thời gian chờ runner, thời gian từng job, tỷ lệ cache hit,
+số lần chạy trùng và dung lượng artifact. Tối ưu đoạn tốn thời gian thực
+tế trước. Matrix 4 hệ điều hành nhân 4 phiên bản có thể tạo 16 job;
+không cần ma trận đó nếu sản phẩm chỉ hỗ trợ một runtime và một nền
+tảng. Giới hạn và giá hiện hành cần xem trực tiếp trên tài khoản, không
+lấy một con số cố định làm giả định lâu dài.</p>
+<h2 id="terraform-dưới-góc-nhìn-automation">9 Terraform dưới góc nhìn
+automation</h2>
+<p>Terraform đọc cấu hình khai báo, làm việc với provider và state để
+xác định thay đổi cần thực hiện. State là bản ánh xạ giữa địa chỉ trong
+cấu hình và tài nguyên thực tế, kèm nhiều thuộc tính. Nó không đơn giản
+là cache có thể xóa đi tạo lại. Mất hoặc dùng nhầm state có thể khiến
+Terraform định tạo trùng resource hoặc tác động sai hạ tầng.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Bảng thông tin có thể cuộn ngang"><table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Lệnh</th>
+<th>Điều cần hiểu khi đưa vào CI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>fmt -check -recursive</code></td>
+<td>Kiểm tra định dạng và báo lỗi thay vì sửa trong CI</td>
+</tr>
+<tr class="even">
+<td><code>init -backend=false</code></td>
+<td>Cài module provider để kiểm tra mà không nối remote backend</td>
+</tr>
+<tr class="odd">
+<td><code>validate</code></td>
+<td>Kiểm tra tính hợp lệ nội bộ sau init</td>
+</tr>
+<tr class="even">
+<td><code>plan</code></td>
+<td>Đọc cấu hình state và API cần thiết để tính thay đổi</td>
+</tr>
+<tr class="odd">
+<td><code>plan -out=...</code></td>
+<td>Lưu bản kế hoạch máy đọc được để apply sau</td>
+</tr>
+<tr class="even">
+<td><code>apply &lt;planfile&gt;</code></td>
+<td>Thực thi bản plan đã lưu</td>
+</tr>
+<tr class="odd">
+<td><code>plan -refresh-only</code></td>
+<td>Đánh giá cập nhật state theo tài nguyên thực tế</td>
+</tr>
+</tbody>
+</table>
+</div><p><code>validate</code> không chứng minh IAM đủ quyền, subnet tồn tại
+hay account có quota. Chỉ plan hoặc kiểm thử tích hợp phù hợp mới tiếp
+cận được các điều kiện runtime đó. <code>init -backend=false</code> vẫn
+có thể tải provider và module từ mạng, nên không có nghĩa là kiểm tra
+hoàn toàn offline hoặc không có rủi ro supply chain. [T1]</p>
+<p>Với <code>terraform plan -detailed-exitcode</code>, mã <code>0</code>
+là thành công không có thay đổi, <code>2</code> là thành công có thay
+đổi, <code>1</code> là lỗi. Shell trong CI thường dừng khi gặp mã khác
+không. Mẫu workflow tạm tắt hành vi đó quanh đúng lệnh plan, lấy
+<code>$?</code> ngay sau lệnh, bật lại rồi chỉ chấp nhận <code>0</code>
+hoặc <code>2</code>. Nếu dùng pipe qua <code>tee</code>, cần xử lý
+<code>pipefail</code> và mã của tiến trình Terraform, không lấy nhầm mã
+của <code>tee</code>. [T2]</p>
+<p><code>terraform apply -auto-approve</code> bỏ câu hỏi tương tác của
+Terraform, không phải một cơ chế duyệt thay đổi của tổ chức. Khi apply
+một saved plan, Terraform không yêu cầu phê duyệt tương tác như khi tự
+tạo plan mới. Do đó, gate phê duyệt phải đặt trước job apply và gắn với
+đúng saved plan. Không thêm <code>-auto-approve</code> theo thói quen để
+rồi tưởng nó giải quyết vấn đề CI. [T3]</p>
+<p>Về kiểm thử, có thể dùng <code>terraform test</code>, mock provider
+phù hợp hoặc kiểm thử tích hợp trên account sandbox. Một test có thao
+tác apply có thể tạo tài nguyên thật và phát sinh chi phí; cần chính
+sách dọn tài nguyên, quota và timeout riêng. Test không thay thế việc
+review kế hoạch phá hủy hoặc thay thế resource. [T4]</p>
+<h2 id="tổ-chức-repository-và-remote-state">10 Tổ chức repository và
+remote state</h2>
+<p>Lab dùng một root module ở <code>infra/envs/prod/</code>. Chữ
+<code>prod</code> mô phỏng quy trình production nhưng tài nguyên phải
+chạy trong account sandbox. Khi mở rộng, tạo root riêng cho staging và
+production, đồng thời tách account, role và state theo môi trường.
+Module dùng chung nằm ở thư mục riêng và được các root gọi lại.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Bảng thông tin có thể cuộn ngang"><table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Đường dẫn</th>
+<th>Trách nhiệm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.github/workflows/app-ci.yml</code></td>
+<td>CI ứng dụng</td>
+</tr>
+<tr class="even">
+<td><code>.github/workflows/terraform-check.yml</code></td>
+<td>Kiểm tra Terraform không dùng cloud credentials</td>
+</tr>
+<tr class="odd">
+<td><code>.github/workflows/terraform-deploy.yml</code></td>
+<td>Tạo plan duyệt và apply</td>
+</tr>
+<tr class="even">
+<td><code>ci/plan_metadata.py</code></td>
+<td>Gắn plan với commit và lần chạy</td>
+</tr>
+<tr class="odd">
+<td><code>infra/envs/prod/versions.tf</code></td>
+<td>CLI provider constraint và backend</td>
+</tr>
+<tr class="even">
+<td><code>infra/envs/prod/main.tf</code></td>
+<td>Bucket lab và cấu hình bảo vệ</td>
+</tr>
+<tr class="odd">
+<td><code>app/</code></td>
+<td>Ứng dụng nhỏ phục vụ CI</td>
+</tr>
+</tbody>
+</table>
+</div><p>Cấu hình backend được truyền lúc init, không chứa access key. State
+key của lab là <code>prod-lab/s3/terraform.tfstate</code>. Cặp bucket và
+key chính là một phần danh tính hạ tầng; đổi sai một ký tự có thể khiến
+Terraform nhìn thấy một state rỗng. Trước lần chạy đầu, kiểm tra
+account, region, tên bucket và key bằng quy trình có người đối
+chiếu.</p>
+<p>Backend S3 hiện hỗ trợ khóa bằng <code>use_lockfile = true</code>;
+khóa dùng DynamoDB đã được đánh dấu deprecated trong tài liệu chính
+thức. Với hệ thống đang dùng DynamoDB, cần kế hoạch tương thích phiên
+bản và di chuyển có kiểm tra, không xóa bảng khóa tùy tiện. Backend
+bucket phải tồn tại trước khi root module này init. [T5]</p>
+<p>Bucket state nên bật versioning, mã hóa, chặn public access và có
+kiểm soát quyền đọc ghi. Nếu dùng KMS riêng, cấp thêm quyền KMS theo key
+và chính sách tương ứng. Quyền đọc state phải được xem như quyền tiếp
+cận dữ liệu nhạy cảm. <code>sensitive = true</code> chủ yếu che hiển thị
+thông thường; không tự loại giá trị khỏi state hoặc saved plan. Một số
+cơ chế ephemeral và write-only có thể tránh lưu dữ liệu trong các vị trí
+được hỗ trợ, nhưng cần xét từng provider và phiên bản. [T6]</p>
+<p>Commit <code>.terraform.lock.hcl</code> để giữ lựa chọn provider và
+checksum. Constraint <code>~&gt; 6.0</code> không khóa một patch cụ thể;
+lockfile mới làm các lần init sau chọn lại provider đã chốt. Lockfile
+không khóa phiên bản Terraform CLI hoặc mọi remote module. Với module,
+dùng version hay ref bất biến tương ứng. CI dùng
+<code>-lockfile=readonly</code> để yêu cầu việc nâng provider phải là
+thay đổi được review. [T7]</p>
+<p>Concurrency của Actions và backend lock giải quyết hai tầng khác
+nhau. Concurrency giảm việc chạy chồng trong repository; backend lock
+bảo vệ state khi các client cùng truy cập backend đó, kể cả máy local
+hoặc hệ thống CI khác. Bạn cần cả hai. Không tắt khóa bằng
+<code>-lock=false</code> chỉ để pipeline xanh.</p>
+<h2 id="oidc-và-phân-quyền-aws">11 OIDC và phân quyền AWS</h2>
+<p>Thay vì lưu AWS access key dài hạn trong GitHub Secrets, OIDC cho
+phép job trình bày danh tính được GitHub ký để AWS STS cấp phiên làm
+việc tạm thời. Bạn cấu hình một IAM OIDC provider cho
+<code>https://token.actions.githubusercontent.com</code>, audience
+<code>sts.amazonaws.com</code>, rồi tạo IAM role chỉ tin các claim phù
+hợp. Job cần <code>id-token: write</code> để yêu cầu token OIDC.
+[G10]</p>
+<p>Hãy hình dung ba lớp kiểm tra độc lập. GitHub cho phép job yêu cầu
+token; trust policy AWS quyết định token đó có được assume role không;
+permission policy của role quyết định phiên làm việc được gọi API nào.
+Một token có danh tính đúng vẫn không được làm điều nằm ngoài IAM
+policy. Ngược lại, permission policy chặt không sửa được trust policy
+cho phép sai repository assume role.</p>
+<p>Lab có hai role. Plan role chỉ đọc cấu hình bucket lab và state, đồng
+thời được tạo xóa object khóa của state. Apply role được ghi state và
+quản lý bucket lab. Quyền ghi object khóa là ngoại lệ có chủ đích của
+plan role: “không sửa hạ tầng nghiệp vụ” không có nghĩa là tuyệt đối
+không có API ghi nào.</p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="json"><code>{
+  "StringEquals": {
+    "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+    "token.actions.githubusercontent.com:sub":
+      "repo:YOUR_ORG/YOUR_REPO:ref:refs/heads/main"
+  }
+}</code></pre>
+</div><p>Đây là phần condition cho plan role của lab. Với apply job có
+<code>environment: production</code>, subject theo cấu hình mặc định đổi
+thành <code>repo:YOUR_ORG/YOUR_REPO:environment:production</code>, thay
+vì chuỗi ref của nhánh. Vì vậy phải dùng trust policy tương ứng và giới
+hạn nhánh triển khai trong GitHub environment. Không ghép cả hai giá trị
+subject thành điều kiện đồng thời rồi kỳ vọng token thỏa mãn. Nếu tổ
+chức tùy biến subject OIDC, cần đối chiếu claim thực tế. [G10]</p>
+<p>Bộ mã có đầy đủ <code>plan-trust.json</code>,
+<code>apply-trust.json</code> và hai permission policy trong
+<code>iam/</code>. Thay mọi placeholder trước khi dùng. Policy apply cho
+phép <code>s3:*</code> nhưng chỉ trên ARN bucket lab và object của nó;
+đây là cách giới hạn phạm vi tài nguyên để làm bài học dễ vận hành, chưa
+phải tập API tối thiểu cho một hệ thống production. Khi triển khai thật,
+thu hẹp action theo provider, CloudTrail và kiểm thử; không thay bằng
+AdministratorAccess để bỏ qua lỗi.</p>
+<p>Hai role cần quyền khác nhau trên bucket state. Plan:
+<code>GetObject</code> trên state; apply: thêm <code>PutObject</code>
+trên state. Cả hai cần <code>GetObject</code>, <code>PutObject</code>,
+<code>DeleteObject</code> trên tệp <code>.tflock</code>. Policy mẫu cho
+phép <code>ListBucket</code> trên bucket state để việc init và khám phá
+workspace không bị chặn; quyền đọc ghi object vẫn giới hạn đúng key. Có
+thể thu hẹp quyền liệt kê sau khi xác minh các prefix mà backend thực sự
+gọi. Nếu dùng KMS, bucket policy hay SCP, những lớp đó còn có thể từ
+chối request dù role policy có Allow.</p>
+<h2 id="luồng-terraform-được-đề-xuất">12 Luồng Terraform được đề
+xuất</h2>
+<p>Luồng mẫu chọn sự đơn giản về mức tin cậy: PR chỉ kiểm tra không có
+credentials; chỉ code đã vào <code>main</code> mới được plan với quyền
+cloud. Sau khi plan có thay đổi, job apply chờ environment approval.
+Quyết định này phù hợp để học an toàn, đồng thời giải thích rõ sự đánh
+đổi: reviewer PR chưa nhìn thấy cloud plan tự động trước merge.</p>
+<ol type="1">
+<li>Người phát triển sửa Terraform trên nhánh chức năng và mở PR.</li>
+<li>Terraform Check chạy format, init không backend và validate trên
+runner GitHub.</li>
+<li>Reviewer xem code, module, workflow và policy. Required checks phải
+đạt trước merge.</li>
+<li>Push lên <code>main</code> kích hoạt Terraform Deploy. Job plan
+assume plan role qua OIDC.</li>
+<li>Job plan nối đúng backend, validate lại và tạo saved plan cùng bản
+text để review.</li>
+<li>Nếu không có thay đổi, workflow kết thúc mà không mở job apply.</li>
+<li>Nếu có thay đổi, người duyệt tải đúng artifact của run, xem plan và
+xác nhận environment.</li>
+<li>Job apply xác minh commit, metadata, checksum và thời hạn plan;
+assume apply role rồi apply saved plan.</li>
+<li>Người vận hành kiểm tra trạng thái hạ tầng, state và bằng chứng
+trong workflow run.</li>
+</ol>
+<p>Tại sao phải tạo plan mới sau merge? Plan từ PR có thể dựa trên merge
+ref khác, state khác hoặc code đã thay đổi. Workflow sau merge tính lại
+kế hoạch từ commit thực sự nằm trên nhánh triển khai. Người duyệt apply
+phải xem kế hoạch mới này; review code trước merge và review plan trước
+apply là hai bước phục vụ hai loại bằng chứng khác nhau.</p>
+<p>Trong doanh nghiệp muốn xem plan trước merge, có thể thêm một luồng
+plan đặc quyền cho commit đã được tin cậy, hoặc dùng HCP Terraform hay
+hệ thống điều phối chuyên dụng. Việc kiểm tra “PR đến từ cùng
+repository” không đủ biến toàn bộ code thành tin cậy. Chỉ cấp role cloud
+cho PR sau khi có mô hình phê duyệt, cô lập và kiểm soát egress phù hợp;
+plan có thể thực thi provider và đọc nhiều dữ liệu nhạy cảm.</p>
+<h2 id="thiết-lập-bài-lab-từ-đầu">13 Thiết lập bài lab từ đầu</h2>
+<h3 id="chuẩn-bị-môi-trường">13.1 Chuẩn bị môi trường</h3>
+<p>Dùng repository riêng tư trên GitHub.com và AWS account sandbox.
+Bucket nghiệp vụ của lab không nên chứa dữ liệu thật. Bạn cần quyền tạo
+IAM role, OIDC provider và bucket state theo quy định của tổ chức; nếu
+không có, nhờ quản trị viên thiết lập phần bootstrap. Không cấp quyền
+AWS quản trị cho workflow để tự dựng chính trust boundary của nó.</p>
+<p>Giải nén bộ ví dụ vào thư mục repository mới, bảo đảm
+<code>.github/</code>, <code>infra/</code>, <code>ci/</code> và
+<code>app/</code> nằm ngay dưới root. Một số chương trình giải nén không
+hiển thị thư mục bắt đầu bằng dấu chấm; cần kiểm tra rằng các tệp
+workflow đã có trong Git. Đổi team placeholder ở CODEOWNERS thành team
+thật, hoặc thay bằng tài khoản reviewer phù hợp.</p>
+<p>Tạo bucket state riêng, ví dụ
+<code>my-company-tfstate-sandbox-unique</code>, bật Block Public Access,
+versioning và mã hóa. Bucket này không phải bucket lab mà Terraform sẽ
+quản lý. Không đưa bucket state vào cùng root module sẽ xóa khi dọn lab.
+Nếu tổ chức dùng S3 Object Lock hoặc KMS, phải kiểm tra khả năng xóa
+lockfile và quyền mã hóa trước.</p>
+<h3 id="thiết-lập-danh-tính-và-quyền">13.2 Thiết lập danh tính và
+quyền</h3>
+<p>Tạo OIDC provider và hai role theo chương 11. Trong các JSON mẫu,
+thay account ID <code>123456789012</code>,
+<code>YOUR_ORG/YOUR_REPO</code>, <code>YOUR_STATE_BUCKET</code>,
+<code>YOUR_LAB_BUCKET</code>. Chữ hoa chữ thường của tên repository và
+environment phải khớp cấu hình danh tính của bạn. Gắn permission policy
+vào đúng role, không gắn trust policy như một permission policy thông
+thường.</p>
+<p>Trong repository, tạo các Actions variables sau. Lab dùng repository
+variables cho cả plan và apply để tránh job plan vô tình phụ thuộc
+environment <code>production</code>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Bảng thông tin có thể cuộn ngang"><table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Ví dụ hoặc ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>AWS_ACCOUNT_ID</code></td>
+<td>Account sandbox có 12 chữ số</td>
+</tr>
+<tr class="even">
+<td><code>AWS_REGION</code></td>
+<td><code>ap-southeast-1</code></td>
+</tr>
+<tr class="odd">
+<td><code>AWS_PLAN_ROLE_ARN</code></td>
+<td>ARN role tạo plan</td>
+</tr>
+<tr class="even">
+<td><code>AWS_APPLY_ROLE_ARN</code></td>
+<td>ARN role apply</td>
+</tr>
+<tr class="odd">
+<td><code>TF_STATE_BUCKET</code></td>
+<td>Bucket state đã bootstrap</td>
+</tr>
+<tr class="even">
+<td><code>LAB_BUCKET_NAME</code></td>
+<td>Tên bucket lab duy nhất toàn cục</td>
+</tr>
+</tbody>
+</table>
+</div><p>Workflow truyền <code>LAB_BUCKET_NAME</code> thành
+<code>TF_VAR_bucket_name</code>. Cùng một giá trị được dùng trong policy
+IAM cho bucket lab. Chọn tên thông thường gồm chữ thường, số và dấu gạch
+nối; validation minh họa trong Terraform không bao quát mọi quy tắc và
+tên dành riêng của S3.</p>
+<h3 id="cấu-hình-environment-và-bảo-vệ-nhánh">13.3 Cấu hình environment
+và bảo vệ nhánh</h3>
+<p>Tạo environment tên chính xác <code>production</code> trước khi chạy
+deploy. Chỉ cho phép nhánh <code>main</code> triển khai, bật required
+reviewers và ngăn tự duyệt nếu tính năng được hỗ trợ. Quy định việc
+bypass protection và quyền admin cần rõ ràng. Chỉ viết
+<code>environment: production</code> trong YAML không tự tạo ra chính
+sách duyệt đủ mạnh. [G11]</p>
+<p>Khả năng dùng environment protection và required reviewers phụ thuộc
+gói GitHub, kiểu repository và chính sách tổ chức. Nếu repo của bạn
+không hỗ trợ bước duyệt cần thiết, dừng phần apply tự động và dùng công
+cụ triển khai có approval phù hợp. Một nút manual dispatch tự nó không
+chứng minh người dùng đã duyệt đúng saved plan. Không chạy apply với
+production role khi gate chưa được thiết lập.</p>
+<p>Đặt ruleset hoặc branch protection cho <code>main</code>: bắt buộc
+PR, bắt buộc check của App CI và Terraform Check, hạn chế push trực tiếp
+và yêu cầu owner review cho workflow cùng mã hạ tầng. Chọn tên check từ
+những lần chạy thực tế để tránh nhập sai. Nếu dùng merge queue, giữ
+trigger <code>merge_group</code> trong các workflow kiểm tra. Gói
+<code>terraform-deploy.yml</code> dùng path filter và không nên đặt
+chính nó làm required check của PR.</p>
+<h3 id="tạo-provider-lockfile-và-chạy-kiểm-tra-local">13.4 Tạo provider
+lockfile và chạy kiểm tra local</h3>
+<p>Cài Terraform CLI đúng phiên bản <code>1.14.6</code> trên máy của bạn
+hoặc máy chuẩn bị được quản lý. Từ root repository chạy:</p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="bash"><code>terraform fmt -recursive infra
+terraform -chdir=infra/envs/prod init -backend=false
+terraform -chdir=infra/envs/prod providers lock \
+  -platform=linux_amd64
+terraform -chdir=infra/envs/prod validate
+git add infra/envs/prod/.terraform.lock.hcl</code></pre>
+</div><p>Nếu phát triển trên nền tảng khác, thêm platform tương ứng khi tạo
+lockfile. Review thay đổi provider và checksum, rồi commit lockfile. Đây
+là bước bắt buộc trước khi workflow có <code>-lockfile=readonly</code>
+chạy. Bộ ví dụ không tự điền checksum vì checksum phải lấy từ provider
+thật qua quá trình init hoặc providers lock. Không commit
+<code>.terraform/</code>.</p>
+<p>Trong <code>app/</code>, chạy <code>npm ci</code>,
+<code>npm run lint</code>, <code>npm test</code> và
+<code>npm run build</code> với Node 24. Commit code lên nhánh chức năng.
+Mở PR và quan sát cả hai check. Pipeline deploy chỉ chạy sau merge khi
+có thay đổi thuộc phạm vi lọc, hoặc khi bạn dispatch thủ công từ
+<code>main</code>.</p>
+<h3 id="thực-hiện-một-lần-thay-đổi-hoàn-chỉnh">13.5 Thực hiện một lần
+thay đổi hoàn chỉnh</h3>
+<p>Ở lần đầu, plan thường cho thấy tạo bucket cùng cấu hình chặn public
+access và mã hóa. Tải artifact
+<code>tfplan-&lt;run_id&gt;-&lt;run_attempt&gt;</code> từ đúng run. Giải
+nén tệp <code>plan-bundle.tgz</code>, đọc <code>plan.txt</code> và đối
+chiếu metadata. Không chạy bất kỳ script nào lấy từ artifact PR chưa tin
+cậy. Với lab, artifact này chỉ do workflow trên <code>main</code> tạo
+ra.</p>
+<p>Người duyệt kiểm tra tên bucket, account sandbox, region, số lượng
+create/update/delete/replace và mọi thay đổi ngoài phạm vi dự kiến. Sau
+khi approve environment, apply tiếp tục. Kiểm tra bucket trong AWS,
+trạng thái workflow và object state trong bucket backend. Chạy lại
+workflow: nếu cấu hình và hạ tầng không thay đổi, plan trả
+<code>0</code>, apply bị skip. Đây là một bài kiểm tra tính hội tụ hữu
+ích.</p>
+<p>Để làm một thay đổi tiếp theo, sửa tag có ý nghĩa hoặc thêm một cấu
+hình được review. Quan sát khác biệt giữa update tại chỗ và replacement.
+Không dùng dữ liệu production để thử thao tác phá hủy. Việc tạo bucket
+thường nhỏ nhưng các API, lưu trữ và tính năng bổ sung vẫn có thể phát
+sinh chi phí theo tài khoản.</p>
+<h2 id="đọc-workflow-kiểm-tra-và-triển-khai">14 Đọc workflow kiểm tra và
+triển khai</h2>
+<h3 id="terraform-check">14.1 Terraform Check</h3>
+<p>Workflow này chạy trên PR, push <code>main</code> và merge group. Nó
+chỉ có <code>contents: read</code>, không yêu cầu OIDC và không đọc
+secret cloud. Format kiểm tra toàn bộ thư mục <code>infra</code>; init
+và validate chạy ở root module của lab. Nếu bạn thêm root module mới mà
+không mở rộng workflow, nó chỉ được format chứ chưa được validate. Đây
+là trách nhiệm cần nhớ khi nhân bản ví dụ.</p>
+<p><code>init -backend=false</code> giữ bước kiểm tra không nối bucket
+state. <code>-lockfile=readonly</code> giúp phát hiện provider chưa được
+khóa đúng hoặc yêu cầu dependency mới. <code>validate</code> vẫn chạy
+với các variable chưa có giá trị thực tế nếu cấu hình cho phép; nó không
+thay thế plan với giá trị môi trường thật.</p>
+<h3 id="job-plan">14.2 Job plan</h3>
+<p>Job chỉ chạy từ <code>main</code>, checkout commit cụ thể, cài
+Terraform cố định và assume plan role. <code>allowed-account-ids</code>
+tạo thêm kiểm tra account trong action cấu hình credentials, nhưng không
+thay thế IAM. Sau đó <code>init</code> truyền backend bucket, key,
+region, encryption và native locking. Các giá trị này không phải mật
+khẩu; AWS credentials đi qua biến môi trường của phiên STS. [G20]</p>
+<p>Plan lưu binary tại <code>bundle/tfplan</code> và chuyển cả stdout
+lẫn stderr vào <code>bundle/plan.txt</code>. Cách này giảm việc vô tình
+đẩy toàn bộ plan vào log chung. Với repository riêng tư của lab, bản
+text nằm trong artifact để người có quyền review đọc. Khi plan lỗi,
+artifact chẩn đoán chứa bản text được upload riêng; cần bảo vệ quyền đọc
+artifact tương tự state.</p>
+<p>Nếu plan trả <code>2</code>, workflow đóng gói plan, bản text,
+provider lockfile, metadata và checksum. Nó xuất ID artifact thành
+output job. Nếu plan trả <code>0</code>, không tạo artifact triển khai
+và không chạy apply. Nếu trả <code>1</code> hoặc mã bất thường, job phải
+đỏ. Không cho apply chạy chỉ vì output không rỗng.</p>
+<h3 id="job-apply">14.3 Job apply</h3>
+<p>Job có <code>needs: plan</code>, chỉ chạy khi exit code là
+<code>2</code> và chờ environment protection. Runner mới checkout cùng
+SHA, cài cùng Terraform, download artifact bằng đúng ID do job plan trả
+về. Trước khi lấy quyền cloud, nó đối chiếu head hiện tại của
+<code>main</code>, kiểm checksum, so lockfile và chạy xác minh
+metadata.</p>
+<p>Sau kiểm tra, job assume apply role, init lại cùng backend rồi chạy
+<code>terraform apply ... bundle/tfplan</code>. Nó không chạy
+<code>terraform plan</code> lần nữa và không truyền bộ biến khác cho
+apply. Dữ liệu dùng để quyết định thay đổi đã nằm trong saved plan; nếu
+cần đổi input, phải tạo và duyệt plan mới.</p>
+<p>Mẫu không tự đưa nội dung plan vào PR comment hoặc summary vì plan có
+thể mang dữ liệu nhạy cảm. Summary chỉ ghi SHA, mã thoát và đường dẫn
+artifact. Mẫu cũng chưa có policy engine tự chặn delete, đánh giá chi
+phí hoặc ticket change management; thêm các bước này trước gate apply
+nếu môi trường yêu cầu.</p>
+<h2 id="bảo-đảm-apply-đúng-plan-đã-duyệt">15 Bảo đảm apply đúng plan đã
+duyệt</h2>
+<p>Một quy trình dễ sai là <code>plan</code> ở job A, người duyệt, rồi
+job B chạy <code>terraform apply</code> không có planfile. Lần apply đó
+tự tính kế hoạch mới. Người duyệt đã nhìn một kế hoạch, nhưng job thực
+hiện một kế hoạch có thể khác. Saved plan và artifact theo ID giúp gắn
+hai giai đoạn lại với nhau. [T2, T3, G21]</p>
+<p>Lab lưu <code>repository</code>, <code>sha</code>,
+<code>run_id</code>, <code>run_attempt</code>,
+<code>terraform_version</code>, <code>state_key</code> và thời điểm tạo.
+Script từ chối khi một trường không khớp hoặc plan quá 4 giờ. Đây là
+chính sách minh họa; đội của bạn cần chọn thời hạn phù hợp với tốc độ
+thay đổi và thời gian review. Artifact giữ một ngày không có nghĩa plan
+có thể dùng suốt một ngày.</p>
+<p>Vì <code>run_attempt</code> được kiểm tra, thao tác “Re-run failed
+jobs” chỉ chạy apply ở attempt mới có thể bị từ chối. Chủ động dùng
+“Re-run all jobs” để tạo plan mới, rồi review và approve lại. Không sửa
+script để bỏ qua mismatch chỉ vì muốn dùng lại một plan thuận tiện. Nếu
+state đã đổi do một lần apply khác, saved plan cũng có thể bị Terraform
+từ chối là stale.</p>
+<p>Checksum giúp phát hiện tệp hỏng hoặc gói không nhất quán; một
+checksum nằm cùng artifact không chứng minh tác giả đáng tin. Người kiểm
+soát cả workflow tạo plan có thể tạo cả checksum giả. Ranh giới tin cậy
+nằm ở việc bảo vệ nhánh, review workflow, action đã pin và quyền ghi
+artifact. Khi cần xác minh provenance mạnh hơn, thiết kế thêm
+attestation hoặc chữ ký và bộ xác minh độc lập phù hợp.</p>
+<p>Kiểm tra head <code>main</code> trước apply giúp từ chối plan thuộc
+commit cũ khi đã có commit mới. Vẫn tồn tại khoảng thời gian sau kiểm
+tra mà nhánh có thể tiếp tục thay đổi; YAML không phải giao dịch khóa
+nhánh Git. Với yêu cầu nghiêm ngặt, dùng hàng đợi triển khai, freeze
+thay đổi theo change window hoặc hệ thống điều phối đảm bảo thứ tự mong
+muốn. Không tuyên bố rằng một lệnh so SHA giải quyết mọi race
+condition.</p>
+<p>Backend lock được giữ khi Terraform làm thao tác cần khóa, không được
+giữ suốt thời gian người duyệt đang đọc artifact. Một client khác vẫn có
+thể apply giữa plan và apply. Ngoài ra, thay đổi trực tiếp ngoài
+Terraform có thể chưa làm state serial đổi; saved plan không bảo đảm
+phát hiện mọi drift phát sinh sau lúc lập kế hoạch. Giữ thời gian chờ
+ngắn và tái plan khi có nghi ngờ về trạng thái thực tế.</p>
+<p>Concurrency trong lab đặt ở cấp workflow với group cố định cho state
+này và <code>cancel-in-progress: false</code>. Nó tránh chủ động hủy một
+lần apply đang chạy khi có push mới. Cơ chế xếp pending và thứ tự không
+nên bị hiểu thành hàng đợi FIFO bền vững; tùy cấu hình concurrency hiện
+hành, pending run có thể bị thay thế. Nếu mọi commit đều phải được
+deploy theo thứ tự, cần một cơ chế hàng đợi đáp ứng chính yêu cầu đó.
+[G12]</p>
+<h2 id="bảo-mật-workflow-trong-môi-trường-thật">16 Bảo mật workflow
+trong môi trường thật</h2>
+<h3 id="code-từ-pull-request-chưa-có-mức-tin-cậy-production">16.1 Code
+từ pull request chưa có mức tin cậy production</h3>
+<p>PR có thể thay script, module, provider, Dockerfile, package
+lifecycle script và cả workflow. Không chỉ shell inline mới thực thi
+code. <code>npm ci</code>, test hoặc plan đều có thể gọi code từ thay
+đổi. Vì vậy, lab không cấp quyền cloud cho PR và dùng GitHub hosted
+runner thay vì runner có quyền truy cập mạng production.</p>
+<p>Đặc biệt thận trọng với <code>pull_request_target</code> và
+<code>workflow_run</code>. Chúng có thể tạo ngữ cảnh đặc quyền khác với
+<code>pull_request</code>. Không tải artifact hay checkout code từ PR
+chưa tin cậy rồi chạy nó trong job có secret hoặc quyền ghi. Các rào
+chắn mới của action checkout giúp giảm một số sai sót, nhưng không thay
+thế mô hình phân quyền của bạn. [G7, G16]</p>
+<h3 id="quyền-của-token-và-action-bên-ngoài">16.2 Quyền của token và
+action bên ngoài</h3>
+<p>Đặt quyền mặc định tối thiểu và mở ở từng job. Đọc code chỉ cần
+<code>contents: read</code>; xin OIDC cần <code>id-token: write</code>;
+comment PR cần quyền riêng. Không dùng một PAT quản trị cho cả
+repository khi <code>GITHUB_TOKEN</code> hoặc GitHub App với quyền hẹp
+có thể đáp ứng. Quyền mặc định ở tổ chức, sự kiện fork và chính sách
+quản trị có thể làm quyền thực tế khác điều bạn kỳ vọng.</p>
+<p>Action bên ngoài chạy code trong ngữ cảnh job. Kiểm tra chủ sở hữu,
+release, commit và hành vi trước khi dùng. Pin commit SHA đầy đủ, ghi
+comment phiên bản để dễ đọc, và dùng Dependabot hoặc cơ chế tương tự mở
+PR cập nhật. Tag major tiện cho bài học nhưng có thể trỏ sang commit mới
+theo thời gian. Dùng action chính chủ cũng vẫn cần theo dõi cập nhật và
+quyền được cấp. [G7]</p>
+<h3 id="secret-state-plan-và-log">16.3 Secret state plan và log</h3>
+<p>Không commit access key, state, plan binary hoặc tfvars chứa secret.
+Có <code>.gitignore</code> không đủ nếu tệp đã được theo dõi trong Git
+từ trước. Khi lộ secret, thu hồi hoặc rotate trước, sau đó xử lý lịch sử
+và các bản sao theo quy trình tổ chức. Đừng chỉ xóa dòng secret ở commit
+mới rồi coi sự cố đã xong.</p>
+<p>Không bật <code>set -x</code> trong step có secret. Không dump toàn
+bộ context GitHub hay tất cả biến môi trường để debug.
+<code>terraform show -json</code> có thể trả dữ liệu nhạy cảm dạng rõ;
+chỉ dùng cho policy engine trong phạm vi được bảo vệ và không tự đăng
+JSON lên PR công khai. Việc đặt <code>sensitive</code> không làm plan
+binary trở thành artifact an toàn để công bố. [T6]</p>
+<h3 id="approval-phải-bảo-vệ-cả-đường-đi-đến-quyền-cloud">16.4 Approval
+phải bảo vệ cả đường đi đến quyền cloud</h3>
+<p>Environment reviewer, branch rule, CODEOWNERS và OIDC trust policy
+cần thống nhất. Nếu ai đó được sửa workflow rồi merge không qua review,
+họ có thể thêm một job khác mang environment production và dùng apply
+role cho lệnh khác. AWS chỉ thấy danh tính được trust, không tự hiểu
+“lệnh Terraform được phép” trong YAML.</p>
+<p>Khi cần bảo đảm chỉ workflow triển khai chuẩn được assume role, xem
+xét ràng buộc danh tính workflow dùng chung bằng các khả năng claim và
+subject customization mà tổ chức cùng cloud hỗ trợ, rồi kiểm chứng chính
+xác. Đừng giả định AWS tự hỗ trợ mọi custom claim của GitHub trong trust
+policy. Tách workflow chuẩn về repository do platform team quản lý cũng
+chỉ hữu ích nếu quyền gọi, ref và đường nâng quyền được kiểm soát.</p>
+<h2 id="tái-sử-dụng-và-mở-rộng-nhiều-môi-trường">17 Tái sử dụng và mở
+rộng nhiều môi trường</h2>
+<h3 id="reusable-workflow-và-composite-action">17.1 Reusable workflow và
+composite action</h3>
+<p>Reusable workflow phù hợp khi bạn muốn chia sẻ cả một quy trình gồm
+job, runner và quyền. Composite action gom một chuỗi step để chạy trong
+job của bên gọi. Chọn theo ranh giới cần chia sẻ, không chọn chỉ vì thấy
+cú pháp ngắn hơn. Workflow dùng chung nên có input được định kiểu, ít
+quyền và giao diện ổn định. [G13]</p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="yaml"><code># Minh họa một job gọi workflow đã được platform team quản lý
+jobs:
+  validate:
+    permissions:
+      contents: read
+    uses: YOUR_ORG/platform/.github/workflows/tf-check.yml@REPLACE_WITH_FULL_SHA
+    with:
+      root: infra/envs/prod
+      terraform_version: '1.14.6'</code></pre>
+</div><p>Đây là đoạn minh họa kiến trúc, không phải tệp gọi được ngay:
+repository đích phải tồn tại và workflow phải khai báo
+<code>on: workflow_call</code> với các input tương ứng. Với workflow ở
+repository khác, quyền truy cập và chính sách Actions còn phải cho phép
+sử dụng. Không dùng <code>secrets: inherit</code> một cách mặc định nếu
+workflow chỉ cần một secret cụ thể.</p>
+<p>Kiểm tra input <code>root</code> bằng allowlist nếu bên gọi có thể
+chọn đường dẫn; không ghép thẳng input vào shell. Workflow dùng chung
+cũng cần test và chiến lược nâng phiên bản. Pin vào SHA giúp repository
+sử dụng không đổi hành vi đột ngột khi platform team push lên
+<code>main</code>.</p>
+<h3 id="nhiều-root-module-và-nhiều-môi-trường">17.2 Nhiều root module và
+nhiều môi trường</h3>
+<p>Với hai môi trường, thường nên tách <code>infra/envs/staging</code>
+và <code>infra/envs/prod</code>, mỗi nơi có state riêng và role riêng.
+Không chỉ đổi tên GitHub environment mà vẫn giữ cùng bucket/key state.
+Tách AWS account giúp giảm phạm vi ảnh hưởng; cần xét cả dịch vụ dùng
+chung và đường kết nối mạng giữa account.</p>
+<p>Terraform workspace là cách tách state trong một backend, không tự
+tách credentials hoặc tạo boundary IAM mạnh. Nó có thể phù hợp với các
+bản sao cùng mô hình, nhưng không nên được xem là lời giải duy nhất cho
+phân tách staging và production. Chọn directory, account, backend và
+workspace dựa trên yêu cầu truy cập và vòng đời thay đổi.</p>
+<p>Chạy song song stack độc lập như DNS sandbox và monitoring sandbox
+khi chúng không phụ thuộc nhau. Với network rồi database rồi
+application, cần thứ tự và giao diện output rõ ràng. Một matrix khổng lồ
+không diễn đạt được mọi quan hệ phụ thuộc. Tránh một state quá lớn,
+nhưng cũng tránh chia nhỏ đến mức mỗi thay đổi phải điều phối hàng chục
+state không có người chịu trách nhiệm.</p>
+<h3 id="monorepo-và-kiểm-tra-chính-sách">17.3 Monorepo và kiểm tra chính
+sách</h3>
+<p>Trong monorepo, thay đổi module dùng chung phải kích hoạt mọi root
+module bị ảnh hưởng. Danh sách file thay đổi chưa đủ nếu không có bản đồ
+phụ thuộc. Có thể bắt đầu với validate tất cả root module, sau đó đo
+thời gian và chỉ tối ưu khi cần. Required check tổng hợp phải báo đúng
+lỗi và không xanh khi các kiểm tra quan trọng bị skip.</p>
+<p>Policy có thể chặn resource public, region ngoài allowlist hoặc
+replacement database. Với policy đọc plan JSON, giữ dữ liệu trong môi
+trường bảo vệ và kiểm tra cả giá trị chưa biết tại thời điểm plan. Dòng
+“policy passed” chỉ chứng minh các quy tắc đã cài đạt; nó không chứng
+minh hạ tầng tuân thủ mọi tiêu chuẩn chưa được mã hóa.</p>
+<h2 id="drift-rollback-và-vận-hành-sự-cố">18 Drift rollback và vận hành
+sự cố</h2>
+<h3 id="phát-hiện-và-xử-lý-drift">18.1 Phát hiện và xử lý drift</h3>
+<p>Drift là khác biệt giữa hạ tầng thực tế và trạng thái mong muốn do
+thay đổi ngoài luồng hoặc hành vi dịch vụ. Một lịch plan định kỳ với
+quyền plan có thể phát hiện chênh lệch. Trả mã <code>2</code> nghĩa là
+cần phân loại; không mặc định tự apply, vì kế hoạch có thể bao gồm thay
+đổi cấu hình chưa triển khai hoặc hành động khôi phục một can thiệp khẩn
+cấp có chủ đích.</p>
+<p>Đội vận hành cần quyết định: đưa hạ tầng trở lại cấu hình Git, cập
+nhật Git để chấp nhận thay đổi ngoài luồng, hay thực hiện
+import/migration có review. Lưu ticket và người chịu trách nhiệm. Nếu
+phát hiện drift trên IAM, network hoặc database, xem lại mức ưu tiên
+thay vì xử lý như một cảnh báo định dạng code.</p>
+<h3 id="vì-sao-rollback-terraform-không-giống-rollback-ứng-dụng">18.2 Vì
+sao rollback Terraform không giống rollback ứng dụng</h3>
+<p>Rollback ứng dụng thường có thể trỏ về image digest cũ. Với
+Terraform, revert commit rồi apply vẫn tạo một kế hoạch mới trên hạ tầng
+hiện tại. Nó có thể thay thế tài nguyên, không khôi phục dữ liệu đã mất
+và không bảo đảm trở lại trạng thái cũ. Đọc kỹ plan của thao tác revert
+như một thay đổi mới.</p>
+<p>Versioning của bucket state hỗ trợ điều tra và khôi phục state trong
+sự cố thích hợp. Nó không phải backup dữ liệu database, và restore state
+cũ có thể làm ánh xạ resource lệch với thực tế. Chỉ phục hồi state theo
+quy trình được kiểm soát, đã sao lưu state hiện tại và đối chiếu tài
+nguyên cloud. Không sửa serial hoặc ghi đè state để ép một saved plan cũ
+được apply.</p>
+<h3 id="khi-apply-thất-bại-giữa-chừng">18.3 Khi apply thất bại giữa
+chừng</h3>
+<ol type="1">
+<li>Chặn các lần triển khai tiếp theo cho cùng state và giữ lại log cùng
+run ID.</li>
+<li>Xác định API nào đã thành công, API nào lỗi và có tác vụ cloud nào
+còn chạy.</li>
+<li>Kiểm tra backend lock, phiên STS, state hiện tại và tài nguyên liên
+quan.</li>
+<li>Chạy plan mới từ code đã được xác nhận để xem Terraform nhận diện
+phần hoàn tất thế nào.</li>
+<li>Review và duyệt kế hoạch sửa chữa; chỉ import, move hoặc chỉnh state
+khi đã xác minh ánh xạ.</li>
+<li>Ghi nguyên nhân, biện pháp phòng ngừa và xác nhận mở lại triển
+khai.</li>
+</ol>
+<p>Không bấm rerun liên tục khi chưa hiểu trạng thái. Một resource có
+thể đã tạo ở cloud nhưng chưa được ghi nhận như mong muốn nếu có lỗi ghi
+state hoặc runner mất kết nối. Cách khắc phục phụ thuộc resource và sự
+cố cụ thể, không phải luôn xóa thủ công rồi tạo lại.</p>
+<h3 id="khóa-state-và-quyền-khẩn-cấp">18.4 Khóa state và quyền khẩn
+cấp</h3>
+<p>Khi gặp lock, tìm owner, operation, thời điểm và các pipeline liên
+quan. Nếu còn apply hoạt động, chờ hoặc xử lý nó có kiểm soát.
+<code>force-unlock</code> chỉ dùng khi xác nhận khóa mồ côi và không còn
+tiến trình giữ khóa. Cần đúng backend, đúng state và đúng lock ID; không
+xóa mọi <code>.tflock</code> cho nhanh. [T8]</p>
+<p>Quyền khẩn cấp nên tách khỏi role workflow thường ngày, có thời hạn
+và được ghi audit. Sau khi dùng, chạy lại kiểm tra drift, đồng bộ Git và
+đóng sự cố. Nếu cùng một người vừa được bỏ branch protection vừa tự
+duyệt production không có dấu vết bổ sung, gate trong YAML sẽ không mang
+lại kiểm soát như kỳ vọng.</p>
+<h3 id="dọn-tài-nguyên-bài-lab">18.5 Dọn tài nguyên bài lab</h3>
+<p>Sau khi học, lập kế hoạch destroy trong account sandbox bằng quy
+trình riêng có review: init đúng backend,
+<code>terraform plan -destroy -out=destroy.tfplan</code>, xem kế hoạch
+rồi <code>terraform apply destroy.tfplan</code>. Bộ workflow không tự
+động destroy. Bucket lab đặt <code>force_destroy = false</code>, nên
+bucket có dữ liệu phải được xử lý có chủ đích trước khi xóa.</p>
+<p>Chỉ dọn bucket state, IAM role và OIDC provider sau khi xác nhận
+không có lab hoặc workflow khác dùng chung. Có thể giữ bucket state để
+lưu audit theo thời hạn tổ chức. Không để một lệnh destroy theo lịch
+chạy bằng production role mà không có danh sách phạm vi và cơ chế duyệt
+phù hợp.</p>
+<h2 id="chẩn-đoán-lỗi-thường-gặp">19 Chẩn đoán lỗi thường gặp</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Bảng thông tin có thể cuộn ngang"><table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Hiện tượng</th>
+<th>Điều cần kiểm tra đầu tiên</th>
+<th>Hướng xử lý</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Workflow không xuất hiện</td>
+<td>Đường dẫn đuôi YAML cú pháp và nhánh mặc định</td>
+<td>Kiểm tra <code>.github/workflows</code> cùng event</td>
+</tr>
+<tr class="even">
+<td>Required check cứ Pending</td>
+<td>Bộ lọc path branch và tên check</td>
+<td>Để check bắt buộc luôn được báo kết quả</td>
+</tr>
+<tr class="odd">
+<td>Job phía sau bị skip</td>
+<td><code>needs</code> và điều kiện <code>if</code></td>
+<td>Đọc kết quả từng dependency</td>
+</tr>
+<tr class="even">
+<td>PR không có secret</td>
+<td>Event fork và chính sách token</td>
+<td>Giữ kiểm tra PR không đặc quyền</td>
+</tr>
+<tr class="odd">
+<td>OIDC assume role bị từ chối</td>
+<td><code>aud</code> <code>sub</code> role ARN và environment</td>
+<td>Đối chiếu trust policy thực tế</td>
+</tr>
+<tr class="even">
+<td>Plan trả 2 mà job đỏ</td>
+<td>Shell dừng khi mã thoát khác 0</td>
+<td>Phân loại 0 1 2 rõ ràng</td>
+</tr>
+<tr class="odd">
+<td>Init không có provider lock phù hợp</td>
+<td>Lockfile và platform checksum</td>
+<td>Tạo lockfile đúng và commit</td>
+</tr>
+<tr class="even">
+<td>AccessDenied trên <code>.tflock</code></td>
+<td>Quyền object khóa và bucket policy</td>
+<td>Cấp quyền khóa theo đúng state</td>
+</tr>
+<tr class="odd">
+<td>State bị khóa</td>
+<td>Apply khác hoặc khóa mồ côi</td>
+<td>Xác minh tiến trình trước unlock</td>
+</tr>
+<tr class="even">
+<td>Saved plan stale</td>
+<td>State thay đổi sau lúc tạo plan</td>
+<td>Tạo plan mới và review lại</td>
+</tr>
+<tr class="odd">
+<td>Metadata mismatch</td>
+<td>SHA run ID và run attempt</td>
+<td>Re-run all jobs với plan mới</td>
+</tr>
+<tr class="even">
+<td>Main moved</td>
+<td>Commit mới đã lên main</td>
+<td>Chạy lại trên commit cần triển khai</td>
+</tr>
+<tr class="odd">
+<td>Artifact không tìm thấy</td>
+<td>ID run attempt và retention</td>
+<td>Không lấy artifact ngẫu nhiên thay thế</td>
+</tr>
+<tr class="even">
+<td>Chạy local được nhưng CI lỗi</td>
+<td>Phiên bản tool env cwd và IAM</td>
+<td>So sánh điều kiện thực thi</td>
+</tr>
+</tbody>
+</table>
+</div><p>Hãy debug từ ngoài vào trong: workflow có được trigger không, job có
+được scheduler tạo không, runner có bắt đầu không, step nào lỗi, lệnh
+nào lỗi và API nào từ chối. Nếu job chưa bắt đầu vì approval, kiểm tra
+Terraform không giúp ích. Nếu AWS từ chối assume role, sửa resource
+Terraform không giải quyết được trust policy.</p>
+<p>Ví dụ OIDC: plan job không khai báo environment nên subject dựa trên
+ref <code>main</code>. Apply job có environment nên subject dựa trên
+<code>production</code>. Nếu dùng nhầm trust policy của plan role cho
+apply role, code giống nhau vẫn xác thực thất bại. Ngược lại, nếu có
+credentials nhưng S3 từ chối, chuyển sang kiểm tra permission policy,
+bucket policy, KMS và SCP.</p>
+<p>Ví dụ pipeline không tái lập: máy local dùng provider đã cache và
+Terraform khác phiên bản, CI dùng lockfile readonly. Đừng sửa bằng cách
+xóa lockfile trong workflow. Hãy chuẩn hóa CLI, cập nhật dependency có
+kiểm soát, commit lockfile và chạy lại. Khi công cụ action thay runtime
+Node nội bộ, self-hosted runner cũng phải đáp ứng yêu cầu runner tương
+ứng, dù ứng dụng của bạn dùng một bản Node khác.</p>
+<p>Khi cần log sâu hơn, dùng cơ chế debug được kiểm soát, thời gian ngắn
+và người đọc phù hợp. Không dump token OIDC để so sánh bằng mắt hoặc gửi
+plan có dữ liệu thật lên diễn đàn. Với lỗi plan của lab, mở artifact
+chẩn đoán trong repo riêng tư, tìm lỗi gốc rồi xóa thông tin nhạy cảm
+trước khi chia sẻ ra ngoài.</p>
+<h2 id="lộ-trình-thực-hành-và-tiêu-chí-đánh-giá">20 Lộ trình thực hành
+và tiêu chí đánh giá</h2>
+<h3 id="tuần-đầu-nắm-nền-tảng-actions">20.1 Tuần đầu nắm nền tảng
+Actions</h3>
+<p>Buổi 1: tạo workflow thủ công và giải thích từng khóa. Thử làm thiếu
+checkout để quan sát code không tồn tại. Buổi 2: tạo hai job, truyền một
+output và một artifact; chứng minh <code>needs</code> không tự chuyển
+file. Buổi 3: tạo matrix Node 22 và 24; làm một test lỗi rồi sửa. Buổi
+4: thiết lập required checks để một PR lỗi không merge được.</p>
+<p>Tiêu chí hoàn thành: bạn chỉ vào bất kỳ step nào cũng giải thích được
+dữ liệu đầu vào, quyền và kết quả mong đợi; bạn chứng minh CI có thể
+chặn một lỗi thật. Không dùng tiêu chí “workflow hiện màu xanh” làm bằng
+chứng duy nhất.</p>
+<h3 id="tuần-thứ-hai-làm-terraform-automation">20.2 Tuần thứ hai làm
+Terraform automation</h3>
+<p>Buổi 5: init không backend, tạo lockfile, format và validate. Cố ý bỏ
+lockfile để đọc lỗi readonly. Buổi 6: bootstrap state và OIDC trong
+sandbox; thử assume role sai nhánh để xác nhận bị từ chối. Buổi 7: triển
+khai bucket lab qua plan, review artifact và approval. Buổi 8: chạy lại
+không đổi cấu hình và xác nhận apply bị skip.</p>
+<p>Tiêu chí hoàn thành: không có AWS access key dài hạn trong GitHub; PR
+không có cloud role; plan và apply dùng hai role khác nhau; state có
+khóa; apply dùng saved plan đúng ID; bạn biết vì sao plan <code>2</code>
+là thành công.</p>
+<h3 id="tuần-thứ-ba-luyện-vận-hành">20.3 Tuần thứ ba luyện vận hành</h3>
+<p>Buổi 9: tạo hai thay đổi liên tiếp, quan sát concurrency và hành vi
+pending. Buổi 10: tạo plan rồi đưa commit mới lên main, xác nhận plan cũ
+bị từ chối theo kiểm tra trong lab. Buổi 11: tạo một thay đổi thủ công
+an toàn trong sandbox để quan sát drift; quyết định cách đồng bộ. Buổi
+12: diễn tập apply lỗi với cấu hình hoặc quyền có kiểm soát rồi viết
+runbook phục hồi.</p>
+<p>Tiêu chí hoàn thành: bạn biết giới hạn của checksum, SHA check và
+backend lock; bạn không unlock khi còn apply; bạn có thể truy từ
+resource đến commit, người duyệt và workflow run. Sau đó dọn lab có
+review và kiểm tra không còn tài nguyên bỏ quên.</p>
+<h3 id="câu-hỏi-tự-kiểm-tra">20.4 Câu hỏi tự kiểm tra</h3>
+<ol type="1">
+<li>Vì sao job B có <code>needs: A</code> vẫn không thấy tệp do A
+tạo?</li>
+<li>Vì sao <code>validate</code> xanh chưa chứng minh plan sẽ chạy
+được?</li>
+<li>Nếu chỉ cho plan role API đọc, tại sao backend lock có thể lỗi?</li>
+<li>Vì sao OIDC subject của job có environment khác job chỉ giới hạn
+branch?</li>
+<li>Tại sao plan trong PR không nên được apply trực tiếp sau merge?</li>
+<li>Vì sao checksum đúng chưa chứng minh plan đáng tin?</li>
+<li>Khi main đổi trong lúc chờ approve, đội của bạn muốn skip retry hay
+xếp hàng?</li>
+<li>Làm sao xác định một lock là mồ côi trước khi force-unlock?</li>
+<li>Revert một commit Terraform có khôi phục dữ liệu database
+không?</li>
+<li>Workflow nào vẫn có thể làm lộ secret dù không chứa lệnh echo
+secret?</li>
+</ol>
+<p>Gợi ý trả lời lần lượt nằm ở chương 2, 9, 11, 11, 12, 15, 15, 18, 18
+và 16. Hãy giải thích bằng tình huống của đội bạn thay vì học thuộc câu
+trả lời ngắn.</p>
+<h2 id="checklist-đưa-vào-sử-dụng">21 Checklist đưa vào sử dụng</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Bảng thông tin có thể cuộn ngang"><table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Nhóm</th>
+<th>Tiêu chí cần xác minh</th>
+<th>Bằng chứng gợi ý</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Source control</td>
+<td>Main yêu cầu PR và review phù hợp</td>
+<td>PR lỗi bị chặn merge</td>
+</tr>
+<tr class="even">
+<td>Workflow</td>
+<td>Workflow script và module có owner</td>
+<td>CODEOWNERS và ruleset đang áp dụng</td>
+</tr>
+<tr class="odd">
+<td>Dependency</td>
+<td>CLI cố định action pin SHA provider khóa</td>
+<td>PR cập nhật có diff và kiểm tra</td>
+</tr>
+<tr class="even">
+<td>PR isolation</td>
+<td>PR chưa tin cậy không lấy quyền cloud</td>
+<td>Quyền job và IAM trust được thử âm tính</td>
+</tr>
+<tr class="odd">
+<td>Cloud identity</td>
+<td>OIDC đúng repo ref environment account</td>
+<td>Lần assume role và CloudTrail</td>
+</tr>
+<tr class="even">
+<td>Authorization</td>
+<td>Plan apply tách quyền theo stack</td>
+<td>Policy cùng thử nghiệm từ chối</td>
+</tr>
+<tr class="odd">
+<td>State</td>
+<td>Backend key đúng khóa và versioning bật</td>
+<td>Cấu hình bucket cùng test tranh chấp</td>
+</tr>
+<tr class="even">
+<td>Plan</td>
+<td>Saved plan gắn SHA run ID attempt và hạn dùng</td>
+<td>Metadata cùng artifact ID</td>
+</tr>
+<tr class="odd">
+<td>Approval</td>
+<td>Duyệt đúng plan trước khi lấy apply role</td>
+<td>Deployment approval của đúng run</td>
+</tr>
+<tr class="even">
+<td>Failure</td>
+<td>Không nuốt lỗi plan hoặc hủy apply tùy tiện</td>
+<td>Các bài diễn tập lỗi</td>
+</tr>
+<tr class="odd">
+<td>Observability</td>
+<td>Truy được commit người duyệt và cloud session</td>
+<td>Run ID trong role session và nhật ký</td>
+</tr>
+<tr class="even">
+<td>Operations</td>
+<td>Có quy trình drift unlock sửa state và khẩn cấp</td>
+<td>Runbook đã diễn tập</td>
+</tr>
+</tbody>
+</table>
+</div><p>Đừng đánh dấu một mục chỉ vì nó xuất hiện trong YAML. Ví dụ,
+<code>environment: production</code> chỉ đạt yêu cầu approval nếu
+environment thực sự có protection; <code>CODEOWNERS</code> chỉ bảo vệ
+review khi ruleset yêu cầu owner review; state locking chỉ có tác dụng
+nếu mọi client dùng backend và cơ chế khóa tương thích.</p>
+<p>Khi số repository, stack hoặc yêu cầu tuân thủ vượt khả năng quản lý
+của nhóm YAML hiện tại, đánh giá một nền tảng Terraform chuyên dụng hoặc
+lớp điều phối chung. Tiêu chí lựa chọn nên là khả năng quản lý state,
+hàng đợi, policy, phân quyền, review plan và audit của đội, không chỉ là
+số dòng workflow có thể rút ngắn.</p>
+<h2 id="nguồn-chính-thức">22 Nguồn chính thức</h2>
+<p>Các nguồn dưới đây được đối chiếu ngày 16 tháng 10 năm 2026. Ký hiệu
+G là GitHub, T là Terraform. Phần đề xuất kiến trúc và chính sách như
+thời hạn plan 4 giờ là lựa chọn minh họa của tài liệu, không phải yêu
+cầu bắt buộc của nhà cung cấp.</p>
+<ul>
+<li>[G1] Understanding GitHub Actions — <a href="https://docs.github.com/en/actions/get-started/understand-github-actions" class="uri">https://docs.github.com/en/actions/get-started/understand-github-actions</a></li>
+<li>[G2] Workflow syntax — <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax" class="uri">https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax</a></li>
+<li>[G3] Events that trigger workflows — <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows" class="uri">https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows</a></li>
+<li>[G4] Contexts reference — <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/contexts" class="uri">https://docs.github.com/en/actions/reference/workflows-and-actions/contexts</a></li>
+<li>[G5] Expressions — <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/expressions" class="uri">https://docs.github.com/en/actions/reference/workflows-and-actions/expressions</a></li>
+<li>[G6] Workflow commands — <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands" class="uri">https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands</a></li>
+<li>[G7] Secure use reference — <a href="https://docs.github.com/en/actions/reference/security/secure-use" class="uri">https://docs.github.com/en/actions/reference/security/secure-use</a></li>
+<li>[G8] Dependency caching — <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching" class="uri">https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching</a></li>
+<li>[G9] Store and share data — <a href="https://docs.github.com/en/actions/tutorials/store-and-share-data" class="uri">https://docs.github.com/en/actions/tutorials/store-and-share-data</a></li>
+<li>[G10] OIDC in AWS — <a href="https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws" class="uri">https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws</a></li>
+<li>[G11] Managing environments — <a href="https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments" class="uri">https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments</a></li>
+<li>[G12] Control concurrency — <a href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency" class="uri">https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency</a></li>
+<li>[G13] Reuse workflows — <a href="https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows" class="uri">https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows</a></li>
+<li>[G14] Deployments and environments — <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments" class="uri">https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments</a></li>
+<li>[G16] Checkout action — <a href="https://github.com/actions/checkout" class="uri">https://github.com/actions/checkout</a></li>
+<li>[G17] Setup Node action — <a href="https://github.com/actions/setup-node" class="uri">https://github.com/actions/setup-node</a></li>
+<li>[G18] Upload artifact action — <a href="https://github.com/actions/upload-artifact" class="uri">https://github.com/actions/upload-artifact</a></li>
+<li>[G19] Setup Terraform action — <a href="https://github.com/hashicorp/setup-terraform" class="uri">https://github.com/hashicorp/setup-terraform</a></li>
+<li>[G20] Configure AWS credentials action — <a href="https://github.com/aws-actions/configure-aws-credentials" class="uri">https://github.com/aws-actions/configure-aws-credentials</a></li>
+<li>[G21] Download artifact action — <a href="https://github.com/marketplace/actions/download-a-build-artifact" class="uri">https://github.com/marketplace/actions/download-a-build-artifact</a></li>
+<li>[T1] Terraform validate — <a href="https://developer.hashicorp.com/terraform/cli/commands/validate" class="uri">https://developer.hashicorp.com/terraform/cli/commands/validate</a></li>
+<li>[T2] Terraform plan — <a href="https://developer.hashicorp.com/terraform/cli/commands/plan" class="uri">https://developer.hashicorp.com/terraform/cli/commands/plan</a></li>
+<li>[T3] Terraform apply — <a href="https://developer.hashicorp.com/terraform/cli/commands/apply" class="uri">https://developer.hashicorp.com/terraform/cli/commands/apply</a></li>
+<li>[T4] Terraform tests — <a href="https://developer.hashicorp.com/terraform/language/tests" class="uri">https://developer.hashicorp.com/terraform/language/tests</a></li>
+<li>[T5] S3 backend — <a href="https://developer.hashicorp.com/terraform/language/backend/s3" class="uri">https://developer.hashicorp.com/terraform/language/backend/s3</a></li>
+<li>[T6] Manage sensitive data — <a href="https://developer.hashicorp.com/terraform/language/manage-sensitive-data" class="uri">https://developer.hashicorp.com/terraform/language/manage-sensitive-data</a></li>
+<li>[T7] Dependency lock file — <a href="https://developer.hashicorp.com/terraform/language/files/dependency-lock" class="uri">https://developer.hashicorp.com/terraform/language/files/dependency-lock</a></li>
+<li>[T8] Terraform force unlock — <a href="https://developer.hashicorp.com/terraform/cli/commands/force-unlock" class="uri">https://developer.hashicorp.com/terraform/cli/commands/force-unlock</a></li>
+</ul>
+<h2 id="phụ-lục-mã-nguồn-đầy-đủ">23 Phụ lục mã nguồn đầy đủ</h2>
+<p>Phụ lục in lại các tệp quan trọng trong bộ lab để có thể đọc tài liệu
+độc lập. Dùng các tệp trong thư mục <code>examples</code> của gói tải về
+khi sao chép vào repository. Các workflow dùng tag phiên bản để học;
+hoàn thành bước pin SHA và review dependency trước khi sử dụng
+production.</p>
+<h3 id="workflow-ci-ứng-dụng">23.1 Workflow CI ứng dụng</h3>
+<p>Tệp <code>.github/workflows/app-ci.yml</code></p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="yaml"><code>name: App CI
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  merge_group:
+    types: [checks_requested]
+permissions:
+  contents: read
+concurrency:
+  group: app-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+defaults:
+  run:
+    shell: bash
+    working-directory: app
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22', '24']
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: app-node-${{ matrix.node }}-${{ github.sha }}
+          path: app/dist/
+          if-no-files-found: error
+          retention-days: 3</code></pre>
+</div><h3 id="workflow-kiểm-tra-terraform">23.2 Workflow kiểm tra
+Terraform</h3>
+<p>Tệp <code>.github/workflows/terraform-check.yml</code></p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="yaml"><code>name: Terraform Check
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  merge_group:
+    types: [checks_requested]
+permissions:
+  contents: read
+concurrency:
+  group: tf-check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+env:
+  TF_IN_AUTOMATION: 'true'
+  TF_INPUT: 'false'
+defaults:
+  run:
+    shell: bash
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: '1.14.6'
+          terraform_wrapper: false
+      - name: Check formatting
+        run: terraform fmt -check -recursive infra
+      - name: Initialize providers without remote backend
+        working-directory: infra/envs/prod
+        run: terraform init -backend=false -input=false -lockfile=readonly
+      - name: Validate configuration
+        working-directory: infra/envs/prod
+        run: terraform validate -no-color</code></pre>
+</div><h3 id="workflow-triển-khai-terraform">23.3 Workflow triển khai
+Terraform</h3>
+<p>Tệp <code>.github/workflows/terraform-deploy.yml</code></p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="yaml"><code>name: Terraform Deploy
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'infra/**'
+      - 'ci/**'
+      - '.github/workflows/terraform-*.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: terraform-prod-lab
+  cancel-in-progress: false
+env:
+  TF_IN_AUTOMATION: 'true'
+  TF_INPUT: 'false'
+  TF_VERSION: '1.14.6'
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  TF_VAR_bucket_name: ${{ vars.LAB_BUCKET_NAME }}
+  TF_VAR_aws_region: ${{ vars.AWS_REGION }}
+defaults:
+  run:
+    shell: bash
+    working-directory: infra/envs/prod
+jobs:
+  plan:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      exitcode: ${{ steps.plan.outputs.exitcode }}
+      artifact_id: ${{ steps.upload.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+      - run: terraform fmt -check -recursive ../../..
+      - uses: aws-actions/configure-aws-credentials@v6.3.0
+        with:
+          role-to-assume: ${{ vars.AWS_PLAN_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: gha-plan-${{ github.run_id }}
+          allowed-account-ids: ${{ vars.AWS_ACCOUNT_ID }}
+      - name: Initialize remote state
+        env:
+          STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+        run: |
+          terraform init -input=false -lockfile=readonly \
+            -backend-config="bucket=$STATE_BUCKET" \
+            -backend-config="key=prod-lab/s3/terraform.tfstate" \
+            -backend-config="region=$AWS_REGION" \
+            -backend-config="encrypt=true" \
+            -backend-config="use_lockfile=true"
+      - run: terraform validate -no-color
+      - name: Generate saved plan
+        id: plan
+        run: |
+          mkdir -p bundle
+          set +e
+          terraform plan -input=false -no-color -lock-timeout=5m \
+            -detailed-exitcode -out=bundle/tfplan &gt; bundle/plan.txt 2&gt;&amp;1
+          rc=$?
+          set -e
+          echo "exitcode=$rc" &gt;&gt; "$GITHUB_OUTPUT"
+          if [[ "$rc" != 0 &amp;&amp; "$rc" != 2 ]]; then
+            echo '::error::Terraform plan failed. Review the restricted diagnostics artifact.'
+            exit 1
+          fi
+      - name: Save restricted plan diagnostics on failure
+        if: failure() &amp;&amp; steps.plan.outcome == 'failure'
+        uses: actions/upload-artifact@v7
+        with:
+          name: tf-plan-error-${{ github.run_id }}-${{ github.run_attempt }}
+          path: infra/envs/prod/bundle/plan.txt
+          if-no-files-found: warn
+          retention-days: 1
+      - name: Package plan and review text
+        if: steps.plan.outputs.exitcode == '2'
+        run: |
+          cp .terraform.lock.hcl bundle/
+          python3 ../../../ci/plan_metadata.py create bundle
+          (cd bundle &amp;&amp; sha256sum tfplan plan.txt metadata.json \
+            .terraform.lock.hcl &gt; SHA256SUMS)
+          tar -czf plan-bundle.tgz -C bundle .
+      - uses: actions/upload-artifact@v7
+        if: steps.plan.outputs.exitcode == '2'
+        id: upload
+        with:
+          name: tfplan-${{ github.run_id }}-${{ github.run_attempt }}
+          path: infra/envs/prod/plan-bundle.tgz
+          if-no-files-found: error
+          retention-days: 1
+      - name: Write review instructions
+        env:
+          PLAN_EXIT: ${{ steps.plan.outputs.exitcode }}
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+        run: |
+          {
+            echo "Commit: $GITHUB_SHA"
+            echo "Terraform plan exit code: $PLAN_EXIT"
+            echo "Plan bundle: $ARTIFACT_URL"
+            echo 'Review plan.txt in the restricted artifact before approval.'
+            echo 'Approval is valid only for this commit and plan bundle.'
+          } &gt;&gt; "$GITHUB_STEP_SUMMARY"
+  apply:
+    needs: plan
+    if: &gt;-
+      github.ref == 'refs/heads/main' &amp;&amp;
+      needs.plan.outputs.exitcode == '2'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+      - uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ needs.plan.outputs.artifact_id }}
+          path: infra/envs/prod/received
+      - name: Verify commit and plan bundle before cloud login
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          latest=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)
+          test "$latest" = "$GITHUB_SHA"
+          mkdir -p bundle
+          tar -xzf received/plan-bundle.tgz -C bundle
+          (cd bundle &amp;&amp; sha256sum -c SHA256SUMS)
+          cmp .terraform.lock.hcl bundle/.terraform.lock.hcl
+          python3 ../../../ci/plan_metadata.py verify bundle
+      - uses: aws-actions/configure-aws-credentials@v6.3.0
+        with:
+          role-to-assume: ${{ vars.AWS_APPLY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: gha-apply-${{ github.run_id }}
+          allowed-account-ids: ${{ vars.AWS_ACCOUNT_ID }}
+      - name: Initialize remote state
+        env:
+          STATE_BUCKET: ${{ vars.TF_STATE_BUCKET }}
+        run: |
+          terraform init -input=false -lockfile=readonly \
+            -backend-config="bucket=$STATE_BUCKET" \
+            -backend-config="key=prod-lab/s3/terraform.tfstate" \
+            -backend-config="region=$AWS_REGION" \
+            -backend-config="encrypt=true" \
+            -backend-config="use_lockfile=true"
+      - name: Apply the reviewed saved plan
+        run: terraform apply -input=false -no-color -lock-timeout=5m bundle/tfplan</code></pre>
+</div><h3 id="xác-minh-danh-tính-và-thời-hạn-plan">23.4 Xác minh danh tính và
+thời hạn plan</h3>
+<p>Tệp <code>ci/plan_metadata.py</code></p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="python"><code>"""Bind a teaching lab plan to the current run and reject plans older than 4h."""
+import json
+import os
+from pathlib import Path
+import sys
+import time
+
+mode, directory = sys.argv[1:]
+path = Path(directory) / 'metadata.json'
+expected = {
+    'repository': os.environ['GITHUB_REPOSITORY'],
+    'sha': os.environ['GITHUB_SHA'],
+    'run_id': os.environ['GITHUB_RUN_ID'],
+    'run_attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+    'terraform_version': os.environ['TF_VERSION'],
+    'state_key': 'prod-lab/s3/terraform.tfstate',
+}
+if mode == 'create':
+    path.write_text(json.dumps({**expected, 'created_at': time.time()}, indent=2))
+elif mode == 'verify':
+    actual = json.loads(path.read_text())
+    for key, value in expected.items():
+        if actual.get(key) != value:
+            raise SystemExit(f'Plan metadata mismatch: {key}')
+    age = time.time() - actual['created_at']
+    if not 0 &lt;= age &lt;= 4 * 60 * 60:
+        raise SystemExit('Plan expired; rerun all jobs and review the new plan')
+    print('Plan metadata verified')
+else:
+    raise SystemExit('Use create or verify')</code></pre>
+</div><h3 id="phiên-bản-terraform-và-provider">23.5 Phiên bản Terraform và
+provider</h3>
+<p>Tệp <code>infra/envs/prod/versions.tf</code></p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="hcl"><code>terraform {
+  required_version = "= 1.14.6"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~&gt; 6.0"
+    }
+  }
+  backend "s3" {}
+}</code></pre>
+</div><h3 id="hạ-tầng-bucket-lab">23.6 Hạ tầng bucket lab</h3>
+<p>Tệp <code>infra/envs/prod/main.tf</code></p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="hcl"><code>provider "aws" {
+  region = var.aws_region
+}
+
+variable "aws_region" {
+  type    = string
+  default = "ap-southeast-1"
+}
+
+variable "bucket_name" {
+  description = "Globally unique name for the lab bucket"
+  type        = string
+  validation {
+    condition     = can(regex("^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$", var.bucket_name))
+    error_message = "Use 3 to 63 lowercase letters, digits or hyphens."
+  }
+}
+
+resource "aws_s3_bucket" "lab" {
+  bucket        = var.bucket_name
+  force_destroy = false
+  tags = {
+    Environment = "prod-lab"
+    ManagedBy   = "Terraform"
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "lab" {
+  bucket                  = aws_s3_bucket.lab.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "lab" {
+  bucket = aws_s3_bucket.lab.id
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}</code></pre>
+</div><h3 id="trust-policy-của-plan-role">23.7 Trust policy của plan role</h3>
+<p>Tệp <code>iam/plan-trust.json</code></p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="json"><code>{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Principal": {
+      "Federated": "arn:aws:iam::123456789012:oidc-provider/token.actions.githubusercontent.com"
+    },
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Condition": {
+      "StringEquals": {
+        "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+        "token.actions.githubusercontent.com:sub": "repo:YOUR_ORG/YOUR_REPO:ref:refs/heads/main"
+      }
+    }
+  }]
+}</code></pre>
+</div><h3 id="trust-policy-của-apply-role">23.8 Trust policy của apply
+role</h3>
+<p>Tệp <code>iam/apply-trust.json</code></p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="json"><code>{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Principal": {
+      "Federated": "arn:aws:iam::123456789012:oidc-provider/token.actions.githubusercontent.com"
+    },
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Condition": {
+      "StringEquals": {
+        "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+        "token.actions.githubusercontent.com:sub": "repo:YOUR_ORG/YOUR_REPO:environment:production"
+      }
+    }
+  }]
+}</code></pre>
+</div><h3 id="quyền-của-plan-role">23.9 Quyền của plan role</h3>
+<p>Tệp <code>iam/plan-permissions.json</code></p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="json"><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListStatePrefix",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::YOUR_STATE_BUCKET"
+    },
+    {
+      "Sid": "ReadState",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::YOUR_STATE_BUCKET/prod-lab/s3/terraform.tfstate"
+    },
+    {
+      "Sid": "UseStateLock",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
+      "Resource": "arn:aws:s3:::YOUR_STATE_BUCKET/prod-lab/s3/terraform.tfstate.tflock"
+    },
+    {
+      "Sid": "ReadLabBucketConfiguration",
+      "Effect": "Allow",
+      "Action": ["s3:Get*", "s3:List*"],
+      "Resource": ["arn:aws:s3:::YOUR_LAB_BUCKET", "arn:aws:s3:::YOUR_LAB_BUCKET/*"]
+    }
+  ]
+}</code></pre>
+</div><h3 id="quyền-của-apply-role">23.10 Quyền của apply role</h3>
+<p>Tệp <code>iam/apply-permissions.json</code></p>
+<div class="code-wrap"><button class="copy" type="button" aria-label="Sao chép đoạn mã">Sao chép</button><pre class="json"><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListStatePrefix",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::YOUR_STATE_BUCKET"
+    },
+    {
+      "Sid": "ReadWriteState",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::YOUR_STATE_BUCKET/prod-lab/s3/terraform.tfstate"
+    },
+    {
+      "Sid": "UseStateLock",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
+      "Resource": "arn:aws:s3:::YOUR_STATE_BUCKET/prod-lab/s3/terraform.tfstate.tflock"
+    },
+    {
+      "Sid": "ManageOnlyTheLabBucket",
+      "Effect": "Allow",
+      "Action": "s3:*",
+      "Resource": ["arn:aws:s3:::YOUR_LAB_BUCKET", "arn:aws:s3:::YOUR_LAB_BUCKET/*"]
+    }
+  ]
+}</code></pre>
+</div><p class="end"><a href="#content">Về đầu tài liệu ↑</a></p></article></main><script>
+document.querySelector('.navtoggle').addEventListener('click',function(){const expanded=document.querySelector('aside').classList.toggle('open');this.setAttribute('aria-expanded',String(expanded));});
+document.querySelector('.print').addEventListener('click',()=>window.print());
+document.querySelectorAll('aside nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelector('aside').classList.remove('open');document.querySelector('.navtoggle').setAttribute('aria-expanded','false');}));
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{const value=b.parentElement.querySelector('pre').innerText;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value);}else{const t=document.createElement('textarea');t.value=value;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();if(!ok)throw new Error('copy');}b.textContent='Đã sao chép';}catch(e){b.textContent='Hãy chọn mã để sao chép';}setTimeout(()=>b.textContent='Sao chép',2200);}));
+</script></body></html>
