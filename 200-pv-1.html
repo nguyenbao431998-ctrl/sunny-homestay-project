@@ -1,0 +1,1584 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cẩm Nang Ôn Tập Phỏng Vấn Chuyên Sâu: DevOps / Cloud Engineer - Nguyễn Chí Bảo</title>
+  <style>
+    /* Thiết lập chuẩn phông chữ Times New Roman toàn bộ trang */
+    * {
+      box-sizing: border-box;
+    }
+    body, h1, h2, h3, h4, h5, p, ul, ol, li, table, th, td, blockquote, div, span {
+      font-family: "Times New Roman", Times, serif;
+    }
+    body {
+      line-height: 1.65;
+      color: #111827;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 25px;
+      font-size: 13pt;
+    }
+    .page-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 50px 65px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e7eb;
+    }
+    h1 {
+      text-align: center;
+      color: #0f2942;
+      font-size: 22pt;
+      text-transform: uppercase;
+      border-bottom: 3px double #0f2942;
+      padding-bottom: 15px;
+      margin-top: 0;
+      letter-spacing: 0.5px;
+    }
+    .subtitle {
+      display: block;
+      font-size: 14pt;
+      font-weight: normal;
+      color: #374151;
+      margin-top: 8px;
+    }
+    h2 {
+      color: #0f2942;
+      font-size: 16.5pt;
+      border-bottom: 2px solid #cbd5e1;
+      padding-bottom: 6px;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    h3 {
+      color: #1e3a8a;
+      font-size: 14.5pt;
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+    h4 {
+      color: #0f2942;
+      font-size: 13.5pt;
+      margin-top: 22px;
+      margin-bottom: 10px;
+      background-color: #f0f4f8;
+      padding: 8px 14px;
+      border-left: 5px solid #1e3a8a;
+    }
+    p {
+      margin: 10px 0;
+      text-align: justify;
+    }
+    ul, ol {
+      margin: 8px 0 14px 0;
+      padding-left: 28px;
+    }
+    li {
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+    .profile-box {
+      background-color: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 6px solid #0f2942;
+      padding: 18px 24px;
+      margin-bottom: 30px;
+    }
+    .profile-box p {
+      margin: 6px 0;
+      text-align: left;
+    }
+    .toc-box {
+      background-color: #ffffff;
+      border: 2px solid #0f2942;
+      padding: 22px 32px;
+      margin-bottom: 35px;
+    }
+    .toc-box h2 {
+      margin-top: 0;
+      text-align: center;
+      border-bottom: 1px solid #cbd5e1;
+    }
+    .toc-box ul {
+      list-style-type: circle;
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
+    blockquote {
+      font-style: italic;
+      background-color: #f8fafc;
+      border-left: 4px solid #2563eb;
+      margin: 16px 0;
+      padding: 16px 24px;
+    }
+    pre {
+      background-color: #1e293b;
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11pt;
+      line-height: 1.45;
+      margin: 14px 0;
+      border: 1px solid #0f172a;
+    }
+    code {
+      font-family: "Courier New", Courier, monospace;
+      background-color: #f1f5f9;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: 11.5pt;
+      color: #991b1b;
+    }
+    pre code {
+      background-color: transparent;
+      color: inherit;
+      padding: 0;
+      font-size: 11pt;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 12.5pt;
+    }
+    th, td {
+      border: 1px solid #94a3b8;
+      padding: 10px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #0f2942;
+      color: #ffffff;
+      font-weight: bold;
+      text-align: center;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .glossary-callout {
+      background-color: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-left: 5px solid #d97706;
+      padding: 14px 20px;
+      margin: 22px 0;
+    }
+    .glossary-callout h5 {
+      margin: 0 0 10px 0;
+      font-size: 13.5pt;
+      color: #92400e;
+      text-transform: uppercase;
+    }
+    .glossary-callout ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .glossary-callout li {
+      margin-bottom: 5px;
+    }
+    .term {
+      font-weight: bold;
+      color: #0f2942;
+    }
+    .footer-banner {
+      text-align: center;
+      font-weight: bold;
+      font-size: 14.5pt;
+      color: #0f2942;
+      margin-top: 45px;
+      padding: 22px;
+      border-top: 3px double #0f2942;
+      background-color: #f8fafc;
+    }
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+      }
+      .page-container {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      pre {
+        background-color: #f8f9fa;
+        color: #000000;
+        border: 1px solid #cccccc;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .glossary-callout {
+        background-color: #ffffff;
+        border: 1px solid #666666;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+      table, pre, blockquote, .glossary-callout {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-container">
+
+  <h1>
+    CẨM NANG ÔN TẬP PHỎNG VẤN CHUYÊN SÂU: DEVOPS / CLOUD ENGINEER
+    <span class="subtitle">(PHIÊN BẢN ĐẠI CƯƠNG TOÀN DIỆN &amp; GIẢI THÍCH THUẬT NGỮ CHUYÊN NGÀNH)</span>
+  </h1>
+
+  <div class="profile-box">
+    <p><strong>Ứng viên:</strong> Nguyễn Chí Bảo</p>
+    <p><strong>Vị trí mục tiêu:</strong> Senior / Lead DevOps &amp; Cloud Infrastructure Engineer</p>
+    <p><strong>Hồ sơ nổi bật:</strong> Vận hành hệ sinh thái Samsung Internet Browser (~500M MAU, 13 microservices, 5 cụm EKS Fargate/EC2, SLA 99.9%), AI Chat PC Browser, Terraform IaC, GitHub Actions OIDC + ArgoCD GitOps, Observability (Prometheus/Grafana/FluentBit), Database Migrations &amp; Cost Optimization.</p>
+  </div>
+
+  <div class="toc-box">
+    <h2>MỤC LỤC TỔNG HỢP</h2>
+    <ol>
+      <li><strong>Chiến Lược Pitching &amp; Bức Tranh Hạ Tầng Quy Mô Lớn (~500M MAU, SLA 99.9%)</strong></li>
+      <li><strong>Chuyên Đề 1: Kubernetes &amp; Amazon EKS (Fargate, ALB Controller, Networking, Scaling)</strong>
+        <ul>
+          <li>Case 1: Lỗi Subnet Auto-Discovery trên AWS Load Balancer Controller</li>
+          <li>Case 2: Triệt tiêu lỗi 502/504 Bad Gateway khi Rolling Update &amp; Scale-in</li>
+          <li>Case 3: Cạn kiệt địa chỉ IP mạng con VPC CNI (IPAM Exhaustion) &amp; Prefix Delegation</li>
+          <li>Case 4: DNS Throttling &amp; Độ trễ CoreDNS dưới tải cực lớn (NodeLocal DNSCache)</li>
+          <li>Case 5: Xử lý Pod OOMKilled trên Fargate vs Cgroup Throttling trên EC2 Karpenter</li>
+          <li>Case 6: Xung đột PodDisruptionBudget (PDB) &amp; Deadlock trong quá trình Node Consolidation</li>
+        </ul>
+      </li>
+      <li><strong>Chuyên Đề 2: Infrastructure as Code (Terraform) &amp; Kiến Trúc AWS Enterprise</strong>
+        <ul>
+          <li>Case 7: Xử lý tranh chấp State Lock và tái cấu trúc Monolithic State sang Layered Architecture</li>
+          <li>Case 8: CloudFront Origin Cloaking, WAF Rate-Limiting chống DDOS bot AI Chat</li>
+          <li>Case 9: Thiết kế Multi-Region Failover với Route 53 Health Checks &amp; Active-Passive Routing</li>
+        </ul>
+      </li>
+      <li><strong>Chuyên Đề 3: CI/CD Pipeline (GitHub Actions OIDC) &amp; GitOps (ArgoCD)</strong>
+        <ul>
+          <li>Case 10: Xử lý lỗi Token Expiration &amp; IAM Condition Mismatch trong Keyless OIDC</li>
+          <li>Case 11: Vòng lặp OutOfSync vô tận trên ArgoCD do xung đột Mutating Webhook &amp; HPA</li>
+          <li>Case 12: Quản lý đồng bộ 5 cụm EKS thông qua ArgoCD ApplicationSet &amp; Progressive Sync</li>
+        </ul>
+      </li>
+      <li><strong>Chuyên Đề 4: Observability, SRE Best Practices &amp; Incident Response (MTTR)</strong>
+        <ul>
+          <li>Case 13: CPU CFS Throttling âm thầm bóp nghẹt độ trễ p99 và cách xử lý</li>
+          <li>Case 14: FluentBit tràn bộ đệm (Buffer Overflow) gây mất log trên EKS Fargate</li>
+          <li>Case 15: Chống Alert Fatigue bằng mô hình Multi-Window Multi-Burn-Rate Alerting (SRE)</li>
+        </ul>
+      </li>
+      <li><strong>Chuyên Đề 5: Cơ Sở Dữ Liệu &amp; Message Streaming (RDS, ElastiCache, DocumentDB, MSK)</strong>
+        <ul>
+          <li>Case 16: Zero-Downtime Major Version Upgrade cho RDS PostgreSQL/MySQL (Blue/Green)</li>
+          <li>Case 17: Nâng cấp DocumentDB 4.0 lên 5.0 không mất mát dữ liệu với AWS DMS CDC</li>
+          <li>Case 18: Thảm họa Thundering Herd &amp; Cache Avalanche trên ElastiCache Redis</li>
+          <li>Case 19: MSK Consumer Lag Spike &amp; Hiện tượng Rebalancing Storm dưới tải đột biến</li>
+        </ul>
+      </li>
+      <li><strong>Chuyên Đề 6: Bảo Mật Đa Tầng (Security Hardening) &amp; Tối Ưu Chi Phí (~15% AWS Savings)</strong>
+        <ul>
+          <li>Case 20: Tự động hóa xoay vòng mật khẩu không gián đoạn với Secrets Manager &amp; ESO</li>
+          <li>Case 21: Tấn công leo thang đặc quyền container &amp; Triển khai Pod Security Standards</li>
+          <li>Case 22: Phân tích kỹ thuật chi tiết bài toán cắt giảm 15% chi phí hạ tầng AWS</li>
+        </ul>
+      </li>
+      <li><strong>Chuyên Đề 7: Phỏng Vấn Tình Huống Quản Trị &amp; Chuyển Đổi Nghề Nghiệp (STAR Method)</strong>
+        <ul>
+          <li>Case 23: Lợi thế cạnh tranh của nền tảng Kỹ sư Tự động hóa (BMS/PLC) sang DevOps/SRE</li>
+          <li>Case 24: Văn hóa Blameless Post-Mortem &amp; Kèm cặp (Mentoring) kỹ sư Junior/Fresher</li>
+        </ul>
+      </li>
+      <li><strong>Bảng Tra Cứu Tốc Hành 50 Câu Hỏi Kỹ Thuật "Vặn Vẹo" Nhất (Rapid-Fire Cheatsheet)</strong></li>
+      <li><strong>Phụ Lục: Từ Điển Giải Thích Chi Tiết Thuật Ngữ Tiếng Anh Chuyên Ngành (A - Z)</strong></li>
+    </ol>
+  </div>
+
+  <!-- PHẦN 1 -->
+  <h2>1. Chiến Lược Pitching &amp; Bức Tranh Hạ Tầng Quy Mô Lớn (~500M MAU, SLA 99.9%)</h2>
+
+  <h3>1.1. Bản lĩnh Elevator Pitch 2 phút khẳng định đẳng cấp Senior</h3>
+  <p>Khi ứng tuyển vào các tập đoàn công nghệ lớn, cách bạn mở đầu quyết định 80% định vị của bạn trong mắt giám khảo kỹ thuật:</p>
+  <blockquote>
+    "Chào các anh/chị, em là Nguyễn Chí Bảo. Em có nền tảng bài bản về Kỹ thuật Tự động hóa tại Đại học Bách Khoa Hà Nội và hiện là Cloud/DevOps Engineer tại Trung tâm R&amp;D Samsung. Trong gần 3 năm qua, nhiệm vụ chính của em là thiết kế, vận hành và đảm bảo độ tin cậy cho hạ tầng phục vụ Samsung Internet Browser Mobile với quy mô ~500 triệu người dùng hoạt động hàng tháng (MAU) trên toàn cầu, phân bổ qua 13 microservices chạy trên 5 cụm AWS EKS với cam kết SLA 99.9%. Đồng thời, em trực tiếp kiến tạo toàn bộ hạ tầng đám mây từ đầu cho hệ thống AI Chat trên Samsung PC Browser. Thế mạnh nổi trội của em nằm ở:
+    <ul>
+      <li><strong>Chuẩn hóa hạ tầng quy mô lớn bằng Terraform:</strong> Tách lớp module hóa, quản lý state an toàn và tự động phát hiện drift.</li>
+      <li><strong>Kiến trúc phân phối an toàn (Secure Delivery):</strong> Triển khai luồng GitOps ArgoCD kết hợp CI GitHub Actions sử dụng cơ chế Keyless OIDC Authentication, loại bỏ 100% credential tĩnh.</li>
+      <li><strong>Observability &amp; SRE thực chiến:</strong> Xây dựng hệ thống giám sát toàn diện với Prometheus, Grafana, FluentBit; làm chủ kỹ thuật phân tích sự cố ở tầng kernel/mạng để kéo giảm đáng kể chỉ số MTTR.</li>
+      <li><strong>Tối ưu chi phí thực chất:</strong> Cắt giảm 15% tổng chi phí AWS thông qua rightsizing chuẩn xác theo dữ liệu telemetry, chuyển đổi kiến trúc chip Graviton ARM64 và tinh chỉnh vòng đời dữ liệu."</li>
+    </ul>
+  </blockquote>
+
+  <h3>1.2. Giải phẫu con số: 500M MAU và SLA 99.9% có ý nghĩa gì về mặt kỹ thuật?</h3>
+  <p><strong>Phân tích lưu lượng mạng (Traffic Breakdown):</strong></p>
+  <ul>
+    <li><strong>500M MAU:</strong> Giả định người dùng mở trình duyệt trung bình 4 lần/ngày &rarr; Khoảng 2 tỷ sessions/ngày.</li>
+    <li><strong>RPS/QPS (Requests per Second):</strong>
+      <ul>
+        <li>Giờ thấp điểm: ~15,000 &ndash; 25,000 RPS.</li>
+        <li>Giờ cao điểm (Peak Traffic): ~60,000 &ndash; 120,000+ RPS đổ vào tầng Edge (CloudFront).</li>
+      </ul>
+    </li>
+    <li><strong>Error Budget (Ngân sách lỗi) của SLA 99.9%:</strong>
+      <ul>
+        <li>Downtime cho phép tối đa: 43.2 phút/tháng (hoặc 8.76 giờ/năm).</li>
+        <li>Tỷ lệ lỗi HTTP 5xx tối đa được phép xuất hiện: Dưới 0.1% trên tổng số request. Nếu trong 1 giờ có 100 triệu request, chỉ được phép có tối đa 100,000 lỗi trước khi cháy sạch Error Budget.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Tại sao chia thành 5 cụm EKS (Multi-Cluster Architecture)?</strong></p>
+  <ul>
+    <li><strong>Cô lập vùng nổ (Blast Radius Reduction):</strong> Nếu nâng cấp phiên bản Kubernetes (ví dụ từ 1.28 lên 1.29) gặp sự cố CoreDNS hoặc Cilium/VPC-CNI, sự cố chỉ nằm ở 1 cụm, không kéo sập toàn bộ 500M người dùng.</li>
+    <li><strong>Phân tách địa lý (Multi-Region Traffic Steering):</strong> 3 cụm Production đặt tại các Region trọng điểm (APAC - Seoul/Singapore, US - Virginia, EU - Frankfurt) để đảm bảo độ trễ RTT (Round Trip Time) cho người dùng cuối &lt; 50ms.</li>
+    <li><strong>Phân tách môi trường &amp; Nghiệp vụ chuyên biệt:</strong> 1 cụm dành riêng cho Staging/Pre-prod; 1 cụm tách biệt hoàn toàn để chạy các tác vụ AI Chat PC Browser (do ứng dụng AI có đặc thù giữ kết nối streaming SSE kéo dài và tiêu thụ tài nguyên tính toán khác biệt hoàn toàn với API mobile truyền thống).</li>
+  </ul>
+
+  <div class="glossary-callout">
+    <h5>Giải thích thuật ngữ Tiếng Anh chuyên ngành (Phần 1)</h5>
+    <ul>
+      <li><span class="term">Elevator Pitch:</span> Bài giới thiệu bản thân ngắn gọn, súc tích (trong khoảng thời gian đi thang máy 1 - 2 phút) nhằm gây ấn tượng mạnh với người phỏng vấn.</li>
+      <li><span class="term">MAU (Monthly Active Users):</span> Số lượng người dùng hoạt động thực tế hàng tháng trên hệ thống.</li>
+      <li><span class="term">SLA (Service Level Agreement):</span> Cam kết mức độ chất lượng dịch vụ với khách hàng (ví dụ: cam kết hệ thống hoạt động ổn định 99.9% thời gian).</li>
+      <li><span class="term">Error Budget (Ngân sách lỗi):</span> Khoảng thời gian gián đoạn (downtime) hoặc tỷ lệ lỗi tối đa mà hệ thống được phép mắc phải trong một chu kỳ mà không vi phạm SLA.</li>
+      <li><span class="term">RPS / QPS (Requests / Queries Per Second):</span> Số lượng yêu cầu hoặc truy vấn mà hệ thống xử lý trong mỗi giây.</li>
+      <li><span class="term">Blast Radius (Bán kính vùng nổ):</span> Phạm vi ảnh hưởng thiệt hại khi một thành phần trong hệ thống gặp sự cố.</li>
+      <li><span class="term">RTT (Round Trip Time):</span> Thời gian khứ hồi tính từ lúc trình duyệt gửi gói tin đi cho đến khi nhận được phản hồi từ máy chủ.</li>
+      <li><span class="term">SSE (Server-Sent Events):</span> Công nghệ truyền tải dữ liệu một chiều liên tục từ máy chủ về trình duyệt qua kết nối HTTP mở sẵn (thường dùng để hiển thị từng từ trong câu trả lời của AI Chat).</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN 2 -->
+  <h2>2. Chuyên Đề 1: Kubernetes &amp; Amazon EKS (Fargate, ALB Controller, Networking, Scaling)</h2>
+
+  <h3>2.1. Kiến thức cốt lõi chuyên sâu</h3>
+  <p><strong>So sánh tầng sâu: EKS Fargate vs EKS Managed Node Groups (MNG) &amp; Karpenter</strong></p>
+  <ul>
+    <li><strong>Kiến trúc ảo hóa Fargate:</strong> Fargate sử dụng máy ảo MicroVM dựa trên AWS Firecracker. Mỗi Pod chạy trong 1 MicroVM riêng biệt có kernel riêng, mang lại độ an toàn bảo mật tuyệt đối giữa các tenant. Tuy nhiên, điều này đồng nghĩa với việc không có chia sẻ cache image: Mỗi lần Pod mới bật lên, Fargate phải tải toàn bộ container image từ ECR &rarr; thời gian khởi động Pod thường mất từ 45 đến 75 giây.</li>
+    <li><strong>Tại sao Fargate không hỗ trợ DaemonSet?</strong> Vì DaemonSet yêu cầu chạy một tiến trình trên một Node chung để giám sát hoặc chia sẻ tài nguyên cho nhiều Pod trên Node đó. Fargate trừu tượng hóa hoàn toàn khái niệm Node đối với người dùng (mỗi Pod coi như 1 Node ảo 1:1), do đó không có cơ chế gắn DaemonSet.</li>
+    <li><strong>Karpenter:</strong> Bộ điều khiển gom cụm trực tiếp (Node Autoscaler) thế hệ mới giao tiếp thẳng với AWS EC2 Fleet API, bỏ qua Auto Scaling Group (ASG). Karpenter xử lý Pod Pending và tạo ra Node "vừa khít" (Just-in-time Bin Packing) chỉ trong 30-45 giây, hỗ trợ Spot Interruption 2-minute warning và tính năng Node Consolidation để tự động dọn dẹp các node thừa.</li>
+  </ul>
+
+  <h3>2.2. Các Case Thực Tế Chuyên Sâu (Deep-Dive Real Cases)</h3>
+
+  <h4>Case 1: Lỗi Subnet Auto-Discovery trên AWS Load Balancer Controller</h4>
+  <p><strong>Bối cảnh:</strong> Bạn triển khai Ingress mới cho microservice của Samsung Browser, nhưng Ingress không sinh ra ALB DNS. Log của controller báo lỗi: <code>kubebuilder.controller "msg"="Failed build model" "error"="couldn't auto-discover subnets: unable to resolve at least 2 subnets in different Availability Zones"</code>.</p>
+  <p><strong>Nguyên nhân gốc rễ:</strong></p>
+  <ul>
+    <li>AWS Load Balancer Controller dựa hoàn toàn vào cơ chế gắn thẻ (Tag) trên Subnet của AWS VPC để xác định xem Subnet nào dùng cho Internet-facing ALB và Subnet nào dùng cho Internal ALB.</li>
+    <li>Đội hạ tầng quên gắn tag hoặc đặt sai định dạng tag sau đợt migrate VPC bằng Terraform.</li>
+  </ul>
+  <p><strong>Khắc phục &amp; Code Terraform chuẩn:</strong></p>
+<pre><code># Public Subnet (Dành cho Internet-facing ALB)
+resource "aws_subnet" "public" {
+  count             = 3
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = cidrsubnet(aws_vpc.main.cidr_block, 4, count.index)
+  availability_zone = data.aws_availability_zones.available.names[count.index]
+
+  tags = {
+    "Name"                                      = "prod-public-subnet-${count.index}"
+    "kubernetes.io/role/elb"                    = "1"
+    "kubernetes.io/cluster/samsung-eks-prod-01" = "shared"
+  }
+}
+
+# Private Subnet (Dành cho Internal ALB &amp; EKS Worker/Fargate Pods)
+resource "aws_subnet" "private" {
+  count             = 3
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = cidrsubnet(aws_vpc.main.cidr_block, 4, count.index + 4)
+  availability_zone = data.aws_availability_zones.available.names[count.index]
+
+  tags = {
+    "Name"                                      = "prod-private-subnet-${count.index}"
+    "kubernetes.io/role/internal-elb"           = "1"
+    "kubernetes.io/cluster/samsung-eks-prod-01" = "shared"
+  }
+}</code></pre>
+
+  <h4>Case 2: Triệt tiêu lỗi 502/504 Bad Gateway khi Rolling Update &amp; Scale-in</h4>
+  <p><strong>Bối cảnh:</strong> Khi lượng tải 500M MAU đang cao, hệ thống kích hoạt deploy phiên bản mới qua ArgoCD. Ngay lập tức, CloudWatch báo lỗi <code>HTTPCode_ELB_502_Count</code> tăng đột biến trong vòng 10-15 giây, đe dọa trực tiếp cam kết 99.9% SLA.</p>
+  <p><strong>Nguyên nhân gốc rễ:</strong></p>
+  <p>Quá trình hủy Pod diễn ra không đồng bộ giữa Kubernetes Control Plane và AWS ALB:</p>
+  <ol>
+    <li>Khi Pod bị xóa, Kubelet gửi tín hiệu <code>SIGTERM</code> tới ứng dụng.</li>
+    <li>Cùng lúc đó, AWS Load Balancer Controller gửi API gọi AWS ELB để deregister target IP của Pod.</li>
+    <li>AWS ALB mất từ 5 đến 20 giây để hoàn tất gỡ IP ra khỏi bảng định tuyến. Trong khoảng thời gian trễ này, ALB vẫn tiếp tục đẩy traffic mới vào Pod. Nhưng ứng dụng bên trong Pod đã nhận <code>SIGTERM</code> và lập tức ngắt socket kết nối &rarr; ALB nhận kết nối bị từ chối (Connection Refused) và trả về lỗi <code>502 Bad Gateway</code>.</li>
+  </ol>
+  <p><strong>Giải pháp xử lý triệt để:</strong></p>
+  <ul>
+    <li>Thêm <code>preStop</code> hook ngủ 20-30s trước khi container xử lý tín hiệu tắt.</li>
+    <li>Bật <code>PodReadinessGate</code> để khi Pod mới tạo ra, Kubernetes không vội đánh dấu Pod là Ready cho đến khi ALB hoàn tất bước Health Check.</li>
+    <li>Tinh chỉnh <code>deregistration_delay.timeout_seconds</code> trên Target Group xuống còn 30s.</li>
+  </ul>
+<pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: browser-account-service
+  namespace: production
+spec:
+  replicas: 10
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 0 # Không bao giờ cho phép thiếu Pod trong lúc deploy
+  template:
+    metadata:
+      labels:
+        app: browser-account-service
+    spec:
+      terminationGracePeriodSeconds: 60 # Phải lớn hơn preStop + thời gian thoát ứng dụng
+      containers:
+        - name: app
+          image: 123456789012.dkr.ecr.ap-northeast-2.amazonaws.com/account-svc:v2.1.4
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 25"] # Giữ container sống để nhận hết traffic cũ từ ALB
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5</code></pre>
+
+  <h4>Case 3: Cạn kiệt địa chỉ IP mạng con VPC CNI (IPAM Exhaustion) &amp; Prefix Delegation</h4>
+  <p><strong>Bối cảnh:</strong> Vào đợt khuyến mãi lớn, HPA kích hoạt scale tăng số lượng Pod từ 40 lên 180 Pods trên cụm EKS. Hàng loạt Pod rơi vào trạng thái <code>ContainerCreating</code> hoặc <code>Pending</code>. Mô tả pod bằng <code>kubectl describe pod</code> thấy lỗi: <code>FailedCreatePodSandBox: failed to assign an IP address to container</code>.</p>
+  <p><strong>Nguyên nhân gốc rễ:</strong></p>
+  <p>AWS VPC CNI cấp phát IP thực tế trong dải Subnet của VPC cho từng Pod. Theo mặc định, mỗi Elastic Network Interface (ENI) trên EC2 chỉ gán được một số lượng IP giới hạn tùy thuộc vào dòng instance (ví dụ <code>m5.large</code> chỉ hỗ trợ tối đa 3 ENIs, mỗi ENI gắn được 10 secondary IPs &rarr; tối đa ~29 Pods/node). Subnet /20 bị cạn kiệt IP trống do không giải phóng kịp.</p>
+  <p><strong>Khắc phục chuyên nghiệp:</strong></p>
+  <ul>
+    <li>Kích hoạt tính năng <strong>Prefix Delegation</strong> trên AWS VPC CNI. Thay vì gán từng IP đơn lẻ (/32), AWS cấp một dải mạng con /28 (16 IP) cho mỗi slot IP trên ENI. Điều này giúp tăng số lượng Pod trên mỗi Node lên gấp 4-5 lần mà không cần đổi kích thước instance:</li>
+  </ul>
+<pre><code>kubectl set env daemonset aws-node -n kube-system ENABLE_PREFIX_DELEGATION=true
+kubectl set env daemonset aws-node -n kube-system WARM_PREFIX_TARGET=1</code></pre>
+  <ul>
+    <li>Bổ sung dải mạng con phụ (Secondary CIDR Block) <code>100.64.0.0/16</code> (CGNAT) vào VPC dành riêng cho Pod IPs nếu Private Subnet chính đã bị chia quá hẹp.</li>
+  </ul>
+
+  <h4>Case 4: DNS Throttling &amp; Độ trễ CoreDNS dưới tải cực lớn (NodeLocal DNSCache)</h4>
+  <p><strong>Bối cảnh:</strong> Hệ thống AI Chat và Mobile Browser thực hiện hàng ngàn lệnh gọi microservice nội bộ mỗi giây thông qua Service DNS nội bộ (<code>&lt;service-name&gt;.&lt;namespace&gt;.svc.cluster.local</code>). Trong giờ cao điểm, ứng dụng ghi nhận hiện tượng request thỉnh thoảng bị trễ đột ngột đúng 5 giây (5s DNS timeout) và CoreDNS pods tiêu thụ 100% CPU.</p>
+  <p><strong>Nguyên nhân gốc rễ:</strong></p>
+  <p>Linux glibc gửi đồng thời cả truy vấn A và AAAA qua UDP. Do bảng theo dõi kết nối <code>conntrack</code> của Linux iptables và giới hạn 1024 packets/sec trên mỗi ENI của AWS Route 53 resolver, các gói tin DNS bị drop, dẫn đến việc client phải chờ hết timeout 5s để retry.</p>
+  <p><strong>Cách xử lý chuẩn SRE:</strong></p>
+  <ul>
+    <li>Triển khai <strong>NodeLocal DNSCache</strong> dưới dạng DaemonSet. Một tiến trình cache DNS siêu nhẹ chạy trực tiếp trên IP loopback (<code>169.254.20.10</code>) của từng Node. Mọi truy vấn DNS của Pod được phân giải ngay tại RAM của Node nội bộ, tránh hoàn toàn việc nhảy qua mạng và giảm 90% tải cho CoreDNS.</li>
+    <li>Chuyển đổi giao thức CoreDNS sang TCP thay vì UDP để chống packet drop.</li>
+    <li>Cấu hình <code>ndots: 2</code> trong <code>dnsConfig</code> của các Pod ứng dụng thường xuyên gọi domain bên ngoài để tránh việc CoreDNS phải thử tìm kiếm hậu tố domain nội bộ nhiều lần.</li>
+  </ul>
+
+  <h4>Case 5: Xử lý Pod OOMKilled trên Fargate vs Cgroup Throttling trên EC2 Karpenter</h4>
+  <p><strong>Bối cảnh:</strong> Một dịch vụ Java/Spring Boot xử lý dữ liệu người dùng bị khởi động lại liên tục với mã lỗi <code>ExitCode: 137 (OOMKilled)</code>.</p>
+  <p><strong>Cơ chế kỹ thuật sâu:</strong></p>
+  <ul>
+    <li><strong>Khi chạy trên EKS Fargate:</strong> Fargate không có swap memory và phân bổ cấu hình vCPU/Memory theo các nấc cố định (ví dụ: 0.5 vCPU / 1GB, 1 vCPU / 2GB - 8GB). Nếu ứng dụng vượt quá ngưỡng <code>limits.memory</code>, Linux kernel cgroup OOM-killer lập tức bắn hạ tiến trình chính và hủy luôn MicroVM Fargate đó.</li>
+    <li><strong>Khi chạy trên EC2:</strong> Nếu Pod không đặt limit, nó có thể ăn lấn RAM của Node, kích hoạt Kubelet Eviction làm ảnh hưởng tới các Pod chạy chung Node.</li>
+  </ul>
+  <p><strong>Cách chẩn đoán &amp; khắc phục:</strong></p>
+  <ul>
+    <li>Kiểm tra metrics Prometheus: <code>container_memory_working_set_bytes</code> (chứ không phải <code>container_memory_usage_bytes</code>, vì Linux tính cả filesystem cache vào memory usage, nhưng chỉ working set mới là tác nhân gây OOM).</li>
+    <li>Cấu hình thông số JVM phù hợp với container cgroups: <code>-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0</code> (dành 25% RAM còn lại cho OS, thread stacks và metaspace).</li>
+  </ul>
+
+  <h4>Case 6: Xung đột PodDisruptionBudget (PDB) &amp; Deadlock trong quá trình Node Consolidation</h4>
+  <p><strong>Bối cảnh:</strong> Khi Karpenter cố gắng thu hồi các EC2 Worker Node nhàn rỗi để giảm chi phí, quá trình dừng lại và node bị treo ở trạng thái <code>Ready,SchedulingDisabled</code>. Các pod không thể migrate sang node mới.</p>
+  <p><strong>Nguyên nhân gốc rễ:</strong></p>
+  <p>Đội phát triển cấu hình <code>PodDisruptionBudget</code> với tham số <code>minAvailable: 100%</code> hoặc <code>maxUnavailable: 0</code> trên một Deployment chỉ có 2 replicas. Khi Karpenter cố gắng drain node, nó vi phạm chính sách bảo toàn PDB, dẫn đến hiện tượng Deadlock (Karpenter không thể đuổi Pod, node không thể tắt).</p>
+  <p><strong>Cách xử lý:</strong></p>
+  <ul>
+    <li>Chuẩn hóa lại toàn bộ PDB qua Helm chart mẫu: Chuyển sang dùng <code>maxUnavailable: 1</code> hoặc <code>minAvailable: 80%</code> khi số lượng replicas &ge; 2.</li>
+    <li>Cấu hình Karpenter <code>disruption.consolidationPolicy: WhenUnderutilized</code> đi kèm <code>consolidateAfter: 30s</code> để tránh việc node bị scale rung giật liên tục (churn).</li>
+  </ul>
+
+  <div class="glossary-callout">
+    <h5>Giải thích thuật ngữ Tiếng Anh chuyên ngành (Chuyên đề 1)</h5>
+    <ul>
+      <li><span class="term">MicroVM &amp; AWS Firecracker:</span> Công nghệ ảo hóa siêu nhẹ mã nguồn mở của AWS, tạo ra các máy ảo khởi động cực nhanh với lớp cách ly bảo mật phần cứng riêng biệt cho từng Pod Fargate.</li>
+      <li><span class="term">DaemonSet:</span> Đối tượng trong Kubernetes đảm bảo mọi Node vật lý/ảo trong cụm đều chạy đúng một bản sao của Pod (thường dùng cho agent thu thập log, monitoring).</li>
+      <li><span class="term">Bin Packing (Xếp hình tối ưu):</span> Thuật toán gom và sắp xếp các Pod vào số lượng Node ít nhất có thể để tối ưu hóa hiệu suất sử dụng CPU/RAM, tránh lãng phí tài nguyên.</li>
+      <li><span class="term">Rolling Update:</span> Chiến lược cập nhật ứng dụng từng bước (bật Pod mới lên thành công rồi mới tắt Pod cũ) để không làm gián đoạn dịch vụ.</li>
+      <li><span class="term">SIGTERM (Signal Terminate):</span> Tín hiệu hệ điều hành gửi tới tiến trình yêu cầu ứng dụng tự đóng các kết nối hiện tại và tắt một cách an toàn (Graceful Shutdown).</li>
+      <li><span class="term">VPC CNI (Container Network Interface) &amp; ENI (Elastic Network Interface):</span> Plugin mạng của AWS trên Kubernetes và Card mạng ảo gắn vào máy chủ EC2 để cấp phát địa chỉ IP cho các Pod.</li>
+      <li><span class="term">Prefix Delegation:</span> Kỹ thuật cấp phát cả một dải mạng con (/28 gồm 16 địa chỉ IP) vào một khe cắm của card mạng ảo ENI thay vì chỉ gắn từng IP đơn lẻ.</li>
+      <li><span class="term">OOMKilled (Out Of Memory Killed - Exit Code 137):</span> Cơ chế tự vệ của nhân Linux tự động tiêu diệt tiến trình khi container tiêu thụ vượt quá giới hạn bộ nhớ RAM cho phép.</li>
+      <li><span class="term">PodDisruptionBudget (PDB):</span> Chính sách bảo vệ độ sẵn sàng của ứng dụng, quy định số lượng Pod tối thiểu phải luôn sống khi quản trị viên nâng cấp hoặc thu hồi Node.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN 3 -->
+  <h2>3. Chuyên Đề 2: Infrastructure as Code (Terraform) &amp; Kiến Trúc AWS Enterprise</h2>
+
+  <h3>3.1. Kiến thức cốt lõi chuyên sâu</h3>
+  <p><strong>Quản lý State Monolithic vs Layered Architecture</strong></p>
+  <ul>
+    <li><strong>Nguy cơ của Monolithic State:</strong> Để chung VPC, EKS, RDS, CloudFront trong cùng 1 thư mục code Terraform dẫn đến:
+      <ul>
+        <li>Thời gian chạy <code>terraform plan</code> mất 10-15 phút do phải duyệt qua hàng trăm API của AWS.</li>
+        <li>Rủi ro Blast Radius cực lớn: Một thay đổi sai ở Security Group của ALB có thể vô tình kích hoạt việc recreate toàn bộ cụm EKS!</li>
+        <li>Tranh chấp lock state giữa các kỹ sư.</li>
+      </ul>
+    </li>
+  </ul>
+  <p><strong>Cấu trúc Layered Repository chuẩn hóa:</strong></p>
+<pre><code>terraform-infrastructure/
+├── environments/
+│   ├── prod/
+│   │   ├── 00-bootstrap/       # S3 State Bucket, DynamoDB Lock table, KMS keys
+│   │   ├── 01-networking/      # VPC, Subnets, NAT Gateways, Transit Gateway
+│   │   ├── 02-security/        # IAM Roles, OIDC Providers, KMS, WAF WebACLs
+│   │   ├── 03-data-stores/     # RDS Multi-AZ, ElastiCache Redis, DocumentDB, MSK
+│   │   ├── 04-compute/         # 5 Cụm AWS EKS Clusters, Fargate Profiles, Karpenter
+│   │   └── 05-edge-routing/    # CloudFront, Route53 Public Zones, ACM Certificates
+└── modules/                    # Tái sử dụng: vpc, eks-cluster, rds-aurora, alb</code></pre>
+
+  <h3>3.2. Các Case Thực Tế Chuyên Sâu</h3>
+
+  <h4>Case 7: Xử lý tranh chấp State Lock và tái cấu trúc Monolithic State sang Layered Architecture</h4>
+  <p><strong>Bối cảnh:</strong> Nhóm DevOps mở rộng lên 5 người. Các pipeline GitHub Actions liên tục báo lỗi: <code>Error: Error acquiring the state lock: ConditionalCheckFailedException</code>. Đồng thời, một kỹ sư cần tách một cụm EKS ra khỏi file state tổng để quản lý độc lập mà không được làm downtime hệ thống đang phục vụ 500M MAU.</p>
+  <p><strong>Cách giải quyết chuyên sâu:</strong></p>
+  <ul>
+    <li>Sử dụng lệnh <code>terraform force-unlock &lt;LOCK-ID&gt;</code> sau khi đã xác minh pipeline trước đó bị crash chứ không phải đang chạy dở.</li>
+    <li>Thực hiện tách state an toàn bằng lệnh <code>terraform state mv</code> hoặc <code>terraform state rm</code> kết hợp <code>terraform import</code>:</li>
+  </ul>
+<pre><code># Liệt kê tài nguyên trong state cũ
+terraform state list | grep aws_eks_cluster
+
+# Di chuyển tài nguyên sang state file mới mà không xóa tài nguyên thực tế trên AWS
+terraform state rm module.eks_cluster_01.aws_eks_cluster.this
+
+# Tại thư mục Layer mới, import lại tài nguyên:
+terraform import module.eks_prod.aws_eks_cluster.this samsung-browser-prod-01</code></pre>
+
+  <h4>Case 8: CloudFront Origin Cloaking, WAF Rate-Limiting chống DDOS bot AI Chat</h4>
+  <p><strong>Bối cảnh:</strong> Hệ thống AI Chat PC Browser bị đối tượng xấu phát hiện ra URL trực tiếp của AWS ALB đằng sau CloudFront và bắn hàng chục triệu request tự động/giờ, gây quá tải backend và tốn hàng ngàn USD chi phí inference token.</p>
+  <p><strong>Giải pháp kỹ thuật đa tầng (Origin Cloaking &amp; WAF Hardening):</strong></p>
+  <ol>
+    <li><strong>Tạo Custom Header bí mật:</strong> Cấu hình CloudFront tự động đính kèm header <code>X-Origin-Secret-Token</code> với giá trị được tạo ngẫu nhiên từ AWS Secrets Manager.</li>
+    <li><strong>Bảo vệ trên ALB Listener Rule:</strong> Trên ALB, chỉ chấp nhận request có chứa header này. Tất cả các request gọi trực tiếp tới DNS của ALB bị trả về mã <code>403 Forbidden</code>.</li>
+    <li><strong>AWS WAF Rate-Based Rules:</strong> Thiết lập giới hạn tốc độ 100 requests/5 phút trên mỗi IP đối với endpoint <code>/v1/chat/completions</code>.</li>
+    <li><strong>Giới hạn IP bằng AWS Managed Prefix List:</strong> Security Group của ALB chỉ cho phép inbound port 443 từ Prefix List <code>com.amazonaws.global.cloudfront.origin-facing</code>.</li>
+  </ol>
+<pre><code># ALB Listener Rule kiểm tra Secret Header từ CloudFront
+resource "aws_lb_listener_rule" "enforce_cloudfront" {
+  listener_arn = aws_lb_listener.https.arn
+  priority     = 10
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.ai_chat.arn
+  }
+
+  condition {
+    http_header {
+      http_header_name = "X-Origin-Secret-Token"
+      values           = [var.custom_origin_token]
+    }
+  }
+}
+
+# Rule mặc định nếu không đi qua CloudFront
+resource "aws_lb_listener_rule" "block_direct_access" {
+  listener_arn = aws_lb_listener.https.arn
+  priority     = 100
+
+  action {
+    type = "fixed-response"
+    fixed_response {
+      content_type = "text/plain"
+      message_body = "Access Denied: Direct Access Not Allowed."
+      status_code  = "403"
+    }
+  }
+
+  condition {
+    path_pattern {
+      values = ["/*"]
+    }
+  }
+}</code></pre>
+
+  <h4>Case 9: Thiết kế Multi-Region Failover với Route 53 Health Checks &amp; Active-Passive Routing</h4>
+  <p><strong>Bối cảnh:</strong> Yêu cầu SLA 99.9% đòi hỏi nếu toàn bộ AWS Region Seoul (<code>ap-northeast-2</code>) gặp sự cố cáp biển hoặc mất điện diện rộng, traffic của Samsung Browser phải tự động chuyển dịch sang Tokyo (<code>ap-northeast-1</code>) trong vòng dưới 2 phút.</p>
+  <p><strong>Giải pháp kiến trúc:</strong></p>
+  <ul>
+    <li><strong>Cấu hình Route 53 DNS Failover Record:</strong>
+      <ul>
+        <li>Record Primary: Trỏ về CloudFront Distribution / ALB tại Seoul kèm theo Route 53 Health Check endpoint <code>/healthz</code>.</li>
+        <li>Record Secondary: Trỏ về Region Tokyo.</li>
+      </ul>
+    </li>
+    <li><strong>Tinh chỉnh Route 53 Health Check:</strong> Request Interval = 10s (Fast), Failure Threshold = 2 &rarr; Phát hiện sự cố và kích hoạt chuyển dịch DNS trong vòng đúng 20 giây.</li>
+    <li>Sử dụng <strong>Amazon Aurora Global Database</strong> hoặc <strong>DynamoDB Global Tables</strong> để đảm bảo dữ liệu được đồng bộ liên tục giữa 2 region với độ trễ replication dưới 1 giây.</li>
+  </ul>
+
+  <div class="glossary-callout">
+    <h5>Giải thích thuật ngữ Tiếng Anh chuyên ngành (Chuyên đề 2)</h5>
+    <ul>
+      <li><span class="term">IaC (Infrastructure as Code):</span> Phương pháp quản lý và khởi tạo hạ tầng máy chủ, mạng, cơ sở dữ liệu thông qua các tệp mã nguồn thay vì thao tác bấm chuột thủ công.</li>
+      <li><span class="term">Terraform State &amp; State Lock:</span> Tệp lưu trữ ánh xạ trạng thái hạ tầng thực tế của Terraform và cơ chế khóa tệp này lại để ngăn nhiều kỹ sư cùng chạy lệnh sửa đổi một lúc gây hỏng dữ liệu.</li>
+      <li><span class="term">Configuration Drift (Trôi dạt cấu hình):</span> Hiện tượng cấu hình thực tế trên Cloud bị lệch so với mã nguồn Terraform do có ai đó tự ý vào giao diện web AWS sửa tay.</li>
+      <li><span class="term">Origin Cloaking (Che giấu máy chủ gốc):</span> Kỹ thuật bảo mật ẩn địa chỉ máy chủ đích (ALB/EC2) đằng sau lớp CDN CloudFront và tường lửa WAF, chặn mọi truy cập đi vòng qua lớp bảo vệ.</li>
+      <li><span class="term">WAF (Web Application Firewall) &amp; Rate-Limiting:</span> Tường lửa bảo vệ ứng dụng web và cơ chế giới hạn số lượng yêu cầu tối đa từ một địa chỉ IP trong một khoảng thời gian để chống tấn công DDoS/Bot.</li>
+      <li><span class="term">Multi-Region Failover (Chuyển đổi dự phòng đa vùng):</span> Khả năng tự động điều hướng lưu lượng người dùng sang một trung tâm dữ liệu ở quốc gia/khu vực khác khi khu vực chính gặp sự cố.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN 4 -->
+  <h2>4. Chuyên Đề 3: CI/CD Pipeline (GitHub Actions OIDC) &amp; GitOps (ArgoCD)</h2>
+
+  <h3>4.1. Kiến thức cốt lõi chuyên sâu</h3>
+  <p><strong>Cơ chế bắt tay Keyless OIDC (OpenID Connect):</strong></p>
+  <ol>
+    <li>GitHub Actions runner kích hoạt job, tạo yêu cầu xin OIDC token từ GitHub OIDC Token Service.</li>
+    <li>GitHub cấp một token JWT được ký số bằng private key của GitHub.</li>
+    <li>Runner gọi API <code>sts:AssumeRoleWithWebIdentity</code> của AWS STS, truyền JWT token và ARN của IAM Role muốn đảm nhận.</li>
+    <li>AWS STS kiểm tra public key của GitHub tại <code>https://token.actions.githubusercontent.com/.well-known/openid-configuration</code>.</li>
+    <li>STS kiểm tra điều kiện bảo mật trong IAM Trust Policy: Khớp <code>aud: sts.amazonaws.com</code> và <code>sub: repo:&lt;org&gt;/&lt;repo&gt;:ref:refs/heads/main</code>.</li>
+    <li>STS trả về temporary credentials (thời hạn 1 giờ). Tuyệt đối không cần lưu access key dài hạn trong GitHub Secrets.</li>
+  </ol>
+
+  <h3>4.2. Các Case Thực Tế Chuyên Sâu</h3>
+
+  <h4>Case 10: Xử lý lỗi Token Expiration &amp; IAM Condition Mismatch trong Keyless OIDC</h4>
+  <p><strong>Bối cảnh:</strong> Pipeline build và deploy image lên Amazon ECR bị gãy tại bước <code>aws-actions/configure-aws-credentials</code> với lỗi: <code>An error occurred (AccessDenied) when calling the AssumeRoleWithWebIdentity operation: OpenIDConnect provider's HTTPS certificate doesn't match configured thumbprint</code> hoặc <code>Not authorized to perform sts:AssumeRoleWithWebIdentity</code>.</p>
+  <p><strong>Nguyên nhân gốc rễ:</strong></p>
+  <ul>
+    <li>Lỗi <code>sub</code> condition: Developer tạo pull request hoặc chạy pipeline trên nhánh <code>feature/auth</code>, nhưng IAM Role Trust Policy chỉ cho phép nhánh <code>ref:refs/heads/main</code>.</li>
+    <li>Hoặc GitHub Actions workflow quên khai báo quyền <code>permissions: id-token: write</code>.</li>
+  </ul>
+  <p><strong>Cấu hình chuẩn khắc phục triệt để:</strong></p>
+<pre><code>name: Secure Build &amp; Push ECR
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  id-token: write # Bắt buộc phải có để request OIDC token
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::123456789012:role/github-actions-ecr-deployer-role
+          aws-region: ap-northeast-2
+          role-session-name: GitHubActions-${{ github.run_id }}
+          audience: sts.amazonaws.com
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, Tag &amp; Push Multi-Arch Docker Image
+        run: |
+          docker buildx build --platform linux/amd64,linux/arm64 \
+            -t ${{ steps.login-ecr.outputs.registry }}/browser-api:${{ github.sha }} \
+            --push .</code></pre>
+
+  <h4>Case 11: Vòng lặp OutOfSync vô tận trên ArgoCD do xung đột Mutating Webhook &amp; HPA</h4>
+  <p><strong>Bối cảnh:</strong> Sau khi triển khai ứng dụng bằng Helm chart qua ArgoCD, trạng thái ứng dụng luôn nhấp nháy màu vàng <code>OutOfSync</code> liên tục, dù không có commit mới nào trên Git.</p>
+  <p><strong>Nguyên nhân gốc rễ:</strong></p>
+  <ul>
+    <li>Trong file Git Manifest khai báo cố định <code>replicas: 5</code>. Tuy nhiên, trong cụm đang bật HPA (Horizontal Pod Autoscaler) và HPA đã tự động scale số pod lên 12 pods. ArgoCD phát hiện số lượng pod thực tế (12) khác với số lượng trên Git (5), lập tức kéo ngược về 5. HPA lại kéo lên 12 &rarr; Vòng lặp scale vô tận làm nghẽn hệ thống.</li>
+    <li>Một Mutating Webhook (ví dụ AWS Load Balancer Controller hoặc Istio) tự động chèn thêm annotation hoặc sidecar container vào Pod spec, làm khác biệt so với Git.</li>
+  </ul>
+  <p><strong>Cách khắc phục:</strong></p>
+  <p>Bổ sung cấu hình <code>ignoreDifferences</code> trong resource <code>Application</code> của ArgoCD:</p>
+<pre><code>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: browser-sync-service
+  namespace: argocd
+spec:
+  ignoreDifferences:
+    # Bỏ qua việc so sánh replicas để HPA toàn quyền điều khiển
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas
+    # Bỏ qua các annotation do controller tự chèn
+    - group: ""
+      kind: Service
+      jsonPointers:
+        - /metadata/annotations/service.beta.kubernetes.io~1aws-load-balancer-internal</code></pre>
+
+  <h4>Case 12: Quản lý đồng bộ 5 cụm EKS thông qua ArgoCD ApplicationSet &amp; Progressive Sync</h4>
+  <p><strong>Bối cảnh:</strong> Với 5 cụm EKS phân bổ toàn cầu, nếu deploy đồng thời cùng 1 lúc cả 5 cụm (All-at-once), khi bản build mới có bug logic tiềm ẩn, nó sẽ làm sập toàn bộ người dùng toàn cầu, vi phạm nghiêm trọng SLA 99.9%.</p>
+  <p><strong>Giải pháp: ArgoCD ApplicationSet kết hợp Sync Waves:</strong></p>
+  <ul>
+    <li>Sử dụng Matrix Generator để quét qua danh sách 5 cụm.</li>
+    <li>Thiết lập chiến lược Progressive Sync: Rollout trước sang cụm Staging (Wave 1) &rarr; Cụm Canary US (Wave 2) &rarr; Tự động chạy integration smoke tests &rarr; Nếu thành công mới đồng bộ nốt sang các cụm Production còn lại (Wave 3).</li>
+  </ul>
+<pre><code>apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: multi-cluster-browser-services
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+          - clusters:
+              selector:
+                matchLabels:
+                  environment: production
+          - list:
+              elements:
+                - serviceName: account-api
+                - serviceName: bookmark-sync
+                - serviceName: ai-chat-gateway
+  template:
+    metadata:
+      name: '{{name}}-{{serviceName}}'
+    spec:
+      project: default
+      source:
+        repoURL: 'git@github.com:samsung-browser/gitops-manifests.git'
+        targetRevision: HEAD
+        path: 'services/{{serviceName}}/overlays/{{name}}'
+      destination:
+        server: '{{server}}'
+        namespace: production
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true</code></pre>
+
+  <div class="glossary-callout">
+    <h5>Giải thích thuật ngữ Tiếng Anh chuyên ngành (Chuyên đề 3)</h5>
+    <ul>
+      <li><span class="term">OIDC (OpenID Connect) &amp; Keyless Authentication:</span> Giao thức xác thực danh tính hiện đại cho phép GitHub Actions nhận quyền truy cập tạm thời vào AWS thông qua mã thông báo JWT mà không cần lưu trữ khóa bí mật (Access Key) cố định.</li>
+      <li><span class="term">AWS STS (Security Token Service):</span> Dịch vụ cấp phát thông tin xác thực tạm thời có thời hạn ngắn (thường từ 15 phút đến 1 giờ) của AWS.</li>
+      <li><span class="term">GitOps:</span> Triết lý vận hành lấy kho lưu trữ Git làm nguồn chân lý duy nhất (Single Source of Truth); mọi thay đổi hạ tầng và ứng dụng đều được tự động đồng bộ từ Git vào cụm Kubernetes.</li>
+      <li><span class="term">Mutating Admission Webhook:</span> Cơ chế trong Kubernetes cho phép tự động can thiệp và chỉnh sửa cấu hình của đối tượng (như chèn thêm biến môi trường hoặc sidecar container) trước khi đối tượng đó được lưu vào hệ thống.</li>
+      <li><span class="term">Progressive Sync / Canary Deployment:</span> Chiến lược triển khai phần mềm từng bước theo làn sóng (thử nghiệm trên một nhóm nhỏ người dùng trước, nếu ổn định mới nhân rộng ra toàn bộ hệ thống).</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN 5 -->
+  <h2>5. Chuyên Đề 4: Observability, SRE Best Practices &amp; Incident Response (MTTR)</h2>
+
+  <h3>5.1. Kiến thức cốt lõi chuyên sâu</h3>
+  <p><strong>Bản chất Linux CFS Quota và hiện tượng CPU Throttling:</strong></p>
+  <ul>
+    <li>Kubernetes quản lý <code>resources.limits.cpu</code> thông qua cơ chế Completely Fair Scheduler (CFS) Cgroups của nhân Linux.</li>
+    <li>Chu kỳ mặc định của CFS quota (<code>cpu.cfs_period_us</code>) là 100ms (0.1 giây).</li>
+    <li>Nếu bạn đặt <code>limits.cpu: 500m</code> (tương đương 0.5 CPU), tiến trình của bạn chỉ được phép chạy tối đa 50ms trong mỗi chu kỳ 100ms.</li>
+    <li><strong>Vấn đề nguy hiểm:</strong> Một ứng dụng Java hoặc Go đa luồng khi nhận một đợt request đột biến có thể bung ra 8 threads cùng chạy song song. 8 threads này sẽ tiêu thụ hết sạch hạn mức 50ms chỉ trong vòng 6ms đầu tiên của chu kỳ. Nhân Linux lập tức "đóng băng" (throttle) toàn bộ tiến trình trong 94ms còn lại!</li>
+    <li><strong>Hậu quả:</strong> Biểu đồ CPU trung bình (tính theo 1 phút) chỉ hiển thị mức 20-30%, nhưng người dùng trải nghiệm độ trễ p99 tăng từ 50ms lên hàng giây!</li>
+  </ul>
+
+  <h3>5.2. Các Case Thực Tế Chuyên Sâu</h3>
+
+  <h4>Case 13: CPU CFS Throttling âm thầm bóp nghẹt độ trễ p99 và cách xử lý</h4>
+  <p><strong>Bối cảnh:</strong> Dịch vụ AI Chat Gateway có latency p99 tăng vọt từ 120ms lên 2.8s trong giờ cao điểm. Metric CPU Utilization trên CloudWatch chỉ báo 40%. Đội phát triển cho rằng do mạng chập chờn.</p>
+  <p><strong>Quy trình điều tra:</strong></p>
+  <p>Viết truy vấn PromQL kiểm tra tỷ lệ phần trăm chu kỳ bị bóp nghẽn:</p>
+<pre><code>sum(rate(container_cpu_cfs_throttled_periods_total{namespace="production", pod=~"ai-chat-.*"}[5m]))
+/
+sum(rate(container_cpu_cfs_periods_total{namespace="production", pod=~"ai-chat-.*"}[5m])) * 100</code></pre>
+  <p>Kết quả PromQL trả về con số giật mình: Pod bị throttle tới 72% tổng số chu kỳ CFS!</p>
+  <p><strong>Giải pháp:</strong></p>
+  <ul>
+    <li>Gỡ bỏ hoàn toàn <code>limits.cpu</code> hoặc nâng <code>limits.cpu</code> lên gấp 3-4 lần <code>requests.cpu</code>, chỉ giữ cố định <code>requests.cpu</code> để scheduler phân bổ node.</li>
+    <li>Đảm bảo <code>limits.memory == requests.memory</code> để giữ <code>Guaranteed</code> / <code>Burstable</code> QoS class an toàn cho Pod.</li>
+    <li>Ngay sau khi áp dụng, độ trễ p99 giảm lập tức từ 2.8s xuống còn 85ms!</li>
+  </ul>
+
+  <h4>Case 14: FluentBit tràn bộ đệm (Buffer Overflow) gây mất log trên EKS Fargate</h4>
+  <p><strong>Bối cảnh:</strong> Khi xảy ra sự cố, đội SRE vào Grafana Loki / CloudWatch để tra cứu log thì phát hiện bị mất toàn bộ log trong 15 phút cao điểm. Kiểm tra container FluentBit log router trên Fargate thấy báo: <code>[warn] [storage] ring buffer full, dropping chunks</code>.</p>
+  <p><strong>Nguyên nhân:</strong></p>
+  <p>Lượng log ghi ra stdout quá lớn (vài chục MB/giây). FluentBit không kịp đẩy lên CloudWatch Logs API do chạm giới hạn <code>PutLogEvents</code> rate limit của AWS CloudWatch. Bộ nhớ đệm in-memory của FluentBit bị đầy và nó buộc phải xả bỏ log mới nhất.</p>
+  <p><strong>Giải pháp:</strong></p>
+  <ul>
+    <li>Chuyển cấu hình lưu trữ bộ đệm của FluentBit sang cơ chế hybrid hoặc dùng <code>storage.type filesystem</code>.</li>
+    <li>Tăng giới hạn <code>storage.pause_on_chunks_over</code> và bật tính năng nén log <code>compression gzip</code> khi gửi lên CloudWatch.</li>
+    <li>Cấu hình chuẩn <code>aws-logging</code> ConfigMap trong namespace <code>aws-observability</code> trên EKS Fargate:</li>
+  </ul>
+<pre><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-logging
+  namespace: aws-observability
+data:
+  output.conf: |
+    [OUTPUT]
+        Name                cloudwatch_logs
+        Match               *
+        region              ap-northeast-2
+        log_group_name      /aws/eks/fargate/samsung-browser-prod
+        log_stream_prefix   fargate-
+        auto_create_group   true
+        extra_user_agent    fluent-bit-fargate
+        log_retention_days  30
+  parsers.conf: |
+    [PARSER]
+        Name        json
+        Format      json
+        Time_Key    time
+        Time_Format %Y-%m-%dT%H:%M:%S.%L</code></pre>
+
+  <h4>Case 15: Chống Alert Fatigue bằng mô hình Multi-Window Multi-Burn-Rate Alerting (SRE)</h4>
+  <p><strong>Bối cảnh:</strong> Đội trực ca nhận trung bình 40 cảnh báo Slack/PagerDuty mỗi ngày. Phần lớn là cảnh báo rác (CPU tăng vọt 80% trong 2 phút rồi tự hạ). Đến khi có sự cố lớn thực sự ảnh hưởng đến SLA 99.9%, kỹ sư trực ca bị "chai lỳ cảnh báo" (Alert Fatigue) và bỏ sót tin nhắn quan trọng.</p>
+  <p><strong>Giải pháp theo chuẩn Google SRE:</strong> Thiết lập cảnh báo dựa trên tốc độ đốt ngân sách lỗi (Burn Rate of Error Budget) thay vì chỉ dựa vào ngưỡng tài nguyên tĩnh.</p>
+  <ul>
+    <li>Với SLA 99.9%, 1x Burn Rate tiêu thụ hết ngân sách lỗi trong đúng 30 ngày.</li>
+    <li>Nếu Burn Rate = 14.4x (đốt sạch 2% error budget chỉ trong 1 giờ) &rarr; Bắn PagerDuty khẩn cấp đánh thức kỹ sư trực ca ngay lập tức.</li>
+    <li>Sử dụng 2 cửa sổ thời gian (Multi-window: 1h và 5m) để tránh cảnh báo giả khi có traffic spike ngắn hạn.</li>
+  </ul>
+<pre><code># Prometheus Alert Rule chuẩn SRE
+- alert: HighErrorBudgetBurnRate
+  expr: |
+    (
+      sum(rate(http_requests_total{status=~"5.."}[1h])) 
+      / 
+      sum(rate(http_requests_total[1h])) 
+    ) &gt; (1 - 0.999) * 14.4
+    and
+    (
+      sum(rate(http_requests_total{status=~"5.."}[5m])) 
+      / 
+      sum(rate(http_requests_total[5m])) 
+    ) &gt; (1 - 0.999) * 14.4
+  for: 2m
+  labels:
+    severity: page
+  annotations:
+    summary: "Hệ thống đang đốt ngân sách lỗi với tốc độ 14.4x (SLA 99.9% gặp nguy hiểm!)"
+    runbook_url: "https://wiki.internal/runbooks/high-error-rate"</code></pre>
+
+  <div class="glossary-callout">
+    <h5>Giải thích thuật ngữ Tiếng Anh chuyên ngành (Chuyên đề 4)</h5>
+    <ul>
+      <li><span class="term">Observability (Khả năng quan sát):</span> Năng lực thấu hiểu trạng thái bên trong của hệ thống thông qua 3 trụ cột dữ liệu đầu ra: Metrics (Chỉ số đo lường), Logs (Nhật ký sự kiện) và Traces (Vết đường đi của request).</li>
+      <li><span class="term">MTTR (Mean Time To Recover / Resolve):</span> Thời gian trung bình từ lúc xảy ra sự cố cho đến khi khắc phục xong và đưa hệ thống hoạt động bình thường trở lại.</li>
+      <li><span class="term">Latency P99 (99th Percentile Latency):</span> Độ trễ phân vị thứ 99 &ndash; nghĩa là 99% số yêu cầu được xử lý nhanh hơn mốc này, và chỉ có 1% số yêu cầu chậm hơn (dùng để bắt các trường hợp nghẽn cổ chai cực đoan).</li>
+      <li><span class="term">CFS (Completely Fair Scheduler) &amp; CPU Throttling:</span> Bộ lập lịch công bằng của nhân Linux và hiện tượng tiến trình bị tạm dừng cưỡng bức khi dùng hết hạn mức thời gian CPU được cấp trong mỗi chu kỳ 100ms.</li>
+      <li><span class="term">Alert Fatigue (Chai lỳ cảnh báo):</span> Tình trạng kỹ sư trực ca bị quá tải bởi hàng loạt thông báo cảnh báo giả/không quan trọng, dẫn đến phản ứng chậm trễ khi có sự cố thật.</li>
+      <li><span class="term">Burn Rate (Tốc độ đốt ngân sách lỗi):</span> Chỉ số đo lường mức độ tiêu hao Error Budget nhanh gấp bao nhiêu lần so với mức bình thường để kịp thời phát tín hiệu cấp cứu hệ thống.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN 6 -->
+  <h2>6. Chuyên Đề 5: Cơ Sở Dữ Liệu &amp; Message Streaming (RDS, ElastiCache, DocumentDB, MSK)</h2>
+
+  <h3>6.1. Kiến thức cốt lõi chuyên sâu</h3>
+  <ul>
+    <li><strong>RDS Multi-AZ Synchronous Replication:</strong> Dữ liệu được ghi đồng bộ (Synchronous) ở tầng storage sang Standby instance ở AZ khác. RPO = 0.</li>
+    <li><strong>RDS Read Replica Asynchronous Replication:</strong> Dữ liệu đồng bộ bất đồng bộ qua Binlog/WAL. Có thể có Replica Lag.</li>
+    <li><strong>DocumentDB Architecture:</strong> Tách rời Compute và Storage. Dữ liệu tự động nhân bản 6 bản sao (copies) trên 3 Availability Zones. Mỗi khi ghi, chỉ cần 4/6 bản sao xác nhận (Quorum write) là ghi thành công.</li>
+  </ul>
+
+  <h3>6.2. Các Case Thực Tế Chuyên Sâu</h3>
+
+  <h4>Case 16: Zero-Downtime Major Version Upgrade cho RDS PostgreSQL/MySQL (Blue/Green)</h4>
+  <p><strong>Bối cảnh:</strong> Nâng cấp cơ sở dữ liệu cốt lõi của Samsung Browser từ PostgreSQL 12 lên 15. Hệ thống phục vụ 500M người dùng nên thời gian bảo trì gián đoạn dịch vụ phải dưới 1 phút.</p>
+  <p><strong>Chiến lược triển khai AWS RDS Blue/Green Deployments:</strong></p>
+  <ol>
+    <li><strong>Khởi tạo môi trường Green:</strong> AWS tự động sao chép cụm DB hiện tại (Blue) sang phiên bản mới (Green) và thiết lập Logical Replication tự động giữa Blue và Green. Môi trường Green được nâng cấp lên PostgreSQL 15.</li>
+    <li><strong>Kiểm thử hiệu năng (Shadow Testing):</strong> Cho một phần read traffic hoặc chạy test kiểm thử toàn diện trên môi trường Green để đảm bảo query planner và schema tương thích hoàn toàn.</li>
+    <li><strong>Switchover có kiểm soát:</strong>
+      <ul>
+        <li>Thiết lập Switchover Timeout: 300s.</li>
+        <li>Trong quá trình switchover, AWS tạm thời khóa ghi (read-only) trên Blue trong vài giây để đợi replication lag về 0, sau đó hoán đổi DNS endpoint giữa Blue và Green.</li>
+        <li>Toàn bộ quá trình chỉ mất khoảng 25 - 40 giây gián đoạn, hoàn toàn nằm trong Error Budget của SLA 99.9%.</li>
+      </ul>
+    </li>
+    <li><strong>Kế hoạch Rollback:</strong> Môi trường Blue cũ vẫn được giữ nguyên bản gốc. Nếu bản mới gặp lỗi dữ liệu, chỉ cần switchover ngược lại.</li>
+  </ol>
+
+  <h4>Case 17: Nâng cấp DocumentDB 4.0 lên 5.0 không mất mát dữ liệu với AWS DMS CDC</h4>
+  <p><strong>Bối cảnh:</strong> Cụm DocumentDB lưu lịch sử hội thoại của AI Chat PC Browser cần nâng cấp từ engine 4.0 lên 5.0 để tận dụng các toán tử tổng hợp mới và cải thiện hiệu năng index. AWS DocumentDB không hỗ trợ bấm nút hạ cấp (Downgrade) nếu nâng cấp in-place thất bại.</p>
+  <p><strong>Quy trình triển khai an toàn tuyệt đối:</strong></p>
+  <ul>
+    <li>Tạo cụm DocumentDB 5.0 mới hoàn toàn (Target Cluster).</li>
+    <li>Bật <code>changeStream</code> trên cụm DocumentDB 4.0 nguồn:</li>
+  </ul>
+<pre><code>db.adminCommand({modifyChangeStreams: 1, database: "chat_db", collection: "", enable: true})</code></pre>
+  <ul>
+    <li>Khởi tạo tác vụ AWS DMS (Database Migration Service) chế độ <strong>Full Load + Ongoing Replication (CDC)</strong>.</li>
+    <li>Theo dõi CloudWatch metric <code>CDCLatencyTarget</code>. Khi độ trễ về 0ms, chuyển đổi kết nối của microservice AI Chat sang cụm 5.0 thông qua việc cập nhật AWS Secrets Manager.</li>
+    <li>Giữ cụm 4.0 chạy song song trong 48 giờ để sẵn sàng quay xe (Rollback) an toàn.</li>
+  </ul>
+
+  <h4>Case 18: Thảm họa Thundering Herd &amp; Cache Avalanche trên ElastiCache Redis</h4>
+  <p><strong>Bối cảnh:</strong> Một node Primary của cụm Redis Cluster bị crash do phần cứng AWS. Đúng lúc đó, hàng ngàn key cache thông tin cấu hình trình duyệt bị hết hạn (TTL) cùng một thời điểm. Hàng triệu request từ 500M MAU đâm thẳng xuống cơ sở dữ liệu RDS phía sau, khiến CPU của RDS vọt lên 100% và treo toàn bộ API.</p>
+  <p><strong>Khắc phục &amp; Phòng chống kiến trúc:</strong></p>
+  <ul>
+    <li><strong>Xử lý Cache Avalanche:</strong> Bổ sung độ lệch ngẫu nhiên (Jitter) vào thời gian hết hạn TTL của key: $TTL_{actual} = TTL_{base} + \text{random}(0, 300\text{s})$. Tránh việc tất cả các key cùng hết hạn tại một giây.</li>
+    <li><strong>Xử lý Cache Breakdown / Thundering Herd:</strong> Áp dụng kỹ thuật <strong>Mutex Lock (Distributed Lock via Redlock)</strong>: Khi cache miss, chỉ cho phép luồng đầu tiên được phép gọi DB để lấy dữ liệu mới và ghi vào cache; các luồng khác phải chờ trong vài mili-giây.</li>
+    <li>Bật tính năng <strong>ElastiCache Multi-AZ with Auto-Failover</strong> để quá trình chuyển đổi sang Replica node hoàn tất trong dưới 15 giây.</li>
+  </ul>
+
+  <h4>Case 19: MSK Consumer Lag Spike &amp; Hiện tượng Rebalancing Storm dưới tải đột biến</h4>
+  <p><strong>Bối cảnh:</strong> Cụm Amazon MSK thu thập log hành vi người dùng ghi nhận chỉ số <code>SumOffsetLag</code> tăng từ vài ngàn lên hơn 500,000 messages. Các Consumer Pods trên EKS chạy bằng Java/Node.js bị khởi động lại liên tục.</p>
+  <p><strong>Nguyên nhân gốc rễ:</strong></p>
+  <ul>
+    <li>Khi lưu lượng tăng cao, Consumer Pod mất quá nhiều thời gian để xử lý 1 batch message, vượt quá cấu hình <code>max.poll.interval.ms</code> (mặc định 5 phút). Kafka Coordinator tưởng Consumer đó đã chết và kích hoạt tái cân bằng (Rebalance).</li>
+    <li>Quá trình Rebalance khiến toàn bộ các Consumer khác trong nhóm phải ngừng tiêu thụ message (Stop-the-world). Khi pod vừa rebalance xong lại tiếp tục bị timeout &rarr; Gây ra thảm họa <strong>Rebalancing Storm</strong>.</li>
+  </ul>
+  <p><strong>Giải pháp:</strong></p>
+  <ul>
+    <li>Tăng <code>max.poll.interval.ms</code> lên 10-15 phút và giảm <code>max.poll.records</code> từ 500 xuống 100 để Consumer xử lý từng mẻ nhanh hơn.</li>
+    <li>Chuyển đổi chiến lược phân bổ partition sang <strong>Cooperative Sticky Assignor</strong> (<code>CooperativeStickyAssignor</code>) để khi có consumer thêm/bớt, Kafka chỉ di chuyển partition bị ảnh hưởng thay vì thu hồi toàn bộ partitions của cả cụm.</li>
+    <li>Dùng <strong>KEDA (Kubernetes Event-driven Autoscaling)</strong> để tự động scale số lượng Pod Consumer dựa trên metric <code>kafka-lag</code> thay vì chỉ dựa vào CPU.</li>
+  </ul>
+
+  <div class="glossary-callout">
+    <h5>Giải thích thuật ngữ Tiếng Anh chuyên ngành (Chuyên đề 5)</h5>
+    <ul>
+      <li><span class="term">RPO (Recovery Point Objective) &amp; RTO (Recovery Time Objective):</span> RPO là lượng dữ liệu tối đa chấp nhận bị mất khi xảy ra thảm họa (RPO = 0 nghĩa là không mất byte dữ liệu nào); RTO là thời gian tối đa để khôi phục dịch vụ hoạt động lại.</li>
+      <li><span class="term">Blue/Green Deployment:</span> Phương pháp nâng cấp không gián đoạn bằng cách dựng một môi trường mới (Green) chạy song song với môi trường cũ (Blue), đồng bộ dữ liệu xong mới chuyển luồng truy cập sang Green.</li>
+      <li><span class="term">CDC (Change Data Capture):</span> Kỹ thuật bắt và đồng bộ theo thời gian thực mọi thay đổi dữ liệu (Insert, Update, Delete) từ cơ sở dữ liệu nguồn sang cơ sở dữ liệu đích.</li>
+      <li><span class="term">Thundering Herd &amp; Cache Avalanche:</span> Hiện tượng "Đàn thú giẫm đạp" và "Tuyệt lở bộ nhớ đệm" &ndash; xảy ra khi hàng loạt dữ liệu trên Redis hết hạn cùng lúc khiến hàng triệu truy vấn đập thẳng vào Database chính làm sập hệ thống.</li>
+      <li><span class="term">Consumer Lag &amp; Rebalancing Storm:</span> Độ trễ tồn đọng tin nhắn chưa kịp xử lý trong Kafka và cơn bão tái phân bổ phân vùng liên tục làm tê liệt toàn bộ cụm xử lý hàng đợi.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN 7 -->
+  <h2>7. Chuyên Đề 6: Bảo Mật Đa Tầng (Security Hardening) &amp; Tối Ưu Chi Phí (~15% AWS Savings)</h2>
+
+  <h3>7.1. Các Case Thực Tế Bảo Mật Chuyên Sâu</h3>
+
+  <h4>Case 20: Tự động hóa xoay vòng mật khẩu không gián đoạn với Secrets Manager &amp; ESO</h4>
+  <p><strong>Bối cảnh:</strong> Chính sách bảo mật tập đoàn yêu cầu mật khẩu kết nối Database RDS phải được xoay vòng (Rotate) tự động 30 ngày/lần. Làm thế nào để xoay vòng mật khẩu mà 13 microservices trên EKS không bị rớt kết nối hoặc phải restart thủ công?</p>
+  <p><strong>Giải pháp kỹ thuật:</strong></p>
+  <ul>
+    <li>Cấu hình <strong>AWS Secrets Manager Auto-Rotation</strong> sử dụng Lambda function xoay vòng theo chiến lược 2 user luân phiên (Dual-user rotation strategy: <code>master_user_a</code> và <code>master_user_b</code>).</li>
+    <li>Cài đặt <strong>External Secrets Operator (ESO)</strong> trên cụm EKS. ESO định kỳ 10 phút đồng bộ giá trị secret từ AWS Secrets Manager về Kubernetes Secret nội bộ:</li>
+  </ul>
+<pre><code>apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: rds-db-credentials
+  namespace: production
+spec:
+  refreshInterval: 10m
+  secretStoreRef:
+    name: aws-secrets-manager-store
+    kind: ClusterSecretStore
+  target:
+    name: app-db-secret
+  data:
+    - secretKey: DB_PASSWORD
+      remoteRef:
+        key: prod/samsung-browser/database
+        property: password</code></pre>
+  <ul>
+    <li>Ứng dụng hỗ trợ cơ chế nạp lại mật khẩu nóng (Hot-reload connection pool) khi secret thay đổi, đảm bảo 0 giây downtime.</li>
+  </ul>
+
+  <h4>Case 21: Tấn công leo thang đặc quyền container &amp; Triển khai Pod Security Standards</h4>
+  <p><strong>Bối cảnh:</strong> Quét bảo mật định kỳ phát hiện một số pod chạy bằng quyền <code>root</code>, tiềm ẩn nguy cơ nếu container bị chiếm quyền điều khiển qua lỗ hổng RCE, tin tặc có thể tấn công kernel của worker node.</p>
+  <p><strong>Hành động Hardening toàn diện:</strong></p>
+  <ul>
+    <li>Áp dụng chuẩn <strong>Pod Security Standards (PSS)</strong> cấp độ <code>Restricted</code> ở mức Namespace:</li>
+  </ul>
+<pre><code>apiVersion: v1
+kind: Namespace
+metadata:
+  name: production
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: latest</code></pre>
+  <ul>
+    <li>Cấu hình <code>SecurityContext</code> bắt buộc cho tất cả Pod manifests:</li>
+  </ul>
+<pre><code>securityContext:
+  runAsNonRoot: true
+  runAsUser: 10001
+  runAsGroup: 10001
+  readOnlyRootFilesystem: true # Khóa hệ thống file chỉ đọc, hacker không thể tải mã độc về
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL # Bỏ toàn bộ Linux capabilities nguy hiểm</code></pre>
+
+  <h3>7.2. Case 22: Phân Tích Kỹ Thuật Chi Tiết Bài Toán Cắt Giảm 15% Chi Phí Hạ Tầng AWS</h3>
+  <p>Khi được hỏi: <em>"Con số cắt giảm 15% chi phí trong CV của bạn đến từ đâu? Hãy chứng minh bằng số liệu và phương pháp kỹ thuật."</em> Hãy trình bày theo bảng phân rã chi tiết sau:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Hạng mục tối ưu</th>
+        <th style="width: 43%;">Hành động kỹ thuật cụ thể</th>
+        <th style="width: 13%;">% Chi phí tiết kiệm</th>
+        <th style="width: 22%;">Công cụ kiểm chứng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Rightsizing Fargate &amp; EC2</strong></td>
+        <td>Dùng PromQL đo đạc mức sử dụng P99 thực tế trong 14 ngày. Cắt giảm requests dư thừa từ 2 vCPU / 4GB xuống 1 vCPU / 2GB cho các service rảnh rỗi.</td>
+        <td style="text-align: center;"><strong>~6.5%</strong></td>
+        <td>Prometheus Telemetry + AWS Cost Explorer</td>
+      </tr>
+      <tr>
+        <td><strong>Di cư sang chip AWS Graviton</strong></td>
+        <td>Chuyển đổi các cụm RDS PostgreSQL, ElastiCache Redis và EC2 Worker Nodes sang dòng Graviton3 (<code>m7g</code>, <code>r7g</code>). Rẻ hơn 20% và throughput cao hơn.</td>
+        <td style="text-align: center;"><strong>~4.0%</strong></td>
+        <td>Terraform Instance Type Updates</td>
+      </tr>
+      <tr>
+        <td><strong>Hiện đại hóa Storage (EBS &amp; S3)</strong></td>
+        <td>Tự động hóa chuyển toàn bộ ổ đĩa EBS từ <code>gp2</code> sang <code>gp3</code> (rẻ hơn 20%). Thiết lập S3 Lifecycle chuyển log sang Glacier Instant Retrieval sau 30 ngày.</td>
+        <td style="text-align: center;"><strong>~2.0%</strong></td>
+        <td>AWS Data Lifecycle Manager (DLM) &amp; Terraform S3 Lifecycle</td>
+      </tr>
+      <tr>
+        <td><strong>Gộp Ingress &amp; Loại bỏ tài nguyên thừa</strong></td>
+        <td>Gom 13 Ingresses dùng chung qua 1 ALB bằng Ingress Group (giảm phí LCU và fixed cost của 4 ALBs). Dọn dẹp Unattached EBS, Orphaned Snapshots.</td>
+        <td style="text-align: center;"><strong>~1.5%</strong></td>
+        <td>AWS ALB Controller Ingress Group + AWS Config</td>
+      </tr>
+      <tr>
+        <td><strong>Tối ưu cam kết công suất</strong></td>
+        <td>Phân tích baseline tải tối thiểu và mua Compute Savings Plans 1 năm / All Upfront cho tải nền ổn định.</td>
+        <td style="text-align: center;"><strong>~1.0%</strong></td>
+        <td>AWS Cost Hub Recommendations</td>
+      </tr>
+      <tr>
+        <td><strong>TỔNG TIẾT KIỆM</strong></td>
+        <td><strong>Đạt mục tiêu tối ưu hóa tài chính đám mây bền vững (FinOps)</strong></td>
+        <td style="text-align: center;"><strong>~15.0%</strong></td>
+        <td><strong>Hóa đơn hàng tháng giảm rõ rệt</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="glossary-callout">
+    <h5>Giải thích thuật ngữ Tiếng Anh chuyên ngành (Chuyên đề 6)</h5>
+    <ul>
+      <li><span class="term">Security Hardening:</span> Quá trình gia cố bảo mật hệ thống bằng cách thu hẹp bề mặt tấn công, tắt các dịch vụ thừa và khóa chặt quyền truy cập.</li>
+      <li><span class="term">Privilege Escalation (Leo thang đặc quyền) &amp; RCE (Remote Code Execution):</span> RCE là lỗ hổng cho phép tin tặc thực thi mã lệnh từ xa; Privilege Escalation là hành vi lợi dụng lỗ hổng để chiếm quyền cao nhất (root/admin) của máy chủ.</li>
+      <li><span class="term">Rightsizing:</span> Kỹ thuật phân tích dữ liệu đo lường thực tế để điều chỉnh cấu hình CPU/RAM của máy chủ/container vừa khít với nhu cầu sử dụng, chống lãng phí.</li>
+      <li><span class="term">AWS Graviton (ARM64):</span> Dòng vi xử lý máy chủ do AWS tự thiết kế dựa trên kiến trúc ARM64, mang lại hiệu năng trên giá thành tốt hơn tới 40% so với chip Intel/AMD x86 truyền thống.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN 8 -->
+  <h2>8. Chuyên Đề 7: Phỏng Vấn Tình Huống Quản Trị &amp; Chuyển Đổi Nghề Nghiệp (STAR Method)</h2>
+
+  <h3>8.1. Case 23: Lợi thế cạnh tranh của nền tảng Kỹ sư Tự động hóa (BMS/PLC) sang DevOps/SRE</h3>
+  <p><strong>Câu hỏi phỏng vấn:</strong> <em>"Trước khi làm Cloud/DevOps tại Samsung, bạn làm Kỹ sư BMS tại Thang Tien SJC và học Tự động hóa Bách Khoa. Hai lĩnh vực này có vẻ rất khác nhau, bạn giải thích thế nào về sự chuyển dịch này?"</em></p>
+  <p><strong>Kịch bản trả lời đỉnh cao:</strong></p>
+  <blockquote>
+    "Em nhìn nhận DevOps và Hệ thống Điều khiển Tự động hóa (Automation/BMS) chia sẻ chung một DNA triết lý: đó là nguyên lý <strong>Vòng lặp điều khiển phản hồi kín (Closed-Loop Feedback Control System)</strong>.
+    <ul>
+      <li>Trong BMS công nghiệp, em lập trình bộ điều khiển PLC nhận tín hiệu cảm biến nhiệt độ/áp suất thời gian thực, so sánh với giá trị mong muốn (Setpoint) và điều khiển biến tần quạt gió/van lạnh để cân bằng hệ thống.</li>
+      <li>Khi bước vào thế giới Cloud Native, Kubernetes Controller Manager hay GitOps ArgoCD thực chất chính là một bộ điều khiển PLC ở tầng phần mềm: chúng liên tục quan sát trạng thái thực tế (Actual State qua Telemetry), so sánh với trạng thái khai báo (Desired State trong Git) và tự động thực hiện hành động hòa giải (Reconciliation Loop) để đưa hệ thống về điểm cân bằng.</li>
+    </ul>
+    Tư duy thiết kế hệ thống có tính chịu lỗi cao (Fail-safe), khả năng phản xạ với tín hiệu cảnh báo và thói quen phân tích lỗi từ gốc rễ vật lý giúp em tiếp cận hệ thống phân tán 500M người dùng một cách cực kỳ bình tĩnh, logic và bài bản."
+  </blockquote>
+
+  <h3>8.2. Case 24: Văn hóa Blameless Post-Mortem &amp; Kèm cặp (Mentoring) Kỹ sư Junior/Fresher</h3>
+  <p><strong>Câu hỏi phỏng vấn:</strong> <em>"Khi một bạn Junior trong nhóm bạn vô tình cấu hình sai Terraform làm gián đoạn dịch vụ, bạn xử lý thế nào?"</em></p>
+  <p><strong>Áp dụng mô hình STAR:</strong></p>
+  <ul>
+    <li><strong>Situation (Tình huống):</strong> Một kỹ sư mới gia nhập đã merge nhầm một pull request Terraform xóa mất một Security Group rule quan trọng, gây gián đoạn kết nối giữa API Gateway và cụm Redis trong 7 phút trên môi trường Staging/Pre-prod.</li>
+    <li><strong>Task (Nhiệm vụ):</strong> Khôi phục kết nối ngay lập tức, ngăn ngừa sự cố tương tự lặp lại trên Production, đồng thời bảo vệ tinh thần học hỏi của kỹ sư trẻ thay vì đổ lỗi.</li>
+    <li><strong>Action (Hành động):</strong>
+      <ol>
+        <li>Lập tức chạy pipeline rollback commit trên GitOps và khôi phục rule trong dưới 3 phút.</li>
+        <li>Tổ chức buổi họp <strong>Blameless Post-Mortem</strong> (Phân tích sự cố không đổ lỗi): Nguyên tắc là người mắc lỗi không phải là vấn đề, mà do hệ thống quy trình của chúng ta chưa đủ tốt để ngăn chặn sai sót của con người.</li>
+        <li>Cải tiến quy trình bảo vệ: Thiết lập kiểm tra tự động <code>conftest</code> / <code>tfsec</code> trên GitHub Actions để chặn merge nếu PR vi phạm chính sách bảo mật, đồng thời bắt buộc phải có approve của ít nhất 1 Senior engineer (<code>CODEOWNERS</code>).</li>
+        <li>Trực tiếp hướng dẫn kỹ sư đó viết tài liệu Root Cause Analysis (RCA) để bạn ấy hiểu sâu bài học và tự tin hơn.</li>
+      </ol>
+    </li>
+    <li><strong>Result (Kết quả):</strong> Hệ thống không bao giờ gặp lại lỗi tương tự; bạn kỹ sư trưởng thành vượt bậc và sau 3 tháng đã có thể tự tin trực on-call ca đêm độc lập.</li>
+  </ul>
+
+  <div class="glossary-callout">
+    <h5>Giải thích thuật ngữ Tiếng Anh chuyên ngành (Chuyên đề 7)</h5>
+    <ul>
+      <li><span class="term">STAR Method (Situation - Task - Action - Result):</span> Phương pháp trả lời phỏng vấn tình huống chuẩn mực gồm 4 bước: Nêu bối cảnh &rarr; Xác định nhiệm vụ &rarr; Mô tả hành động cụ thể &rarr; Đưa ra kết quả định lượng.</li>
+      <li><span class="term">Reconciliation Loop (Vòng lặp hòa giải):</span> Vòng lặp kiểm tra liên tục trong Kubernetes và ArgoCD nhằm phát hiện sự sai khác giữa trạng thái thực tế và trạng thái mong muốn để tự động sửa chữa.</li>
+      <li><span class="term">Blameless Post-Mortem &amp; RCA (Root Cause Analysis):</span> Văn hóa họp mổ xẻ sự cố tập trung vào việc tìm ra nguyên nhân gốc rễ về mặt kỹ thuật/quy trình để cải tiến hệ thống, tuyệt đối không chỉ trích hay đổ lỗi cho cá nhân.</li>
+    </ul>
+  </div>
+
+  <!-- PHẦN 9 -->
+  <h2>9. Bảng Tra Cứu Tốc Hành 50 Câu Hỏi Kỹ Thuật "Vặn Vẹo" Nhất (Rapid-Fire Cheatsheet)</h2>
+  <p>Dưới đây là 50 câu hỏi phản xạ nhanh giúp bạn ghi điểm tuyệt đối trong các vòng Technical Screen và Bar Raiser:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 6%;">STT</th>
+        <th style="width: 42%;">Câu hỏi phỏng vấn hóc búa</th>
+        <th style="width: 52%;">Câu trả lời cốt lõi trong 1 câu (Punchline Answer)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center;">1</td>
+        <td>SLA 99.9% cho phép downtime bao lâu mỗi tháng?</td>
+        <td>Cho phép tối đa 43.2 phút/tháng (tương đương 8.76 giờ/năm).</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">2</td>
+        <td>Điểm khác biệt lớn nhất giữa EKS Fargate và EC2 là gì?</td>
+        <td>Fargate là Serverless cách ly ở mức MicroVM Firecracker, không hỗ trợ DaemonSet, HostNetwork và Privileged container.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">3</td>
+        <td>Target type của ALB trên EKS Fargate bắt buộc là gì?</td>
+        <td>Bắt buộc phải là <code>target-type: ip</code> để ALB định tuyến trực tiếp vào IP của Pod thông qua VPC CNI.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">4</td>
+        <td>Làm sao để nhiều Ingress chia sẻ chung một ALB?</td>
+        <td>Gắn chung annotation <code>alb.ingress.kubernetes.io/group.name: &lt;tên-nhóm&gt;</code>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">5</td>
+        <td>Tại sao Rolling Update trên Kubernetes lại sinh ra lỗi 502 trên ALB?</td>
+        <td>Do bất đồng bộ thời gian deregister IP trên ALB Target Group; khắc phục bằng <code>lifecycle.preStop: sleep 20</code> và <code>PodReadinessGate</code>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">6</td>
+        <td>Khi nào nên dùng Karpenter thay vì Cluster Autoscaler?</td>
+        <td>Khi cần scale tức thì trong 30-45 giây, bin-packing thông minh không phụ thuộc ASG, và tận dụng Spot consolidation tự động.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">7</td>
+        <td>Làm thế nào để giải quyết cạn kiệt IP trên cụm EKS lớn?</td>
+        <td>Bật Prefix Delegation (<code>ENABLE_PREFIX_DELEGATION=true</code>) trên AWS VPC CNI hoặc thêm Secondary CIDR block <code>100.64.0.0/16</code>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">8</td>
+        <td>Tại sao truy vấn DNS nội bộ hay bị timeout 5 giây trên EKS?</td>
+        <td>Do đụng ngưỡng <code>conntrack</code> packet drop của Linux kernel; giải quyết bằng cách cài <code>NodeLocal DNSCache</code>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">9</td>
+        <td>CPU Throttling xảy ra khi nào dù CPU usage trung bình thấp?</td>
+        <td>Xảy ra khi luồng burst vượt hạn mức quota trong chu kỳ CFS 100ms; giải quyết bằng cách gỡ hoặc nới lỏng <code>resources.limits.cpu</code>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">10</td>
+        <td>Phân biệt Working Set Memory và Usage Memory trên container?</td>
+        <td>Working set là bộ nhớ thực sự đang sử dụng (không thể thu hồi); OOM-killer bắn hạ tiến trình khi Working Set chạm ngưỡng limit.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">11</td>
+        <td>Keyless OIDC xác thực GitHub Actions với AWS bằng API nào?</td>
+        <td>Sử dụng API <code>sts:AssumeRoleWithWebIdentity</code> kết hợp JWT token được ký số bởi GitHub.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">12</td>
+        <td>Điều kiện quan trọng nhất cần khóa trong IAM Trust Policy OIDC?</td>
+        <td>Khóa chặt trường <code>sub</code> (Subject claim) khớp chính xác với repository name và nhánh git (<code>ref:refs/heads/main</code>).</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">13</td>
+        <td>Lợi thế lớn nhất của GitOps pull-based (ArgoCD) so với CI push-based?</td>
+        <td>Bảo mật tuyệt đối (không mở EKS API Server ra Internet) và khả năng tự phục hồi (Self-Healing) chống sửa tay trái phép.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">14</td>
+        <td>Làm sao xử lý xung đột giữa ArgoCD và HPA trên trường replicas?</td>
+        <td>Cấu hình <code>ignoreDifferences</code> trên đường dẫn json <code>/spec/replicas</code> của Deployment trong ArgoCD Application.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">15</td>
+        <td>Tại sao trong SRE phải dùng Latency P99/P95 thay vì Latency Average?</td>
+        <td>Latency trung bình che giấu các trường hợp cực đoan (Outliers); với 500M người dùng, 1% outliers tương đương 5 triệu người dùng bị nghẽn.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">16</td>
+        <td>Viết PromQL tính tỷ lệ lỗi HTTP 5xx trong 5 phút?</td>
+        <td><code>sum(rate(http_requests_total{status=~"5.."}[5m])) / sum(rate(http_requests_total[5m])) * 100</code>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">17</td>
+        <td>Làm sao biết lỗi 5xx sinh ra từ ALB hay từ chính Pod ứng dụng?</td>
+        <td>Kiểm tra CloudWatch metric <code>HTTPCode_ELB_5XX_Count</code> (tầng ALB) và <code>HTTPCode_Target_5XX_Count</code> (tầng ứng dụng).</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">18</td>
+        <td>Phương pháp nâng cấp Major Version cho Amazon RDS có downtime ngắn nhất?</td>
+        <td>Sử dụng RDS Blue/Green Deployments (chuyển đổi switchover trong dưới 1 phút bằng Logical Replication).</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">19</td>
+        <td>Làm sao hạ cấp (Downgrade) DocumentDB sau khi nâng cấp thất bại?</td>
+        <td>DocumentDB không hỗ trợ downgrade trực tiếp; phải duy trì cụm cũ và đồng bộ dữ liệu bằng AWS DMS CDC trước khi cutover.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">20</td>
+        <td>Hiện tượng Thundering Herd trên ElastiCache Redis là gì?</td>
+        <td>Là khi nhiều key cache hết hạn cùng lúc, hàng ngàn request đồng thời đâm xuống DB; xử lý bằng Jitter TTL và Mutex Lock.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">21</td>
+        <td>Tại sao Kafka MSK xảy ra hiện tượng Rebalancing Storm?</td>
+        <td>Do Consumer xử lý mẻ bản ghi quá thời gian <code>max.poll.interval.ms</code>; khắc phục bằng giảm <code>max.poll.records</code> và dùng <code>CooperativeStickyAssignor</code>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">22</td>
+        <td>Làm sao ngăn hacker gọi trực tiếp vào DNS của ALB bỏ qua CloudFront/WAF?</td>
+        <td>Sử dụng Secret Custom Header (<code>X-Origin-Verify</code>) trên CloudFront và gắn AWS Managed Prefix List cho Security Group của ALB.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">23</td>
+        <td>Terraform State Locking hoạt động thế nào trên AWS?</td>
+        <td>Sử dụng bảng Amazon DynamoDB có khóa <code>LockID</code> (hoặc S3 native lock) để ngăn nhiều lệnh apply chạy đồng thời.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">24</td>
+        <td>Configuration Drift trong Terraform là gì và xử lý ra sao?</td>
+        <td>Là hiện tượng hạ tầng thực tế bị sửa thủ công khác với code; phát hiện bằng cách chạy định kỳ <code>terraform plan -detailed-exitcode</code>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">25</td>
+        <td>Lợi ích khi nâng cấp ổ cứng EBS từ gp2 sang gp3?</td>
+        <td>Rẻ hơn 20% dung lượng lưu trữ, tách rời cấu hình IOPS/Throughput khỏi dung lượng ổ đĩa (mặc định sẵn 3,000 IOPS miễn phí).</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">26</td>
+        <td>Tại sao nên chuyển đổi sang chip AWS Graviton (ARM64)?</td>
+        <td>Tiết kiệm ~20% chi phí điện toán và cải thiện hiệu năng trên mỗi watt điện lên đến 40% so với x86 tương đương.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">27</td>
+        <td>Logging trên EKS Fargate được cấu hình ở đâu?</td>
+        <td>Tạo ConfigMap tên <code>aws-logging</code> trong namespace chuyên dụng <code>aws-observability</code> để kích hoạt FluentBit log router tích hợp sẵn.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">28</td>
+        <td>Phân biệt Liveness Probe, Readiness Probe và Startup Probe?</td>
+        <td>Startup probe kiểm tra lúc khởi động; Readiness probe quyết định nhận traffic; Liveness probe quyết định khởi động lại Pod khi bị deadlock.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">29</td>
+        <td>Pod Disruption Budget (PDB) bảo vệ điều gì?</td>
+        <td>Giới hạn số lượng Pod được phép gián đoạn đồng thời trong các tác vụ tự nguyện (voluntary disruptions) như drain node hay upgrade cụm.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">30</td>
+        <td>Cấu hình bảo mật container quan trọng nhất là gì?</td>
+        <td><code>runAsNonRoot: true</code>, <code>readOnlyRootFilesystem: true</code>, <code>allowPrivilegeEscalation: false</code> và drop toàn bộ Linux Capabilities.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">31</td>
+        <td>Sự khác biệt giữa IRSA và EKS Pod Identity là gì?</td>
+        <td>IRSA dựa trên OIDC AssumeRoleWithWebIdentity; EKS Pod Identity là cơ chế mới hơn quản lý qua EKS agent không cần cấu hình OIDC provider phức tạp.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">32</td>
+        <td>Làm sao đồng bộ secret từ AWS Secrets Manager vào Kubernetes an toàn?</td>
+        <td>Sử dụng External Secrets Operator (ESO) hoặc Secrets Store CSI Driver.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">33</td>
+        <td>Cơ chế xác thực Keycloak cho ArgoCD hoạt động thế nào?</td>
+        <td>Cấu hình ArgoCD OIDC kết nối tới Discovery Endpoint của Keycloak (<code>/auth/realms/&lt;realm&gt;/.well-known/openid-configuration</code>).</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">34</td>
+        <td>PromQL tính P99 Latency dùng hàm gì?</td>
+        <td>Dùng hàm <code>histogram_quantile(0.99, sum(rate(..._bucket[5m])) by (le))</code>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">35</td>
+        <td>Alert Fatigue là gì và giải pháp khắc phục?</td>
+        <td>Hiện tượng chai lỳ cảnh báo do có quá nhiều cảnh báo rác; khắc phục bằng cách thiết lập cảnh báo theo Error Budget Burn Rate (SRE).</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">36</td>
+        <td>Tại sao không nên dùng tag image <code>latest</code> trên Production?</td>
+        <td>Vì vi phạm tính bất biến (Immutability), không thể xác định chính xác commit nào đang chạy và gây lỗi khi rollback.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">37</td>
+        <td>Docker Buildx giúp ích gì trong quy trình CI/CD?</td>
+        <td>Cho phép biên dịch Docker Image hỗ trợ đa kiến trúc CPU song song (<code>linux/amd64</code> và <code>linux/arm64</code>).</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">38</td>
+        <td>Nguyên tắc Least Privilege trong IAM nghĩa là gì?</td>
+        <td>Chỉ cấp đúng các quyền tối thiểu cần thiết trên các ARN tài nguyên cụ thể, không bao giờ dùng wildcard <code>*</code>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">39</td>
+        <td>Multi-AZ Failover trên Amazon RDS mất bao lâu?</td>
+        <td>Thường mất từ 30 đến 60 giây để hoàn tất đổi bản ghi DNS nội bộ của RDS sang instance Standby.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">40</td>
+        <td>ElastiCache Redis Cluster và Redis Sentinel khác nhau thế nào?</td>
+        <td>Sentinel dùng cho cụm standalone master-replica failover; Cluster cung cấp sharding dữ liệu trên nhiều master shards để scale ngang.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">41</td>
+        <td>Khi nào nên dùng Amazon MSK thay vì Amazon SQS/SNS?</td>
+        <td>Khi cần lưu trữ luồng sự kiện theo thứ tự (event ordering), hỗ trợ replay lại dữ liệu cũ và phục vụ nhiều consumer groups độc lập.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">42</td>
+        <td>Transit Gateway (TGW) giải quyết bài toán gì trong VPC?</td>
+        <td>Đóng vai trò là hub trung tâm kết nối hàng chục VPC và On-Premises mạng hình sao, loại bỏ sự phức tạp của VPC Peering chéo (Full-mesh).</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">43</td>
+        <td>VPC Endpoint Gateway vs Interface Endpoint khác nhau thế nào?</td>
+        <td>Gateway Endpoint miễn phí dành cho S3 và DynamoDB (dựa vào Route Table); Interface Endpoint dùng PrivateLink gắn ENI và tính phí theo giờ.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">44</td>
+        <td>Cơ chế Session Sticky (Affinity) trên ALB hoạt động ra sao?</td>
+        <td>ALB chèn một cookie (<code>AWSALB</code>) vào trình duyệt để giữ các request tiếp theo của người dùng luôn định tuyến về cùng 1 target Pod.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">45</td>
+        <td>Làm sao triển khai Zero-Downtime khi thay đổi cấu hình schema DB?</td>
+        <td>Sử dụng mẫu thiết kế Expand and Contract (Parallel Run): Thêm cột mới trước, sửa code hỗ trợ cả hai, migrate dữ liệu rồi mới xóa cột cũ.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">46</td>
+        <td>Tại sao cần bật S3 Object Versioning khi làm Terraform Backend?</td>
+        <td>Để bảo vệ file state khỏi việc bị ghi đè hỏng hoặc xóa nhầm, cho phép rollback lại trạng thái state trước đó.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">47</td>
+        <td>Ingress PathType Prefix vs Exact khác nhau thế nào?</td>
+        <td><code>Prefix</code> khớp theo tiền tố đường dẫn phân tách bằng dấu gạch chéo <code>/</code>; <code>Exact</code> yêu cầu đường dẫn URL phải khớp chính xác từng ký tự.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">48</td>
+        <td>KEDA (Kubernetes Event-driven Autoscaling) hoạt động thế nào?</td>
+        <td>Hoạt động như một Custom Metrics Server theo dõi trực tiếp các nguồn sự kiện bên ngoài (Kafka lag, SQS queue depth) để scale Pods từ 0 lên n.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">49</td>
+        <td>Khái niệm MTTR trong SRE là gì và làm sao kéo giảm?</td>
+        <td>Mean Time to Recover (Thời gian trung bình để khắc phục sự cố); kéo giảm bằng Observability rõ ràng, Runbooks chi tiết và rollback tự động.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">50</td>
+        <td>Văn hóa Blameless Post-Mortem đem lại giá trị gì lớn nhất?</td>
+        <td>Khuyến khích sự minh bạch, tìm ra khiếm khuyết trong quy trình kỹ thuật để gia cố hệ thống thay vì tìm người để khiển trách.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PHẦN 10: PHỤ LỤC TỪ ĐIỂN CHUYÊN NGÀNH -->
+  <h2>10. Phụ Lục: Từ Điển Giải Thích Chi Tiết Thuật Ngữ Tiếng Anh Chuyên Ngành (A - Z)</h2>
+  <p>Bảng tổng hợp này giải thích rõ nghĩa tiếng Việt và bản chất kỹ thuật của các từ viết tắt, thuật ngữ chuyên sâu xuất hiện trong tài liệu:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Thuật ngữ Tiếng Anh</th>
+        <th style="width: 25%;">Dịch nghĩa Tiếng Việt</th>
+        <th style="width: 50%;">Giải thích bản chất kỹ thuật trong hệ thống</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>ALB (Application Load Balancer)</strong></td>
+        <td>Bộ cân bằng tải tầng ứng dụng</td>
+        <td>Hoạt động ở tầng 7 (HTTP/HTTPS) trong mô hình OSI, giúp phân phối lưu lượng truy cập vào các Pod EKS dựa trên đường dẫn URL, Hostname hoặc Header.</td>
+      </tr>
+      <tr>
+        <td><strong>ASG (Auto Scaling Group)</strong></td>
+        <td>Nhóm tự động co giãn máy chủ</td>
+        <td>Tính năng của AWS EC2 giúp tự động thêm hoặc bớt số lượng máy chủ ảo dựa trên chính sách tải hoặc lịch trình định sẵn.</td>
+      </tr>
+      <tr>
+        <td><strong>AZ (Availability Zone)</strong></td>
+        <td>Vùng sẵn sàng</td>
+        <td>Một hoặc nhiều trung tâm dữ liệu vật lý tách biệt về nguồn điện, mạng và làm mát nằm trong một Khu vực (Region) của AWS.</td>
+      </tr>
+      <tr>
+        <td><strong>CGNAT (Carrier-Grade NAT)</strong></td>
+        <td>Dải mạng NAT cấp nhà mạng</td>
+        <td>Dải địa chỉ IP riêng (<code>100.64.0.0/10</code>) thường được tận dụng làm dải mạng phụ (Secondary CIDR) cho các Pod trong EKS để tránh trùng lặp và cạn kiệt IP nội bộ.</td>
+      </tr>
+      <tr>
+        <td><strong>Cgroups (Control Groups)</strong></td>
+        <td>Nhóm kiểm soát nhân Linux</td>
+        <td>Tính năng của nhân hệ điều hành Linux giúp giới hạn, đo lường và cô lập mức sử dụng tài nguyên (CPU, bộ nhớ RAM, I/O mạng/đĩa) của các container.</td>
+      </tr>
+      <tr>
+        <td><strong>CIDR (Classless Inter-Domain Routing)</strong></td>
+        <td>Định tuyến liên miền không phân lớp</td>
+        <td>Cách biểu diễn dải địa chỉ IP và mặt nạ mạng con (ví dụ: <code>10.0.0.0/16</code> cung cấp 65,536 địa chỉ IP).</td>
+      </tr>
+      <tr>
+        <td><strong>Conntrack (Connection Tracking)</strong></td>
+        <td>Bảng theo dõi kết nối mạng</td>
+        <td>Mô-đun trong nhân Linux theo dõi trạng thái của tất cả các kết nối mạng logic (TCP/UDP). Khi bảng này đầy hoặc quá tải, gói tin sẽ bị đánh rớt (packet drop).</td>
+      </tr>
+      <tr>
+        <td><strong>CSI (Container Storage Interface)</strong></td>
+        <td>Giao diện lưu trữ cho Container</td>
+        <td>Chuẩn giao tiếp giúp Kubernetes kết nối với các hệ thống lưu trữ bên ngoài như ổ đĩa AWS EBS, EFS hoặc nạp AWS Secrets Manager.</td>
+      </tr>
+      <tr>
+        <td><strong>DMS (Database Migration Service)</strong></td>
+        <td>Dịch vụ di cư cơ sở dữ liệu</td>
+        <td>Dịch vụ của AWS giúp sao chép và đồng bộ dữ liệu liên tục giữa các hệ quản trị cơ sở dữ liệu mà không làm gián đoạn hoạt động của hệ thống nguồn.</td>
+      </tr>
+      <tr>
+        <td><strong>EBS (Elastic Block Store)</strong></td>
+        <td>Ổ cứng lưu trữ khối đàn hồi</td>
+        <td>Ổ đĩa ảo gắn trực tiếp vào máy chủ EC2 trên AWS (tương tự ổ cứng SSD vật lý), có các thế hệ phổ biến là <code>gp2</code> và <code>gp3</code>.</td>
+      </tr>
+      <tr>
+        <td><strong>ECR (Elastic Container Registry)</strong></td>
+        <td>Kho lưu trữ Container Image</td>
+        <td>Dịch vụ lưu trữ, quản lý và quét bảo mật các Docker/Container Image riêng tư trên đám mây AWS.</td>
+      </tr>
+      <tr>
+        <td><strong>EKS (Elastic Kubernetes Service)</strong></td>
+        <td>Dịch vụ Kubernetes được quản lý</td>
+        <td>Dịch vụ của AWS giúp vận hành Control Plane của Kubernetes tự động, có độ sẵn sàng cao mà kỹ sư không cần tự cài đặt máy chủ Master.</td>
+      </tr>
+      <tr>
+        <td><strong>ESO (External Secrets Operator)</strong></td>
+        <td>Trình điều khiển đồng bộ khóa bí mật</td>
+        <td>Thành phần chạy trong Kubernetes giúp tự động lấy mật khẩu/khóa API từ AWS Secrets Manager về thành đối tượng <code>Secret</code> nội bộ của Kubernetes.</td>
+      </tr>
+      <tr>
+        <td><strong>HPA (Horizontal Pod Autoscaler)</strong></td>
+        <td>Bộ tự động co giãn Pod theo chiều ngang</td>
+        <td>Cơ chế tự động tăng hoặc giảm số lượng bản sao (replicas) của Pod dựa trên mức tiêu thụ CPU, RAM hoặc các chỉ số tùy chỉnh.</td>
+      </tr>
+      <tr>
+        <td><strong>IAM (Identity and Access Management)</strong></td>
+        <td>Quản lý danh tính và quyền truy cập</td>
+        <td>Hệ thống kiểm soát phân quyền trung tâm của AWS, quy định rõ ai (User/Role) được phép làm hành động gì trên tài nguyên nào.</td>
+      </tr>
+      <tr>
+        <td><strong>Immutability</strong></td>
+        <td>Tính bất biến</td>
+        <td>Nguyên tắc không bao giờ chỉnh sửa trực tiếp lên máy chủ hoặc phiên bản image đang chạy; mỗi khi cập nhật sẽ tạo ra một bản build mới với mã định danh (tag) riêng.</td>
+      </tr>
+      <tr>
+        <td><strong>Ingress &amp; Ingress Controller</strong></td>
+        <td>Cổng định tuyến lưu lượng đầu vào</td>
+        <td><code>Ingress</code> là bản khai báo quy tắc đường đi HTTP/HTTPS trong Kubernetes; <code>Ingress Controller</code> (như AWS ALB Controller) là trình thực thi tạo ra bộ cân bằng tải thật.</td>
+      </tr>
+      <tr>
+        <td><strong>IOPS (Input/Output Operations Per Second)</strong></td>
+        <td>Số thao tác đọc/ghi mỗi giây</td>
+        <td>Đơn vị đo lường tốc độ xử lý đọc và ghi dữ liệu của ổ cứng lưu trữ (EBS, RDS).</td>
+      </tr>
+      <tr>
+        <td><strong>IPAM (IP Address Management)</strong></td>
+        <td>Quản lý cấp phát địa chỉ IP</td>
+        <td>Thành phần thuộc plugin mạng VPC CNI chịu trách nhiệm xin cấp phát, giữ ấm (warm pool) và thu hồi địa chỉ IP cho các Pod trên Node.</td>
+      </tr>
+      <tr>
+        <td><strong>IRSA (IAM Roles for Service Accounts)</strong></td>
+        <td>Gán quyền IAM cho tài khoản dịch vụ Pod</td>
+        <td>Cơ chế cho phép cấp quyền AWS IAM trực tiếp cho từng Pod cụ thể trong Kubernetes thông qua giao thức OIDC thay vì cấp quyền rộng cho cả máy chủ EC2 Node.</td>
+      </tr>
+      <tr>
+        <td><strong>Jitter</strong></td>
+        <td>Độ lệch ngẫu nhiên</td>
+        <td>Khoảng thời gian cộng/trừ ngẫu nhiên thêm vào thời hạn sống của Cache (TTL) hoặc chu kỳ thử lại (Retry) để tránh việc hàng ngàn tiến trình cùng hành động tại đúng 1 mili-giây.</td>
+      </tr>
+      <tr>
+        <td><strong>JWT (JSON Web Token)</strong></td>
+        <td>Mã thông báo Web định dạng JSON</td>
+        <td>Chuỗi mã hóa chứa thông tin định danh và chữ ký số bảo mật, dùng để xác thực không trạng thái giữa các hệ thống (ví dụ giữa GitHub Actions và AWS).</td>
+      </tr>
+      <tr>
+        <td><strong>KMS (Key Management Service)</strong></td>
+        <td>Dịch vụ quản lý khóa mã hóa</td>
+        <td>Dịch vụ bảo mật của AWS dùng để tạo và kiểm soát các khóa mã hóa dữ liệu (Encryption Keys) cho S3, EBS, RDS, Secrets Manager.</td>
+      </tr>
+      <tr>
+        <td><strong>LCU (Load Balancer Capacity Unit)</strong></td>
+        <td>Đơn vị tính phí công suất cân bằng tải</td>
+        <td>Đơn vị AWS dùng để tính tiền sử dụng ALB dựa trên số kết nối mới, số kết nối đang hoạt động, băng thông truyền tải và số lượng quy tắc (rules) được duyệt.</td>
+      </tr>
+      <tr>
+        <td><strong>MSK (Managed Streaming for Apache Kafka)</strong></td>
+        <td>Dịch vụ Apache Kafka được quản lý</td>
+        <td>Dịch vụ truyền tải luồng dữ liệu và sự kiện thời gian thực trên AWS, tự động hóa việc quản trị cụm máy chủ Kafka và ZooKeeper/KRaft.</td>
+      </tr>
+      <tr>
+        <td><strong>Mutex Lock / Redlock</strong></td>
+        <td>Khóa loại trừ tương hỗ phân tán</td>
+        <td>Cơ chế khóa đồng bộ trên Redis đảm bảo tại một thời điểm chỉ có duy nhất một tiến trình được phép truy cập vào tài nguyên dùng chung (như truy vấn Database khi mất cache).</td>
+      </tr>
+      <tr>
+        <td><strong>PromQL (Prometheus Query Language)</strong></td>
+        <td>Ngôn ngữ truy vấn Prometheus</td>
+        <td>Ngôn ngữ chuyên dụng dùng để trích xuất, tính toán tỷ lệ, tổng hợp dữ liệu chuỗi thời gian (Time-series data) để vẽ biểu đồ Grafana và tạo cảnh báo.</td>
+      </tr>
+      <tr>
+        <td><strong>QoS Class (Quality of Service Class)</strong></td>
+        <td>Phân lớp chất lượng dịch vụ của Pod</td>
+        <td>Cơ chế Kubernetes phân loại độ ưu tiên của Pod (<code>Guaranteed</code>, <code>Burstable</code>, <code>BestEffort</code>) để quyết định Pod nào sẽ bị hủy trước khi máy chủ Node bị thiếu bộ nhớ RAM.</td>
+      </tr>
+      <tr>
+        <td><strong>Quorum Write</strong></td>
+        <td>Ghi dữ liệu theo đa số tối thiểu</td>
+        <td>Cơ chế đảm bảo tính nhất quán trong hệ phân tán (như DocumentDB/Aurora): một lệnh ghi được coi là thành công khi có quá nửa số bản sao (ví dụ 4/6 nút) xác nhận đã lưu xong.</td>
+      </tr>
+      <tr>
+        <td><strong>Runbook</strong></td>
+        <td>Sổ tay quy trình xử lý sự cố</td>
+        <td>Tài liệu hướng dẫn từng bước cụ thể (gồm các lệnh kiểm tra, chẩn đoán và khôi phục) giúp kỹ sư trực ca xử lý nhanh một cảnh báo hoặc sự cố kỹ thuật.</td>
+      </tr>
+      <tr>
+        <td><strong>Sidecar Container</strong></td>
+        <td>Container phụ trợ chạy kèm</td>
+        <td>Một container phụ chạy chung trong cùng một Pod với container ứng dụng chính để hỗ trợ các tác vụ như đẩy log (FluentBit), proxy mạng (Envoy/Istio) hoặc bảo mật.</td>
+      </tr>
+      <tr>
+        <td><strong>Spot Instance &amp; Spot Interruption</strong></td>
+        <td>Máy chủ tận dụng công suất nhàn rỗi</td>
+        <td>Máy chủ EC2 có giá rẻ hơn tới 70-90% so với giá chuẩn nhưng có thể bị AWS thu hồi lại bất cứ lúc nào kèm theo thông báo báo trước 2 phút (2-minute warning).</td>
+      </tr>
+      <tr>
+        <td><strong>Telemetry</strong></td>
+        <td>Dữ liệu đo lường từ xa tự động</td>
+        <td>Tập hợp các dữ liệu hiệu năng, trạng thái hoạt động, nhật ký và dấu vết được thu thập tự động từ các dịch vụ đám mây về hệ thống giám sát trung tâm.</td>
+      </tr>
+      <tr>
+        <td><strong>TTL (Time To Live)</strong></td>
+        <td>Thời gian sống của dữ liệu</td>
+        <td>Khoảng thời gian một bản ghi dữ liệu (như key trong Redis hoặc bản ghi DNS trong Route 53) được phép tồn tại trong bộ nhớ đệm trước khi bị xóa hoặc làm mới.</td>
+      </tr>
+      <tr>
+        <td><strong>WAL (Write-Ahead Logging) / Binlog</strong></td>
+        <td>Nhật ký ghi trước</td>
+        <td>Cơ chế của cơ sở dữ liệu (PostgreSQL/MySQL) ghi lại mọi thay đổi vào file nhật ký tuần tự trước khi ghi vào bảng thực tế, dùng để phục hồi dữ liệu và đồng bộ sang các máy chủ Replica.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer-banner">
+    Chúc Nguyễn Chí Bảo có những buổi phỏng vấn xuất sắc, khẳng định trọn vẹn bản lĩnh của một Senior / Lead Cloud &amp; DevOps Engineer đẳng cấp!
+  </div>
+
+</div>
+
+</body>
+</html>
+```
